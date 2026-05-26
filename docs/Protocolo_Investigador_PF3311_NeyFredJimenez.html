@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo del Investigador: PF-3311</title>
+    <style>
+        /* ── CSS EXACTO DEL TEMPLATE DEL PROFESOR ── */
+        :root { --primary: #0F3B82; --primary-light: #2A5BAA; --bg-body: #F4F7F6; --bg-card: #FFFFFF; --text-main: #333333; --text-muted: #666666; --border-color: #E2E8F0; --radius: 8px; --shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; padding: 40px 20px; display: flex; justify-content: center; }
+        .container { max-width: 800px; width: 100%; }
+        .card { background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 40px; border: 1px solid var(--border-color); }
+        h1 { color: var(--primary); font-size: 1.8rem; margin-bottom: 8px; border-bottom: 2px solid var(--primary-light); padding-bottom: 10px; }
+        h2 { color: var(--primary-light); font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px; }
+        h3 { color: var(--text-main); font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px; }
+        p { margin-bottom: 15px; }
+        ul { margin-bottom: 15px; padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .metadata-box { background-color: #F8FAFC; border-left: 4px solid var(--primary); padding: 15px; margin-bottom: 30px; border-radius: 0 var(--radius) var(--radius) 0; }
+        .metadata-box p { margin-bottom: 5px; font-size: 0.95rem; }
+        .metadata-box strong { color: var(--primary); }
+        .quote { background-color: #F1F5F9; font-style: italic; padding: 15px; border-radius: var(--radius); margin: 15px 0; color: #475569; }
+        .checkbox-list { list-style: none; padding-left: 0; }
+        .checkbox-list li { display: flex; align-items: flex-start; margin-bottom: 10px; }
+        .checkbox-list li::before { content: '☐'; font-size: 1.2rem; margin-right: 10px; color: var(--primary-light); line-height: 1.2; }
+
+        /* ── ADICIONES MÍNIMAS (no existentes en el template, requeridas por el contenido) ── */
+        .time-note { font-size: 0.85rem; color: var(--text-muted); margin-top: -10px; margin-bottom: 15px; }
+        .warning-box { background-color: #FFFBEB; border-left: 4px solid #D97706; padding: 15px; margin: 15px 0; border-radius: 0 var(--radius) var(--radius) 0; font-size: 0.95rem; color: #78350F; }
+        .warning-box strong { color: #92400E; display: block; margin-bottom: 4px; }
+        .danger-box { background-color: #FEF2F2; border-left: 4px solid #DC2626; padding: 15px; margin: 15px 0; border-radius: 0 var(--radius) var(--radius) 0; font-size: 0.95rem; color: #7F1D1D; font-weight: 500; }
+        .danger-box strong { display: block; margin-bottom: 4px; }
+        .success-box { background-color: #F0FDF4; border-left: 4px solid #16A34A; padding: 15px; margin: 15px 0; border-radius: 0 var(--radius) var(--radius) 0; font-size: 0.95rem; color: #14532D; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 15px 0 20px; }
+        .data-table th { background-color: var(--primary); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+        .data-table td { padding: 9px 12px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:nth-child(even) td { background-color: #F8FAFC; }
+        .step-list { list-style: none; padding-left: 0; counter-reset: steps; }
+        .step-list li { counter-increment: steps; display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-size: 0.95rem; }
+        .step-list li::before { content: counter(steps); min-width: 26px; height: 26px; background-color: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+
+    <h1>Protocolo del Investigador: PF-3311</h1>
+    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">Efecto de la visibilidad de un agente virtual en el desempeño y la confianza del usuario en tareas de decisión basadas en reglas</p>
+
+    <div class="metadata-box">
+        <p><strong>Código del Curso:</strong> PF-3311 – Agentes Virtuales Inteligentes</p>
+        <p><strong>Profesor Director:</strong> Dr. Alexander Barquero</p>
+        <p><strong>Investigador Principal:</strong> Ney Fred Jiménez Campos (B03230)</p>
+        <p><strong>Unidad Ejecutora:</strong> Programa de Posgrado en Computación e Informática, UCR</p>
+        <p><strong>Diseño Experimental:</strong> Within-subjects, 3 condiciones (A, B, C) por participante</p>
+        <p><strong>Duración estimada de la sesión:</strong> 40 – 60 minutos</p>
+        <p><strong>Uso:</strong> EXCLUSIVO DEL INVESTIGADOR, CONFIDENCIAL</p>
+    </div>
+
+    <!-- SECCIÓN 1 -->
+    <h2>1. Resumen del Estudio y Preparación Previa</h2>
+    <p class="time-note">⏱ Completar antes de la hora acordada con el participante</p>
+
+    <p>Esta guía detalla los pasos a seguir en cada sesión. Cada participante pasa por las tres condiciones en un mismo encuentro, en el orden que le corresponde según la tabla de contrabalanceo.</p>
+
+    <div class="metadata-box">
+        <p><strong>Condición A:</strong> Sin agente: el participante responde solo, sin ningún tipo de asistencia.</p>
+        <p><strong>Condición B:</strong> Asistencia textual: el agente responde por chat de texto, sin avatar ni voz.</p>
+        <p><strong>Condición C:</strong> Agente visible: avatar 3D con voz TTS, lip-sync y expresiones faciales.</p>
+    </div>
+
+    <div class="warning-box">
+        <strong>Principio de control experimental crítico</strong>
+        El contenido de la asistencia es el mismo en B y C. Lo único que cambia es si el agente se ve y se escucha. No modificar esto.
+    </div>
+
+    <h3>1.1 Checklist de Preparación Previa</h3>
+    <ul class="checkbox-list">
+        <li>Verificar que la sesión en AWS AppStream está activa y la aplicación Unity carga correctamente antes de la hora acordada.</li>
+        <li>Confirmar que el LLM (Google Gemini API) responde con latencia ≤ 3 s para respuestas cortas.</li>
+        <li>Verificar que el TTS (OpenAI TTS en español latinoamericano) produce audio y que el lip-sync con blendshapes funciona en la Condición C.</li>
+        <li>Tener lista la tabla de asignación aleatoria y consultar qué orden de condiciones corresponde al participante actual.</li>
+        <li>Tener listo el enlace al cuestionario meCUE 2.0 (Google Forms / Qualtrics) para enviarlo al participante al finalizar los bloques de tarea.</li>
+        <li>Verificar que el consentimiento informado digital dentro de la aplicación carga correctamente y que el checkbox de aceptación bloquea el avance hasta ser marcado.</li>
+        <li>Verificar que el registro automático de datos (CSV: ID participante, condición, pregunta, respuesta, acierto, timestamp, confianza 1–7) funciona antes de la sesión.</li>
+        <li>Generar y enviar el enlace de acceso a AWS AppStream al participante con al menos 10 minutos de anticipación a la hora acordada.</li>
+    </ul>
+
+    <!-- SECCIÓN 2 -->
+    <h2>2. Bienvenida y Consentimiento Informado</h2>
+    <p class="time-note">⏱ Tiempo estimado: ~5 min</p>
+
+    <h3>2.1 Saludo Inicial</h3>
+    <p><strong>Investigador (textual):</strong></p>
+    <div class="quote">"Hola, _____. Muchas gracias por conectarte. Mi nombre es Ney Fred Jiménez. Soy el investigador responsable del estudio. Te voy a pedir que me dediqués entre 40 y 60 minutos de tu tiempo."</div>
+
+    <h3>2.2 Consentimiento Informado</h3>
+    <p>Indicar al participante que lea el formulario de consentimiento desplegado en la aplicación antes de continuar. El formulario incluye los siguientes elementos:</p>
+
+    <div class="metadata-box">
+        <p><strong>Título del estudio:</strong> Efecto de la visibilidad de un agente virtual en el desempeño y la confianza del usuario en tareas de decisión basadas en reglas.</p>
+        <p><strong>Investigador responsable:</strong> Ney Fred Jiménez Campos, Programa de Posgrado en Computación e Informática, Universidad de Costa Rica.</p>
+        <p><strong>Propósito:</strong> Este estudio busca entender cómo la presencia de un agente virtual afecta el desempeño y la confianza de las personas al tomar decisiones siguiendo reglas explícitas. No existe una respuesta correcta ni incorrecta desde el punto de vista de su participación; lo que nos interesa es su proceso natural de decisión.</p>
+        <p><strong>Procedimiento:</strong> Usted interactuará con una aplicación informática durante tres bloques cortos de tareas. En cada bloque resolverá entre seis y ocho casos de decisión. Después llenará un cuestionario breve sobre su experiencia. La sesión dura entre 40 y 60 minutos en total.</p>
+        <p><strong>Riesgos:</strong> No existen riesgos previsibles más allá del cansancio leve por el tiempo de la sesión. La participación no tiene ningún impacto académico ni laboral.</p>
+        <p><strong>Confidencialidad:</strong> Todos sus datos se almacenarán bajo un código numérico de participante. Su nombre no aparecerá en ningún registro de datos ni en publicaciones derivadas del estudio.</p>
+        <p><strong>Voluntariedad:</strong> Su participación es completamente voluntaria. Puede retirarse en cualquier momento sin consecuencia alguna.</p>
+    </div>
+
+    <p><strong>Al terminar de leer (MUY IMPORTANTE, decir textual):</strong></p>
+    <div class="quote">"Después de leer este consentimiento, ¿aceptás participar en el estudio?"</div>
+
+    <p><strong>Si la respuesta es NO:</strong> agradecer su tiempo y dar por finalizada la sesión. No registrar ningún dato.</p>
+
+    <p><strong>Si la respuesta es SÍ:</strong> el participante avanza en la aplicación, donde el formulario incluye dos checkboxes obligatorios antes de poder continuar: <em>"Confirmo que tengo 18 años o más"</em> y <em>"Acepto participar en el estudio bajo las condiciones descritas"</em>. Si alguno no está marcado, la app no deja continuar. Asignar el ID numérico de participante y anotarlo en la bitácora.</p>
+
+    <h3>2.2.1 Retiro Voluntario Durante la Sesión</h3>
+    <div class="warning-box">
+        <strong>Si en algún momento el participante quiere salirse:</strong>
+        parar sin preguntar nada. Agradecerle el tiempo. Borrar los datos parciales que se hayan generado (CSV, logs). No usar nada de lo registrado. Anotar el retiro en la bitácora sin identificar a la persona.
+    </div>
+
+    <h3>2.3 Cuestionario Inicial de Perfil</h3>
+    <p>Pedirle al participante que llene el cuestionario de perfil antes de empezar. Pregunta por edad, nivel educativo, qué tanto usa asistentes digitales y si ha interactuado antes con agentes virtuales.</p>
+
+    <!-- SECCIÓN 3 -->
+    <h2>3. Asignación Aleatoria a las Condiciones</h2>
+    <p class="time-note">⏱ Tiempo estimado: ~2 min</p>
+
+    <p>Cada participante hace las tres condiciones. El orden varía entre personas para que no todos empiecen por lo mismo. Ver la tabla antes de empezar la sesión.</p>
+
+    <table class="data-table">
+        <thead>
+            <tr><th>ID Participante</th><th>Bloque 1</th><th>Bloque 2</th><th>Bloque 3</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>P01</strong></td><td>A: Sin agente</td><td>B: Texto</td><td>C: Avatar</td></tr>
+            <tr><td><strong>P02</strong></td><td>B: Texto</td><td>C: Avatar</td><td>A: Sin agente</td></tr>
+            <tr><td><strong>P03</strong></td><td>C: Avatar</td><td>A: Sin agente</td><td>B: Texto</td></tr>
+            <tr><td><strong>P04</strong></td><td>A: Sin agente</td><td>C: Avatar</td><td>B: Texto</td></tr>
+            <tr><td><strong>P05</strong></td><td>B: Texto</td><td>A: Sin agente</td><td>C: Avatar</td></tr>
+            <tr><td><strong>P06</strong></td><td>C: Avatar</td><td>B: Texto</td><td>A: Sin agente</td></tr>
+            <tr><td><strong>P07 – P12</strong></td><td colspan="3" style="color:var(--text-muted); font-style:italic;">Repetir los seis órdenes de P01–P06: cada orden se aplica dos veces. Con 12 participantes el contrabalanceo queda completo y balanceado.</td></tr>
+            <tr><td><strong>P13 – P15</strong></td><td colspan="3" style="color:var(--text-muted); font-style:italic;">Participantes adicionales para extender la muestra; continuar el ciclo de órdenes desde P01.</td></tr>
+        </tbody>
+    </table>
+
+    <div class="note-box" style="font-size:0.92rem; color:var(--text-muted);">
+        <strong>Nota sobre el balance:</strong> existen seis órdenes posibles para tres condiciones. Con la muestra mínima de 9 el contrabalanceo es <em>parcial</em> (tres órdenes se aplican dos veces y tres una sola vez); con 12 participantes queda perfectamente balanceado (dos veces cada orden). En la medida de lo posible, apuntar a un múltiplo de 6.
+    </div>
+
+    <div class="warning-box">
+        Decirle al participante qué orden de bloques le tocó. El orden lo fija la asignación aleatoria, no el participante: este debe seguir exactamente la secuencia indicada. El investigador habilita cada bloque al cerrar el anterior y verifica en la bitácora que el orden asignado se haya respetado antes de dar la sesión por válida.
+    </div>
+
+    <!-- SECCIÓN 4 -->
+    <h2>4. Fase de Interacción con las Tareas</h2>
+    <p class="time-note">⏱ Tiempo estimado: ~25–35 min</p>
+
+    <h3>4.1 Instrucciones Neutrales para el Participante</h3>
+    <div class="danger-box">
+        <strong>Leer tal cual está escrito. No agregar nada ni cambiar palabras;</strong> cualquier comentario extra puede influir en cómo responde el participante.
+    </div>
+
+    <p><strong>Instrucción base (todas las condiciones):</strong></p>
+    <div class="quote">"A continuación vas a resolver una serie de casos de decisión usando una aplicación en pantalla. En cada caso vas a leer una situación y vas a elegir una de las cuatro opciones de respuesta que aparecen. Después de cada respuesta, la aplicación te va a pedir que indiqués qué tan seguro estás de tu decisión en una escala del 1 al 7. No hay límite de tiempo por caso, pero por favor respondé con lo primero que te parezca correcto. Yo voy a salir de tu vista mientras trabajás para no interferir. Cuando terminés el bloque, la misma aplicación te lo va a indicar."</div>
+
+    <p><strong>Para la Condición B solamente, agregar:</strong></p>
+    <div class="quote">"En este bloque vas a tener acceso a un chat de texto si necesitás orientación. Podés usarlo cuando quieras o no usarlo en absoluto; la decisión es tuya."</div>
+
+    <p><strong>Para la Condición C solamente, agregar:</strong></p>
+    <div class="quote">"En este bloque vas a tener un asistente virtual que podés ver y escuchar. Si necesitás orientación, podés escribirle al chat. Podés ignorarlo si preferís trabajar solo. Lo que el asistente hace es ayudarte a entender las reglas, no darte la respuesta."</div>
+
+    <h3>4.2 Tarea de Práctica</h3>
+    <p>Antes del primer bloque real, hacer un caso de práctica que no se registra. Sirve para que el participante se familiarice con la interfaz, la escala de confianza y el chat (si aplica).</p>
+    <p>Cuando el participante confirme que entendió, retirarse. No intervenir mientras resuelve los casos.</p>
+
+    <h3>4.3 Estructura de Cada Bloque de Tarea</h3>
+
+    <table class="data-table">
+        <thead>
+            <tr><th>Paso</th><th>Descripción</th><th>Registro automático</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Presentación del caso</td>
+                <td>Caso de decisión basada en reglas con cuatro opciones de respuesta</td>
+                <td>ID participante, condición, N° pregunta, timestamp inicio</td>
+            </tr>
+            <tr>
+                <td>Selección de respuesta</td>
+                <td>El participante elige una opción</td>
+                <td>Respuesta seleccionada, respuesta correcta, booleano de acierto</td>
+            </tr>
+            <tr>
+                <td>Escala de confianza</td>
+                <td>Ventana emergente: "¿Qué tan seguro/a estás de tu respuesta?" (1 = nada seguro/a, 7 = completamente seguro/a). Obligatorio antes de continuar.</td>
+                <td>Nivel de confianza (1–7), timestamp fin, tiempo de respuesta en segundos</td>
+            </tr>
+            <tr>
+                <td>Avance al siguiente caso</td>
+                <td>La aplicación carga el siguiente caso automáticamente</td>
+                <td>Sin registro</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        Cada bloque contiene entre 6 y 8 casos. Al completar los tres bloques el participante habrá respondido entre 18 y 24 casos en total. Los casos cambian entre bloques para que el participante no repita los mismos.
+    </div>
+
+    <!-- SECCIÓN 5 -->
+    <h2>5. Cuestionarios Post-Interacción</h2>
+    <p class="time-note">⏱ Tiempo estimado: ~10 min</p>
+
+    <p>Al terminar los tres bloques, confirmar por videollamada que todo quedó completo y enviarle el enlace de los cuestionarios.</p>
+
+    <p><strong>Investigador:</strong></p>
+    <div class="quote">"¡Excelente, ya terminaste los bloques de tareas! Ahora te voy a pedir que llenés una serie de cuestionarios cortos sobre tu experiencia. No hay respuestas correctas ni incorrectas; lo que nos importa es tu percepción honesta. Por favor hacelo de forma individual, sin prisa."</div>
+
+    <div class="danger-box">
+        No estar presente mientras el participante llena los cuestionarios. Si el investigador está ahí, las respuestas se sesgan.
+    </div>
+
+    <h3>5.1 Instrumentos Administrados</h3>
+
+    <table class="data-table">
+        <thead>
+            <tr><th>Instrumento</th><th>Variable que mide</th><th>RQ asociada</th><th>Observaciones</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>meCUE 2.0</strong></td>
+                <td>Experiencia de usuario: utilidad percibida, emociones, intención de uso, evaluación global</td>
+                <td>RQ2</td>
+                <td>Aplicar módulos de percepciones instrumentales, emociones y evaluación global. Versión en español disponible.</td>
+            </tr>
+            <tr>
+                <td><strong>Escala Likert 1–7 por pregunta</strong></td>
+                <td>Confianza subjetiva en cada decisión individual</td>
+                <td>RQ2, RQ3</td>
+                <td>Se registra automáticamente dentro de la aplicación Unity durante las tareas (no como formulario separado).</td>
+            </tr>
+            <tr>
+                <td><strong>Registro de precisión</strong></td>
+                <td>Porcentaje de respuestas correctas por condición</td>
+                <td>RQ1, RQ3</td>
+                <td>Generado automáticamente como CSV al finalizar la sesión. No requiere acción del participante.</td>
+            </tr>
+            <tr>
+                <td><strong>Cuestionario de perfil</strong></td>
+                <td>Edad, nivel educativo, experiencia con IA / agentes virtuales</td>
+                <td>Variable de control</td>
+                <td>Se aplica al inicio de la sesión (ver Sección 2.3). No repetir aquí.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- SECCIÓN 6 -->
+    <h2>6. Entrevista Cualitativa Breve <span style="font-size:0.8rem; background:#0F3B82; color:#fff; padding:2px 10px; border-radius:4px; vertical-align:middle; font-weight:600;">RECOMENDADA</span></h2>
+    <p class="time-note">⏱ Tiempo estimado: ~5–10 min</p>
+
+    <p>Sirve para entender el razonamiento detrás de las decisiones, algo que los cuestionarios no capturan. Hacerla con todos si el tiempo lo permite. Pedir permiso para grabar antes de empezar.</p>
+
+    <div class="quote">"¿Te molesta si grabo el audio de esta pequeña conversación? Es solo para que yo pueda revisar lo que dijiste después; no se va a compartir con nadie más."</div>
+
+    <h3>Preguntas de Apreciación Cualitativa</h3>
+    <ul class="checkbox-list">
+        <li>"En términos generales, ¿cómo describirías tu experiencia resolviendo los casos el día de hoy?"</li>
+        <li>"¿Hubo alguna situación o detalle que te facilitara la toma de decisión?"</li>
+        <li>"¿Hubo algo que te pareciera confuso, incómodo o frustrante durante la sesión?"</li>
+        <li>"¿Notaste alguna diferencia entre los tres bloques de tareas?" <em>(No revelar cuáles eran las condiciones si el participante no las identificó por sí mismo.)</em></li>
+        <li>"¿Qué le cambiarías o mejorarías al sistema?"</li>
+        <li>"¿Sentiste que la asistencia disponible influyó en la seguridad con que tomaste tus decisiones?"</li>
+    </ul>
+
+    <!-- SECCIÓN 7 -->
+    <h2>7. Debriefing</h2>
+    <p class="time-note">⏱ Tiempo estimado: ~3–5 min</p>
+
+    <p>Antes de despedirse, contarle al participante de qué se trataba el estudio. Detener la grabación primero.</p>
+
+    <div class="danger-box">
+        <strong>No revelar el objetivo antes de este momento.</strong> Si durante la sesión o la entrevista el participante pregunta cuál era la diferencia entre los bloques, responder: <em>"Te lo cuento cuando terminemos todas las preguntas."</em>
+    </div>
+
+    <p><strong>Investigador:</strong></p>
+    <div class="quote">"Ahora sí te puedo contar de qué se trataba el estudio. Lo que estábamos evaluando es si la forma en que se presenta un sistema de asistencia (solo texto, o con un personaje visual y voz) afecta qué tan bien resolvemos tareas y qué tan seguros nos sentimos de nuestras decisiones. Los tres bloques que hiciste correspondían a tres versiones distintas del sistema: en uno no había ninguna asistencia, en otro el sistema respondía solo por chat de texto, y en el tercero el sistema tenía un avatar con voz.<br><br>
+    El contenido de la ayuda era exactamente el mismo en los tres casos; la única diferencia era cómo se veía y escuchaba. Lo que nos interesa es si esa diferencia visual importa o no.<br><br>
+    ¿Tenés alguna pregunta sobre el estudio ahora que sabés de qué se trataba?"</div>
+
+    <p>Responder las preguntas del participante con honestidad. Si pregunta por los resultados, indicarle que estarán disponibles al finalizar el curso y que puede escribir para consultarlos.</p>
+
+    <!-- SECCIÓN 8 -->
+    <h2>8. Despedida</h2>
+    <p class="time-note">⏱ Tiempo estimado: ~1 min</p>
+
+    <p>Parar la grabación y agradecer.</p>
+    <div class="quote">"Muchas gracias por tu tiempo y por contribuir a esta investigación. Tu aporte es muy valioso para entender mejor cómo las personas interactúan con agentes virtuales. Si en algún momento tenés dudas sobre el estudio o querés saber los resultados cuando estén disponibles, podés escribirme a ney.jimenez@ucr.ac.cr. ¡Que tengas un excelente día!"</div>
+
+    <!-- SECCIÓN 9 -->
+    <h2>9. Gestión de Datos y Protocolo de Anonimización</h2>
+    <p>Al cerrar la sesión, hacer esto en orden:</p>
+
+    <ol class="step-list">
+        <li><strong>Verificar el CSV:</strong> Confirmar que el archivo de registro generado por la aplicación Unity contiene todos los campos esperados (ID participante, condición, N° pregunta, respuesta, booleano de acierto, timestamp, confianza). Si falta algún campo, documentarlo en la bitácora antes de continuar.</li>
+        <li><strong>Anonimización:</strong> Confirmar que el CSV y el meCUE están vinculados solo al ID del participante (P01, P02…), no al nombre. El archivo que relaciona ID con nombre se guarda por separado, con contraseña.</li>
+        <li><strong>Logs de conversación (Condiciones B y C):</strong> Verificar que los logs de chat del LLM se exportaron correctamente bajo el ID del participante. Revisar el chat y borrar cualquier dato personal que haya escrito el participante.</li>
+        <li><strong>Respaldo:</strong> Subir el CSV anonimizado y los logs al repositorio privado del proyecto en GitHub bajo la carpeta <code>/data/raw/</code>. Nunca subir el archivo de mapeo ID ↔ nombre.</li>
+        <li><strong>Registro del consentimiento digital:</strong> Verificar que el registro del consentimiento (timestamp + ID participante + checkboxes marcados) quedó guardado correctamente en el backend. No subir ningún dato identificable a GitHub.</li>
+        <li><strong>Preparación para el siguiente participante:</strong> Reiniciar la sesión de AWS AppStream, limpiar el estado de la aplicación Unity (borrar el historial de conversación del LLM), y consultar la tabla de asignación aleatoria para determinar el orden de condiciones del siguiente participante.</li>
+    </ol>
+
+    <div class="warning-box">
+        Las API keys van en variables de entorno, no en el código. No subir ninguna key a GitHub.
+    </div>
+
+    <!-- SECCIÓN 10 -->
+    <h2>10. Plan de Contingencia Técnica</h2>
+    <p class="time-note">⏱ Aplicar según necesidad durante la sesión</p>
+    <p>Si algo falla, seguir la tabla. Anotar siempre lo que pasó en la bitácora.</p>
+
+    <table class="data-table">
+        <thead>
+            <tr><th>Incidencia</th><th>Acción inmediata</th><th>¿Se conservan los datos?</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>AppStream se desconecta mid-sesión</strong></td>
+                <td>Notificar al participante por videollamada. Intentar reconexión enviando un nuevo enlace. Dar máximo 5 minutos de espera.</td>
+                <td>Sí, si el CSV se guardó antes de la desconexión. Retomar desde el siguiente caso no completado.</td>
+            </tr>
+            <tr>
+                <td><strong>El LLM no responde o da error (Cond. B o C)</strong></td>
+                <td>Indicar al participante que espere. Si el error persiste más de 60 segundos, reiniciar el servicio backend. Si no se resuelve, suspender la condición afectada.</td>
+                <td>Sí para los casos ya registrados. Excluir la condición afectada del análisis y documentarlo en la bitácora.</td>
+            </tr>
+            <tr>
+                <td><strong>El TTS o lip-sync falla (Cond. C)</strong></td>
+                <td>Reiniciar la escena Unity. Si no se resuelve en 2 minutos, continuar sin TTS y anotarlo como variante degradada.</td>
+                <td>Sí, pero marcar esa sesión como caso especial en el análisis.</td>
+            </tr>
+            <tr>
+                <td><strong>El participante pierde la videollamada</strong></td>
+                <td>Esperar 3 minutos. Enviar mensaje de texto o correo. Si no reconecta en 5 minutos, dar la sesión por suspendida.</td>
+                <td>Solo si todos los bloques estaban completos antes de la desconexión. Datos parciales se eliminan.</td>
+            </tr>
+            <tr>
+                <td><strong>El CSV no se generó o está incompleto</strong></td>
+                <td>No repetir la sesión ese mismo día. Documentar el fallo y revisar los logs del backend para recuperar lo posible.</td>
+                <td>Intentar recuperación desde logs del backend. Si no es posible, excluir la sesión.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- SECCIÓN 11 -->
+    <h2>11. Bitácora de Sesión</h2>
+    <p>Llenar durante o justo después de cada sesión. Este registro es solo para gestión interna, no forma parte de los datos del estudio.</p>
+
+    <table class="data-table">
+        <thead>
+            <tr><th>Campo</th><th>Valor / Notas</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>ID del participante</strong></td><td style="color:var(--text-muted); font-style:italic;">P0__</td></tr>
+            <tr><td><strong>Fecha y hora de inicio</strong></td><td style="color:var(--text-muted); font-style:italic;">____/____/2026 a las __:__ h</td></tr>
+            <tr><td><strong>Orden de condiciones asignado</strong></td><td style="color:var(--text-muted); font-style:italic;">Bloque 1: ___ / Bloque 2: ___ / Bloque 3: ___</td></tr>
+            <tr><td><strong>Incidencias técnicas</strong></td><td style="color:var(--text-muted); font-style:italic;">Ninguna / Describir si ocurrieron</td></tr>
+            <tr><td><strong>¿El participante usó el chat? (Cond. B)</strong></td><td style="color:var(--text-muted); font-style:italic;">Sí / No / N/A</td></tr>
+            <tr><td><strong>¿El participante usó el chat? (Cond. C)</strong></td><td style="color:var(--text-muted); font-style:italic;">Sí / No / N/A</td></tr>
+            <tr><td><strong>¿Se realizó la entrevista cualitativa?</strong></td><td style="color:var(--text-muted); font-style:italic;">Sí / No (motivo: ___)</td></tr>
+            <tr><td><strong>¿Se realizó el debriefing?</strong></td><td style="color:var(--text-muted); font-style:italic;">Sí / No (motivo: ___)</td></tr>
+            <tr><td><strong>CSV exportado y verificado</strong></td><td style="color:var(--text-muted); font-style:italic;">Sí / No (pendiente: ___)</td></tr>
+            <tr><td><strong>Subido a GitHub /data/raw/</strong></td><td style="color:var(--text-muted); font-style:italic;">Sí / No (pendiente: ___)</td></tr>
+            <tr><td><strong>Observaciones generales</strong></td><td style="color:var(--text-muted); font-style:italic;">&nbsp;</td></tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        No subir la bitácora a GitHub. Guardarla junto con el registro de consentimiento digital del proyecto.
+    </div>
+
+    <p style="margin-top:34px; padding-top:14px; border-top:1px solid #CCD3DE; font-size:0.82rem; font-style:italic; color:var(--text-muted); line-height:1.6; text-align:justify;">Nota de uso de herramientas de IA. Durante la elaboración de este documento se utilizaron herramientas de inteligencia artificial generativa, específicamente ChatGPT (OpenAI) y Claude (Anthropic), como apoyo en tareas de organización de ideas, revisión de redacción y reformulación de párrafos. Todo el contenido, los argumentos, las decisiones de diseño y la selección de fuentes son de autoría propia. Las herramientas se usaron como asistentes de escritura, no como generadores de contenido académico.</p>
+
+    <p style="margin-top:24px; font-size:0.85rem; color:var(--text-muted); text-align:center;">PF-3311 · UCR · Posgrado en Computación e Informática · Ney Fred Jiménez Campos · B03230 · 2026</p>
+
+</div><!-- /card -->
+</div><!-- /container -->
+</body>
+</html>
