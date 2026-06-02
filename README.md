@@ -1,16 +1,20 @@
-# ExperimentPrototypeB03230
+# Efecto de la visibilidad de un agente virtual en el desempeño y la confianza del usuario
 
+**PF-3311 — Agentes Virtuales Inteligentes** · UCR, Posgrado en Computación e Informática · I Ciclo 2026  
+**Investigador:** Ney Fred Jiménez Campos (B03230) · **Profesor:** Dr. Alexander Barquero Elizondo  
 **Repositorio:** [github.com/jmnzcn/pf3311_proyecto](https://github.com/jmnzcn/pf3311_proyecto)
 
 Prototipo Unity para un experimento de investigación en **español**. El participante lee escenarios con reglas, elige respuestas, califica su confianza y, según la condición, conversa con un agente (texto o avatar con voz). Cada respuesta se guarda en CSV.
 
 **Unity:** `6000.3.11f1` · **Escena:** `Assets/Scenes/SampleScene.unity` · **Plataforma:** Windows standalone (ventana 1920×1080)
 
-**Entregable 2 (PF-3311):** [Documento de avance (Markdown)](docs/Entregable2_PF3311_NeyFredJimenez(B03230).md) · [PDF](docs/Entregable2_PF3311_NeyFredJimenez(B03230)_regenerado.pdf) · [Word](docs/Entregable2_PF3311_NeyFredJimenez(B03230)_regenerado.docx) · Regenerar figuras: `python _tools/generate_entregable_figures.py` · Regenerar Word/PDF: `python _tools/generate_entregable2_docx.py`
+**Documentos:** [Entregable 1 (PDF)](docs/Entregable1_PF3311_NeyFredJimenez(B03230).pdf) · [Entregable 2 (Markdown)](docs/Entregable2_PF3311_NeyFredJimenez(B03230).md) · [PDF](docs/Entregable2_PF3311_NeyFredJimenez(B03230).pdf) · Regenerar figuras: `python _tools/generate_entregable_figures.py` · Regenerar Word/PDF: `python _tools/generate_entregable2_docx.py`
 
 **Videos (YouTube, no listados):** [A](https://youtu.be/ItcvsdxPfp8) · [B](https://youtu.be/RY5pY_DVwDk) · [C](https://youtu.be/hLPTS9akSlg)
 
-**Ejecutar sin compilar:** descomprimir `Build/Windows/` y abrir `ExperimentPrototypeB03230.exe` (ver `LEEME_PROFESOR.txt`). Incluye claves para B y C; no subir ese zip al repo.
+**Ejecutar sin compilar:** descomprimir `Build/Windows/` y abrir `ExperimentPrototypeB03230.exe` (ver `LEEME_PROFESOR.txt`). Ese zip incluye claves para B y C; **no subirlo al repo**.
+
+**Estado:** [x] Entregable 1 · [x] Entregable 2 (PoC Unity) · [ ] Entregable 3 · [ ] Entregable 4
 
 ---
 
