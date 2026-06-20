@@ -1,0 +1,7 @@
+{
+  "properties": {
+    "message": "PF-3311 academic UX experiment: 3 dedicated Windows VMs (Standard_NC4as_T4_v3, 4 vCPU + T4 GPU each) for simultaneous participants via NICE DCV. Unity 3D + Azure Speech TTS. GPU required on all VMs. East US region. Request 16 vCPUs total.",
+    "newLimit": 16,
+    "resourceName": "Standard NCASv3_T4 Family"
+  }
+}

@@ -1,0 +1,10 @@
+﻿AnalysisId,Metric,Label,Left,Right,Statistic,PValue,PAdjustedBonferroni,PAdjustedHolm,SignificantBonferroni,SignificantHolm
+RQ1,accuracy,Precision,A,B,0.0,0.125,0.375,0.375,0,0
+RQ1,accuracy,Precision,A,C,0.0,0.125,0.375,0.375,0,0
+RQ1,accuracy,Precision,B,C,3.0,1.0,1.0,1.0,0,0
+RQ2,mean_confidence,Confianza Unity,A,B,0.0,0.0625,0.1875,0.1875,0,0
+RQ2,mean_confidence,Confianza Unity,A,C,0.0,0.0625,0.1875,0.1875,0,0
+RQ2,mean_confidence,Confianza Unity,B,C,0.0,0.0625,0.1875,0.1875,0,0
+RQ3,calibration_gap,Brecha calibracion,A,B,4.0,0.4375,1.0,0.4375,0,0
+RQ3,calibration_gap,Brecha calibracion,A,C,1.0,0.125,0.375,0.25,0,0
+RQ3,calibration_gap,Brecha calibracion,B,C,0.0,0.0625,0.1875,0.1875,0,0

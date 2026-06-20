@@ -1,0 +1,19 @@
+﻿ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,AnswerLetter,Answer,CorrectAnswerLetter,CorrectAnswer,Confidence,TimeSpent(Seconds),Timestamp
+P03,ID-20260619130844-6091,3,Condición C — Agente Virtual,1,D,No — Lista de Espera,D,No — Lista de Espera,3,147.17,2026-06-19 13:11:16
+P03,ID-20260619130844-6091,3,Condición C — Agente Virtual,2,D,Reemplazo — Plan Total,B,Reemplazo — 24 Meses,6,3.14,2026-06-19 13:11:19
+P03,ID-20260619130844-6091,3,Condición C — Agente Virtual,3,D,Permitido — Zona N2,C,Denegado — Fuera de Horario,4,3.03,2026-06-19 13:11:22
+P03,ID-20260619130844-6091,3,Condición C — Agente Virtual,4,C,Solo Descuento,A,Descuento + Recargo,4,3.31,2026-06-19 13:11:26
+P03,ID-20260619130844-6091,3,Condición C — Agente Virtual,5,A,Crédito — Plazo 60 Días,C,Sin Reembolso — Abierto,5,2.30,2026-06-19 13:11:28
+P03,ID-20260619130844-6091,3,Condición C — Agente Virtual,6,B,No — Requiere RRHH,D,Sí — Con RRHH,3,2.87,2026-06-19 13:11:31
+P03,ID-20260619130844-6091,2,Condición B — Agente de Texto,1,B,Reprobado — 4 Ausencias,A,Aprobado,5,4.24,2026-06-19 13:13:33
+P03,ID-20260619130844-6091,2,Condición B — Agente de Texto,2,D,Acelerado — 2 (Combinado),C,Acelerado — 3 Revisores,4,2.63,2026-06-19 13:13:35
+P03,ID-20260619130844-6091,2,Condición B — Agente de Texto,3,C,Aprobado — Prueba No Aplica Aquí,A,Requiere Supervisor — Prueba Baja Umbral,3,3.17,2026-06-19 13:13:39
+P03,ID-20260619130844-6091,2,Condición B — Agente de Texto,4,C,No — Plazo Límite,D,Sí — Autorización Válida,4,3.19,2026-06-19 13:13:42
+P03,ID-20260619130844-6091,2,Condición B — Agente de Texto,5,B,Express + Seguro,B,Express + Seguro,4,2.52,2026-06-19 13:13:44
+P03,ID-20260619130844-6091,2,Condición B — Agente de Texto,6,A,Nivel 1,D,Nivel 3 — Pérdida de Datos,4,2.30,2026-06-19 13:13:47
+P03,ID-20260619130844-6091,1,Condición A — Sin Asistencia,1,A,Prioridad 1 — Inmediata,C,Prioridad 3 — Normal,6,2.68,2026-06-19 13:14:36
+P03,ID-20260619130844-6091,1,Condición A — Sin Asistencia,2,D,Prioridad 2 — Contrato,B,Prioridad 2 — Usuarios,3,2.48,2026-06-19 13:14:39
+P03,ID-20260619130844-6091,1,Condición A — Sin Asistencia,3,D,Restringido — TI Nocturno,D,Restringido — TI Nocturno,4,3.01,2026-06-19 13:14:42
+P03,ID-20260619130844-6091,1,Condición A — Sin Asistencia,4,B,No — Ambas Neutralizadas,B,No — Ambas Neutralizadas,4,2.21,2026-06-19 13:14:44
+P03,ID-20260619130844-6091,1,Condición A — Sin Asistencia,5,D,Sí — Área + Sin Sanciones,A,No — Promedio Insuficiente,3,2.45,2026-06-19 13:14:46
+P03,ID-20260619130844-6091,1,Condición A — Sin Asistencia,6,B,Estándar — Sin Técnico,C,Crítica — Contrato 24/7,3,2.43,2026-06-19 13:14:49

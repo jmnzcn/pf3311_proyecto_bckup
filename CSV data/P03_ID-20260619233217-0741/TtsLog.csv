@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,ExchangeIndex,TtsSuccess,FailureReason,Timestamp
+P03,ID-20260619233217-0741,C,0,Sesión,0,0,,"[SIN DATOS] Sesión interrumpida abruptamente (cierre forzado, cuelgue o apagado del sistema). No hubo chat ni intentos de síntesis de voz Azure en la condición C.",2026-06-19 23:34:59

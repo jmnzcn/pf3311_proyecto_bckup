@@ -1,0 +1,92 @@
+[
+  {
+    "scenarioNumber": 1,
+    "scenarioName": "Condición A — Sin Asistencia",
+    "questions": [
+      {
+        "questionNumber": 1,
+        "situation": "REGLAS\n• Dolor en el pecho O dificultad para respirar → Prioridad 1 (Inmediata), sin excepción.\n• 65 años o más Y fiebre > 38°C → Prioridad 2 (Urgente).\n• Condición crónica documentada → sube un nivel respecto al calculado (salvo P1).\n• Todos los demás casos → Prioridad 3 (Normal).\n\nSITUACIÓN: Ana, 58 años, sin condiciones crónicas. Fiebre 38.4°C, dolor moderado en articulaciones. Sin dolor en el pecho ni dificultad para respirar.\n\nPREGUNTA\n¿Cuál es la prioridad correcta para Ana?"
+      },
+      {
+        "questionNumber": 2,
+        "situation": "REGLAS\n• Acceso imposible O brecha de seguridad confirmada → Prioridad 1 (Crítico), sin excepción.\n• Contrato empresarial Y ticket sin resolución > 8 h → Prioridad 2 (Alto).\n• Más de 5 usuarios afectados simultáneamente → sube un nivel (salvo P1).\n• Todos los demás casos → Prioridad 3 (Normal).\n\nSITUACIÓN: Marco, usuario individual sin contrato empresarial. Módulo de reportes lento pero accesible. Sin brecha de seguridad. Problema afecta a otros 7 usuarios. Ticket: 4 h sin resolución.\n\nPREGUNTA\n¿Cuál es la prioridad correcta del ticket de Marco?"
+      },
+      {
+        "questionNumber": 3,
+        "situation": "REGLAS\n• Sin antivirus activo O en lista negra → Acceso Denegado, sin excepción.\n• Departamento TI Y fuera de horario laboral (después de las 6pm) → Acceso Restringido (solo lectura).\n• Dispositivo personal Y sin aprobación de trabajo remoto → Acceso Denegado.\n• Todos los demás casos → Acceso Permitido.\n\nSITUACIÓN: Lucía, departamento TI, 7:30 pm. Laptop corporativa, antivirus activo, no en lista negra. Tiene aprobación de trabajo remoto vigente.\n\nPREGUNTA\n¿Cuál es el nivel de acceso correcto para Lucía?"
+      },
+      {
+        "questionNumber": 4,
+        "situation": "REGLAS\n• Historial de mora O en lista de exclusión → Rechazado automático (sin excepción).\n• Monto > $10,000 O antigüedad < 2 años → Requiere aval adicional.\n• Cliente Premium → antigüedad mínima para aval baja de 2 años a 6 meses.\n• Préstamo para vivienda → umbral de monto sube a $25,000 (reemplaza $10,000).\n\nSITUACIÓN: Laura, cliente Premium, 10 meses de antigüedad. Solicita $15,000 para vivienda. Sin mora ni exclusión.\n\nPREGUNTA\n¿Se requiere aval adicional para el préstamo de Laura?"
+      },
+      {
+        "questionNumber": 5,
+        "situation": "REGLAS\n• Promedio ≥ 8.5 Y sin sanciones académicas activas → Elegible para Beca de Excelencia.\n• Estudiante de primer ingreso → no puede recibir Beca de Excelencia (requiere historial previo).\n• Carrera en área prioritaria (ingeniería, salud, educación) → restricción de primer ingreso no aplica.\n• Sanción académica activa → excluye de cualquier beca, sin excepción.\n\nSITUACIÓN: Valentina, Ingeniería (primer año), promedio 7.9, sin sanciones académicas. Solicita la Beca de Excelencia.\n\nPREGUNTA\n¿Es Valentina elegible para la Beca de Excelencia?"
+      },
+      {
+        "questionNumber": 6,
+        "situation": "REGLAS\n• Equipo en producción Y falla total → Prioridad Crítica (intervención inmediata).\n• Turno nocturno (10 pm–6 am) Y técnico de guardia no disponible → diferir al turno siguiente.\n• Contrato soporte 24/7 activo → restricción de horario no aplica; proveedor puede intervenir a cualquier hora.\n• Todos los demás casos → Prioridad Estándar (orden de llegada).\n\nSITUACIÓN: 2 am. Prensa en área de producción con falla total. Contrato de soporte 24/7 activo. Técnico de guardia interno no disponible.\n\nPREGUNTA\n¿Qué acción corresponde para este equipo?"
+      }
+    ]
+  },
+  {
+    "scenarioNumber": 2,
+    "scenarioName": "Condición B — Agente de Texto",
+    "questions": [
+      {
+        "questionNumber": 1,
+        "situation": "REGLAS\n• Más de 3 ausencias injustificadas → Reprobado automático, sin importar la nota.\n• Nota ≥ 70 en examen final Y entregó todos los proyectos → Aprobado.\n• Entregó todos los proyectos Y nota entre 60 y 69 → Revisión por el profesor.\n• Todos los demás casos → Reprobado.\n\nSITUACIÓN: Diego, nota 72 en examen final, entregó todos los proyectos. Tuvo 4 ausencias: 2 justificadas y 2 injustificadas.\n\nPREGUNTA\n¿Cuál es el resultado académico de Diego?"
+      },
+      {
+        "questionNumber": 2,
+        "situation": "REGLAS\n• Commit modifica /core O /security → requiere aprobación de 2 revisores antes del merge, sin excepción.\n• Desarrollador con < 1 año en el equipo → +1 revisor adicional sobre el mínimo requerido.\n• Repositorio en modo freeze → solo se permiten commits de tipo hotfix; cualquier otro es bloqueado.\n• Commit hotfix Y modifica /core o /security → requisitos de revisores aplican normalmente, pero con proceso acelerado.\n\nSITUACIÓN: Repositorio en freeze. Andrés, 8 meses en el equipo. Commit tipo hotfix que modifica /core y /security.\n\nPREGUNTA\n¿Cuántos revisores se requieren y bajo qué proceso?"
+      },
+      {
+        "questionNumber": 3,
+        "situation": "REGLAS\n• Gasto sin factura O proveedor no registrado → Rechazado automático, sin excepción.\n• Monto ≤ $200 Y con factura Y proveedor registrado → Aprobado automáticamente.\n• Empleado en período de prueba (primeros 90 días) → umbral de aprobación baja de $200 a $100 (reemplaza el límite).\n• Todos los demás casos con documentación válida → Requiere aprobación del supervisor.\n\nSITUACIÓN: Rosa, 45 días en la empresa (período de prueba). Gasto de $150 para materiales de oficina. Con factura. Proveedor registrado.\n\nPREGUNTA\n¿Cómo se procesa la solicitud de gasto de Rosa?"
+      },
+      {
+        "questionNumber": 4,
+        "situation": "REGLAS\n• Acceso si clearance ≥ nivel del archivo, O si tiene autorización explícita firmada — pero no si está en lista de suspensión (sin excepción).\n• Autorización explícita válida solo si: emitida hace < 90 días Y por supervisor nivel 3 o superior.\n\nSITUACIÓN: Archivo nivel 4. Sofía, clearance nivel 3. Autorización explícita para ese archivo, firmada hace 85 días por supervisor nivel 3. Sofía no está suspendida.\n\nPREGUNTA\n¿Puede Sofía acceder al archivo?"
+      },
+      {
+        "questionNumber": 5,
+        "situation": "REGLAS\n• Paquete > 30 kg O dimensiones > 100 cm en cualquier lado → Envío Especial (cotización manual), sin excepción.\n• Membresía premium Y destino nacional → Envío Gratis Express.\n• Valor declarado > $500 → seguro obligatorio adicional, independientemente del tipo de envío.\n• Todos los demás casos → Envío Estándar.\n\nSITUACIÓN: Carlos, membresía premium. Paquete nacional, 5 kg, 40×30×20 cm, valor declarado $650.\n\nPREGUNTA\n¿Qué tipo de envío aplica para Carlos?"
+      },
+      {
+        "questionNumber": 6,
+        "situation": "REGLAS\n• Ticket escala a Nivel 2 si: > 4 h sin resolución Y mismo problema reportado > 1 vez en 30 días. Si solo se cumple una → permanece en N1.\n• Nivel 2 escala a Nivel 3 solo si el usuario tiene contrato SLA Premium. Sin ese contrato, máximo Nivel 2.\n• Pérdida de datos confirmada → escala directamente a Nivel 3, sin pasar por reglas anteriores (salvo ticket cerrado).\n\nSITUACIÓN: Ticket de Isabel: 6 h abierto. Reportó el mismo problema 3 veces en 30 días. Sin SLA Premium. Soporte confirmó pérdida parcial de datos. Ticket abierto.\n\nPREGUNTA\n¿A qué nivel escala el ticket de Isabel?"
+      }
+    ]
+  },
+  {
+    "scenarioNumber": 3,
+    "scenarioName": "Condición C — Agente Virtual",
+    "questions": [
+      {
+        "questionNumber": 1,
+        "situation": "REGLAS\n• Libro en categoría \"referencia exclusiva\" O fuera de préstamo en el sistema → No disponible para préstamo, sin excepción.\n• Usuario con membresía activa Y sin multas pendientes → puede tomar hasta 3 libros.\n• Usuario de posgrado → límite de préstamo sube de 3 a 5 libros (reemplaza el máximo).\n• Todos los demás casos → usuario en lista de espera.\n\nSITUACIÓN: Carlos, membresía activa de biblioteca. Tiene una multa de $0.50 por retraso. Estudia posgrado. Solicita préstamo de 2 libros. Ninguno es de referencia exclusiva ni está fuera de préstamo.\n\nPREGUNTA\n¿Puede Carlos tomar prestados los 2 libros?"
+      },
+      {
+        "questionNumber": 2,
+        "situation": "REGLAS\n• Producto modificado O daño por accidente → Garantía Nula (sin excepción).\n• Defecto de fabricación documentado Y dentro de los primeros 12 meses → Reemplazo gratuito.\n• Plan de Protección Extendida → cobertura de defecto de fabricación amplía a 24 meses (reemplaza 12).\n• Demás casos dentro del período vigente → Reparación con costo cubierto.\n\nSITUACIÓN: Miguel, televisor comprado hace 15 meses, Plan de Protección Extendida activo. Técnico documentó defecto de fabricación en la placa base. Sin modificaciones ni accidentes.\n\nPREGUNTA\n¿Qué cobertura aplica para Miguel?"
+      },
+      {
+        "questionNumber": 3,
+        "situation": "REGLAS\n• Zona Nivel 4 O visitante en lista de restricción → Denegado (sin excepción).\n• Visitante externo Y patrocinador no confirmó la visita → Denegado hasta confirmación.\n• Credencial temporal válida (emitida < 24 h) Y acompañado por empleado permanente → acceso zonas N1–N3 sin confirmación del patrocinador.\n• Fuera de horario laboral (antes de 8 am o después de 6 pm) O día festivo → solo accesos de emergencia verificados; cualquier otro: denegado, sin excepción.\n\nSITUACIÓN: 7:30 am. Diana, visitante externa, credencial temporal emitida hace 3 h, acompañada por empleado permanente. Patrocinador no confirmó. Zona Nivel 2.\n\nPREGUNTA\n¿Qué resultado aplica para Diana?"
+      },
+      {
+        "questionNumber": 4,
+        "situation": "REGLAS\n• Gasto anual > $2,000 Y 3 o más renovaciones consecutivas → descuento 20%.\n• Plan Básico → umbral de gasto anual baja a $1,500 (reemplaza $2,000).\n• Renovación tardía → recargo 10% sobre precio base (independiente de cualquier descuento).\n• Cancela dentro de los primeros 30 días del ciclo → reembolso proporcional; sin descuento ni recargo.\n\nSITUACIÓN: Pedro, plan Básico, 4 renovaciones consecutivas, gasto anual $1,700. Renueva con 15 días de retraso. No está cancelando.\n\nPREGUNTA\n¿Qué condiciones aplican a la renovación de Pedro?"
+      },
+      {
+        "questionNumber": 5,
+        "situation": "REGLAS\n• Producto abierto O más de 30 días desde la compra → No procede reembolso, sin excepción.\n• Defecto de fábrica documentado Y reportado en los primeros 7 días → Reembolso completo.\n• Membresía Gold → plazo de devolución se extiende a 60 días (reemplaza los 30 días, solo para Gold).\n• Todos los demás casos que cumplen el plazo → Crédito en tienda.\n\nSITUACIÓN: Rosa, membresía Gold. Compró el producto hace 20 días y lo abrió para probarlo. No presenta defecto de fábrica.\n\nPREGUNTA\n¿Qué resultado aplica para Rosa?"
+      },
+      {
+        "questionNumber": 6,
+        "situation": "REGLAS\n• 5 o más días laborados consecutivos → requiere aprobación de RRHH para asignarse.\n• Turno nocturno Y antigüedad < 6 meses → prohibido asignar al turno nocturno.\n• Escasez crítica (< 3 disponibles) → suspende restricción por días consecutivos Y restricción nocturna, EXCEPTO el requisito de aprobación de RRHH.\n• Supervisor certificado → restricción nocturna no aplica (puede asignarse a cualquier turno).\n\nSITUACIÓN: Felipe, 4 meses de antigüedad, supervisor certificado. 5 días consecutivos trabajados. Escasez crítica (2 disponibles). Turno nocturno.\n\nPREGUNTA\n¿Puede Felipe ser asignado al turno nocturno?"
+      }
+    ]
+  }
+]

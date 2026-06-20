@@ -1,0 +1,10 @@
+{
+  "commands": [
+    "$ErrorActionPreference = 'Stop'",
+    "Get-Process ExperimentPrototypeB03230 -ErrorAction SilentlyContinue | Stop-Process -Force",
+    "Invoke-WebRequest -Uri 'https://pf3311-deploy-138262741072.s3.us-east-1.amazonaws.com/build/pf3311_build.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIASAMI2ABINK4FSQWG%2F20260619%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260619T065409Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=12c83a3f2333eb0d2922c03edec73f3288e8e7677eaad33098d0a221c3ea29ec' -OutFile 'C:\\Windows\\Temp\\pf3311_build.zip'",
+    "Expand-Archive -Path 'C:\\Windows\\Temp\\pf3311_build.zip' -DestinationPath 'C:\\Experimento' -Force",
+    "Remove-Item 'C:\\Windows\\Temp\\pf3311_build.zip' -Force",
+    "Write-Output 'Deploy OK'"
+  ]
+}

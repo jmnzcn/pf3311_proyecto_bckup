@@ -1,0 +1,17 @@
+{
+  "commands": [
+    "$dcv = 'C:\\Program Files\\NICE\\dcv\\server\\bin\\dcv.exe'",
+    "if (-not (Test-Path $dcv)) { $dcv = (Get-ChildItem 'C:\\Program Files\\NICE\\dcv\\server\\bin\\dcv.exe' -ErrorAction SilentlyContinue | Select-Object -First 1).FullName }",
+    "reg add 'HKLM\\SOFTWARE\\GSettings\\com\\nicesoftware\\dcv\\session-management' /v create-session /t REG_DWORD /d 1 /f",
+    "reg add 'HKLM\\SOFTWARE\\GSettings\\com\\nicesoftware\\dcv\\session-management\\automatic-console-session' /v owner /t REG_SZ /d Administrator /f",
+    "reg add 'HKLM\\SOFTWARE\\GSettings\\com\\nicesoftware\\dcv\\session-management\\automatic-console-session' /v storage-root /t REG_SZ /d 'C:\\Users\\Administrator\\' /f",
+    "reg add 'HKU\\S-1-5-18\\Software\\GSettings\\com\\nicesoftware\\dcv\\session-management' /v create-session /t REG_DWORD /d 1 /f",
+    "reg add 'HKU\\S-1-5-18\\Software\\GSettings\\com\\nicesoftware\\dcv\\session-management\\automatic-console-session' /v owner /t REG_SZ /d Administrator /f",
+    "reg add 'HKU\\S-1-5-18\\Software\\GSettings\\com\\nicesoftware\\dcv\\session-management\\automatic-console-session' /v storage-root /t REG_SZ /d 'C:\\Users\\Administrator\\' /f",
+    "Restart-Service dcvserver -Force",
+    "Start-Sleep -Seconds 5",
+    "if (Test-Path $dcv) { & $dcv close-session console 2>$null; & $dcv create-session --type console --owner Administrator console 2>&1 }",
+    "& $dcv list-sessions 2>&1",
+    "Write-Output 'DCV session configured'"
+  ]
+}

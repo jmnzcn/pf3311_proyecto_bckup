@@ -21,6 +21,14 @@ REMOVE_DIRS = (
     ROOT / "obj",
     ROOT / "Temp",
 )
+LOCAL_OUTPUT_DIRS = (
+    ROOT / "_analysis",
+    ROOT / "_analysis_test",
+    ROOT / "_analysis_test_run",
+    ROOT / "_informe_output",
+    ROOT / "_paper_output",
+    ROOT / "_ppt_output",
+)
 OPTIONAL_REMOVE = (
     ROOT / "UserSettings",
     ROOT / "Library",
@@ -155,6 +163,11 @@ def main() -> int:
     dirs = delete_dirs(args.dry_run, REMOVE_DIRS)
     print(f"\nCarpetas de cache local: {len(dirs)}")
     for p in dirs:
+        print(f"  - {p.relative_to(ROOT)}/")
+
+    local_out = delete_dirs(args.dry_run, LOCAL_OUTPUT_DIRS)
+    print(f"\nSalidas locales de analisis/borradores: {len(local_out)}")
+    for p in local_out:
         print(f"  - {p.relative_to(ROOT)}/")
 
     if args.remove_user_settings:

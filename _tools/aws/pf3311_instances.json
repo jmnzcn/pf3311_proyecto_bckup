@@ -1,0 +1,20 @@
+﻿[
+    {
+        "Name":  "pf3311-vm1",
+        "InstanceId":  "i-05087189ae9e28dd2",
+        "PublicIp":  "54.235.152.198",
+        "DcvUrl":  "https://54.235.152.198:8443"
+    },
+    {
+        "Name":  "pf3311-vm2",
+        "InstanceId":  "i-0b0c02fd7360f256a",
+        "PublicIp":  "44.196.44.243",
+        "DcvUrl":  "https://44.196.44.243:8443"
+    },
+    {
+        "Name":  "pf3311-vm3",
+        "InstanceId":  "i-0855529b42f210afc",
+        "PublicIp":  "54.236.248.107",
+        "DcvUrl":  "https://54.236.248.107:8443"
+    }
+]

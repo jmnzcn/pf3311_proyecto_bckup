@@ -1,0 +1,12 @@
+{
+  "commands": [
+    "$ErrorActionPreference = 'Continue'",
+    "reg add 'HKLM\\SOFTWARE\\GSettings\\com\\nicesoftware\\dcv\\connectivity' /v enable-quic-frontend /t REG_DWORD /d 1 /f",
+    "reg add 'HKLM\\SOFTWARE\\GSettings\\com\\nicesoftware\\dcv\\display' /v max-head-resolution /t REG_SZ /d '(1280,720)' /f",
+    "reg add 'HKLM\\SOFTWARE\\GSettings\\com\\nicesoftware\\dcv\\display' /v frame-rate-limit /t REG_DWORD /d 30 /f",
+    "Restart-Service dcvserver -ErrorAction SilentlyContinue",
+    "Start-Sleep -Seconds 3",
+    "Get-Service dcvserver | Select-Object Name, Status | Format-Table -AutoSize",
+    "Write-Output 'DCV tuned: 1280x720, QUIC on, 30fps cap'"
+  ]
+}

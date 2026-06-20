@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,EventType,HttpStatusCode,FailureReason,StudentMessage,GeminiLatencySeconds,Timestamp
+P03,ID-20260619122056-1020,—,0,Sesión,0,NO_DATA,0,[SIN DATOS] No se registraron fallos ni eventos de la API Gemini durante esta sesión.,—,0.00,2026-06-19 12:21:51

@@ -506,14 +506,15 @@ def export_pdf(docx_path: Path, pdf_path: Path) -> None:
 
         word = comtypes.client.CreateObject("Word.Application")
         word.Visible = False
-        doc = word.Documents.Open(str(docx_path))
-        doc.SaveAs(str(pdf_path), FileFormat=17)
-        doc.Close()
+        word.DisplayAlerts = 0
+        doc = word.Documents.Open(str(docx_path), ReadOnly=True)
+        doc.ExportAsFixedFormat(str(pdf_path), ExportFormat=17)
+        doc.Close(False)
         word.Quit()
         print(f"PDF: {pdf_path}")
     except Exception as exc:
-        print(f"PDF no generado automáticamente: {exc}")
-        print("Abrí el DOCX en Word → Guardar como PDF.")
+        print(f"PDF no generado automaticamente: {exc}")
+        print("Abri el DOCX en Word y guardalo como PDF.")
 
 
 def main() -> int:

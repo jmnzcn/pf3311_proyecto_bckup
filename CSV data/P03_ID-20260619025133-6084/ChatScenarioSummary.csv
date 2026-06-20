@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,TotalQuestions,QuestionsWithChat,TotalExchanges,TotalTurns,AvgHelpScore,AvgTaskEngagementScore,AnswerRequestCount,OffTopicCount,ModelLeakCount,TtsAttempts,TtsSuccessCount,TtsSuccessRate,EffectiveHelpLevel,Flags,Timestamp
+P03,ID-20260619025133-6084,C,3,Condición C — Agente Virtual,6,1,4,8,60.0,15.0,0,4,0,4,4,100.0,LowEngagement,off_topic=4|tts_success_rate=100.0,2026-06-19 03:01:33

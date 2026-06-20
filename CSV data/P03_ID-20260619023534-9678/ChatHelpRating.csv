@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,ExchangeIndex,StudentMessage,ModelMessage,HelpScore,GuidanceScore,TaskEngagementScore,StudentRequestedAnswer,StudentOffTopic,StudentGamingAttempt,ModelPossibleLeak,HelpLevel,Flags,SecondsSinceQuestionStart,GeminiLatencySeconds,Timestamp
+P03,ID-20260619023534-9678,C,3,Condición C — Agente Virtual,1,1,hey que tal?,"¡Hola! Todo bien por aquí, ¿y vos? Cuando quieras, revisamos el caso.",67.5,85.0,15.0,0,1,0,0,High,student_off_topic|guidance_present,7.93,1.71,2026-06-19 02:35:49

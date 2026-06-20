@@ -1,0 +1,5 @@
+{
+  "properties": {
+    "notes": "Academic UX experiment (PF-3311): 3 dedicated Windows VMs for simultaneous participants. Each VM runs Unity 3D standalone + NICE DCV browser streaming (https://IP:8443). SKU per VM: Standard_NC4as_T4_v3 (4 vCPU, 28 GB RAM, 1x NVIDIA T4). GPU required on all 3 VMs for Unity 3D rendering and DCV NVENC encoding. Region East US aligned with Azure Speech TTS. VMs deallocated outside pilot sessions. Request 16 vCPUs total (12 minimum for 3 VMs)."
+  }
+}

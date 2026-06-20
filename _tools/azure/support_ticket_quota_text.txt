@@ -1,0 +1,24 @@
+Subject: Quota increase — Standard NCASv3 T4 Family vCPUs (East US)
+
+Hello,
+
+I need a quota increase for GPU VMs on subscription "Azure-lab" (c4b9b22b-ffd8-460e-b684-5f437d4d191e).
+
+The "New quota request" button is disabled in the Quotas blade for this SKU.
+
+Requested quota:
+- Region: East US
+- Resource: Standard NCASv3_T4 Family vCPUs
+- Current limit: 0
+- Requested limit: 16 vCPUs (minimum 12)
+
+Use case:
+Academic UX research pilot (PF-3311). Three dedicated Windows Server VMs for simultaneous participants. Each VM runs a Unity 3D standalone experiment accessed via NICE DCV in the browser (port 8443).
+
+Planned SKU per VM: Standard_NC4as_T4_v3 (4 vCPU, 28 GB RAM, 1x NVIDIA T4 GPU).
+
+GPU is required on all 3 VMs for Unity 3D rendering and DCV video encoding (NVENC). Region East US aligns with Azure Speech TTS (eastus).
+
+VMs will be deallocated outside scheduled pilot sessions.
+
+Thank you.

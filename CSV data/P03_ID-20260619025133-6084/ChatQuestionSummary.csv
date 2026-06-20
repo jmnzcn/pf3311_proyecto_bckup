@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,TotalExchanges,TotalTurns,AvgHelpScore,AvgTaskEngagementScore,AnswerRequestCount,OffTopicCount,ModelLeakCount,EffectiveHelpLevel,Flags,Timestamp
+P03,ID-20260619025133-6084,C,3,Condición C — Agente Virtual,1,4,8,60.0,15.0,0,4,0,LowEngagement,off_topic=4,2026-06-19 03:01:33

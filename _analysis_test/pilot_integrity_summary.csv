@@ -1,0 +1,10 @@
+﻿Metric,Value
+ValidRows,54
+TotalRows,54
+ValidPct,100.0
+Passes95PctRule,1
+GeminiPasses90Pct,0
+TtsPasses85Pct,1
+TotalModelLeaks,0
+LeaksPer10Participants,0.0
+LeaksPassRule,1

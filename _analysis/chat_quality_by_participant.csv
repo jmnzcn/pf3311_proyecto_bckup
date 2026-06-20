@@ -1,0 +1,6 @@
+﻿ParticipantCode,HelpScore_B,HelpScore_C,Leaks_B,Leaks_C,Exchanges_B,Exchanges_C,TtsSuccessRate_C,OnTopicSeconds_B,OnTopicSeconds_C,OffTopicSeconds_B,OffTopicSeconds_C,SubstantiveQuestions_B,SubstantiveQuestions_C,ChatUsed_B,ChatUsed_C,ChatMeetsProtocol_B,ChatMeetsProtocol_C,UtilityLevel_B,UtilityLevel_C
+P01,62.0,74.0,0,0,4,5,100.0,91.5,118.0,23.9,17.5,5,5,1,1,1,1,Minimal,Productive
+P02,64.0,76.0,0,1,5,6,100.0,113.1,84.8,4.4,14.9,5,2,1,1,1,1,Minimal,Productive
+P03,66.0,78.0,1,0,3,5,100.0,0.0,0.0,0.0,0.0,0,0,,,,,,
+P04,58.0,72.0,0,0,3,5,100.0,0.0,0.0,0.0,0.0,0,0,,,,,,
+P05,70.0,80.0,0,0,6,7,100.0,0.0,0.0,0.0,0.0,0,0,,,,,,

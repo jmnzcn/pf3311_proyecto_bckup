@@ -1,0 +1,11 @@
+﻿{
+  "commands": [
+    "$ErrorActionPreference = 'Stop'",
+    "Get-Process ExperimentPrototypeB03230 -ErrorAction SilentlyContinue | Stop-Process -Force",
+    "New-Item -ItemType Directory -Force -Path 'C:\\Experimento\\CSV data' | Out-Null",
+    "Invoke-WebRequest -Uri 'https://pf3311-deploy-138262741072.s3.us-east-1.amazonaws.com/build/pf3311_build.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIASAMI2ABINK4FSQWG%2F20260619%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260619T054005Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=77f8139a28bee1fced7fa4673e195488c85548d261118ba51c3af1e54749f1fb' -OutFile 'C:\\Windows\\Temp\\pf3311_build.zip'",
+    "Expand-Archive -Path 'C:\\Windows\\Temp\\pf3311_build.zip' -DestinationPath 'C:\\Experimento' -Force",
+    "Remove-Item 'C:\\Windows\\Temp\\pf3311_build.zip' -Force",
+    "Write-Output ('EXE exists: ' + (Test-Path 'C:\\Experimento\\ExperimentPrototypeB03230.exe'))"
+  ]
+}

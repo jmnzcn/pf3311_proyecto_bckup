@@ -6,9 +6,9 @@
 
 Prototipo Unity para un experimento de investigación en **español**. El participante lee escenarios con reglas, elige respuestas, califica su confianza y, según la condición, conversa con un agente (texto o avatar con voz). Cada respuesta se guarda en CSV.
 
-**Unity:** `6000.3.11f1` · **Escena:** `Assets/Scenes/SampleScene.unity` · **Plataforma:** Windows standalone (ventana 1920×1080)
+**Unity:** `6000.3.11f1` · **Escena:** `Assets/Scenes/SampleScene.unity` · **Plataforma:** Windows standalone (pantalla completa 1920×1080)
 
-**Documentos:** [Entregable 1 (PDF)](docs/Entregable1_PF3311_NeyFredJimenez(B03230).pdf) · [Entregable 2 (Markdown)](docs/Entregable2_PF3311_NeyFredJimenez(B03230).md) · [PDF](docs/Entregable2_PF3311_NeyFredJimenez(B03230).pdf) · Regenerar figuras: `python _tools/generate_entregable_figures.py` · Regenerar Word/PDF: `python _tools/generate_entregable2_docx.py`
+**Documentación del curso** (Entregables 1–2, protocolo, cuestionarios en `docs/`): **no** es salida del pipeline de análisis; se entrega por el canal académico **aparte** del repositorio de código. En local, opcional: [E2 Markdown](docs/Entregable2_PF3311_NeyFredJimenez(B03230).md) · [E2 PDF](docs/Entregable2_PF3311_NeyFredJimenez(B03230).pdf) · utilidades de maquetado en `_tools/generate_entregable2_docx.py` y `generate_entregable_figures.py` (solo formato de documentos del curso, no conclusiones del estudio).
 
 **Videos (YouTube, no listados):** [A](https://youtu.be/ItcvsdxPfp8) · [B](https://youtu.be/RY5pY_DVwDk) · [C](https://youtu.be/hLPTS9akSlg)
 
@@ -148,10 +148,35 @@ Se muestra en UI como **「ID de sesión: …」** en GameManager.
 
 ### Dónde se guardan los datos
 
-| Carpeta | Archivo | Generado por | ¿Usar para análisis? |
-|---------|---------|--------------|----------------------|
-| **`CSV data/`** | `ExperimentData_{UserID}.csv` | `DataLogger` | **Sí — fuente principal** |
-| `Logs/` | `ExperimentData_{UserID}.csv` | `ExperimentLogic.SaveDataToCSV` | No recomendado (esquema distinto, tiempos menos fiables) |
+Cada sesión tiene **su propia carpeta** dentro de `CSV data/`:
+
+```text
+CSV data/
+└── P01_ID-20260614001654-8838/
+    ├── ConsentLog.csv
+    ├── ExperimentData.csv
+    ├── ChatLog.csv
+    ├── ChatHelpRating.csv
+    ├── ChatQuestionSummary.csv
+    ├── ChatScenarioSummary.csv
+    ├── TtsLog.csv
+    └── ChatApiEvent.csv
+```
+
+Nombre de carpeta: `{ParticipantCode}_{SessionID}` (ej. `P01_ID-20260614001654-8838`).
+
+| Carpeta / archivo | Generado por | ¿Usar para análisis? |
+|-------------------|--------------|----------------------|
+| **`CSV data/{P##}_{SessionID}/`** | `DataLogger` | **Sí — carpeta completa de la sesión** |
+| `ExperimentData.csv` | `DataLogger` | **Sí — respuestas y confianza** |
+| `ConsentLog.csv` | `DataLogger` | **Sí — consentimiento informado (auditoría)** |
+| `ChatLog.csv` | `DataLogger` | **Sí — turnos crudos (B/C)** |
+| `ChatHelpRating.csv` | `DataLogger` | **Sí — puntuación por intercambio** |
+| `ChatQuestionSummary.csv` | `DataLogger` | **Sí — resumen por pregunta** |
+| `ChatScenarioSummary.csv` | `DataLogger` | **Sí — resumen por escenario (B/C)** |
+| `TtsLog.csv` | `DataLogger` | **Sí — éxito/fallo TTS por respuesta (C)** |
+| `ChatApiEvent.csv` | `DataLogger` | **Sí — fallos de API Gemini (B/C)** |
+| `Logs/` | `ExperimentLogic.SaveDataToCSV` | No recomendado (esquema distinto, tiempos menos fiables) |
 
 Ruta relativa al ejecutable / proyecto: `{carpeta del .exe}/CSV data/` (se crea sola).
 
@@ -168,12 +193,13 @@ Ruta relativa al ejecutable / proyecto: `{carpeta del .exe}/CSV data/` (se crea 
 Encabezado (UTF-8 con BOM para Excel):
 
 ```text
-UserID,ScenarioNumber,ScenarioName,QuestionNumber,AnswerLetter,Answer,CorrectAnswerLetter,CorrectAnswer,Confidence,TimeSpent(Seconds),Timestamp
+ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,AnswerLetter,Answer,CorrectAnswerLetter,CorrectAnswer,Confidence,TimeSpent(Seconds),Timestamp
 ```
 
 | Columna | Descripción |
 |---------|-------------|
-| `UserID` | ID de sesión |
+| `ParticipantCode` | Código anónimo del piloto (ej. `P01`, `P20`; normalizado en app) |
+| `SessionID` | ID técnico de sesión (`ID-yyyyMMddHHmmss-RRRR`) |
 | `ScenarioNumber` | 1, 2 o 3 (A, B, C) |
 | `ScenarioName` | Nombre del escenario en Inspector |
 | `QuestionNumber` | 1–6 dentro del escenario |
@@ -188,12 +214,59 @@ UserID,ScenarioNumber,ScenarioName,QuestionNumber,AnswerLetter,Answer,CorrectAns
 **Ejemplo de fila:**
 
 ```text
-ID-20260601193008-4821,1,Condición A — Sin Asistencia,1,B,Prioridad 2 (Urgente),B,Prioridad 2 (Urgente),5,42.30,2026-06-01 19:31:02
+P03,ID-20260601193008-4821,1,Condición A — Sin Asistencia,1,B,Prioridad 2 (Urgente),B,Prioridad 2 (Urgente),5,42.30,2026-06-01 19:31:02
 ```
 
 **Cálculo de aciertos:** `AnswerLetter == CorrectAnswerLetter`
 
-**Nota:** Las interacciones con el chat **no** se registran en CSV (solo respuesta final + confianza).
+### CSV de chat (condiciones B y C)
+
+Se generan automáticamente en `CSV data/{ParticipantCode}_{SessionID}/`. La condición A no produce archivos de chat.
+
+| Archivo (dentro de la carpeta de sesión) | Contenido |
+|-------------------------------------------|-----------|
+| `ExperimentData.csv` | Respuestas y confianza por pregunta |
+| `ConsentLog.csv` | Registro de consentimiento informado |
+| `ChatLog.csv` | Cada turno (`user` / `model`) con texto y marca de tiempo |
+| `ChatHelpRating.csv` | Por intercambio estudiante→agente: scores heurísticos, flags y `GeminiLatencySeconds` |
+| `ChatQuestionSummary.csv` | Una fila por pregunta al avanzar: totales, promedios y `EffectiveHelpLevel` |
+| `ChatScenarioSummary.csv` | Resumen al completar escenario B/C; en C incluye `TtsAttempts`, `TtsSuccessCount`, `TtsSuccessRate` |
+| `TtsLog.csv` | Cada intento de voz Azure en C: `TtsSuccess` (1/0), `FailureReason`, vinculado a `ExchangeIndex` |
+| `ChatApiEvent.csv` | Intentos fallidos de Gemini (sin respuesta del modelo): `EventType`, `HttpStatusCode`, `GeminiLatencySeconds` |
+
+**Interpretación:** más turnos no implica mejor ayuda. Usar `EffectiveHelpLevel`, `TaskEngagementScore` y flags para detectar uso off-topic o intentos de obtener la respuesta directa. Los scores son heurísticos (sin llamadas extra a la API); conviene validar una muestra manualmente.
+
+**Análisis automatizado:** el repositorio incluye un **pipeline de cálculos** en `_tools/` (tablas CSV, gráficos PNG, inferencia estadística en `_analysis/`). Eso es **todo** lo que produce el código respecto a los resultados del estudio.
+
+El **informe de resultados** (Word/PDF con interpretación en prosa) y los **documentos del curso** (`docs/`) se preparan y entregan **por separado**; no son generados por `analyze_all_rq.py`.
+
+```bash
+pip install -r _tools/requirements-analysis.txt
+python _tools/analyze_all_rq.py "CSV data" --forms-dir "Forms data" --output-dir _analysis
+```
+
+Esto escribe en `_analysis/` (carpeta local, en `.gitignore`): tablas por RQ, métricas de viabilidad, `rq_inference_*.csv`, `reporte_inferencia.txt` y gráficos en `_analysis/figures/`. Detalle de scripts: [`_tools/README.md`](_tools/README.md).
+
+También puede ejecutar módulos individuales:
+
+```bash
+python _tools/analyze_rq1.py "CSV data" --output-dir _analysis
+python _tools/analyze_rq2.py "CSV data" --output-dir _analysis
+python _tools/analyze_rq2_forms.py "Forms data" --output-dir _analysis
+python _tools/analyze_rq3.py "CSV data" --output-dir _analysis
+python _tools/summarize_gemini_latency.py "CSV data"
+python _tools/summarize_tts_success.py "CSV data"
+```
+
+`analyze_all_rq.py` agrega medias descriptivas por condición y participante en CSV. Por defecto, los gráficos RQ usan medias de participantes **completos** (6+6+6 ítems); las tablas `*_group_means_complete.csv` y `*_descriptive_stats_complete.csv` reflejan ese subconjunto. Las versiones sin sufijo incluyen cualquier dato disponible por condición. Use `--include-incomplete` para graficar con el subconjunto amplio.
+
+RQ3 exporta además `rq3_calibration_by_item.csv` (brecha ítem a ítem) y gráficos `rq3_calibration_gap_by_item.png` / `rq3_calibration_curve_by_item.png`.
+
+`analyze_all_rq.py` aplica Friedman (RQ1–RQ3), Wilcoxon pareado post hoc (Bonferroni y Holm), Kendall W, IC bootstrap 95 % y contrastes dirigidos (H3 C vs A, precisión B vs C, HelpScore). Los resultados quedan en CSV y en `reporte_inferencia.txt` como **resumen estadístico** para apoyar la redacción del informe.
+
+Exporte los CSV de Google Forms a `Forms data/` (ver `Forms data/README.txt` si existe).
+
+**Salida segura:** si el participante abandona antes de completar el **primer** escenario, se eliminan todos los CSV de la sesión (incluidos los de chat).
 
 ---
 
@@ -201,15 +274,15 @@ ID-20260601193008-4821,1,Condición A — Sin Asistencia,1,B,Prioridad 2 (Urgent
 
 El participante puede salir confirmando en el popup de salida segura (`QuestionManager.SafeExit`).
 
-| Situación | ¿Se borra `CSV data/ExperimentData_*.csv`? |
-|-----------|---------------------------------------------|
+| Situación | ¿Se borra la carpeta `CSV data/{P##}_{SessionID}/`? |
+|-----------|------------------------------------------------------|
 | Sale a mitad del **primer** escenario sin completarlo | **Sí** |
 | Sale en la **última pregunta** sin entregar (primer escenario) | **Sí** |
 | **Completó** un escenario (pantalla final) y sale | **No** |
 | Tras **Otro Escenario**, en pantalla de selección, y sale | **No** |
 | Completó escenario A, empezó B a medias, y sale | **No** (conserva filas de A; filas parciales de B quedan para filtrar) |
 
-Solo se borra el archivo en **`CSV data/`**. El CSV en `Logs/` (secundario) **no** se elimina automáticamente.
+Solo se borra la **carpeta de sesión** en **`CSV data/`** (todos los CSV de esa ejecución). Los CSV sueltos con el formato antiguo en la raíz de `CSV data/` también se eliminan si corresponden a esa sesión. El CSV en `Logs/` (secundario) **no** se elimina automáticamente.
 
 ---
 
@@ -223,7 +296,11 @@ ExperimentPrototypeB03230/
 │   │   │   ├── Core/
 │   │   │   │   ├── ExperimentLogic.cs       # Consentimiento, sesión, chat Gemini
 │   │   │   │   ├── QuestionManager.cs       # Flujo UI, escenarios, confianza
-│   │   │   │   ├── DataLogger.cs            # CSV primario
+│   │   │   │   ├── DataLogger.cs            # CSV primario + chat analytics
+│   │   │   │   ├── ChatSessionLogger.cs     # Métricas y flush de chat por pregunta/escenario
+│   │   │   │   ├── ChatHelpScoring.cs       # Heurísticas de calidad de ayuda
+│   │   │   │   ├── TtsOutcomeReporter.cs    # Reporte unificado de resultados TTS
+│   │   │   │   ├── TtsExchangeContext.cs    # Vincula TTS ↔ intercambio de chat
 │   │   │   │   └── AvatarDisplayController.cs
 │   │   │   └── Audio/
 │   │   │       ├── AzureLipSync.cs          # TTS + visemas Azure
@@ -235,11 +312,17 @@ ExperimentPrototypeB03230/
 │   ├── Packages/                            # NuGet (Azure Speech SDK)
 │   ├── Settings/                            # Perfiles URP
 │   └── TextMesh Pro/
-├── _tools/
-│   └── generate_scenarios_yaml.py           # Actualizar preguntas desde .docx
+├── docs/                                    # Entregables del curso (entrega académica aparte del repo)
+├── _tools/                                  # Pipeline CSV/PNG/inferencia (ver README ahí)
+│   ├── analyze_all_rq.py                    # Orquestador principal → _analysis/
+│   ├── analyze_rq1.py … analyze_rq3.py
+│   ├── rq_inference.py
+│   └── generate_entregable2_docx.py         # Maquetado E2 (no es salida del piloto)
+├── _analysis/                               # Salida local del pipeline (gitignored)
 ├── GUIA_PARTICIPANTE.md                     # Instrucciones para participantes en la VM
 ├── README.md                                # Documentación técnica completa
 ├── CSV data/                                # Datos participantes (generado al correr)
+├── Forms data/                              # Exportaciones Google Forms (gitignored)
 ├── Logs/                                    # CSV secundario + logs Unity
 ├── ProjectSettings/
 └── Packages/                                # manifest Unity (URP, ugui, etc.)
@@ -279,7 +362,7 @@ Referencias críticas en Inspector (no usar `GameObject.Find`):
 | Chat Gemini | Modelo `gemini-2.5-flash`; prompt prohíbe dar la respuesta correcta |
 | `geminiInFlight` | Bloquea envíos duplicados; deshabilita input durante la petición |
 | Mensajes pendientes | El texto del estudiante solo se confirma en UI/historial si la API responde OK |
-| `NotifyDataSaveFailure()` | Escenario A: aviso en área de pregunta; B/C: aviso en chat |
+| `NotifyDataSaveFailure(chatContext)` | Escenario A: aviso en área de pregunta; B/C: aviso en chat (respuestas o registro de chat/TTS) |
 | `SaveDataToCSV` | Export **secundario** a `Logs/` (opcional para análisis) |
 | `FinalizeAndResetSession()` | Recarga escena → nueva sesión |
 
@@ -486,18 +569,24 @@ Ejecutar en **build standalone** en la VM (o en un PC con la misma resolución 1
 
 1. **Consentimiento** → continuar → elegir escenario.
 2. **Escenario A:** una pregunta completa (opción, SIGUIENTE, estrellas, entregar).
-3. Abrir `CSV data/ExperimentData_*.csv` y verificar columnas `AnswerLetter`, `Answer`, `CorrectAnswerLetter`, `Confidence`, `TimeSpent`.
-4. **Escenario B:** mensaje al chat; respuesta en español; sin Wi‑Fi muestra aviso.
-5. **Escenario C:** avatar visible; chat con texto, voz y labios.
+3. Abrir `CSV data/P01_ID-.../ExperimentData.csv` y verificar columnas `AnswerLetter`, `Answer`, `CorrectAnswerLetter`, `Confidence`, `TimeSpent`.
+4. **Escenario B:** mensaje al chat; respuesta en español; verificar `ChatLog_*`, `ChatHelpRating_*`, `ChatQuestionSummary_*` y `ChatScenarioSummary_*` al avanzar/completar.
+5. **Escenario C:** avatar visible; chat con texto, voz y labios; verificar `TtsLog_*` y `TtsSuccessRate` en `ChatScenarioSummary_*`.
+6. **Análisis post-hoc:** `python _tools/verify_smoke_session.py "CSV data" --pilot-rules` y luego `python _tools/analyze_all_rq.py "CSV data" --forms-dir "Forms data"`.
+
+**Forms:** URLs en escena (`SampleScene.unity`) y referencia en `_tools/data/pf3311_forms_config.json`. Crear Form0 Perfil + post-bloques con `docs/google_forms/apps_script/` si aún no existen; exportar respuestas a `Forms data/`.
+
+**Preflight:** `powershell -File _tools/run_pilot_preflight.ps1` (añadir `-Build` para compilar, `-Deploy` para AWS).
 
 ### Casos de borde
 
 6. **Fallo de guardado (A):** con sesión en curso, abrir el CSV en Excel → entregar → debe aparecer aviso en área de pregunta y **no** avanzar. Cerrar Excel → entregar de nuevo → OK.
-7. **Salida segura (primer escenario incompleto):** iniciar A, responder 1–2 preguntas, salir confirmando → CSV debe **eliminarse**.
-8. **Otro Escenario:** completar A → Otro Escenario → salir desde selección → CSV debe **conservarse**.
-9. **Segundo escenario parcial:** completar A → iniciar B → salir a mitad → CSV conserva filas de A.
-10. **Confianza:** con panel de estrellas abierto, A–D no deben ser clicables.
-11. **Pantalla final:** tres botones; encuesta deshabilitada si no hay URL.
+7. **Fallo de guardado (B/C):** bloquear `ChatLog_*.csv` en Excel durante un mensaje al chat → aviso en panel de chat.
+8. **Salida segura (primer escenario incompleto):** iniciar A, responder 1–2 preguntas, salir confirmando → CSV debe **eliminarse**.
+9. **Otro Escenario:** completar A → Otro Escenario → salir desde selección → CSV debe **conservarse**.
+10. **Segundo escenario parcial:** completar A → iniciar B → salir a mitad → CSV conserva filas de A.
+11. **Confianza:** con panel de estrellas abierto, A–D no deben ser clicables.
+12. **Pantalla final:** tres botones; encuesta deshabilitada si no hay URL.
 
 ---
 
@@ -535,7 +624,7 @@ Documento para quien accede a la máquina virtual: **[GUIA_PARTICIPANTE.md](GUIA
 ### Despliegue en máquina virtual (investigador)
 
 1. Instalar el build standalone en la VM (1920×1080, API keys configuradas).
-2. Enviar a cada participante: credenciales de acceso a la VM, [GUIA_PARTICIPANTE.md](GUIA_PARTICIPANTE.md) y orden de condiciones (A/B/C).
+2. Enviar a cada participante: credenciales de acceso a la VM, [GUIA_PARTICIPANTE.md](GUIA_PARTICIPANTE.md) y código de participante asignado (el orden A/B/C se muestra en la app).
 3. Tras cada sesión, recoger CSV desde `CSV data/` en la VM (o carpeta compartida del servidor).
 4. Opcional: limpiar CSVs de prueba o preparar VM para el siguiente participante.
 5. Enviar enlace meCUE post-sesión si no está en `surveyUrl` del build.
@@ -552,9 +641,9 @@ python _tools/clean_for_delivery.py
 
 El script borra CSVs de prueba en `Logs/` y `CSV data/`, elimina `obj/` y `Temp/`, y deja placeholders en las claves de `ExperimentLogic.cs` y `SampleScene.unity`. Simulación sin cambios: `python _tools/clean_for_delivery.py --dry-run`.
 
-**No incluir en el repositorio** (ya están en `.gitignore`): `Library/`, `Logs/`, `UserSettings/`, `obj/`, `Temp/`, `CSV data/`.
+**No incluir en el repositorio** (`.gitignore`): `Library/`, `Logs/`, `UserSettings/`, `obj/`, `Temp/`, `CSV data/`, `Forms data/`, `_analysis/`, `.workspace/` y carpetas `_informe_output/`, `_paper_output/`, `_ppt_output/` si existen de pruebas locales.
 
-**Zip mínimo reproducible** (sin reimportar todo): `Assets/`, `Packages/`, `ProjectSettings/`, `docs/`, `README.md`, `GUIA_PARTICIPANTE.md`, `_tools/`, `.gitignore`. Quien clone abrirá el proyecto en Unity 6000.3.11f1 y reimportará `Library/` localmente.
+**Zip del repositorio de código** (sin datos de participantes): `Assets/`, `Packages/`, `ProjectSettings/`, `README.md`, `GUIA_PARTICIPANTE.md`, `_tools/`, `.gitignore`. Opcional en el clone local: `docs/` (figuras enlazadas desde la guía). Los entregables en PDF/Word del curso y el informe de resultados del estudio se suben **por separado**, no como producto del pipeline.
 
 **Opcional** (borra caché de Unity; la próxima apertura tarda más): `python _tools/clean_for_delivery.py --include-unity-cache`
 
@@ -571,11 +660,12 @@ Después de limpiar, **rotar** las claves Gemini y Azure en sus consolas (ya se 
 - [ ] Configurar claves válidas en el build instalado en la VM.
 - [ ] Borrar `CSV data/*.csv` y `Logs/ExperimentData_*.csv` de prueba en la VM.
 - [ ] **Force Single Instance** activo; rebuild standalone 1920×1080.
-- [ ] Smoke test completo en la VM (~20 min).
+- [ ] Smoke test completo en la VM (~20 min); `python _tools/verify_smoke_session.py "CSV data" --pilot-rules`.
+- [ ] Forms meCUE/TLX publicados; export en `Forms data/` (ver `_tools/data/pf3311_forms_config.json`).
 - [ ] Repo sin `Library/`, sin CSVs de participantes, sin claves en GitHub.
 - [ ] Incluir `GUIA_PARTICIPANTE.md` en materiales enviados junto con acceso a la VM.
 - [ ] Instrucción a participantes: no abrir CSVs en la VM; avisar al investigador al terminar.
-- [ ] (Opcional) Pegar `surveyUrl` si hay encuesta post-estudio.
+- [ ] `surveyUrl` en escena verificado (A/B/C); Form0 Perfil aparte en Google Drive.
 - [ ] (Opcional) Cambiar `companyName` en Player Settings para localizar `Player.log`.
 
 ---

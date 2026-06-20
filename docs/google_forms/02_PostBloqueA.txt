@@ -1,0 +1,65 @@
+PF-3311 — Post bloque A (sin asistencia)
+================================================================================
+Crear formulario nuevo. Pegar cada bloque en el campo indicado.
+Todas las preguntas: OBLIGATORIAS.
+================================================================================
+
+TÍTULO DEL FORMULARIO
+--------------------------------------------------------------------------------
+PF-3311 — Post bloque A (sin asistencia)
+
+
+DESCRIPCIÓN
+--------------------------------------------------------------------------------
+Acabás de completar el bloque SIN asistencia del agente (solo casos de decisión).
+
+En este cuestionario evaluamos la CARGA de la tarea, no un sistema de asistencia (porque en este bloque no hubo agente).
+
+Escala para todas las preguntas siguientes: 1 = Totalmente en desacuerdo · 7 = Totalmente de acuerdo.
+
+Nota: no había límite de tiempo impuesto en la aplicación; respondé según cómo te sentiste durante el bloque.
+
+
+PREGUNTA 1 — Respuesta corta | Obligatoria
+--------------------------------------------------------------------------------
+Título:
+Código de participante
+
+(Sin validación por regex.)
+
+
+SECCIÓN — Título de sección (⊞ → Título de la sección)
+--------------------------------------------------------------------------------
+Carga cognitiva (RAW-TLX adaptado)
+
+
+PREGUNTA 2 — Escala lineal | Obligatoria | Mín. 1 · Máx. 7
+Etiqueta 1: Totalmente en desacuerdo
+Etiqueta 7: Totalmente de acuerdo
+--------------------------------------------------------------------------------
+La tarea me exigió mucha actividad mental y concentración.
+
+
+PREGUNTA 3 — Escala lineal | 1–7 (mismas etiquetas)
+--------------------------------------------------------------------------------
+Sentí presión de tiempo mientras resolvía los casos.
+
+
+PREGUNTA 4 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Tuve que trabajar muy duro (esfuerzo) para completar la tarea.
+
+
+PREGUNTA 5 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Me sentí frustrado/a, tenso/a o irritado/a durante el bloque.
+
+
+PREGUNTA 6 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Me sentí seguro/a de cómo desempeñé la tarea en este bloque.
+
+
+PREGUNTA 7 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+La tarea me resultó exigente en general.

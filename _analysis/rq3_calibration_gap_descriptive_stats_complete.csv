@@ -1,0 +1,4 @@
+﻿Condition,Metric,N,Mean,Median,StDev,Min,Max
+A,calibration_gap,5,-0.2333,-0.2222,0.1685,-0.4722,-0.0278
+B,calibration_gap,5,-0.1333,-0.0833,0.1248,-0.3056,-0.0278
+C,calibration_gap,5,0.05,0.0,0.1248,-0.0556,0.2222

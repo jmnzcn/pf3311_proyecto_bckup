@@ -1,0 +1,47 @@
+{
+  "note": "URLs y entry IDs desde SampleScene.unity. Form0 Perfil es aparte (antes/despues de sesion).",
+  "form0_perfil": {
+    "title": "PF-3311 Perfil participante",
+    "surveyUrl": "https://docs.google.com/forms/d/1XjG9GBr71tyhfF2sFWn7RcKfHkBAjCnufZJKZXoP6zA/viewform",
+    "surveyCodeEntryId": "entry.1810287026",
+    "unity_field": "ExperimentLogic.profileSurveyUrl / profileSurveyCodeEntryId",
+    "ui": "Boton PERFIL DEL PARTICIPANTE en pantalla de seleccion de escenarios (no bloquea inicio)",
+    "create_with": "docs/google_forms/apps_script/Form0_Perfil.gs -> createPF3311_Form0_Perfil",
+    "export_to": "Forms data/Form0_Perfil.csv"
+  },
+  "unity_scenarios": [
+    {
+      "scenarioNumber": 1,
+      "condition": "A",
+      "surveyUrl": "https://docs.google.com/forms/d/1eXYTw-5RbUbLtk1trghoP2XejZCsHZs6Fyk8uuhUeak/viewform",
+      "surveyCodeEntryId": "entry.807050638",
+      "forms_script": "Form1_PostA.gs",
+      "export_to": "Forms data/PostBloqueA.csv",
+      "content": "RAW-TLX post bloque A"
+    },
+    {
+      "scenarioNumber": 2,
+      "condition": "B",
+      "surveyUrl": "https://docs.google.com/forms/d/1MLqIh__LvA7Da5-uJt6izsD-pAyALmO9Je7GlrZpTEg/viewform",
+      "surveyCodeEntryId": "entry.117828474",
+      "forms_script": "Form2_PostB.gs",
+      "export_to": "Forms data/PostBloqueB.csv",
+      "content": "meCUE + RAW-TLX post bloque B"
+    },
+    {
+      "scenarioNumber": 3,
+      "condition": "C",
+      "surveyUrl": "https://docs.google.com/forms/d/1mQhV7SZF4X0DRYw-pOhG62GHJxHK6d0jNTCn8pV_ceQ/viewform",
+      "surveyCodeEntryId": "entry.529233443",
+      "forms_script": "Form3_PostC.gs",
+      "export_to": "Forms data/PostBloqueC.csv",
+      "content": "meCUE + RAW-TLX post bloque C"
+    }
+  ],
+  "investigator_checklist": [
+    "Confirmar que los 4 Forms existen y aceptan respuestas (no modo borrador).",
+    "Probar OpenSurvey en build: boton Realizar Encuesta habilitado al terminar bloque.",
+    "Exportar CSV de Forms a Forms data/ tras cada participante o lote.",
+    "Codigo participante en Forms debe coincidir con Unity (P01, P02, ...)."
+  ]
+}

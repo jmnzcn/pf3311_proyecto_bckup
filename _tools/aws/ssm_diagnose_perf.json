@@ -1,0 +1,13 @@
+{
+  "commands": [
+    "$cpu = Get-Counter '\\Processor(_Total)\\% Processor Time' -ErrorAction SilentlyContinue",
+    "Start-Sleep -Seconds 2",
+    "$cpu2 = Get-Counter '\\Processor(_Total)\\% Processor Time' -ErrorAction SilentlyContinue",
+    "Write-Output ('CPU%: ' + [math]::Round($cpu2.CounterSamples[0].CookedValue,1))",
+    "Get-Process ExperimentPrototypeB03230 -ErrorAction SilentlyContinue | Select-Object Id, CPU, WorkingSet, Responding | Format-List",
+    "Get-Process dcvserver,dcvagent,dcv* -ErrorAction SilentlyContinue | Select-Object Name, CPU, WorkingSet | Format-Table -AutoSize",
+    "$dcvConf = 'C:\\Program Files\\NICE\\dcv\\server\\conf\\dcv.conf'",
+    "if (Test-Path $dcvConf) { Get-Content $dcvConf | Select-String -Pattern 'quic|resolution|frame|quality|display' } else { Write-Output 'dcv.conf not found' }",
+    "Get-CimInstance Win32_VideoController | Select-Object Name, AdapterRAM, VideoModeDescription | Format-List"
+  ]
+}

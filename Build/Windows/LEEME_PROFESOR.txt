@@ -1,0 +1,35 @@
+ExperimentPrototypeB03230 - build para evaluación (PF-3311)
+================================================================
+
+Requisitos
+----------
+- Windows 10/11, pantalla 1920×1080 (ventana maximizada).
+- Internet estable (condiciones B y C: chat Gemini + voz Azure).
+
+Ejecución
+---------
+1. Descomprimir toda la carpeta (no mover solo el .exe).
+2. Ejecutar ExperimentPrototypeB03230.exe (un solo clic).
+3. Consentimiento → elegir INICIAR (A, B o C) → 6 preguntas por bloque.
+
+Condiciones
+-----------
+- A: sin agente
+- B: agente de texto (Gemini)
+- C: agente virtual + voz (Gemini + Azure TTS)
+
+Este build incluye las credenciales de API necesarias para B y C
+(Gemini en GameManager, Azure Speech en el avatar).
+Generado: junio 2026. No redistribuir el zip públicamente (cuotas y seguridad).
+
+Datos
+-----
+Las respuestas se guardan en CSV data/ junto al ejecutable.
+
+Videos de demostración (YouTube)
+--------------------------------
+- Escenario A: https://youtu.be/ItcvsdxPfp8
+- Escenario B: https://youtu.be/RY5pY_DVwDk
+- Escenario C: https://youtu.be/hLPTS9akSlg
+
+Documentación completa: README.md y GUIA_PARTICIPANTE.md en el repositorio GitHub.

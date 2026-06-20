@@ -1,0 +1,7 @@
+﻿ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,ActionType,ActionDetail,CorrectAnswer,TimeSpent(s),Timestamp
+P01,ID-20260615001513-7895,1,Condición A — Sin Asistencia,1,S1_Quest_1,Prioridad 2 — Edad + Fiebre | Confianza: 4,Prioridad 3 — Normal,13.32,2026-06-15 00:15:52
+P01,ID-20260615001513-7895,1,Condición A — Sin Asistencia,2,S1_Quest_2,Prioridad 2 — Contrato | Confianza: 4,Prioridad 2 — Usuarios,2.76,2026-06-15 00:15:54
+P01,ID-20260615001513-7895,1,Condición A — Sin Asistencia,3,S1_Quest_3,Denegado — Fuera de Horario | Confianza: 4,Restringido — TI Nocturno,2.79,2026-06-15 00:15:57
+P01,ID-20260615001513-7895,1,Condición A — Sin Asistencia,4,S1_Quest_4,Sí — Solo Monto | Confianza: 4,No — Ambas Neutralizadas,2.33,2026-06-15 00:15:59
+P01,ID-20260615001513-7895,1,Condición A — Sin Asistencia,5,S1_Quest_5,Sí — Área Prioritaria | Confianza: 4,No — Promedio Insuficiente,2.50,2026-06-15 00:16:02
+P01,ID-20260615001513-7895,1,Condición A — Sin Asistencia,6,S1_Quest_6,Diferir — Horario Prevalece | Confianza: 3,Crítica — Contrato 24/7,3.43,2026-06-15 00:16:05

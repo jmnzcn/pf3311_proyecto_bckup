@@ -1,0 +1,231 @@
+PF-3311 - Reporte de analisis RQ
+Generado: 2026-06-16 18:53:23
+CSV Unity: C:\Users\neyfr\Downloads\ExperimentPrototypeB03230\CSV data
+Forms: C:\Users\neyfr\Downloads\ExperimentPrototypeB03230\Forms data
+Sesiones: 31 encontradas | 3 en analisis | 3 completas (6+6+6)
+========================================================================
+
+>>> Catalogo de sesiones
+
+=== Catalogo de sesiones (CSV data/) ===
+
+Carpeta raiz: C:\Users\neyfr\Downloads\ExperimentPrototypeB03230\CSV data
+Sesiones encontradas: 31 | Canonicas para analisis: 3 | Completas (6+6+6): 3
+
+Carpeta                                    P##      A   B   C   OK  Cons   Analisis
+----------------------------------------------------------------------------------
+CSV data                                   P01      0   0   6   no    no         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+CSV data                                   P01      0   0   6   no    no         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614003212-0658                 P01      0   6   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614154347-6737                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614160122-2926                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614194910-6565                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614200638-8234                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614200819-8755                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614200914-7906                 P01      0   0   2   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614202733-0782                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614203607-6899                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614204609-7797                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614205152-7737                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614212338-6912                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614214704-2673                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614220423-2131                 P01      0   0   6   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614221051-6289                 P01      0   0   6   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614232223-0886                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614233116-8726                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260614233626-4367                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260615001513-7895                 P01      6   6   6   SI    SI         SI
+    -> Canónica entre 23 carpetas; omitidas: CSV data, CSV data, P01_ID-20260614003212-0658, P01_ID-20260614154347-6737, P01_ID-20260614160122-2926, P01_ID-20260614194910-6565, P01_ID-20260614200638-8234, P01_ID-20260614200819-8755, P01_ID-20260614200914-7906, P01_ID-20260614202733-0782, P01_ID-20260614203607-6899, P01_ID-20260614204609-7797, P01_ID-20260614205152-7737, P01_ID-20260614212338-6912, P01_ID-20260614214704-2673, P01_ID-20260614220423-2131, P01_ID-20260614221051-6289, P01_ID-20260614232223-0886, P01_ID-20260614233116-8726, P01_ID-20260614233626-4367, P01_ID-20260615002550-0942, P01_ID-20260615004509-0710
+P01_ID-20260615002550-0942                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P01_ID-20260615004509-0710                 P01      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P02_ID-20260616010101-1111                 P02      6   6   6   SI    SI         SI
+    -> Unica carpeta para este participante
+P03_ID-20260615002625-2978                 P03      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P03_ID-20260615004544-8488                 P03      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P03_ID-20260615005147-2157                 P03      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P03_ID-20260615013707-9447                 P03      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P03_ID-20260615014831-3545                 P03      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P03_ID-20260615015434-1770                 P03      0   0   0   no    SI         no
+    -> Omitida (existe sesion mas completa del mismo participante)
+P03_ID-20260616020202-2222                 P03      6   6   6   SI    SI         SI
+    -> Canónica entre 7 carpetas; omitidas: P03_ID-20260615002625-2978, P03_ID-20260615004544-8488, P03_ID-20260615005147-2157, P03_ID-20260615013707-9447, P03_ID-20260615014831-3545, P03_ID-20260615015434-1770
+
+Completitud piloto: 3/3 participantes canonicos con A+B+C completos (100.0%). Meta Entregable 2: >=80%.
+
+Sesiones incluidas en RQ1-RQ3:
+  - P01_ID-20260615001513-7895 (18 items reales)
+  - P02_ID-20260616010101-1111 (18 items reales)
+  - P03_ID-20260616020202-2222 (18 items reales)
+
+========================================================================
+
+>>> RQ1 - Precision
+
+=== RQ1 - Precision (% aciertos por condicion) ===
+
+Por participante (precision = aciertos / items del bloque):
+
+Participante                        A        B        C     n(A/B/C)
+--------------------------------------------------------------------
+P01_ID-20260615001513-7895      66.7%    83.3%    83.3%        6/6/6
+P02_ID-20260616010101-1111      66.7%    83.3%   100.0%        6/6/6
+P03_ID-20260616020202-2222      66.7%    66.7%    66.7%        6/6/6
+
+Media grupal (% aciertos):
+
+  Condicion A: 66.7% (n=3 participantes con bloque A)
+  Condicion B: 77.8% (n=3 participantes con bloque B)
+  Condicion C: 83.3% (n=3 participantes con bloque C)
+
+Inferencia (piloto):
+  Precision | Friedman chi2=3.7143, p=0.1561 (n=3)
+  Post hoc Wilcoxon pareado (p ajustada Bonferroni, 3 comparaciones):
+    A vs B: W=0.0000, p=0.5000, p_adj=1.0000
+    A vs C: W=0.0000, p=0.5000, p_adj=1.0000
+    B vs C: W=0.0000, p=1.0000, p_adj=1.0000
+
+CSVs exportados en C:\Users\neyfr\Downloads\ExperimentPrototypeB03230\_analysis_test
+
+========================================================================
+
+>>> RQ2 - Confianza (Unity, medida principal)
+
+=== RQ2 (Unity) - Confianza media (escala 1-7 por condicion) ===
+
+Por participante (media de confianza en el bloque):
+
+Participante                        A        B        C     n(A/B/C)
+--------------------------------------------------------------------
+P01_ID-20260615001513-7895       5.00     5.00     5.00        6/6/6
+P02_ID-20260616010101-1111       5.00     5.00     5.00        6/6/6
+P03_ID-20260616020202-2222       5.00     5.00     5.00        6/6/6
+
+Media grupal (confianza 1-7):
+
+  Condicion A: 5.00 (n=3)
+  Condicion B: 5.00 (n=3)
+  Condicion C: 5.00 (n=3)
+
+Inferencia (piloto):
+  Confianza Unity | Friedman chi2=nan, p=nan (n=3)
+  Post hoc Wilcoxon pareado (p ajustada Bonferroni, 3 comparaciones):
+    A vs B: W=0.0000, p=1.0000, p_adj=1.0000
+    A vs C: W=0.0000, p=1.0000, p_adj=1.0000
+    B vs C: W=0.0000, p=1.0000, p_adj=1.0000
+
+CSVs exportados en C:\Users\neyfr\Downloads\ExperimentPrototypeB03230\_analysis_test
+
+========================================================================
+
+>>> RQ3 - Calibracion (brecha confianza - precision)
+
+=== RQ3 - Calibracion (brecha confianza normalizada - precision) ===
+
+Por participante (brecha por bloque; >0 = sobreconfianza):
+
+Participante                          A          B          C   Prec.A   Prec.B   Prec.C
+--------------------------------------------------------------------------------------
+P01_ID-20260615001513-7895       +0.000     -0.167     -0.167    66.7%    83.3%    83.3%
+P02_ID-20260616010101-1111       +0.000     -0.167     -0.333    66.7%    83.3%   100.0%
+P03_ID-20260616020202-2222       +0.000     +0.000     +0.000    66.7%    66.7%    66.7%
+
+Media grupal (brecha de calibracion):
+
+  Condicion A: brecha=+0.000 (n=3; tendencia: calibrada)
+  Condicion B: brecha=-0.111 (n=3; tendencia: subconfianza)
+  Condicion C: brecha=-0.167 (n=3; tendencia: subconfianza)
+
+Inferencia (piloto):
+  Brecha calibracion | Friedman chi2=3.7143, p=0.1561 (n=3)
+  Post hoc Wilcoxon pareado (p ajustada Bonferroni, 3 comparaciones):
+    A vs B: W=0.0000, p=0.5000, p_adj=1.0000
+    A vs C: W=0.0000, p=0.5000, p_adj=1.0000
+    B vs C: W=0.0000, p=1.0000, p_adj=1.0000
+
+H3 exploratoria: compare medias de brecha entre A, B y C (mayor brecha esperada en C segun Entregable 2).
+
+CSVs exportados en C:\Users\neyfr\Downloads\ExperimentPrototypeB03230\_analysis_test
+
+========================================================================
+
+
+=== Hipotesis exploratorias (medias grupales) ===
+
+H1 (precision C ~ B > A): A=66.7% | B=77.8% | C=83.3%
+  Orden observado (mayor a menor): C > B > A
+
+H2 (confianza C > B > A): A=5.00 | B=5.00 | C=5.00
+  Orden observado (mayor a menor): A > B > C
+
+H3 (mayor brecha en C): A=0.000 | B=-0.111 | C=-0.167
+  Orden observado (mayor brecha primero): A > B > C
+  Brecha C vs A: no consistente con H3
+
+Tabla maestra: _analysis_test\master_participant_table.csv
+
+========================================================================
+
+>>> Viabilidad del piloto
+
+=== Viabilidad del piloto (carpetas de sesion) ===
+
+--- Latencia Gemini (ChatHelpRating.csv) ---
+Meta: <= 5.0 s en >= 90% de turnos
+
+  P01_ID-20260615001513-7895: n=1 | <= 5.0s: 1 (100.0%) | mean=3.20s | leaks=0 | OK
+  P02_ID-20260616010101-1111: n=1 | <= 5.0s: 1 (100.0%) | mean=3.20s | leaks=0 | OK
+  P03_ID-20260616020202-2222: n=1 | <= 5.0s: 1 (100.0%) | mean=3.20s | leaks=0 | OK
+  CSV data: n=1 | <= 5.0s: 0 (0.0%) | mean=5.45s | leaks=0 | NO CUMPLE
+
+  TOTAL combinado: n=4 | <= 5.0s: 3 (75.0%) | NO CUMPLE
+  Leaks ModelPossibleLeak: 0 total (0.00 por participante canonico; meta <= 2 por cada 10)
+
+--- TTS condicion C (TtsLog.csv) ---
+Meta: >= 85% de intentos exitosos
+
+  P01_ID-20260615001513-7895: 1/1 (100.0%) | OK
+  P02_ID-20260616010101-1111: 1/1 (100.0%) | OK
+  P03_ID-20260616020202-2222: 1/1 (100.0%) | OK
+  CSV data: 1/1 (100.0%) | OK
+
+  TOTAL TtsLog: 4/4 (100.0%) | OK
+
+--- Integridad CSV (ExperimentData.csv) ---
+Meta: >= 95% de filas de datos son respuestas validas (no placeholder)
+
+  P01_ID-20260615001513-7895: 18/18 filas validas (100.0%) | provisional=0
+  P02_ID-20260616010101-1111: 18/18 filas validas (100.0%) | provisional=0
+  P03_ID-20260616020202-2222: 18/18 filas validas (100.0%) | provisional=0
+
+  TOTAL: 54/54 (100.0%) | OK
+
+Metricas piloto exportadas en C:\Users\neyfr\Downloads\ExperimentPrototypeB03230\_analysis_test
+
+========================================================================

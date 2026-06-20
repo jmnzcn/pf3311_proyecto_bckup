@@ -1,0 +1,17 @@
+﻿Metric,Value
+ValidRows,90
+TotalRows,90
+ValidPct,100.0
+Passes95PctRule,1
+GeminiPasses90Pct,1
+TtsPasses85Pct,0
+TotalModelLeaks,1
+LeaksPer10Participants,2.0
+LeaksPassRule,1
+AgentSessions,10
+SessionsWithChat,4
+SessionsMeetingChatProtocol,4
+PctSessionsWithChat,40.0
+PctSessionsMeetingChatProtocol,40.0
+WastedDominantSessions,0
+ChatProtocolPassRule,0

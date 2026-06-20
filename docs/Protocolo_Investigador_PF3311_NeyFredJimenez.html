@@ -80,11 +80,11 @@
     <ul class="checkbox-list">
         <li>Verificar que la sesión en AWS AppStream está activa y la aplicación Unity carga correctamente antes de la hora acordada.</li>
         <li>Confirmar que el LLM (Google Gemini API) responde con latencia ≤ 3 s para respuestas cortas.</li>
-        <li>Verificar que el TTS (OpenAI TTS en español latinoamericano) produce audio y que el lip-sync con blendshapes funciona en la Condición C.</li>
-        <li>Tener lista la tabla de asignación aleatoria y consultar qué orden de condiciones corresponde al participante actual.</li>
-        <li>Tener listo el enlace al cuestionario meCUE 2.0 (Google Forms / Qualtrics) para enviarlo al participante al finalizar los bloques de tarea.</li>
-        <li>Verificar que el consentimiento informado digital dentro de la aplicación carga correctamente y que el checkbox de aceptación bloquea el avance hasta ser marcado.</li>
-        <li>Verificar que el registro automático de datos (CSV: ID participante, condición, pregunta, respuesta, acierto, timestamp, confianza 1–7) funciona antes de la sesión.</li>
+        <li>Verificar que el TTS (Azure Speech, voz es-MX-JorgeNeural) produce audio y que el lip-sync con visemas funciona en la Condición C.</li>
+        <li>Tener lista la tabla de asignación aleatoria (sección 3). La aplicación muestra el orden al participante tras el consentimiento; verificar que coincide con la bitácora.</li>
+        <li>Tener listos los cuatro enlaces de Google Forms (perfil + post A + post B + post C) según <code>docs/Cuestionario_meCUE_PF3311_NeyFredJimenez_B03230.docx</code>.</li>
+        <li>Verificar que el consentimiento informado digital carga correctamente (dos casillas + código de participante, ej. P01, P20) y bloquea el avance hasta completarse.</li>
+        <li>Verificar que el registro automático de datos (CSV: ParticipantCode, SessionID, condición, pregunta, respuesta, CorrectAnswerLetter, confianza 1–7, timestamp) funciona antes de la sesión.</li>
         <li>Generar y enviar el enlace de acceso a AWS AppStream al participante con al menos 10 minutos de anticipación a la hora acordada.</li>
     </ul>
 
@@ -123,7 +123,7 @@
     </div>
 
     <h3>2.3 Cuestionario Inicial de Perfil</h3>
-    <p>Pedirle al participante que llene el cuestionario de perfil antes de empezar. Pregunta por edad, nivel educativo, qué tanto usa asistentes digitales y si ha interactuado antes con agentes virtuales.</p>
+    <p>Pedirle al participante que llene el <strong>Formulario 0</strong> (Google Forms) antes del primer bloque. Pregunta por edad, nivel educativo, uso de asistentes digitales e interacción previa con agentes virtuales. Usar el mismo código de participante (P + número) que se ingresará en la aplicación Unity. Plantilla: <code>docs/Cuestionario_meCUE_PF3311_NeyFredJimenez_B03230.docx</code>.</p>
 
     <!-- SECCIÓN 3 -->
     <h2>3. Asignación Aleatoria a las Condiciones</h2>
@@ -143,7 +143,7 @@
             <tr><td><strong>P05</strong></td><td>B: Texto</td><td>A: Sin agente</td><td>C: Avatar</td></tr>
             <tr><td><strong>P06</strong></td><td>C: Avatar</td><td>B: Texto</td><td>A: Sin agente</td></tr>
             <tr><td><strong>P07 – P12</strong></td><td colspan="3" style="color:var(--text-muted); font-style:italic;">Repetir los seis órdenes de P01–P06: cada orden se aplica dos veces. Con 12 participantes el contrabalanceo queda completo y balanceado.</td></tr>
-            <tr><td><strong>P13 – P15</strong></td><td colspan="3" style="color:var(--text-muted); font-style:italic;">Participantes adicionales para extender la muestra; continuar el ciclo de órdenes desde P01.</td></tr>
+            <tr><td><strong>P13 en adelante</strong></td><td colspan="3" style="color:var(--text-muted); font-style:italic;">Continuar el ciclo de seis órdenes (P16 = P04, P20 = P02, etc.). La app calcula el orden con <code>(n−1) mod 6</code> según el número del código.</td></tr>
         </tbody>
     </table>
 
@@ -152,7 +152,7 @@
     </div>
 
     <div class="warning-box">
-        Decirle al participante qué orden de bloques le tocó. El orden lo fija la asignación aleatoria, no el participante: este debe seguir exactamente la secuencia indicada. El investigador habilita cada bloque al cerrar el anterior y verifica en la bitácora que el orden asignado se haya respetado antes de dar la sesión por válida.
+        Tras el consentimiento, la aplicación muestra el orden asignado (ej.: «Tu orden: B → C → A»). Pedir al participante que siga exactamente esa secuencia. Los bloques ya completados aparecen como <strong>COMPLETADO</strong> y no pueden repetirse. Verificar en la bitácora que el orden asignado se respetó antes de dar la sesión por válida.
     </div>
 
     <!-- SECCIÓN 4 -->
@@ -174,7 +174,7 @@
     <div class="quote">"En este bloque vas a tener un asistente virtual que podés ver y escuchar. Si necesitás orientación, podés escribirle al chat. Podés ignorarlo si preferís trabajar solo. Lo que el asistente hace es ayudarte a entender las reglas, no darte la respuesta."</div>
 
     <h3>4.2 Tarea de Práctica</h3>
-    <p>Antes del primer bloque real, hacer un caso de práctica que no se registra. Sirve para que el participante se familiarice con la interfaz, la escala de confianza y el chat (si aplica).</p>
+    <p>Antes del primer bloque real, el participante puede pulsar <strong>INICIAR: PRÁCTICA</strong> en la pantalla de selección. Es un caso de práctica que <strong>no se registra</strong> en el CSV. Sirve para familiarizarse con la interfaz, la escala de confianza y el chat o avatar (según el primer bloque real de su orden). Tras la práctica, vuelve a la selección; los tres bloques reales siguen disponibles.</p>
     <p>Cuando el participante confirme que entendió, retirarse. No intervenir mientras resuelve los casos.</p>
 
     <h3>4.3 Estructura de Cada Bloque de Tarea</h3>
@@ -208,17 +208,34 @@
     </table>
 
     <div class="warning-box">
-        Cada bloque contiene entre 6 y 8 casos. Al completar los tres bloques el participante habrá respondido entre 18 y 24 casos en total. Los casos cambian entre bloques para que el participante no repita los mismos.
+        Cada bloque contiene <strong>6 casos</strong> (18 respuestas en total en la sesión). Los casos son distintos entre bloques; el participante no repite el mismo ítem.
     </div>
+
+    <h3>4.4 Cuestionario inmediatamente después de cada bloque</h3>
+    <p>Tras completar un bloque (pantalla «Listo» / Otro Escenario), enviar al participante el formulario que corresponda. El investigador <strong>no</strong> debe estar presente mientras lo completa.</p>
+    <table class="data-table">
+        <thead>
+            <tr><th>Bloque terminado</th><th>Formulario Google</th><th>Contenido</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>A (sin agente)</td><td>Formulario 1</td><td>RAW-TLX (6 ítems); sin meCUE</td></tr>
+            <tr><td>B (chat)</td><td>Formulario 2</td><td>meCUE I + III + IV curado + V + RAW-TLX</td></tr>
+            <tr><td>C (avatar)</td><td>Formulario 3</td><td>meCUE I + II curado + III + IV curado + V + RAW-TLX</td></tr>
+        </tbody>
+    </table>
+    <p>En todos los formularios: código de participante obligatorio (mismo que en Unity, ej. P01, P20).</p>
 
     <!-- SECCIÓN 5 -->
     <h2>5. Cuestionarios Post-Interacción</h2>
-    <p class="time-note">⏱ Tiempo estimado: ~10 min</p>
+    <p class="time-note">⏱ Tiempo estimado: ~12–18 min (repartido tras cada bloque)</p>
 
-    <p>Al terminar los tres bloques, confirmar por videollamada que todo quedó completo y enviarle el enlace de los cuestionarios.</p>
+    <p>Los cuestionarios meCUE modular y RAW-TLX se administran <strong>inmediatamente después de cada bloque</strong>, no al final de la sesión completa (matriz Tarea 10 / Entregable 2). Al terminar los tres bloques, confirmar que los cuatro formularios (perfil + 3 post-bloque) quedaron completos.</p>
 
-    <p><strong>Investigador:</strong></p>
-    <div class="quote">"¡Excelente, ya terminaste los bloques de tareas! Ahora te voy a pedir que llenés una serie de cuestionarios cortos sobre tu experiencia. No hay respuestas correctas ni incorrectas; lo que nos importa es tu percepción honesta. Por favor hacelo de forma individual, sin prisa."</div>
+    <p><strong>Investigador (antes del primer bloque, Formulario 0):</strong></p>
+    <div class="quote">"Antes de empezar, completá este formulario corto de perfil con tu código de participante. Después de cada bloque de tareas te enviaré otro enlace breve sobre tu experiencia."</div>
+
+    <p><strong>Investigador (tras cada bloque):</strong></p>
+    <div class="quote">"Completaste este bloque. Te envío un cuestionario corto sobre tu experiencia en <em>este</em> bloque. No hay respuestas correctas; respondé con honestidad y sin prisa. Yo no voy a estar viendo mientras lo llenás."</div>
 
     <div class="danger-box">
         No estar presente mientras el participante llena los cuestionarios. Si el investigador está ahí, las respuestas se sesgan.
@@ -232,10 +249,16 @@
         </thead>
         <tbody>
             <tr>
-                <td><strong>meCUE 2.0</strong></td>
-                <td>Experiencia de usuario: utilidad percibida, emociones, intención de uso, evaluación global</td>
-                <td>RQ2</td>
-                <td>Aplicar módulos de percepciones instrumentales, emociones y evaluación global. Versión en español disponible.</td>
+                <td><strong>meCUE 2.0 (modular)</strong></td>
+                <td>UX: utilidad, emociones, consecuencias, evaluación global; Módulo II (estética) solo en C</td>
+                <td>RQ2 (secundaria)</td>
+                <td>Forms 2 y 3; ítems oficiales traducidos. Ver docx en <code>docs/</code>. No repetir confianza por ítem (ya en Unity).</td>
+            </tr>
+            <tr>
+                <td><strong>RAW-TLX adaptado</strong></td>
+                <td>Carga cognitiva / esfuerzo percibido</td>
+                <td>Apoyo</td>
+                <td>Forms 1, 2 y 3 (tras cada bloque A, B, C).</td>
             </tr>
             <tr>
                 <td><strong>Escala Likert 1–7 por pregunta</strong></td>
@@ -251,7 +274,7 @@
             </tr>
             <tr>
                 <td><strong>Cuestionario de perfil</strong></td>
-                <td>Edad, nivel educativo, experiencia con IA / agentes virtuales</td>
+                <td>Rango de edad, nivel educativo, experiencia con IA / agentes virtuales</td>
                 <td>Variable de control</td>
                 <td>Se aplica al inicio de la sesión (ver Sección 2.3). No repetir aquí.</td>
             </tr>
@@ -305,7 +328,7 @@
     <p>Al cerrar la sesión, hacer esto en orden:</p>
 
     <ol class="step-list">
-        <li><strong>Verificar el CSV:</strong> Confirmar que el archivo de registro generado por la aplicación Unity contiene todos los campos esperados (ID participante, condición, N° pregunta, respuesta, booleano de acierto, timestamp, confianza). Si falta algún campo, documentarlo en la bitácora antes de continuar.</li>
+        <li><strong>Verificar el CSV:</strong> Confirmar <code>ParticipantCode</code>, <code>SessionID</code>, <code>ScenarioNumber</code> (1=A, 2=B, 3=C), pregunta, respuesta, <code>CorrectAnswerLetter</code>, confianza 1–7, timestamp. Derivar acierto: <code>AnswerLetter == CorrectAnswerLetter</code>.</li>
         <li><strong>Anonimización:</strong> Confirmar que el CSV y el meCUE están vinculados solo al ID del participante (P01, P02…), no al nombre. El archivo que relaciona ID con nombre se guarda por separado, con contraseña.</li>
         <li><strong>Logs de conversación (Condiciones B y C):</strong> Verificar que los logs de chat del LLM se exportaron correctamente bajo el ID del participante. Revisar el chat y borrar cualquier dato personal que haya escrito el participante.</li>
         <li><strong>Respaldo:</strong> Subir el CSV anonimizado y los logs al repositorio privado del proyecto en GitHub bajo la carpeta <code>/data/raw/</code>. Nunca subir el archivo de mapeo ID ↔ nombre.</li>

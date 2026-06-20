@@ -1,0 +1,5 @@
+﻿ContrastId,Description,AnalysisId,Metric,Left,Right,MeanDiff,CI_Low,CI_High,Units,WilcoxonW,PValue,Significant,N
+H3_C_vs_A,H3: brecha de calibración mayor en C que en A,RQ3,calibration_gap,A,C,0.2833,0.0944,0.45,units,1.0,0.125,0,5
+H3_C_vs_B,H3 exploratorio: brecha C vs B,RQ3,calibration_gap,B,C,0.1833,0.0556,0.3556,units,0.0,0.0625,0,5
+VIS_B_vs_C,Contraste clave: precisión B vs C (misma ayuda LLM),RQ1,accuracy,B,C,0.0,-16.6667,13.3333,pp,3.0,1.0,0,5
+AGENT_HELPSCORE,HelpScore pedagógico B vs C,AGENT,HelpScore,B,C,12.0,10.8,13.2,units,0.0,0.0625,0,5

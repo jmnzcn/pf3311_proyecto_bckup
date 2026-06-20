@@ -1,0 +1,7 @@
+﻿ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,ActionType,ActionDetail,CorrectAnswer,TimeSpent(s),Timestamp
+P01,ID-20260614003212-0658,2,Condición B — Agente de Texto,1,S2_Quest_1,Aprobado | Confianza: 5,Aprobado,3.20,2026-06-14 00:32:16
+P01,ID-20260614003212-0658,2,Condición B — Agente de Texto,2,S2_Quest_2,Acelerado — 2 (Combinado) | Confianza: 4,Acelerado — 3 Revisores,2.25,2026-06-14 00:32:19
+P01,ID-20260614003212-0658,2,Condición B — Agente de Texto,3,S2_Quest_3,Aprobado — $150 Dentro del Límite | Confianza: 4,Requiere Supervisor — Prueba Baja Umbral,2.56,2026-06-14 00:32:21
+P01,ID-20260614003212-0658,2,Condición B — Agente de Texto,4,S2_Quest_4,No — Plazo Límite | Confianza: 6,Sí — Autorización Válida,2.08,2026-06-14 00:32:23
+P01,ID-20260614003212-0658,2,Condición B — Agente de Texto,5,S2_Quest_5,Especial | Confianza: 3,Express + Seguro,2.46,2026-06-14 00:32:26
+P01,ID-20260614003212-0658,2,Condición B — Agente de Texto,6,S2_Quest_6,Nivel 2 — Sin SLA | Confianza: 6,Nivel 3 — Pérdida de Datos,2.21,2026-06-14 00:32:28

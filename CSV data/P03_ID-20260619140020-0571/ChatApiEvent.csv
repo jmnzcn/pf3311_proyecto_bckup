@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,EventType,HttpStatusCode,FailureReason,StudentMessage,GeminiLatencySeconds,Timestamp
+P03,ID-20260619140020-0571,—,0,Sesión,0,PENDING,0,"[PENDIENTE] Sesión en curso. Si esta es la única fila de contenido, la sesión no finalizó correctamente (cierre forzado, cuelgue o apagado del equipo).",—,0.00,2026-06-19 14:00:20

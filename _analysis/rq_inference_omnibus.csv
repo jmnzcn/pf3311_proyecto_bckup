@@ -1,0 +1,4 @@
+﻿AnalysisId,Metric,Label,Test,Statistic,PValue,KendallW,N,Applied
+RQ1,accuracy,Precision,Friedman,6.125,0.046771,0.6125,5,True
+RQ2,mean_confidence,Confianza Unity,Friedman,10.0,0.006738,1.0,5,True
+RQ3,calibration_gap,Brecha calibracion,Friedman,5.2,0.074274,0.52,5,True

@@ -1,0 +1,6 @@
+﻿ParticipantCode,OnTaskRatio_B,AgentUtilityScore_B,TimeWastedSec_B,SubstantiveQuestions_B,UtilityLabel_B,OnTaskRatio_C,AgentUtilityScore_C,TimeWastedSec_C,SubstantiveQuestions_C,UtilityLabel_C
+P01,0.0,59.98,0.0,0,None,0.0,76.17,0.0,0,None
+P02,0.0,61.58,0.0,0,None,0.0,73.83,0.0,0,None
+P03,0.0,50.4,0.0,0,Minimal,0.0,79.47,0.0,0,Minimal
+P04,0.0,59.33,0.0,0,Minimal,0.0,70.48,0.0,0,Minimal
+P05,0.0,68.3,0.0,0,Minimal,0.0,83.13,0.0,0,Minimal

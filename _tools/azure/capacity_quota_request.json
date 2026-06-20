@@ -1,0 +1,7 @@
+{
+  "properties": {
+    "message": "PF-3311 academic UX experiment: 3 dedicated Windows VMs (Standard_NC4as_T4_v3) for simultaneous participants. Unity 3D + NICE DCV browser streaming. GPU required on all VMs for rendering and NVENC. East US for Azure Speech TTS alignment. Request 16 vCPUs (12 minimum).",
+    "newLimit": 16,
+    "type": "Standard NCASv3_T4 Family"
+  }
+}

@@ -1,0 +1,3 @@
+﻿ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,ActionType,ActionDetail,CorrectAnswer,TimeSpent(s),Timestamp
+P01,ID-20260614200914-7906,3,Condición C — Agente Virtual,1,S3_Quest_1,Sí — Membresía Activa | Confianza: 7,No — Lista de Espera,74.65,2026-06-14 20:10:32
+P01,ID-20260614200914-7906,3,Condición C — Agente Virtual,2,S3_Quest_2,Reemplazo — Plan Total | Confianza: 7,Reemplazo — 24 Meses,63.92,2026-06-14 20:11:36

@@ -1,0 +1,3 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,TurnIndex,Role,Message,Timestamp
+P03,ID-20260620024852-2913,C,3,Condición C — Agente Virtual,1,1,user,hola,2026-06-20 02:49:03
+P03,ID-20260620024852-2913,C,3,Condición C — Agente Virtual,1,2,model,"¡Hola! ¿Cómo estás? Contame, ¿en qué te puedo ayudar hoy con este caso?",2026-06-20 02:49:03

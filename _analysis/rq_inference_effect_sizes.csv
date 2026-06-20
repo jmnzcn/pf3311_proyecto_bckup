@@ -1,0 +1,4 @@
+﻿AnalysisId,Metric,Label,KendallW,FriedmanChi2,N
+RQ1,accuracy,Precision,0.6125,6.125,5
+RQ2,mean_confidence,Confianza Unity,1.0,10.0,5
+RQ3,calibration_gap,Brecha calibracion,0.52,5.2,5

@@ -66,7 +66,7 @@ En el repositorio no hay retroalimentación escrita del profesor tras el Entrega
 | Despliegue | VM remota | VM Windows con build 1920×1080 | El participante entra por RDP; el CSV queda en el servidor |
 | Ítems | 6–8 casos | 6 por condición (18 total) | Misma lógica de reglas en los tres bloques |
 | Confianza | Escala 1–7 por pregunta | 7 estrellas en pantalla | Captura inmediata, no retrospectiva |
-| meCUE 2.0 | Google Forms al final | Preparado (`surveyUrl`) | Falta crear el formulario antes del piloto |
+| meCUE 2.0 | Google Forms tras cada bloque (B/C) + RAW-TLX en A/B/C | `docs/Cuestionario_meCUE_…docx` → 4 Forms | Alineado con Tarea 10 (matriz) y protocolo |
 | Datos | CSV en backend | CSV en `CSV data/` | Una sola fuente para análisis |
 | Seguridad | Variables de entorno | `.gitignore`; claves solo en build/Release, no en GitHub | Requisito del curso |
 
@@ -76,8 +76,8 @@ En el repositorio no hay retroalimentación escrita del profesor tras el Entrega
 |-------------|-------------|---------------|
 | Backend FastAPI | No implementado | La PoC demuestra que los componentes se comunican; Unity llama las APIs directamente. Un backend se reconsiderará si hace falta centralizar logs |
 | VM remota | PoC en VM del investigador | Build en la VM; participantes por escritorio remoto |
-| Tarea de práctica sin registro | Pendiente | Instrucciones en GUIA_PARTICIPANTE.md |
-| Registro de turnos de chat en CSV | Pendiente | Fuera del alcance de la PoC; las incidencias las reportará el participante |
+| Tarea de práctica sin registro | **Implementado** | Botón INICIAR: PRÁCTICA; ítem dummy; sin filas CSV; ver `GUIA_PARTICIPANTE.md` |
+| Registro de turnos de chat en CSV | **Implementado** | `ChatLog_*`, scoring heurístico, resúmenes y eventos API |
 | GPT-4o mini | Sustituido por Gemini | Ya estaba previsto en E1 según créditos; no altera el diseño |
 
 ### Lo que se mantiene del Entregable 1
@@ -86,7 +86,7 @@ En el repositorio no hay retroalimentación escrita del profesor tras el Entrega
 - System prompt restrictivo.
 - Misma asistencia del LLM en B (texto) y C (texto + voz + avatar).
 - Precisión objetiva y confianza subjetiva en paralelo.
-- meCUE 2.0 al cierre.
+- meCUE 2.0 modular tras cada bloque B y C; RAW-TLX tras A, B y C (ver `docs/Cuestionario_meCUE_PF3311_NeyFredJimenez_B03230.docx`).
 - Tono del agente: neutro, profesional, conciso; español costarricense (*vos*).
 
 ---
@@ -97,14 +97,14 @@ En el repositorio no hay retroalimentación escrita del profesor tras el Entrega
 
 Se trata de una aplicación standalone Windows (Unity 6000.3.11f1, URP, 1920×1080). Flujo:
 
-1. Consentimiento informado.
-2. Selección de condición (A, B o C).
+1. Consentimiento informado (código participante + dos casillas).
+2. Selección: práctica opcional + condiciones A, B, C (orden mostrado en pantalla según código).
 3. Seis preguntas con REGLAS + SITUACIÓN y opciones A–D.
 4. Confianza del 1 al 7 después de cada respuesta.
 5. Chat con el agente en B y C (opcional entre preguntas).
 6. Pantalla final: Otro Escenario (mismo ID de sesión), Encuesta o Finalizar.
 
-Cada respuesta se guarda en `CSV data/ExperimentData_{UserID}.csv`.
+Cada respuesta se guarda en `CSV data/ExperimentData_{ParticipantCode}_{SessionID}.csv`.
 
 ### Integración de componentes
 
@@ -130,6 +130,10 @@ Participante elige A-D, confianza, entregar
         |
         v
 DataLogger.SaveAnswer()  ->  CSV data/ (UTF-8 con BOM)
+        |
+        + (B/C) ChatSessionLogger  ->  ChatLog_*, ChatHelpRating_*, resúmenes
+        + (C) TtsLog_* via AzureLipSync
+        + (B/C) ChatApiEvent_* si falla Gemini
 ```
 
 **De la arquitectura E1 a lo implementado**
@@ -193,15 +197,21 @@ Capturas del build standalone (1920×1080).
 | CSV primario para análisis | Implementado | `DataLogger` |
 | ID de sesión único (`ID-yyyyMMddHHmmss-RRRR`) | Implementado | Persiste con Otro Escenario |
 | Salida segura con borrado condicional | Implementado | `SafeExit` |
-| Aviso si falla guardado CSV | Implementado | No avanza hasta guardar |
+| Aviso si falla guardado CSV | Implementado | Respuestas (A) y chat/TTS (B/C) |
 | Force Single Instance | Implementado | Project Settings |
 | README + GUIA_PARTICIPANTE.md | Implementado | Acceso vía máquina virtual |
 | Build Windows listo para evaluar | Implementado | `Build/Windows/` (~141 MB); ver `LEEME_PROFESOR.txt` |
-| Encuesta meCUE (`surveyUrl`) | Pendiente | Crear formulario antes del piloto |
-| Tarea de práctica sin registro | Pendiente | Instrucciones orales en el piloto |
-| Log de turnos de chat en CSV | Pendiente | Fuera del alcance de la PoC |
+| Encuesta meCUE (`surveyUrl` / Forms externos) | Plantilla en `docs/Cuestionario_meCUE_…docx`; crear 4 Google Forms | Pendiente URLs en Forms |
+| Código participante (P + número, ej. P01, P20) | Implementado | Consentimiento + CSV; normalización automática |
+| Clave correcta en CSV | Implementado | `CorrectAnswerLetter` |
+| Tarea de práctica sin registro | **Implementado** | `PracticeScenarioContent`, botón en selección; agente según primer bloque del orden |
+| Bloques completados bloqueados en UI | **Implementado** | Subtexto COMPLETADO; `MarkConditionCompleted` |
+| Orden de condiciones en pantalla | **Implementado** | `ParticipantConditionOrder`; slot `(n−1) % 6` |
+| Log de turnos de chat en CSV | **Implementado** | Turnos crudos, scoring, resúmenes por pregunta/escenario, TTS (C) y fallos API |
+| Análisis latencia Gemini / TTS | **Implementado** | `_tools/summarize_gemini_latency.py`, `_tools/summarize_tts_success.py` |
+| Pipeline RQ1–RQ3 (tablas, gráficos, inferencia) | **Implementado** | `_tools/analyze_all_rq.py` → `_analysis/` (solo cálculos; informe y `docs/` aparte) |
 | Validación formal de dificultad de ítems | Pendiente | Revisión en el piloto |
-| Contrabalanceo automático de orden | Manual | Orden indicado por correo |
+| Contrabalanceo automático de orden | Parcial | Orden calculado y mostrado en app; investigador verifica secuencia |
 
 ### Reproducibilidad
 
@@ -274,8 +284,8 @@ Variables dependientes: precisión, confianza por ítem, calibración, tiempo de
 
 **Confianza en dos niveles (RQ2)**
 
-- Por ítem: escala 1–7 inmediatamente después de cada respuesta. Será la medida principal para comparar condiciones en el mismo ítem.
-- Global: meCUE 2.0 al cierre (utilidad, emociones, evaluación general del sistema).
+- Por ítem: escala 1–7 inmediatamente después de cada respuesta (Unity). Medida **principal** para RQ2 y RQ3.
+- Por bloque: meCUE 2.0 modular (Google Forms) tras condiciones B y C; RAW-TLX tras A, B y C.
 
 ### Procedimiento de sesión
 
@@ -285,12 +295,14 @@ Variables dependientes: precisión, confianza por ítem, calibración, tiempo de
 | 2. Consentimiento | 2 min | El participante aceptará en la aplicación |
 | 3. Instrucciones | 5 min | Reglas del experimento; demostración breve del chat (sin registrar) |
 | 4. Condición 1 | 15–18 min | 6 preguntas + confianza; chat si B/C |
+| 4b. Cuestionario bloque 1 | 3–12 min | Form A (RAW-TLX) o Form B/C (meCUE + RAW-TLX) según condición |
 | 5. Pausa | 3 min | Descanso |
 | 6. Condición 2 | 15–18 min | Igual |
+| 6b. Cuestionario bloque 2 | 3–12 min | Formulario correspondiente (ver docx meCUE) |
 | 7. Pausa | 3 min | |
 | 8. Condición 3 | 15–18 min | Igual |
-| 9. meCUE 2.0 | 10 min | Formulario en línea |
-| 10. Entrevista breve | 5–10 min | Guión semiestructurado (opcional) |
+| 8b. Cuestionario bloque 3 | 3–12 min | Formulario correspondiente |
+| 9. Entrevista breve | 5–10 min | Guión semiestructurado (opcional) |
 
 Duración total estimada: 60–75 minutos.
 
@@ -299,8 +311,8 @@ Duración total estimada: 60–75 minutos.
 | Criterio | Meta del piloto |
 |----------|-------------------|
 | Completitud | ≥ 80 % completa las 3 condiciones |
-| Latencia Gemini | Respuesta visible en ≤ 5 s en ≥ 90 % de turnos (red estable) |
-| TTS en C | Audio audible en ≥ 85 % de respuestas del agente |
+| Latencia Gemini | Respuesta visible en ≤ 5 s en ≥ 90 % de turnos (red estable) | `ChatHelpRating_*.csv` → `GeminiLatencySeconds`; script `_tools/summarize_gemini_latency.py` |
+| TTS en C | Audio audible en ≥ 85 % de respuestas del agente | `TtsLog_*` / `ChatScenarioSummary_*`; script `_tools/summarize_tts_success.py` |
 | Integridad CSV | ≥ 95 % de ítems con fila válida |
 | Violaciones del prompt | ≤ 2 casos de respuesta directa por cada 10 participantes |
 
@@ -329,10 +341,13 @@ Duración total estimada: 60–75 minutos.
 | Confianza por ítem | Escala 1–7 (estrellas) | CSV | Tras cada respuesta | RQ2, RQ3 |
 | Calibración (brecha) | Confianza normalizada menos precisión en el bloque | Derivada del CSV | Pos hoc | RQ3 |
 | Tiempo de respuesta | `TimeSpent(Seconds)` | CSV | Por pregunta | Complementaria |
-| Carga cognitiva | 2 ítems tipo NASA-TLX (esfuerzo mental, presión temporal) | Entrevista | Fin de sesión | Complementaria |
-| Uso del chat | Número de mensajes por condición | Observación o registro manual | Durante B/C | Complementaria |
-| Utilidad percibida | Subescala meCUE 2.0 | Google Forms | Fin de sesión | RQ2 |
-| Emociones / evaluación global | Subescalas meCUE 2.0 | Google Forms | Fin de sesión | RQ2 |
+| Carga cognitiva | RAW-TLX adaptado (6 ítems, escala 1–7) | Google Forms | Tras cada bloque A/B/C | Apoyo / entrevista |
+| Uso del chat | Intercambios, scores heurísticos, `EffectiveHelpLevel` | `ChatLog_*`, `ChatHelpRating_*`, resúmenes | Durante B/C | Complementaria |
+| Calidad de ayuda del agente | Scoring automático (off-topic, gaming, leak) | `ChatHelpRating_*`, `ChatQuestionSummary_*` | Durante B/C | Complementaria |
+| Fallos API / TTS | Eventos sin respuesta del modelo o TTS fallido | `ChatApiEvent_*`, `TtsLog_*` | Durante B/C | Viabilidad |
+| Utilidad percibida | Subescala meCUE Módulo I | Google Forms | Tras bloques B y C | RQ2 |
+| Emociones / evaluación global | meCUE Módulos III, IV, V | Google Forms | Tras bloques B y C | RQ2 |
+| Embodiment / estética | meCUE Módulo II (curado) | Google Forms | Tras bloque C | RQ2 |
 | Latencia del agente | Segundos hasta respuesta visible | Cronómetro / observación | Durante B/C | Viabilidad |
 | Usabilidad (SUS abreviado) | 3 ítems tipo SUS | Entrevista | Fin de sesión | Complementaria |
 | Incidencias técnicas | Fallos de red, CSV o TTS | `Player.log`, reporte del participante | Toda la sesión | Viabilidad |
@@ -367,16 +382,16 @@ Duración total estimada: 60–75 minutos.
 | Momento | Tras elegir A–D y pulsar SIGUIENTE |
 | RQ | RQ2 (primaria), RQ3 |
 
-### 3. Cuestionario meCUE 2.0
+### 3. Cuestionario meCUE 2.0 (modular)
 
 | Dimensión | Detalle |
 |-----------|---------|
-| Literatura | Minge & Thüring (2018); validación meCUE [21, 22] |
-| Qué mide | Percepción del producto, emociones, evaluación global |
-| Módulos | Utilidad percibida; emociones; evaluación global |
-| Administración | Google Forms o Qualtrics; botón Realizar Encuesta o QR |
-| Momento | Tras las tres condiciones |
-| RQ | RQ2 (secundaria) |
+| Literatura | Minge & Thüring (2018); validación meCUE [21, 22]; ítems oficiales traducidos al español |
+| Qué mide | Percepción instrumental, emociones, consecuencias, evaluación global; Módulo II (estética/cercanía) solo en C |
+| Módulos | I, III, IV, V en B y C; + II en C; RAW-TLX en A, B y C |
+| Administración | Cuatro Google Forms (perfil + post A + post B + post C); plantilla en `docs/Cuestionario_meCUE_PF3311_NeyFredJimenez_B03230.docx` |
+| Momento | Inmediatamente después de **cada** bloque (Tarea 10 / matriz de consistencia) |
+| RQ | RQ2 (secundaria; confianza primaria = Unity 1–7 por ítem) |
 
 ### 4. Entrevista semiestructurada (5–10 min)
 
@@ -518,7 +533,7 @@ La asignación es aleatoria al agendar. Pausa de 3 min entre bloques. El investi
 | Limitación / riesgo | Mitigación |
 |---------------------|------------|
 | Muestra pequeña; adultos ≥ 18, no clínicos | Piloto exploratorio; no se generaliza a pacientes |
-| Sin registro de chat en CSV | Reporte del participante; mejora planificada después del piloto |
+| Sin registro de chat en CSV | **Resuelto:** logs automáticos + scoring; fallos API en `ChatApiEvent_*` |
 | APIs externas (Gemini, Azure) | Reintentos automáticos; A funciona offline; avisos en UI |
 | Hardware distinto entre participantes | Todos usarán la misma VM y el mismo build |
 | Latencia de red | Internet estable en la VM; latencia registrada en encuesta breve |

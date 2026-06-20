@@ -1,0 +1,7 @@
+﻿ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,ActionType,ActionDetail,CorrectAnswer,TimeSpent(s),Timestamp
+P01,ID-20260614001654-8838,3,Condición C — Agente Virtual,1,S3_Quest_1,Sí — Posgrado Cancela Multa | Confianza: 7,No — Lista de Espera,46.53,2026-06-14 00:17:44
+P01,ID-20260614001654-8838,3,Condición C — Agente Virtual,2,S3_Quest_2,Reemplazo — 24 Meses | Confianza: 4,Reemplazo — 24 Meses,2.48,2026-06-14 00:17:47
+P01,ID-20260614001654-8838,3,Condición C — Agente Virtual,3,S3_Quest_3,Permitido — Credencial | Confianza: 6,Denegado — Fuera de Horario,2.15,2026-06-14 00:17:49
+P01,ID-20260614001654-8838,3,Condición C — Agente Virtual,4,S3_Quest_4,Sin Cambios | Confianza: 4,Descuento + Recargo,2.59,2026-06-14 00:17:52
+P01,ID-20260614001654-8838,3,Condición C — Agente Virtual,5,S3_Quest_5,Reembolso Completo | Confianza: 4,Sin Reembolso — Abierto,2.91,2026-06-14 00:17:54
+P01,ID-20260614001654-8838,3,Condición C — Agente Virtual,6,S3_Quest_6,Sí — Con RRHH | Confianza: 4,Sí — Con RRHH,2.51,2026-06-14 00:17:57

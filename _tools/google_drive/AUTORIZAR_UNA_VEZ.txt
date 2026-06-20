@@ -1,0 +1,61 @@
+PF-3311 — Autorizar Google Drive (una sola vez, ~2 minutos)
+============================================================
+
+Cuenta: neyfred@gmail.com
+
+PASO 1 — Abrir el proyecto
+--------------------------
+Abrí este enlace (logueado con neyfred@gmail.com):
+
+  https://script.google.com/home/projects/1Wxnk2wWQ4qMAhRJ_VoNLKkbfzCX4PTkML__jYBGBwK_8VuwBrml1B5dj/edit
+
+Deberías ver el archivo "Code.gs" con código.
+
+
+PASO 2 — Elegir la función
+--------------------------
+Arriba, en la barra de herramientas del editor, hay:
+
+  [ menú desplegable con nombre de función ]  [ ▶ Ejecutar ]  [ Depurar ]
+
+1. Hacé clic en el menú desplegable (puede decir "doPost", "doGet" u otro nombre).
+2. Buscá y elegí:  AUTORIZAR_PERMISOS_UNA_VEZ
+
+   (Si no aparece: recargá la página F5 y esperá 10 segundos.)
+
+
+PASO 3 — Ejecutar
+-----------------
+1. Clic en el botón ▶ Ejecutar (triángulo verde / azul).
+2. La primera vez Google muestra "Se necesita autorización" o "Authorization required".
+3. Clic en "Revisar permisos" / "Review permissions".
+4. Elegí la cuenta neyfred@gmail.com.
+5. Si dice "Google no verificó esta app" → "Avanzado" → "Ir a PF3311 CSV Upload (no seguro)".
+6. Clic en "Permitir" / "Allow".
+
+
+PASO 4 — Confirmar
+------------------
+1. Volvé a pulsar ▶ Ejecutar (otra vez).
+2. Abajo en "Registro de ejecución" / "Execution log" debe aparecer:
+   Listo: permisos de Drive y Forms aprobados.
+
+
+PASO 5 — Probar desde la PC
+---------------------------
+En PowerShell, desde la carpeta del proyecto:
+
+  powershell -File "_tools\google_drive\authorize_webapp.ps1"
+
+Debe decir:  SUCCESS: Drive upload works.
+
+
+¿No encontrás el menú desplegable?
+----------------------------------
+Alternativa por "Implementar":
+
+1. Arriba a la derecha: Implementar → Administrar implementaciones
+2. En la fila "PF3311 CSV web app v3" (o similar), copiá la URL que termina en /exec
+3. Abrila en el navegador (con neyfred@gmail.com)
+4. Si pide permisos, aprobá igual que en el paso 3
+5. Luego ejecutá AUTORIZAR_PERMISOS_UNA_VEZ desde el editor (pasos 2–4 arriba)

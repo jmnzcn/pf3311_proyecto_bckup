@@ -1,0 +1,7 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,TotalExchanges,TotalTurns,AvgHelpScore,AvgTaskEngagementScore,AnswerRequestCount,OffTopicCount,ModelLeakCount,OnTopicSeconds,OffTopicSeconds,SubstantiveQuestionCount,ChatUsedInQuestion,DominantUtilityLevel,EffectiveHelpLevel,Flags,Timestamp
+P03,ID-20260620024852-2913,C,3,Condición C — Agente Virtual,1,1,2,67.5,15.0,0,1,0,0.00,30.00,0,1,Wasted,LowEngagement,off_topic=1|on_topic_sec=0.0|off_topic_sec=30.0|dominant_utility=wasted,2026-06-20 02:49:11
+P03,ID-20260620024852-2913,C,3,Condición C — Agente Virtual,2,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 02:49:13
+P03,ID-20260620024852-2913,C,3,Condición C — Agente Virtual,3,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 02:49:19
+P03,ID-20260620024852-2913,C,3,Condición C — Agente Virtual,4,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 02:49:24
+P03,ID-20260620024852-2913,C,3,Condición C — Agente Virtual,5,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 02:49:28
+P03,ID-20260620024852-2913,C,3,Condición C — Agente Virtual,6,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 02:49:34

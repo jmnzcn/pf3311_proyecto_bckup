@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,ExchangeIndex,StudentMessage,ModelMessage,HelpScore,GuidanceScore,TaskEngagementScore,StudentRequestedAnswer,StudentOffTopic,StudentGamingAttempt,ModelPossibleLeak,ScenarioRelevanceScore,SubstantiveQuestion,QuestionUtilityLevel,HelpLevel,Flags,SecondsSinceQuestionStart,GeminiLatencySeconds,Timestamp
+P03,ID-20260619234335-7280,C,3,Condición C — Agente Virtual,1,1,hi,¡Hola!,26.3,30.0,15.0,0,1,0,0,0.0,0,Wasted,Low,student_off_topic|utility=wasted,4.83,1.23,2026-06-19 23:43:58

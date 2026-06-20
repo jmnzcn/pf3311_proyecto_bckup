@@ -1,0 +1,4 @@
+﻿ParticipantCode,SessionID,SessionFolder,Complete_A_B_C,AccuracyPct_A,MeanConfidence_A,CalibrationGap_A,Items_A,AccuracyPct_B,MeanConfidence_B,CalibrationGap_B,Items_B,AccuracyPct_C,MeanConfidence_C,CalibrationGap_C,Items_C
+P01,ID-20260615001513-7895,P01_ID-20260615001513-7895,1,66.67,5.0,0.0,6,83.33,5.0,-0.1667,6,83.33,5.0,-0.1667,6
+P02,ID-20260616010101-1111,P02_ID-20260616010101-1111,1,66.67,5.0,0.0,6,83.33,5.0,-0.1667,6,100.0,5.0,-0.3333,6
+P03,ID-20260616020202-2222,P03_ID-20260616020202-2222,1,66.67,5.0,0.0,6,66.67,5.0,0.0,6,66.67,5.0,0.0,6

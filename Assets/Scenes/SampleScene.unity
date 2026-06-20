@@ -132,9 +132,9 @@ GameObject:
   - component: {fileID: 2809876}
   - component: {fileID: 2809875}
   - component: {fileID: 2809878}
-  - component: {fileID: 2809879}
+  - component: {fileID: 1899900201}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,7 +158,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 260, y: 64}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2809875
 MonoBehaviour:
@@ -179,15 +179,15 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 3
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_PressedColor: {r: 0.3207547, g: 0.30513984, b: 0.30411178, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0.92, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78, g: 0.9, b: 0.9, a: 1}
+    m_SelectedColor: {r: 0.92, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.45, g: 0.45, b: 0.45, a: 0.55}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0.12
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -203,31 +203,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2809876}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1478007416}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 880392282}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2809876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,15 +217,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.68235296, b: 0.68235296, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1ea8dccbb425db5428f816e2d03577ba, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -280,34 +256,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: -1
-  m_MinHeight: 60
-  m_PreferredWidth: 300
-  m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
+  m_MinHeight: 52
+  m_PreferredWidth: 480
+  m_PreferredHeight: 52
+  m_FlexibleWidth: 0
+  m_FlexibleHeight: 0
   m_LayoutPriority: 1
---- !u!95 &2809879
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2809873}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3c39a7d714951374eaed434dd27e765a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &18385147
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +471,7 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 463785810}
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 45
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -802,8 +756,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 550, y: 344.16}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &99619162
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -898,7 +852,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -358.44205, y: 0, z: -350.7011, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1451,7 +1405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Con asistencia IA. El profesor te guiar\xE1 en el razonamiento."
+  m_text: "Con asistencia IA. Un tutor virtual le guiar\xE1 en el razonamiento."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1652,12 +1606,17 @@ MonoBehaviour:
   inputField: {fileID: 73872383}
   questionCounterText: {fileID: 2128450485}
   myScrollRect: {fileID: 649636107}
+  questionScrollSensitivity: 45
   progressBar_Bg: {fileID: 744186514}
   finalOptionsPanel: {fileID: 1855528722}
   surveyButton: {fileID: 1876326581}
+  anotherScenarioButton: {fileID: 1083023785}
+  finalizeSessionButton: {fileID: 866899602}
   surveyUrl: 
+  surveyCodeEntryId: 
   exitPopupPanel: {fileID: 2003379495}
   safeExitPopup: {fileID: 435437277}
+  farewellPanel: {fileID: 1096901312}
   Consent_Overlay: {fileID: 1478007416}
   progressFill: {fileID: 1786839601}
   totalQuestions: 6
@@ -1665,6 +1624,8 @@ MonoBehaviour:
   dataLogger: {fileID: 854952865}
   scenarios:
   - scenarioName: "Condici\xF3n A \u2014 Sin Asistencia"
+    surveyUrl: https://docs.google.com/forms/d/1eXYTw-5RbUbLtk1trghoP2XejZCsHZs6Fyk8uuhUeak/viewform
+    surveyCodeEntryId: entry.807050638
     questions:
     - situation: "REGLAS\r\n\u2022 Dolor en el pecho O dificultad para respirar \u2192
         Prioridad 1 (Inmediata), sin excepci\xF3n.\r\n\u2022 65 a\xF1os o m\xE1s
@@ -1672,7 +1633,7 @@ MonoBehaviour:
         documentada \u2192 sube un nivel respecto al calculado (salvo P1).\r\n\u2022
         Todos los dem\xE1s casos \u2192 Prioridad 3 (Normal).\r\n\r\nSITUACI\xD3N:
         Ana, 58 a\xF1os, sin condiciones cr\xF3nicas. Fiebre 38.4\xB0C, dolor moderado
-        en articulaciones. Sin dolor en el pecho ni dificultad para respirar.\r\n\r\n\xBFCu\xE1l
+        en articulaciones. Sin dolor en el pecho ni dificultad para respirar.\r\n\r\nPREGUNTA\r\n\xBFCu\xE1l
         es la prioridad correcta para Ana?"
       optA: "Prioridad 1 \u2014 Inmediata"
       optB: "Prioridad 2 \u2014 Edad + Fiebre"
@@ -1686,8 +1647,8 @@ MonoBehaviour:
         Todos los dem\xE1s casos \u2192 Prioridad 3 (Normal).\r\n\r\nSITUACI\xD3N:
         Marco, usuario individual sin contrato empresarial. M\xF3dulo de reportes
         lento pero accesible. Sin brecha de seguridad. Problema afecta a otros 7
-        usuarios. Ticket: 4 h sin resoluci\xF3n.\r\n\r\n\xBFCu\xE1l es la prioridad
-        correcta del ticket de Marco?"
+        usuarios. Ticket: 4 h sin resoluci\xF3n.\r\n\r\nPREGUNTA\r\n\xBFCu\xE1l es
+        la prioridad correcta del ticket de Marco?"
       optA: "Prioridad 1 \u2014 Cr\xEDtico"
       optB: "Prioridad 2 \u2014 Usuarios"
       optC: "Prioridad 3 \u2014 Normal"
@@ -1699,7 +1660,7 @@ MonoBehaviour:
         Dispositivo personal Y sin aprobaci\xF3n de trabajo remoto \u2192 Acceso
         Denegado.\r\n\u2022 Todos los dem\xE1s casos \u2192 Acceso Permitido.\r\n\r\nSITUACI\xD3N:
         Luc\xEDa, departamento TI, 7:30 pm. Laptop corporativa, antivirus activo,
-        no en lista negra. Tiene aprobaci\xF3n de trabajo remoto vigente.\r\n\r\n\xBFCu\xE1l
+        no en lista negra. Tiene aprobaci\xF3n de trabajo remoto vigente.\r\n\r\nPREGUNTA\r\n\xBFCu\xE1l
         es el nivel de acceso correcto para Luc\xEDa?"
       optA: "Permitido \u2014 Trabajo Remoto"
       optB: "Denegado \u2014 Fuera de Horario"
@@ -1712,8 +1673,8 @@ MonoBehaviour:
         antig\xFCedad m\xEDnima para aval baja de 2 a\xF1os a 6 meses.\r\n\u2022
         Pr\xE9stamo para vivienda \u2192 umbral de monto sube a $25,000 (reemplaza
         $10,000).\r\n\r\nSITUACI\xD3N: Laura, cliente Premium, 10 meses de antig\xFCedad.
-        Solicita $15,000 para vivienda. Sin mora ni exclusi\xF3n.\r\n\r\n\xBFSe requiere
-        aval adicional para el pr\xE9stamo de Laura?"
+        Solicita $15,000 para vivienda. Sin mora ni exclusi\xF3n.\r\n\r\nPREGUNTA\r\n\xBFSe
+        requiere aval adicional para el pr\xE9stamo de Laura?"
       optA: "S\xED \u2014 Ambas Condiciones"
       optB: "No \u2014 Ambas Neutralizadas"
       optC: "S\xED \u2014 Solo Antig\xFCedad"
@@ -1726,8 +1687,8 @@ MonoBehaviour:
         educaci\xF3n) \u2192 restricci\xF3n de primer ingreso no aplica.\r\n\u2022
         Sanci\xF3n acad\xE9mica activa \u2192 excluye de cualquier beca, sin excepci\xF3n.\r\n\r\nSITUACI\xD3N:
         Valentina, Ingenier\xEDa (primer a\xF1o), promedio 7.9, sin sanciones acad\xE9micas.
-        Solicita la Beca de Excelencia.\r\n\r\n\xBFEs Valentina elegible para la
-        Beca de Excelencia?"
+        Solicita la Beca de Excelencia.\r\n\r\nPREGUNTA\r\n\xBFEs Valentina elegible
+        para la Beca de Excelencia?"
       optA: "No \u2014 Promedio Insuficiente"
       optB: "S\xED \u2014 \xC1rea Prioritaria"
       optC: "No \u2014 Primer Ingreso"
@@ -1740,7 +1701,7 @@ MonoBehaviour:
         proveedor puede intervenir a cualquier hora.\r\n\u2022 Todos los dem\xE1s
         casos \u2192 Prioridad Est\xE1ndar (orden de llegada).\r\n\r\nSITUACI\xD3N:
         2 am. Prensa en \xE1rea de producci\xF3n con falla total. Contrato de soporte
-        24/7 activo. T\xE9cnico de guardia interno no disponible.\r\n\r\n\xBFQu\xE9
+        24/7 activo. T\xE9cnico de guardia interno no disponible.\r\n\r\nPREGUNTA\r\n\xBFQu\xE9
         acci\xF3n corresponde para este equipo?"
       optA: "Diferir \u2014 Sin T\xE9cnico"
       optB: "Est\xE1ndar \u2014 Sin T\xE9cnico"
@@ -1748,6 +1709,8 @@ MonoBehaviour:
       optD: "Diferir \u2014 Horario Prevalece"
       correctOption: C
   - scenarioName: "Condici\xF3n B \u2014 Agente de Texto"
+    surveyUrl: https://docs.google.com/forms/d/1MLqIh__LvA7Da5-uJt6izsD-pAyALmO9Je7GlrZpTEg/viewform
+    surveyCodeEntryId: entry.117828474
     questions:
     - situation: "REGLAS\r\n\u2022 M\xE1s de 3 ausencias injustificadas \u2192 Reprobado
         autom\xE1tico, sin importar la nota.\r\n\u2022 Nota \u2265 70 en examen final
@@ -1755,7 +1718,8 @@ MonoBehaviour:
         los proyectos Y nota entre 60 y 69 \u2192 Revisi\xF3n por el profesor.\r\n\u2022
         Todos los dem\xE1s casos \u2192 Reprobado.\r\n\r\nSITUACI\xD3N: Diego, nota
         72 en examen final, entreg\xF3 todos los proyectos. Tuvo 4 ausencias: 2 justificadas
-        y 2 injustificadas.\r\n\r\n\xBFCu\xE1l es el resultado acad\xE9mico de Diego?"
+        y 2 injustificadas.\r\n\r\nPREGUNTA\r\n\xBFCu\xE1l es el resultado acad\xE9mico
+        de Diego?"
       optA: Aprobado
       optB: "Reprobado \u2014 4 Ausencias"
       optC: "Reprobado \u2014 Todas las Ausencias"
@@ -1769,8 +1733,8 @@ MonoBehaviour:
         Commit hotfix Y modifica /core o /security \u2192 requisitos de revisores
         aplican normalmente, pero con proceso acelerado.\r\n\r\nSITUACI\xD3N: Repositorio
         en freeze. Andr\xE9s, 8 meses en el equipo. Commit tipo hotfix que modifica
-        /core y /security.\r\n\r\n\xBFCu\xE1ntos revisores se requieren y bajo qu\xE9
-        proceso?"
+        /core y /security.\r\n\r\nPREGUNTA\r\n\xBFCu\xE1ntos revisores se requieren
+        y bajo qu\xE9 proceso?"
       optA: Bloqueado
       optB: "Acelerado \u2014 2 Revisores"
       optC: "Acelerado \u2014 3 Revisores"
@@ -1783,7 +1747,7 @@ MonoBehaviour:
         baja de $200 a $100 (reemplaza el l\xEDmite).\r\n\u2022 Todos los dem\xE1s
         casos con documentaci\xF3n v\xE1lida \u2192 Requiere aprobaci\xF3n del supervisor.\r\n\r\nSITUACI\xD3N:
         Rosa, 45 d\xEDas en la empresa (per\xEDodo de prueba). Gasto de $150 para
-        materiales de oficina. Con factura. Proveedor registrado.\r\n\r\n\xBFC\xF3mo
+        materiales de oficina. Con factura. Proveedor registrado.\r\n\r\nPREGUNTA\r\n\xBFC\xF3mo
         se procesa la solicitud de gasto de Rosa?"
       optA: "Requiere Supervisor \u2014 Prueba Baja Umbral"
       optB: "Aprobado \u2014 $150 Dentro del L\xEDmite"
@@ -1796,7 +1760,7 @@ MonoBehaviour:
         v\xE1lida solo si: emitida hace < 90 d\xEDas Y por supervisor nivel 3 o superior.\r\n\r\nSITUACI\xD3N:
         Archivo nivel 4. Sof\xEDa, clearance nivel 3. Autorizaci\xF3n expl\xEDcita
         para ese archivo, firmada hace 85 d\xEDas por supervisor nivel 3. Sof\xEDa
-        no est\xE1 suspendida.\r\n\r\n\xBFPuede Sof\xEDa acceder al archivo?"
+        no est\xE1 suspendida.\r\n\r\nPREGUNTA\r\n\xBFPuede Sof\xEDa acceder al archivo?"
       optA: "No \u2014 Clearance Insuficiente"
       optB: "No \u2014 Supervisor Insuficiente"
       optC: "No \u2014 Plazo L\xEDmite"
@@ -1808,8 +1772,8 @@ MonoBehaviour:
         Valor declarado > $500 \u2192 seguro obligatorio adicional, independientemente
         del tipo de env\xEDo.\r\n\u2022 Todos los dem\xE1s casos \u2192 Env\xEDo
         Est\xE1ndar.\r\n\r\nSITUACI\xD3N: Carlos, membres\xEDa premium. Paquete nacional,
-        5 kg, 40\xD730\xD720 cm, valor declarado $650.\r\n\r\n\xBFQu\xE9 tipo de
-        env\xEDo aplica para Carlos?"
+        5 kg, 40\xD730\xD720 cm, valor declarado $650.\r\n\r\nPREGUNTA\r\n\xBFQu\xE9
+        tipo de env\xEDo aplica para Carlos?"
       optA: "Est\xE1ndar"
       optB: Express + Seguro
       optC: Especial
@@ -1822,7 +1786,7 @@ MonoBehaviour:
         de datos confirmada \u2192 escala directamente a Nivel 3, sin pasar por reglas
         anteriores (salvo ticket cerrado).\r\n\r\nSITUACI\xD3N: Ticket de Isabel:
         6 h abierto. Report\xF3 el mismo problema 3 veces en 30 d\xEDas. Sin SLA
-        Premium. Soporte confirm\xF3 p\xE9rdida parcial de datos. Ticket abierto.\r\n\r\n\xBFA
+        Premium. Soporte confirm\xF3 p\xE9rdida parcial de datos. Ticket abierto.\r\n\r\nPREGUNTA\r\n\xBFA
         qu\xE9 nivel escala el ticket de Isabel?"
       optA: Nivel 1
       optB: "Nivel 2 \u2014 Sin SLA"
@@ -1830,6 +1794,8 @@ MonoBehaviour:
       optD: "Nivel 3 \u2014 P\xE9rdida de Datos"
       correctOption: D
   - scenarioName: "Condici\xF3n C \u2014 Agente Virtual"
+    surveyUrl: https://docs.google.com/forms/d/1mQhV7SZF4X0DRYw-pOhG62GHJxHK6d0jNTCn8pV_ceQ/viewform
+    surveyCodeEntryId: entry.529233443
     questions:
     - situation: "REGLAS\r\n\u2022 Libro en categor\xEDa \"referencia exclusiva\"
         O fuera de pr\xE9stamo en el sistema \u2192 No disponible para pr\xE9stamo,
@@ -1839,8 +1805,8 @@ MonoBehaviour:
         Todos los dem\xE1s casos \u2192 usuario en lista de espera.\r\n\r\nSITUACI\xD3N:
         Carlos, membres\xEDa activa de biblioteca. Tiene una multa de $0.50 por retraso.
         Estudia posgrado. Solicita pr\xE9stamo de 2 libros. Ninguno es de referencia
-        exclusiva ni est\xE1 fuera de pr\xE9stamo.\r\n\r\n\xBFPuede Carlos tomar
-        prestados los 2 libros?"
+        exclusiva ni est\xE1 fuera de pr\xE9stamo.\r\n\r\nPREGUNTA\r\n\xBFPuede Carlos
+        tomar prestados los 2 libros?"
       optA: "S\xED \u2014 Membres\xEDa Activa"
       optB: "S\xED \u2014 Posgrado Ampl\xEDa L\xEDmite"
       optC: "S\xED \u2014 Posgrado Cancela Multa"
@@ -1854,8 +1820,8 @@ MonoBehaviour:
         per\xEDodo vigente \u2192 Reparaci\xF3n con costo cubierto.\r\n\r\nSITUACI\xD3N:
         Miguel, televisor comprado hace 15 meses, Plan de Protecci\xF3n Extendida
         activo. T\xE9cnico document\xF3 defecto de fabricaci\xF3n en la placa base.
-        Sin modificaciones ni accidentes.\r\n\r\n\xBFQu\xE9 cobertura aplica para
-        Miguel?"
+        Sin modificaciones ni accidentes.\r\n\r\nPREGUNTA\r\n\xBFQu\xE9 cobertura
+        aplica para Miguel?"
       optA: "Nula \u2014 Plazo Vencido"
       optB: "Reemplazo \u2014 24 Meses"
       optC: "Reparaci\xF3n Cubierta"
@@ -1870,8 +1836,8 @@ MonoBehaviour:
         \u2192 solo accesos de emergencia verificados; cualquier otro: denegado,
         sin excepci\xF3n.\r\n\r\nSITUACI\xD3N: 7:30 am. Diana, visitante externa,
         credencial temporal emitida hace 3 h, acompa\xF1ada por empleado permanente.
-        Patrocinador no confirm\xF3. Zona Nivel 2.\r\n\r\n\xBFQu\xE9 resultado aplica
-        para Diana?"
+        Patrocinador no confirm\xF3. Zona Nivel 2.\r\n\r\nPREGUNTA\r\n\xBFQu\xE9
+        resultado aplica para Diana?"
       optA: "Permitido \u2014 Credencial"
       optB: "Denegado \u2014 Sin Patrocinio"
       optC: "Denegado \u2014 Fuera de Horario"
@@ -1884,8 +1850,8 @@ MonoBehaviour:
         descuento).\r\n\u2022 Cancela dentro de los primeros 30 d\xEDas del ciclo
         \u2192 reembolso proporcional; sin descuento ni recargo.\r\n\r\nSITUACI\xD3N:
         Pedro, plan B\xE1sico, 4 renovaciones consecutivas, gasto anual $1,700. Renueva
-        con 15 d\xEDas de retraso. No est\xE1 cancelando.\r\n\r\n\xBFQu\xE9 condiciones
-        aplican a la renovaci\xF3n de Pedro?"
+        con 15 d\xEDas de retraso. No est\xE1 cancelando.\r\n\r\nPREGUNTA\r\n\xBFQu\xE9
+        condiciones aplican a la renovaci\xF3n de Pedro?"
       optA: Descuento + Recargo
       optB: Solo Recargo
       optC: Solo Descuento
@@ -1898,8 +1864,8 @@ MonoBehaviour:
         a 60 d\xEDas (reemplaza los 30 d\xEDas, solo para Gold).\r\n\u2022 Todos
         los dem\xE1s casos que cumplen el plazo \u2192 Cr\xE9dito en tienda.\r\n\r\nSITUACI\xD3N:
         Rosa, membres\xEDa Gold. Compr\xF3 el producto hace 20 d\xEDas y lo abri\xF3
-        para probarlo. No presenta defecto de f\xE1brica.\r\n\r\n\xBFQu\xE9 resultado
-        aplica para Rosa?"
+        para probarlo. No presenta defecto de f\xE1brica.\r\n\r\nPREGUNTA\r\n\xBFQu\xE9
+        resultado aplica para Rosa?"
       optA: "Cr\xE9dito \u2014 Plazo 60 D\xEDas"
       optB: Reembolso Completo
       optC: "Sin Reembolso \u2014 Abierto"
@@ -1913,7 +1879,7 @@ MonoBehaviour:
         de RRHH.\r\n\u2022 Supervisor certificado \u2192 restricci\xF3n nocturna
         no aplica (puede asignarse a cualquier turno).\r\n\r\nSITUACI\xD3N: Felipe,
         4 meses de antig\xFCedad, supervisor certificado. 5 d\xEDas consecutivos
-        trabajados. Escasez cr\xEDtica (2 disponibles). Turno nocturno.\r\n\r\n\xBFPuede
+        trabajados. Escasez cr\xEDtica (2 disponibles). Turno nocturno.\r\n\r\nPREGUNTA\r\n\xBFPuede
         Felipe ser asignado al turno nocturno?"
       optA: "S\xED \u2014 Sin Restricciones"
       optB: "No \u2014 Requiere RRHH"
@@ -1930,8 +1896,10 @@ MonoBehaviour:
   - {fileID: 754829568}
   - {fileID: 1194929435}
   - {fileID: 1583615355}
-  glowColor: {r: 0, g: 1, b: 1, a: 1}
-  dullColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
+  glowColor: {r: 0.35, g: 1, b: 1, a: 1}
+  dullColor: {r: 0.22, g: 0.28, b: 0.3, a: 0.72}
+  starLabelSelectedColor: {r: 0.04, g: 0.07, b: 0.09, a: 1}
+  starLabelDullColor: {r: 0.55, g: 0.68, b: 0.72, a: 0.85}
   confirmRatingButton: {fileID: 1442436983}
 --- !u!4 &193905048
 Transform:
@@ -1964,6 +1932,9 @@ MonoBehaviour:
   displayPanel: {fileID: 1366412597}
   mainCamera: {fileID: 330585545}
   displayAnchorPosition: {x: 0, y: 0, z: 0}
+  renderTextureSize: 768
+  avatarRenderFps: 24
+  cacheFraming: 1
 --- !u!1 &196333661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2469,7 +2440,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 756.3, y: 6.8}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &263874119
 MonoBehaviour:
@@ -2491,7 +2462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xBFEN QU\xC9 CONSISTE EL EXPERIMENTO?"
+  m_text: "\xBFEn qu\xE9 consiste el experimento?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2909,7 +2880,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.000061035156, y: -0.5}
   m_SizeDelta: {x: -19.999895, y: -13}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &309940966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2922,7 +2893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
-  m_Padding: {x: -8, y: 0, z: -8, w: 0}
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
 --- !u!1 &311925665
 GameObject:
@@ -3239,7 +3210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &336537233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4249,10 +4220,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
   m_Padding:
-    m_Left: 30
-    m_Right: 30
-    m_Top: 0
-    m_Bottom: 100
+    m_Left: 20
+    m_Right: 12
+    m_Top: 18
+    m_Bottom: 24
   m_ChildAlignment: 1
   m_Spacing: 30
   m_ChildForceExpandWidth: 1
@@ -4579,7 +4550,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1920880382}
   m_HandleRect: {fileID: 1920880380}
   m_Direction: 3
-  m_Value: -0.083
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4983,7 +4954,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &508627760
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5078,7 +5049,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -354.5933, y: 0, z: -348.7135, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5154,11 +5125,11 @@ MonoBehaviour:
   m_Content: {fileID: 2085811515}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 45
   m_Viewport: {fileID: 1296858308}
   m_HorizontalScrollbar: {fileID: 115113096}
   m_VerticalScrollbar: {fileID: 1066974604}
@@ -5688,13 +5659,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExperimentLogic
   chatScrollRect: {fileID: 547123427}
   hintText: {fileID: 508627761}
+  chatScrollSensitivity: 45
   mainGameUI: {fileID: 1547692406}
+  ageConsentToggle: {fileID: 1899900103}
+  ageConsentBackground: {fileID: 1899900107}
   consentToggle: {fileID: 1041020629}
   consentBackground: {fileID: 1777461654}
   continueButton: {fileID: 2809875}
+  participantCodeInput: {fileID: 0}
   userIdText: {fileID: 1189506750}
+  scenarioSelectionPanel: {fileID: 880392282}
   questionManager: {fileID: 193905047}
-  apiKey: YOUR_GEMINI_API_KEY_HERE
+  profileSurveyUrl: https://docs.google.com/forms/d/1XjG9GBr71tyhfF2sFWn7RcKfHkBAjCnufZJKZXoP6zA/viewform
+  profileSurveyCodeEntryId: entry.1810287026
+  csvDriveUploadUrl: https://script.google.com/macros/s/AKfycbyA-DVdtaTdWgRXqjgrusL2m5cVJW7x3kZiJGRIZLEt6qCdsIcqAoc1NJyQkkcg-Iuw/exec
+  csvDriveUploadSecret: 784c915b3a664e08a32ce9a8572937f2
+  apiKey: AIzaSyBPJahkR7DYyMyApgH4URiU0OQ9FiiUgt8
   endpoint: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=
 --- !u!114 &617762684
 MonoBehaviour:
@@ -6117,7 +6097,7 @@ MonoBehaviour:
   m_Content: {fileID: 1435619898}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -7837,8 +7817,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1199990344}
   m_HandleRect: {fileID: 1199990343}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6195335
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7916,7 +7896,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 756.3, y: 17.9}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &795446222
 MonoBehaviour:
@@ -8287,17 +8267,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1096901312}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 193905047}
+        m_TargetAssemblyTypeName: MyProject.QuestionManager, Assembly-CSharp
+        m_MethodName: ShowFarewellScreen
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &814685930
 MonoBehaviour:
@@ -8583,8 +8563,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 741.4799}
-  m_SizeDelta: {x: 100, y: 910}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880392284
 MonoBehaviour:
@@ -8600,7 +8580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9091,7 +9071,7 @@ GameObject:
   - component: {fileID: 1041020629}
   - component: {fileID: 1041020630}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: Toggle_Consent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9116,7 +9096,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 702.21, y: 40}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041020629
 MonoBehaviour:
@@ -9164,19 +9144,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2809875}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-        m_MethodName: set_interactable
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!114 &1041020630
 MonoBehaviour:
@@ -9210,6 +9178,7 @@ GameObject:
   - component: {fileID: 1045076718}
   - component: {fileID: 1045076717}
   - component: {fileID: 1045076719}
+  - component: {fileID: 1045076720}
   m_Layer: 5
   m_Name: Form_Background
   m_TagString: Untagged
@@ -9234,10 +9203,11 @@ RectTransform:
   - {fileID: 263874118}
   - {fileID: 795446221}
   - {fileID: 2132833585}
+  - {fileID: 1899900102}
   - {fileID: 1041020628}
   - {fileID: 2809874}
-  - {fileID: 1138486661}
   - {fileID: 336537233}
+  - {fileID: 1138486661}
   m_Father: {fileID: 1478007417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -9299,16 +9269,37 @@ MonoBehaviour:
     m_Left: 50
     m_Right: 50
     m_Top: 50
-    m_Bottom: 40
+    m_Bottom: 50
   m_ChildAlignment: 1
-  m_Spacing: 30
+  m_Spacing: 22
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1045076720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045076715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4e2a9b1c3d5e6f8a0b2c4d6e8f0a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConsentUIController
+  consentScrollRect: {fileID: 1187985623}
+  consentBodyText: {fileID: 1522816818}
+  continueButton: {fileID: 2809875}
+  ageToggle: {fileID: 1899900103}
+  consentToggle: {fileID: 1041020629}
+  ageToggleBackground: {fileID: 1899900107}
+  consentToggleBackground: {fileID: 1777461654}
+  continueLabel: {fileID: 1899748246}
+  stepIndicator: {fileID: 0}
 --- !u!1 &1053029759
 GameObject:
   m_ObjectHideFlags: 0
@@ -10072,7 +10063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1138486661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10308,7 +10299,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 779.21, y: 301.72}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187985623
 MonoBehaviour:
@@ -10323,13 +10314,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
   m_Content: {fileID: 426765178}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 24
   m_Viewport: {fileID: 1016497548}
   m_HorizontalScrollbar: {fileID: 330113479}
   m_VerticalScrollbar: {fileID: 2047239366}
@@ -10394,9 +10385,9 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
-  m_PreferredHeight: 200
+  m_PreferredHeight: 210
   m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
+  m_FlexibleHeight: 0
   m_LayoutPriority: 1
 --- !u!1 &1189506749
 GameObject:
@@ -11741,7 +11732,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -11757,7 +11748,7 @@ MonoBehaviour:
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
   m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 1
+  m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
   m_EmojiFallbackSupport: 1
@@ -11800,11 +11791,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 309940965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 56.25657}
-  m_SizeDelta: {x: 1317.2, y: 58}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1 &1365115540
 GameObject:
   m_ObjectHideFlags: 0
@@ -11822,7 +11813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1365115541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11838,10 +11829,10 @@ RectTransform:
   - {fileID: 880392283}
   m_Father: {fileID: 575649272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -1281.48}
-  m_SizeDelta: {x: 1820.0001, y: 170}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365115542
 MonoBehaviour:
@@ -11856,8 +11847,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 0}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12298,9 +12289,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 400.00055, y: 0}
-  m_SizeDelta: {x: -1700.1997, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1435619899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12334,10 +12325,10 @@ MonoBehaviour:
     m_Bottom: 20
   m_ChildAlignment: 0
   m_Spacing: 0
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -12612,15 +12603,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nExperimento: Impacto de Agentes Virtuales en la Confianza del Usuario\r\nInstituci\xF3n:
+  m_text: "Experimento: Impacto de Agentes Virtuales en la Confianza del Usuario\r\nInstituci\xF3n:
     Universidad de Costa Rica / Sistema de Estudios de Posgrado\r\nInvestigador principal:
-    NeyFred Jimenez Campos\r\nCorreo de contacto: ney.jimenez@ucr.ac.cr\r\nCurso:
+    Ney Fred Jim\xE9nez Campos\r\nCorreo de contacto: ney.jimenez@ucr.ac.cr\r\nCurso:
     PF-3311 Temas Especiales de Ingenier\xEDa de Sistemas de Informaci\xF3n: Agentes
     Virtuales Inteligentes\r\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n1.
     PROP\xD3SITO DEL ESTUDIO\r\nEste estudio tiene como objetivo determinar si la
     presencia de un agente virtual influye en el nivel de confianza que experimenta
     un usuario al responder preguntas de opci\xF3n \xFAnica. Los resultados ser\xE1n
-    utilizados exclusivamente con fines acad\xE9micos.\r\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n2.
+    utilizados exclusivamente con fines acad\xE9micos.\r\nDuraci\xF3n estimada: 15-20
+    minutos.\r\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n2.
     DATOS QUE SE RECOLECTAR\xC1N\r\n- Un identificador de sesi\xF3n \xFAnico y an\xF3nimo.\r\n-
     El tiempo que usted dedica a cada pregunta.\r\n- Su respuesta seleccionada en
     cada pregunta.\r\n- Su nivel de confianza al finalizar cada pregunta.\r\n\r\nNing\xFAn
@@ -12633,11 +12625,11 @@ MonoBehaviour:
     RIESGOS Y BENEFICIOS\r\nEste estudio no representa ning\xFAn riesgo f\xEDsico,
     psicol\xF3gico ni acad\xE9mico. Los resultados contribuir\xE1n al conocimiento
     sobre el uso de agentes virtuales en entornos educativos.\r\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\n6.
-    CONTACTO\r\nSi tiene alguna pregunta puede comunicarse con:\r\nNeyFred Jimenez
-    Campos\r\nney.jimenez@ucr.ac.cr\r\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\nDECLARACI\xD3N
+    CONTACTO\r\nSi tiene alguna pregunta, comun\xEDquese con:\r\nNey Fred Jim\xE9nez
+    Campos\r\nCorreo: ney.jimenez@ucr.ac.cr\r\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r\nDECLARACI\xD3N
     DE CONSENTIMIENTO\r\nHe le\xEDdo y comprendido la informaci\xF3n anterior. Entiendo
-    que mi participaci\xF3n es voluntaria y que puedo retirarme en cualquier momento.\r\n 
-    [ ] Acepto participar en este estudio.\r\n\r\n"
+    que mi participaci\xF3n es voluntaria y que puedo retirarme en cualquier momento.\r\n\r\nPara
+    continuar, marque las dos casillas que aparecen debajo de este texto.\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14101,7 +14093,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sin asistencia. Responde de forma independiente.
+  m_text: "Sin asistencia. Usted responder\xE1 de forma independiente."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14899,7 +14891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4d56e5b8188c64892ed780e7dd6e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AzureLipSync
-  subscriptionKey: YOUR_API_KEY_HERE
+  subscriptionKey: 2gb0NjOW6wlFNiPcKgtiUyvdRea5krxmlNxgJ4pgTtudppMw8UBQJQQJ99CEACYeBjFXJ3w3AAAYACOGMO4c
   region: eastus
   meshRenderer: {fileID: 2109619579}
   characterAnimator: {fileID: 1714685661}
@@ -14947,7 +14939,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 24, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1777461654
 MonoBehaviour:
@@ -16556,7 +16548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.000034332275, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899748246
@@ -16579,7 +16571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CONTINUAR
+  m_text: Continuar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16606,17 +16598,17 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 1.5
   m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -16659,6 +16651,358 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899748244}
   m_CullTransparentMesh: 1
+--- !u!1 &1899900101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899900102}
+  - component: {fileID: 1899900103}
+  - component: {fileID: 1899900104}
+  m_Layer: 5
+  m_Name: Toggle_Age18
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1899900102
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900101}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1899900106}
+  - {fileID: 1899900114}
+  m_Father: {fileID: 1045076716}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1899900103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Toggle
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1899900107}
+  toggleTransition: 1
+  graphic: {fileID: 1899900111}
+  m_Group: {fileID: 0}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_IsOn: 0
+--- !u!114 &1899900104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: 40
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!1 &1899900105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899900106}
+  - component: {fileID: 1899900108}
+  - component: {fileID: 1899900107}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1899900106
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900105}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1899900110}
+  m_Father: {fileID: 1899900102}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 12, y: -12}
+  m_SizeDelta: {x: 24, y: 24}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1899900107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1899900108
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900105}
+  m_CullTransparentMesh: 1
+--- !u!1 &1899900109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899900110}
+  - component: {fileID: 1899900112}
+  - component: {fileID: 1899900111}
+  m_Layer: 5
+  m_Name: Checkmark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1899900110
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900109}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1899900106}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1899900111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.3207547, b: 0.3207547, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1899900112
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900109}
+  m_CullTransparentMesh: 1
+--- !u!1 &1899900113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899900114}
+  - component: {fileID: 1899900116}
+  - component: {fileID: 1899900115}
+  m_Layer: 5
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1899900114
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900113}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1899900102}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 14.365021, y: 1.6950073}
+  m_SizeDelta: {x: -38.729965, y: 1.3900018}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1899900115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 22
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 110
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Declaro que tengo 18 a\xF1os o m\xE1s."
+--- !u!222 &1899900116
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899900113}
+  m_CullTransparentMesh: 1
+--- !u!114 &1899900201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2809873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.28}
+  m_EffectDistance: {x: 0, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1912868822
 GameObject:
   m_ObjectHideFlags: 0
@@ -17231,7 +17575,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 17, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2047239366
 MonoBehaviour:
@@ -17277,7 +17621,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 751577243}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.2510183
+  m_Size: 0.17557266
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17353,11 +17697,11 @@ RectTransform:
   - {fileID: 508627759}
   m_Father: {fileID: 1296858308}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0.0007171631}
-  m_SizeDelta: {x: 500, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2085811516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17781,7 +18125,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 770.7, y: 34.22}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2122070232
 MonoBehaviour:
@@ -17803,7 +18147,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FORMULARIO DE CONSENTIMIENTO INFORMADO
+  m_text: Formulario de consentimiento informado
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18094,7 +18438,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 770, y: 142.9}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2132833586
 MonoBehaviour:
@@ -18138,9 +18482,9 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
-  m_PreferredHeight: 220
+  m_PreferredHeight: 150
   m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
+  m_FlexibleHeight: 0
   m_LayoutPriority: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

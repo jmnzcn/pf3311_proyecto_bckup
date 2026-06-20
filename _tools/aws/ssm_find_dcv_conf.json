@@ -1,0 +1,6 @@
+{
+  "commands": [
+    "Get-ChildItem 'C:\\Program Files' -Recurse -Filter dcv.conf -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName",
+    "Get-ChildItem 'C:\\Program Files (x86)' -Recurse -Filter dcv.conf -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName"
+  ]
+}

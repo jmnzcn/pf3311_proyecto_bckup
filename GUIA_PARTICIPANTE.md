@@ -9,30 +9,50 @@ Detalle técnico del sistema: [README.md](README.md).
 ## Antes de empezar
 
 1. **Conexión:** Usá el enlace o credenciales (usuario/contraseña) que te envió el investigador para entrar a la **máquina virtual Windows**.
-2. **Pantalla:** En la VM, la ventana del experimento debe verse a **1920×1080** (pantalla completa o ventana maximizada).
+2. **Pantalla:** El experimento se abre en **pantalla completa 1920×1080** (no hace falta maximizar manualmente).
 3. **Internet:** La VM debe tener conexión estable (necesaria para condiciones con agente de texto o avatar).
 4. **No abras** archivos en la carpeta `CSV data/` ni uses Excel en la VM antes ni durante la sesión.
 5. Reservá **60–75 minutos** sin interrupciones.
-6. El investigador te indicará el **orden de las condiciones** (A, B, C) y, al final, el enlace de la **encuesta** si aplica.
+6. El investigador te asignará un **código de participante** (por ejemplo `P01`, `P12`, `P20`) y los **enlaces de cuestionarios** (perfil al inicio; uno breve tras cada bloque real).
 
 ---
 
 ## Cómo iniciar
 
 1. En la VM, abrí **`ExperimentPrototypeB03230.exe`** (una sola vez; no hagas doble clic).
-2. Marcá la casilla de **consentimiento** y pulsá continuar.
+2. Ingresá el **código de participante** que te dio el investigador (podés escribir `P1`, `p01`, `P20`, etc.; la app lo normaliza), marcá las **dos casillas** de consentimiento y pulsá **Continuar**.
 
 ![Consentimiento informado](docs/figures/figura_03_consentimiento.png)
 
-3. Seguí el orden de condiciones que te indicaron y pulsá el botón INICIAR correspondiente:
+3. En la pantalla de selección verás **cuatro botones** y, arriba, una **leyenda** que explica qué es cada letra (**A** = sin asistencia, **B** = agente de texto, **C** = agente virtual) y **tu orden de bloques** (ej.: `Tu orden: B → C → A`). Cada botón real lleva la letra **A**, **B** o **C** a la izquierda. Seguí **exactamente esa secuencia** al elegir cada condición.
 
 ![Selección de condición](docs/figures/figura_04_seleccion.png)
 
 | Botón | Qué incluye |
 |-------|-------------|
-| **INICIAR: SIN ASISTENCIA** | 6 preguntas. Sin chat ni avatar. |
-| **INICIAR: AGENTE DE TEXTO** | 6 preguntas + chat con agente. |
-| **INICIAR: AGENTE VIRTUAL** | 6 preguntas + chat + avatar que habla. |
+| **INICIAR: PRÁCTICA** | 1 pregunta de prueba **sin registro**. Familiarizate con la interfaz y, si aplica, con el chat o avatar. Solo una vez por sesión. |
+| **INICIAR: SIN ASISTENCIA** | 6 preguntas reales (condición **A**). Sin chat ni avatar. |
+| **INICIAR: AGENTE DE TEXTO** | 6 preguntas reales (condición **B**) + chat con agente. |
+| **INICIAR: AGENTE VIRTUAL** | 6 preguntas reales (condición **C**) + chat + avatar que habla. |
+
+### Orden recomendado
+
+1. **Práctica** (opcional pero recomendada por el investigador).
+2. Los **tres bloques reales** en el orden que muestra la app (letras **A**, **B**, **C**).
+
+La práctica usa el mismo tipo de ayuda (sin agente, solo chat o chat+avatar) que tu **primer bloque real**, según tu código de participante.
+
+### Orden obligatorio (bloques reales)
+
+Solo podés pulsar **un bloque real a la vez**, en el orden que muestra la app. Los demás botones reales aparecen **deshabilitados** hasta que completes el bloque anterior de tu secuencia. Así evitamos saltar condiciones por error.
+
+**INICIAR: PRÁCTICA** no sigue esa regla: podés usarlo cuando quieras (una vez por sesión), antes o entre bloques reales.
+
+### Bloques ya completados
+
+Cuando termines un bloque real y pulses **Otro Escenario**, el botón correspondiente mostrará **COMPLETADO** debajo del título **INICIAR: …** (no reemplaza el título) y quedará deshabilitado. Es una señal clara de que ese bloque ya terminaste.
+
+Los bloques que **aún no te tocan** en tu orden aparecen deshabilitados **sin** ese subtítulo; el que podés iniciar ahora es el único bloque real habilitado.
 
 En la condición **AGENTE DE TEXTO** verás el chat abajo (sin avatar a la derecha):
 
@@ -46,10 +66,10 @@ En la condición **AGENTE VIRTUAL** verás el avatar a la derecha y podés escri
 
 ## Por cada pregunta
 
-1. Leé el escenario (reglas + situación).
+1. Leé el escenario (reglas + situación). Podés desplazarte con la rueda del ratón si el texto es largo.
 2. Elegí **A, B, C o D** (en el build aparecen como opciones de prioridad u otras etiquetas según el ítem).
 3. Pulsá **SIGUIENTE**.
-4. Elegí **1 a 7 estrellas** (qué tan seguro estás de tu respuesta).
+4. Elegí **1 a 7 estrellas** (qué tan seguro estás de tu respuesta). Las estrellas seleccionadas se ven en cyan brillante; las demás, apagadas.
 5. Pulsá **entregar**.
 
 ![Pantalla de pregunta](docs/figures/figura_05_condicion_a_pregunta.png)
@@ -62,31 +82,46 @@ En condiciones con agente podés usar el **chat** entre preguntas. El asistente 
 
 ## Entre condiciones (A, B y C)
 
-Al terminar las **6 preguntas** de un bloque aparece esta pantalla:
+Al terminar las **6 preguntas** de un bloque **real** aparece esta pantalla:
 
 ![Pantalla final](docs/figures/figura_08_final.png)
 
-- Pulsá **Otro Escenario** para pasar a la siguiente condición.
-- **No** pulses **Finalizar** hasta completar las tres condiciones (salvo que el investigador te indique lo contrario).
+- Pulsá **Otro Escenario** para volver a la selección y pasar al siguiente bloque de tu orden.
+- **No** pulses **Finalizar** hasta completar las **tres condiciones reales** (salvo que el investigador te indique lo contrario).
 - **Otro Escenario** mantiene el **mismo ID de sesión** y el mismo archivo de datos en la VM.
 
 ---
 
 ## ID de sesión
 
-- Aparece en pantalla al iniciar cada escenario (ej.: `ID-20260601193008-4821`).
-- Anotalo solo si el investigador te lo pidió (para confirmar que terminaste la sesión).
+- Aparece en pantalla al iniciar cada escenario (ej.: `Participante: P03 · Sesión: ID-20260601193008-4821`).
+- El **código de participante** lo asigna el investigador; el **ID de sesión** es técnico y distingue archivos si hubiera repetición.
+- Anotalos solo si el investigador te lo pidió (para confirmar que terminaste la sesión).
+
+---
+
+## Tras cada bloque real (A, B o C)
+
+Cuando termines las **6 preguntas** de un bloque **real**, el investigador te enviará un **cuestionario en línea** (Google Forms) sobre tu experiencia en **ese** bloque. Usá el **mismo código de participante** que ingresaste al inicio en la aplicación.
+
+| Bloque que terminaste | Cuestionario |
+|----------------------|--------------|
+| Sin asistencia (A) | Corto: carga mental de la tarea |
+| Chat (B) | Experiencia con el sistema de texto |
+| Avatar (C) | Experiencia con el agente virtual |
+
+Completalo sin prisa antes de pasar al siguiente bloque (o antes de cerrar la sesión si era el último).
 
 ---
 
 ## Al terminar las tres condiciones
 
-1. Pulsá **Realizar Encuesta** si el botón está activo (enlace configurado por el investigador).
-2. Pulsá **Finalizar** para cerrar la aplicación.
-3. Avisá al investigador que completaste la sesión e indicá tu **ID de sesión** si te lo pidieron.
+1. Confirmá con el investigador que completaste los **tres bloques reales** y los **cuatro cuestionarios** (perfil + tres post-bloque).
+2. Pulsá **Finalizar** en la aplicación para cerrarla.
+3. Avisá al investigador e indicá tu **código de participante** si te lo pidieron.
 4. **Cerrá la conexión a la VM** según las instrucciones del investigador.
 
-Los datos quedan guardados automáticamente en la VM (`CSV data/`). **No** necesitás copiar ni enviar archivos desde tu computador personal.
+Los datos quedan guardados automáticamente en la VM (`CSV data/`). **No** necesitás copiar ni enviar archivos desde tu computador personal. La práctica **no** se guarda en el registro.
 
 Si hubo errores al guardar o el chat no respondió, comunicáselo al investigador con el **ID de sesión** y la hora aproximada.
 
@@ -100,8 +135,10 @@ Si hubo errores al guardar o el chat no respondió, comunicáselo al investigado
 | Chat sin respuesta | Esperá unos segundos e intentá de nuevo; avisá al investigador si persiste. |
 | Avatar no se ve o no hay voz | Confirmá que elegiste **AGENTE VIRTUAL**; reiniciá la app en la VM. |
 | Ventana congelada | Cerrá la app y volvé a abrirla; contactá al investigador con el ID de sesión. |
-| Botón de encuesta gris | Completá las tres condiciones; si sigue gris, el investigador enviará el enlace por otro medio. |
+| Botón de encuesta gris en la app | Los cuestionarios se envían por **enlace del investigador** tras cada bloque; no dependés del botón «Realizar Encuesta». |
 | No podés conectar a la VM | Contactá al investigador; no intentes instalar el experimento en tu PC. |
+| Pulsaste un bloque que aún no te toca | Solo el bloque **siguiente** de tu orden está habilitado; los demás aparecen en gris. Usá **PRÁCTICA** cuando quieras (una vez). |
+| Pulsaste un bloque que ya habías completado | Volvé con **Otro Escenario**; los bloques terminados aparecen como **COMPLETADO** y no se pueden repetir. |
 
 ---
 

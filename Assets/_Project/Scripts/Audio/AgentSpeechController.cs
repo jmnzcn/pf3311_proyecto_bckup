@@ -9,25 +9,38 @@ public class AgentSpeechController : MonoBehaviour
 
     void Awake()
     {
-        azureLipSync = GetComponent<AzureLipSync>();
-        if (azureLipSync == null)
-            azureLipSync = Object.FindFirstObjectByType<AzureLipSync>();
+        azureLipSync = ResolveAzureLipSync();
     }
 
-    public void Speak(string text)
+    public void Speak(string text, TtsExchangeContext context)
     {
-        if (string.IsNullOrWhiteSpace(text)) return;
+        if (string.IsNullOrWhiteSpace(text))
+            return;
 
-        if (azureLipSync == null)
-            azureLipSync = Object.FindFirstObjectByType<AzureLipSync>();
-
+        azureLipSync = ResolveAzureLipSync();
         if (azureLipSync != null)
         {
-            azureLipSync.SpeakText(text);
+            azureLipSync.SpeakText(text, context);
+            return;
         }
-        else
-        {
-            Debug.LogError("Could not find AzureLipSync anywhere in the scene!");
-        }
+
+        Debug.LogError("Could not find AzureLipSync anywhere in the scene!");
+        TtsOutcomeReporter.Report(context, false, "AzureLipSync_not_found");
+    }
+
+    public void CancelSpeech()
+    {
+        azureLipSync = ResolveAzureLipSync();
+        if (azureLipSync != null)
+            azureLipSync.CancelPendingSpeech();
+    }
+
+    AzureLipSync ResolveAzureLipSync()
+    {
+        if (azureLipSync != null)
+            return azureLipSync;
+
+        azureLipSync = GetComponent<AzureLipSync>();
+        return azureLipSync != null ? azureLipSync : Object.FindFirstObjectByType<AzureLipSync>();
     }
 }

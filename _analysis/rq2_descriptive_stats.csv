@@ -1,0 +1,4 @@
+﻿Condition,Metric,N,Mean,Median,StDev,Min,Max
+A,confidence_1_7,15,3.1444,3.1667,0.737,1.5,4.8333
+B,confidence_1_7,15,4.9111,4.8333,0.4266,4.0,5.8333
+C,confidence_1_7,15,5.8444,6.0,0.434,5.0,6.6667

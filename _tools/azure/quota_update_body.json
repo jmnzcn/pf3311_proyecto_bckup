@@ -1,0 +1,9 @@
+{
+  "properties": {
+    "limit": {
+      "limitObjectType": "LimitValue",
+      "limitType": "Independent",
+      "value": 16
+    }
+  }
+}

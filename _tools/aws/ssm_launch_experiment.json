@@ -1,0 +1,16 @@
+{
+  "commands": [
+    "$ErrorActionPreference = 'Continue'",
+    "$exe = 'C:\\Experimento\\ExperimentPrototypeB03230.exe'",
+    "Get-Process ExperimentPrototypeB03230 -ErrorAction SilentlyContinue | Stop-Process -Force",
+    "Unregister-ScheduledTask -TaskName 'PF3311Launch' -Confirm:$false -ErrorAction SilentlyContinue",
+    "$action = New-ScheduledTaskAction -Execute $exe -WorkingDirectory 'C:\\Experimento'",
+    "$principal = New-ScheduledTaskPrincipal -UserId 'Administrator' -LogonType Interactive -RunLevel Highest",
+    "Register-ScheduledTask -TaskName 'PF3311Launch' -Action $action -Principal $principal -Force | Out-Null",
+    "Start-ScheduledTask -TaskName 'PF3311Launch'",
+    "Start-Sleep -Seconds 8",
+    "$p = Get-Process ExperimentPrototypeB03230 -ErrorAction SilentlyContinue",
+    "if ($p) { Write-Output ('Running PID ' + $p.Id + ' WS=' + $p.WorkingSet64) } else { Write-Output 'Process not found after launch' }",
+    "Get-WinEvent -FilterHashtable @{LogName='Application'; ProviderName='Application Error'; StartTime=(Get-Date).AddMinutes(-2)} -MaxEvents 3 -ErrorAction SilentlyContinue | Select-Object TimeCreated, Message | Format-List"
+  ]
+}

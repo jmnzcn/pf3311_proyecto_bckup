@@ -1,0 +1,57 @@
+PF-3311 — Subida automática de CSV a Google Drive (participantes con .exe local)
+================================================================================
+
+El .exe sube la carpeta de sesión a tu Drive cuando:
+  - el participante acepta consentimiento, y
+  - termina cada bloque real (A / B / C).
+
+Estructura en Drive (misma que local):
+  CSVs/
+  └── P01_ID-20260614001654-8838/
+      ├── ConsentLog.csv
+      ├── ExperimentData.csv
+      ├── ChatLog.csv
+      └── …
+
+Carpeta raíz en Drive:
+  https://drive.google.com/drive/folders/1T1K1zRq9L2PHaSYkhDDBPY5b1BHKKp1Y
+
+PASOS (una sola vez)
+--------------------
+
+1) Crear el receptor en Apps Script
+   - Abrir https://script.google.com
+   - Nuevo proyecto
+   - Pegar el contenido de upload_session_csv.gs
+   - Guardar (Ctrl+S)
+
+2) Definir el secreto compartido
+   - En el proyecto: ⚙ Configuración del proyecto → Propiedades del script → Añadir fila
+     Nombre:  UPLOAD_SECRET
+     Valor:   (generá uno largo, ej. powershell -Command "[guid]::NewGuid().ToString('N')")
+   - Guardar
+
+3) Desplegar como aplicación web
+   - Implementar → Nueva implementación
+   - Tipo: Aplicación web
+   - Ejecutar como: Yo
+   - Quién tiene acceso: Cualquier persona
+   - Implementar → copiar la URL que termina en /exec
+
+4) Configurar Unity antes del build
+   - Abrir SampleScene → GameManager (ExperimentLogic)
+   - csvDriveUploadUrl     = URL /exec del paso 3
+   - csvDriveUploadSecret  = mismo UPLOAD_SECRET del paso 2
+   - Recompilar el .exe
+
+5) Probar
+   - Correr el build, completar consentimiento + un bloque
+   - Verificar en Drive → CSVs → P##_ID-.../
+
+NOTAS
+-----
+- Si csvDriveUploadUrl o csvDriveUploadSecret están vacíos, no se sube nada (modo offline).
+- El despliegue web debe ser acceso "Cualquier persona, incluso anónimos" (ANYONE_ANONYMOUS): el .exe no inicia sesión en Google.
+- El secreto va dentro del .exe; no es ideal para datos ultra sensibles, pero limita quién puede escribir en tu carpeta CSVs.
+- Si falla la red, el participante sigue; los CSV quedan en CSV data/ junto al .exe.
+- La práctica no genera CSV y no dispara subida extra.

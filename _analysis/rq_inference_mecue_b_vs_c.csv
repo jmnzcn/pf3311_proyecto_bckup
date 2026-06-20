@@ -1,0 +1,5 @@
+﻿AnalysisId,Module,ModuleLabel,Left,Right,Statistic,PValue,PAdjustedBonferroni,PAdjustedHolm,SignificantBonferroni,SignificantHolm,Applied
+RQ2_FORMS,MECUE_I,Utilidad (Mód. I),B,C,,,,,,0,0,0
+RQ2_FORMS,MECUE_III,Emociones (Mód. III),B,C,,,,,,0,0,0
+RQ2_FORMS,MECUE_IV,Consecuencias (Mód. IV),B,C,,,,,,0,0,0
+RQ2_FORMS,MECUE_V,Evaluación global (Mód. V),B,C,,,,,,0,0,0

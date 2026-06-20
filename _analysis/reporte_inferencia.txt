@@ -1,0 +1,65 @@
+PF-3311: resumen de inferencia estadistica (insumo para redaccion manual)
+Subconjunto: participantes completos (6+6+6)
+
+=== RQ1: Precision (n=5) ===
+
+Inferencia:
+  Precision | Friedman chi2=6.1250, p=0.0468 (n=5)
+  Kendall W = 0.613 (0 = sin acuerdo, 1 = ranking idéntico entre condiciones)
+  Post hoc Wilcoxon pareado (Bonferroni y Holm, 3 comparaciones):
+    A vs B: W=0.0000, p=0.1250, p_adj_Bonf=0.3750, p_adj_Holm=0.3750
+    A vs C: W=0.0000, p=0.1250, p_adj_Bonf=0.3750, p_adj_Holm=0.3750
+    B vs C: W=3.0000, p=1.0000, p_adj_Bonf=1.0000, p_adj_Holm=1.0000
+
+=== RQ2: Confianza Unity (n=5) ===
+
+Inferencia:
+  Confianza Unity | Friedman chi2=10.0000, p=0.0067 (n=5)
+  Kendall W = 1.000 (0 = sin acuerdo, 1 = ranking idéntico entre condiciones)
+  Post hoc Wilcoxon pareado (Bonferroni y Holm, 3 comparaciones):
+    A vs B: W=0.0000, p=0.0625, p_adj_Bonf=0.1875, p_adj_Holm=0.1875
+    A vs C: W=0.0000, p=0.0625, p_adj_Bonf=0.1875, p_adj_Holm=0.1875
+    B vs C: W=0.0000, p=0.0625, p_adj_Bonf=0.1875, p_adj_Holm=0.1875
+
+=== RQ3: Brecha calibracion (n=5) ===
+
+Inferencia:
+  Brecha calibracion | Friedman chi2=5.2000, p=0.0743 (n=5)
+  Kendall W = 0.520 (0 = sin acuerdo, 1 = ranking idéntico entre condiciones)
+  Post hoc Wilcoxon pareado (Bonferroni y Holm, 3 comparaciones):
+    A vs B: W=4.0000, p=0.4375, p_adj_Bonf=1.0000, p_adj_Holm=0.4375
+    A vs C: W=1.0000, p=0.1250, p_adj_Bonf=0.3750, p_adj_Holm=0.2500
+    B vs C: W=0.0000, p=0.0625, p_adj_Bonf=0.1875, p_adj_Holm=0.1875
+
+=== Contrastes dirigidos (H3 y B vs C) ===
+  H3_C_vs_A (A vs C): Δ = 0.2833 [0.0944, 0.45] units, Wilcoxon p = 0.125 (n = 5)
+  H3_C_vs_B (B vs C): Δ = 0.1833 [0.0556, 0.3556] units, Wilcoxon p = 0.0625 (n = 5)
+  VIS_B_vs_C (B vs C): Δ = 0.0 [-16.6667, 13.3333] pp, Wilcoxon p = 1.0 (n = 5)
+
+=== Agente — HelpScore B vs C ===
+  Δ = 12.0 [10.8, 13.2] units, Wilcoxon p = 0.0625 (n = 5)
+
+=== RQ2 Forms — RAW-TLX ===
+
+Inferencia:
+  Friedman no aplicada: se requieren >=3 participantes con A, B y C (completos: 2).
+
+=== RQ2 Forms — meCUE B vs C ===
+  Wilcoxon pareado B vs C por módulo meCUE (p ajustada Bonferroni, 4 comparaciones):
+  Utilidad (Mód. I): requiere >=3 participantes emparejados y scipy.
+  Emociones (Mód. III): requiere >=3 participantes emparejados y scipy.
+  Consecuencias (Mód. IV): requiere >=3 participantes emparejados y scipy.
+  Evaluación global (Mód. V): requiere >=3 participantes emparejados y scipy.
+
+
+=== Hipotesis exploratorias (medias grupales) ===
+
+H1 (precision C ~ B > A): A=53.3% | B=76.7% | C=76.7%
+  Orden observado (mayor a menor): B > C > A
+
+H2 (confianza C > B > A): A=2.80 | B=4.80 | C=5.90
+  Orden observado (mayor a menor): C > B > A
+
+H3 (mayor brecha en C): A=-0.233 | B=-0.133 | C=0.050
+  Orden observado (mayor brecha primero): C > B > A
+  Brecha C vs A: consistente con H3

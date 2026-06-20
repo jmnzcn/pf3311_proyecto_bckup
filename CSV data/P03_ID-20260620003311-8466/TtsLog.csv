@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,ExchangeIndex,TtsSuccess,FailureReason,Timestamp
+P03,ID-20260620003311-8466,—,0,Sesión,0,0,,[SIN DATOS] La sesión no incluyó la condición C (agente virtual con voz); Azure TTS no aplica.,2026-06-20 00:34:36

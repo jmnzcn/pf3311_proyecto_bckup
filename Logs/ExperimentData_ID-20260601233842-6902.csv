@@ -1,0 +1,7 @@
+﻿UserID,ScenarioNumber,ScenarioName,QuestionNumber,ActionType,ActionDetail,CorrectAnswer,TimeSpent(s),Timestamp
+ID-20260601233842-6902,1,Condición A — Sin Asistencia,1,S1_Quest_1,Prioridad 1 — Inmediata | Confianza: 7,Prioridad 3 — Normal,32.41,2026-06-01 23:39:14
+ID-20260601233842-6902,1,Condición A — Sin Asistencia,2,S1_Quest_2,Prioridad 2 — Usuarios | Confianza: 7,Prioridad 2 — Usuarios,35.00,2026-06-01 23:39:17
+ID-20260601233842-6902,1,Condición A — Sin Asistencia,3,S1_Quest_3,Restringido — TI Nocturno | Confianza: 5,Restringido — TI Nocturno,37.63,2026-06-01 23:39:19
+ID-20260601233842-6902,1,Condición A — Sin Asistencia,4,S1_Quest_4,No — Ambas Neutralizadas | Confianza: 4,No — Ambas Neutralizadas,40.21,2026-06-01 23:39:22
+ID-20260601233842-6902,1,Condición A — Sin Asistencia,5,S1_Quest_5,No — Promedio Insuficiente | Confianza: 5,No — Promedio Insuficiente,42.28,2026-06-01 23:39:24
+ID-20260601233842-6902,1,Condición A — Sin Asistencia,6,S1_Quest_6,Crítica — Contrato 24/7 | Confianza: 3,Crítica — Contrato 24/7,44.35,2026-06-01 23:39:26

@@ -1,0 +1,5 @@
+﻿SessionFolder,Turns,WithinThreshold,PctWithinThreshold,MeanSeconds,ModelLeakCount,Passes90PctRule
+P01_ID-20260615001513-7895,1,1,100.0,3.2,0,1
+P02_ID-20260616010101-1111,1,1,100.0,3.2,0,1
+P03_ID-20260616020202-2222,1,1,100.0,3.2,0,1
+CSV data,1,0,0.0,5.45,0,0

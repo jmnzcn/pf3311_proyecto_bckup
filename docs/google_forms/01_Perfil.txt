@@ -1,0 +1,84 @@
+PF-3311 — Perfil del participante
+================================================================================
+Crear formulario nuevo en Google Forms. Pegar cada bloque en el campo indicado.
+No pegar estas líneas de guía. Marcar cada pregunta como OBLIGATORIA.
+Correo electrónico: DESACTIVADO (Configuración del formulario).
+================================================================================
+
+TÍTULO DEL FORMULARIO (Configuración → título)
+--------------------------------------------------------------------------------
+PF-3311 — Perfil del participante
+
+
+DESCRIPCIÓN (⊞ → Descripción)
+--------------------------------------------------------------------------------
+Estudio: Efecto de la visibilidad de un agente virtual en el desempeño y la confianza del usuario.
+Investigador: Ney Fred Jiménez Campos (B03230) — UCR.
+
+Respondé con sinceridad. Tus respuestas son anónimas: usamos solo un código (P01, P02, etc.), no tu nombre.
+Usá el mismo código que te indicó el investigador y que vas a ingresar en la aplicación Unity.
+
+
+PREGUNTA 1 — Respuesta corta | Obligatoria
+--------------------------------------------------------------------------------
+Título:
+Código de participante
+
+Texto de ayuda (opcional):
+Usá el mismo código que te indicó el investigador y que ingresaste en Unity.
+
+(Sin validación por regex: acepta P01, P16, etc.)
+
+
+PREGUNTA 2 — Opción múltiple | Obligatoria
+--------------------------------------------------------------------------------
+Título:
+¿En qué rango de edad te encontrás?
+
+Opciones:
+18–24 años
+25–34 años
+35–44 años
+45–54 años
+55–64 años
+65 años o más
+
+
+PREGUNTA 3 — Opción múltiple | Obligatoria
+--------------------------------------------------------------------------------
+Título:
+Nivel educativo más alto alcanzado
+
+Opciones (una por línea):
+Primaria completa
+Secundaria completa
+Técnico / diplomado
+Universidad incompleta
+Universidad completa (grado / licenciatura)
+Posgrado (maestría / doctorado)
+Otro
+
+
+PREGUNTA 4 — Opción múltiple | Obligatoria
+--------------------------------------------------------------------------------
+Título:
+¿Con qué frecuencia usás asistentes digitales (Siri, Alexa, ChatGPT, Copilot, etc.)?
+
+Opciones:
+Nunca o casi nunca
+Algunas veces al mes
+Algunas veces por semana
+Casi todos los días
+Varias veces al día
+
+
+PREGUNTA 5 — Opción múltiple | Obligatoria
+--------------------------------------------------------------------------------
+Título:
+¿Has interactuado antes con agentes virtuales o avatares conversacionales (videojuegos, apps, kioscos, etc.)?
+
+Opciones:
+Nunca
+Una o pocas veces
+Algunas veces
+Con frecuencia

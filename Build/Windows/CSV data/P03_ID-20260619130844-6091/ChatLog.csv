@@ -1,0 +1,7 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,TurnIndex,Role,Message,Timestamp
+P03,ID-20260619130844-6091,C,3,Condición C — Agente Virtual,1,1,user,"hola, como estas?",2026-06-19 13:09:01
+P03,ID-20260619130844-6091,C,3,Condición C — Agente Virtual,1,2,model,"¡Hola! Muy bien, ¿y vos?",2026-06-19 13:09:01
+P03,ID-20260619130844-6091,C,3,Condición C — Agente Virtual,1,3,user,"todo bien, necesito ayuda para contstar eso",2026-06-19 13:09:17
+P03,ID-20260619130844-6091,C,3,Condición C — Agente Virtual,1,4,model,"¡Claro! Con gusto te ayudo a analizar el caso. Para empezar, ¿querés que revisemos alguna de las reglas o la situación de Carlos en particular?",2026-06-19 13:09:17
+P03,ID-20260619130844-6091,C,3,Condición C — Agente Virtual,1,5,user,es la A?,2026-06-19 13:09:36
+P03,ID-20260619130844-6091,C,3,Condición C — Agente Virtual,1,6,model,"Perdón si sonó como que te iba a dar la respuesta — no es la idea. En este chat puedo aclararte las reglas y hacerte preguntas guía, pero no puedo indicarte cuál opción elegir. ¿Qué regla o condición del caso querés que revisemos primero?",2026-06-19 13:09:36

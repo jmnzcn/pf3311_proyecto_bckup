@@ -1,0 +1,236 @@
+PF-3311 — Post bloque C (agente virtual)
+================================================================================
+Crear formulario nuevo. Pegar cada bloque en el campo indicado.
+Escalas meCUE y TLX: Escala lineal 1–7, etiquetas extremos.
+Módulo V: Opción múltiple (Google Forms no admite escala lineal negativa).
+Todas las preguntas: OBLIGATORIAS.
+================================================================================
+
+TÍTULO DEL FORMULARIO
+--------------------------------------------------------------------------------
+PF-3311 — Post bloque C (agente virtual)
+
+
+DESCRIPCIÓN
+--------------------------------------------------------------------------------
+Acabás de completar el bloque con AGENTE VIRTUAL (chat + personaje con voz).
+
+Respondé según tu experiencia con ese sistema en este bloque. No hay respuestas correctas. Decidí de forma espontánea.
+
+«El producto» = el agente virtual (asistencia + personaje) que acabás de usar.
+
+Escala meCUE: 1 = Totalmente en desacuerdo · 7 = Totalmente de acuerdo.
+
+Nota RAW-TLX: no había límite de tiempo impuesto en la aplicación; en carga cognitiva, respondé según cómo te sentiste.
+
+
+PREGUNTA 1 — Respuesta corta | Obligatoria
+--------------------------------------------------------------------------------
+Título:
+Código de participante
+
+(Sin validación por regex.)
+
+
+SECCIÓN
+--------------------------------------------------------------------------------
+meCUE — Módulo I (cualidades instrumentales)
+
+
+PREGUNTA 2 — Escala lineal | 1–7 | Etiqueta 1: Totalmente en desacuerdo · Etiqueta 7: Totalmente de acuerdo
+--------------------------------------------------------------------------------
+El producto es fácil de usar.
+
+
+PREGUNTA 3 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Las funciones del asistente apoyan lo que necesitaba hacer en los casos de este bloque.
+
+
+PREGUNTA 4 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Es evidente rápidamente cómo usar el producto.
+
+
+PREGUNTA 5 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Considero que el producto es extremadamente útil.
+
+
+PREGUNTA 6 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Los procedimientos de uso del producto son sencillos de entender.
+
+
+PREGUNTA 7 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Con la ayuda de este asistente pude avanzar en los casos de este bloque.
+
+
+SECCIÓN
+--------------------------------------------------------------------------------
+meCUE — Módulo II (cualidades no instrumentales — avatar)
+
+
+PREGUNTA 8 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto está diseñado de forma creativa.
+
+
+PREGUNTA 9 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El diseño se ve atractivo.
+
+
+PREGUNTA 10 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto es elegante / tiene estilo.
+
+
+PREGUNTA 11 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El personaje del agente me resultó cercano.
+
+
+PREGUNTA 12 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Me costaría completar tareas similares sin un agente como este.
+
+
+SECCIÓN
+--------------------------------------------------------------------------------
+meCUE — Módulo III (emociones)
+
+
+PREGUNTA 13 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me entusiasma.
+
+
+PREGUNTA 14 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me cansa.
+
+
+PREGUNTA 15 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me molesta.
+
+
+PREGUNTA 16 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me relaja.
+
+
+PREGUNTA 17 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Al usar este producto me siento agotado/a.
+
+
+PREGUNTA 18 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me hace sentir feliz.
+
+
+PREGUNTA 19 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me frustra.
+
+
+PREGUNTA 20 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me hace sentir eufórico/a.
+
+
+PREGUNTA 21 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me hace sentir pasivo/a.
+
+
+PREGUNTA 22 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me calma.
+
+
+PREGUNTA 23 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Al usar este producto me siento alegre.
+
+
+PREGUNTA 24 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+El producto me enoja.
+
+
+SECCIÓN
+--------------------------------------------------------------------------------
+meCUE — Módulo IV (consecuencias de uso — 2 ítems curados)
+
+
+PREGUNTA 25 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Volvería a usar un asistente como este para tareas similares.
+
+
+PREGUNTA 26 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Al usar el producto, pierdo la noción del tiempo.
+
+
+SECCIÓN
+--------------------------------------------------------------------------------
+meCUE — Módulo V (evaluación global)
+
+
+PREGUNTA 27 — Opción múltiple | Obligatoria
+--------------------------------------------------------------------------------
+Título:
+¿Cómo evaluás el producto (el agente virtual) en general?
+
+Opciones (en este orden):
+-5 — Muy malo
+-4
+-3
+-2
+-1
+0 — Neutral
++1
++2
++3
++4
++5 — Muy bueno
+
+
+SECCIÓN
+--------------------------------------------------------------------------------
+Carga cognitiva (RAW-TLX adaptado)
+
+
+PREGUNTA 28 — Escala lineal | 1–7 | Etiqueta 1: Totalmente en desacuerdo · Etiqueta 7: Totalmente de acuerdo
+--------------------------------------------------------------------------------
+La tarea me exigió mucha actividad mental y concentración.
+
+
+PREGUNTA 29 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Sentí presión de tiempo mientras resolvía los casos.
+
+
+PREGUNTA 30 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Tuve que trabajar muy duro (esfuerzo) para completar la tarea.
+
+
+PREGUNTA 31 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Me sentí frustrado/a, tenso/a o irritado/a durante el bloque.
+
+
+PREGUNTA 32 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+Me sentí seguro/a de cómo desempeñé la tarea en este bloque.
+
+
+PREGUNTA 33 — Escala lineal | 1–7
+--------------------------------------------------------------------------------
+La tarea me resultó exigente en general.

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Microsoft.CognitiveServices.Speech;
 
@@ -44,6 +45,9 @@ public class AzureLipSync : MonoBehaviour
 
     private SpeechConfig speechConfig;
     private SpeechSynthesizer synthesizer;
+    private ulong speechGenerationId;
+    private Coroutine activeSpeakRoutine;
+    private bool isShuttingDown;
 
     private struct VisemeData { public float time; public int visemeId; }
     private List<VisemeData> visemeList = new List<VisemeData>();
@@ -74,17 +78,114 @@ public class AzureLipSync : MonoBehaviour
         };
     }
 
-    public async void SpeakText(string text)
+    /// <summary>Invalidates in-flight synthesis and stops playback (e.g. on question change).</summary>
+    public void CancelPendingSpeech()
     {
+        speechGenerationId++;
+        if (activeSpeakRoutine != null)
+        {
+            StopCoroutine(activeSpeakRoutine);
+            activeSpeakRoutine = null;
+        }
+        StopTalking();
+    }
+
+    public void SpeakText(string text, TtsExchangeContext context)
+    {
+        if (string.IsNullOrWhiteSpace(text) || isShuttingDown)
+            return;
+
+        if (activeSpeakRoutine != null)
+        {
+            StopCoroutine(activeSpeakRoutine);
+            activeSpeakRoutine = null;
+        }
+
+        activeSpeakRoutine = StartCoroutine(SpeakTextRoutine(text, context));
+    }
+
+    IEnumerator SpeakTextRoutine(string text, TtsExchangeContext context)
+    {
+        try
+        {
+            yield return SpeakTextRoutineCore(text, context);
+        }
+        finally
+        {
+            activeSpeakRoutine = null;
+        }
+    }
+
+    IEnumerator SpeakTextRoutineCore(string text, TtsExchangeContext context)
+    {
+        if (synthesizer == null)
+        {
+            Debug.LogError("Azure TTS: synthesizer not initialized.");
+            TtsOutcomeReporter.Report(context, false, "synthesizer_not_initialized");
+            NotifyTtsFailureToChat();
+            yield break;
+        }
+
+        ulong generation = ++speechGenerationId;
+
         lock (visemeList) { visemeList.Clear(); }
         if (activeRoutine != null) StopCoroutine(activeRoutine);
         StopTalking();
 
-        using (var result = await synthesizer.SpeakTextAsync(text))
+        Task<SpeechSynthesisResult> speakTask;
+        try
         {
-            if (result.Reason == ResultReason.SynthesizingAudioCompleted)
+            speakTask = synthesizer.SpeakTextAsync(text);
+        }
+        catch (System.Exception ex)
+        {
+            if (generation != speechGenerationId || isShuttingDown)
+                yield break;
+
+            Debug.LogError("Azure TTS exception: " + ex.Message);
+            TtsOutcomeReporter.Report(context, false, "exception:" + ex.GetType().Name);
+            NotifyTtsFailureToChat();
+            yield break;
+        }
+
+        while (!speakTask.IsCompleted)
+            yield return null;
+
+        if (generation != speechGenerationId || isShuttingDown)
+            yield break;
+
+        SpeechSynthesisResult result;
+        try
+        {
+            result = speakTask.Result;
+        }
+        catch (System.Exception ex)
+        {
+            if (generation != speechGenerationId || isShuttingDown)
+                yield break;
+
+            Debug.LogError("Azure TTS exception: " + ex.Message);
+            TtsOutcomeReporter.Report(context, false, "exception:" + ex.GetType().Name);
+            NotifyTtsFailureToChat();
+            yield break;
+        }
+
+        using (result)
+        {
+            if (generation != speechGenerationId || isShuttingDown)
+                yield break;
+
+            if (result.Reason == ResultReason.SynthesizingAudioCompleted &&
+                result.AudioData != null && result.AudioData.Length >= 2)
             {
                 var sampleCount = result.AudioData.Length / 2;
+                if (sampleCount <= 0)
+                {
+                    TtsOutcomeReporter.Report(context, false, "empty_audio");
+                    NotifyTtsFailureToChat();
+                    yield break;
+                }
+
                 var audioClip = AudioClip.Create("AzureAudio", sampleCount, 1, 16000, false);
                 float[] audioFloats = new float[sampleCount];
 
@@ -94,26 +195,38 @@ public class AzureLipSync : MonoBehaviour
                 }
 
                 audioClip.SetData(audioFloats, 0);
+
+                if (generation != speechGenerationId || isShuttingDown)
+                    yield break;
+
+                if (voiceAudioSource == null)
+                {
+                    TtsOutcomeReporter.Report(context, false, "audio_source_missing");
+                    NotifyTtsFailureToChat();
+                    yield break;
+                }
+
                 voiceAudioSource.clip = audioClip;
 
-                float exactEndTime = 0f;
+                float exactEndTime = audioClip.length;
                 lock (visemeList)
                 {
                     if (visemeList.Count > 0)
-                    {
-                        exactEndTime = visemeList[visemeList.Count - 1].time + 0.1f;
-                    }
+                        exactEndTime = Mathf.Min(visemeList[visemeList.Count - 1].time + 0.05f, audioClip.length);
                 }
 
-                if (exactEndTime <= 0.1f) exactEndTime = audioClip.length;
+                if (exactEndTime <= 0.05f) exactEndTime = audioClip.length;
 
-                activeRoutine = StartCoroutine(MouthRoutine(exactEndTime));
+                activeRoutine = StartCoroutine(MouthRoutine(exactEndTime, generation));
+                TtsOutcomeReporter.Report(context, true, "");
             }
             else
             {
+                string failureReason = result.Reason.ToString();
                 if (result.Reason == ResultReason.Canceled)
                 {
                     var details = SpeechSynthesisCancellationDetails.FromResult(result);
+                    failureReason = details.ErrorDetails;
                     Debug.LogError("Azure TTS canceled: " + details.ErrorDetails);
                 }
                 else
@@ -121,36 +234,47 @@ public class AzureLipSync : MonoBehaviour
                     Debug.LogError("Azure TTS failed: " + result.Reason);
                 }
 
+                TtsOutcomeReporter.Report(context, false, failureReason);
                 NotifyTtsFailureToChat();
             }
         }
     }
 
-    IEnumerator MouthRoutine(float exactEndTime)
+    IEnumerator MouthRoutine(float exactEndTime, ulong generation)
     {
+        if (generation != speechGenerationId)
+            yield break;
+
         speechEndTime = exactEndTime;
         speechActive = true;
         pausedByFocus = false;
 
-        if (characterAnimator != null)
-        {
-            characterAnimator.SetBool("isTalking", true);
-            characterAnimator.CrossFade(talkStateName, 0.1f);
-        }
+        if (voiceAudioSource == null)
+            yield break;
 
         voiceAudioSource.Play();
         isMoving = true;
         elapsedTime = 0f;
+        float speechWallClockStart = Time.unscaledTime;
 
-        // End by clip time, not isPlaying; avoids StopTalking() when the window loses focus.
-        while (speechActive && voiceAudioSource != null && voiceAudioSource.clip != null)
+        while (speechActive && generation == speechGenerationId &&
+               voiceAudioSource != null && voiceAudioSource.clip != null)
         {
-            elapsedTime = voiceAudioSource.time;
-            if (elapsedTime >= exactEndTime)
+            if (!pausedByFocus)
+                elapsedTime = voiceAudioSource.time;
+
+            if (!pausedByFocus && !voiceAudioSource.isPlaying)
+                break;
+
+            if ((!pausedByFocus && voiceAudioSource.time >= exactEndTime) ||
+                Time.unscaledTime - speechWallClockStart >= exactEndTime + 5f)
                 break;
 
             yield return null;
         }
+
+        if (generation != speechGenerationId)
+            yield break;
 
         speechActive = false;
         pausedByFocus = false;
@@ -192,17 +316,12 @@ public class AzureLipSync : MonoBehaviour
 
         voiceAudioSource.UnPause();
         isMoving = true;
-
-        if (characterAnimator != null)
-        {
-            characterAnimator.SetBool("isTalking", true);
-            characterAnimator.CrossFade(talkStateName, 0.1f);
-        }
     }
 
     void LateUpdate()
     {
-        if (meshRenderer == null || !isMoving) return;
+        if (isShuttingDown || meshRenderer == null || !isMoving)
+            return;
 
         int activeVisemeId = 0;
         lock (visemeList)
@@ -216,18 +335,12 @@ public class AzureLipSync : MonoBehaviour
 
         MapVisemeToBlendshapes(activeVisemeId);
 
-        if (characterAnimator != null)
+        if (IsAnimatorUsable())
         {
             if (activeVisemeId == 0 && characterAnimator.GetBool("isTalking"))
-            {
-                characterAnimator.SetBool("isTalking", false);
-                characterAnimator.CrossFade(idleStateName, 0.05f);
-            }
+                SetAnimatorTalking(false);
             else if (activeVisemeId != 0 && !characterAnimator.GetBool("isTalking"))
-            {
-                characterAnimator.SetBool("isTalking", true);
-                characterAnimator.CrossFade(talkStateName, 0.05f);
-            }
+                SetAnimatorTalking(true);
         }
 
         if (activeVisemeId == 0)
@@ -249,6 +362,23 @@ public class AzureLipSync : MonoBehaviour
         meshRenderer.SetBlendShapeWeight(indexJaw, weightJaw);
     }
 
+    bool IsAnimatorUsable()
+    {
+        return characterAnimator != null &&
+               characterAnimator.gameObject.activeInHierarchy &&
+               characterAnimator.isActiveAndEnabled &&
+               !isShuttingDown;
+    }
+
+    void SetAnimatorTalking(bool talking)
+    {
+        if (!IsAnimatorUsable())
+            return;
+
+        characterAnimator.SetBool("isTalking", talking);
+        characterAnimator.CrossFade(talking ? talkStateName : idleStateName, talking ? 0.1f : 0.15f);
+    }
+
     public void StopTalking()
     {
         speechActive = false;
@@ -264,7 +394,7 @@ public class AzureLipSync : MonoBehaviour
         if (voiceAudioSource != null && voiceAudioSource.isPlaying)
             voiceAudioSource.Stop();
 
-        if (characterAnimator != null)
+        if (IsAnimatorUsable())
         {
             characterAnimator.SetBool("isTalking", false);
             characterAnimator.CrossFade(idleStateName, 0.15f);
@@ -316,6 +446,32 @@ public class AzureLipSync : MonoBehaviour
 
     void OnDestroy()
     {
-        if (synthesizer != null) synthesizer.Dispose();
+        isShuttingDown = true;
+        speechGenerationId++;
+
+        if (activeSpeakRoutine != null)
+        {
+            StopCoroutine(activeSpeakRoutine);
+            activeSpeakRoutine = null;
+        }
+
+        speechActive = false;
+        pausedByFocus = false;
+        isMoving = false;
+
+        if (activeRoutine != null)
+        {
+            StopCoroutine(activeRoutine);
+            activeRoutine = null;
+        }
+
+        if (voiceAudioSource != null && voiceAudioSource.isPlaying)
+            voiceAudioSource.Stop();
+
+        if (synthesizer != null)
+        {
+            synthesizer.Dispose();
+            synthesizer = null;
+        }
     }
 }

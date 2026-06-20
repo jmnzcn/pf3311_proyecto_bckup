@@ -1,0 +1,32 @@
+PF-3311 — Google Apps Script (FormApp)
+======================================
+
+Cada FormX.gs es AUTOCONTENIDO: podés pegar UN solo archivo y ejecutarlo.
+
+ARCHIVOS
+--------
+  Form0_Perfil.gs  → createPF3311_Form0_Perfil()
+  Form1_PostA.gs   → createPF3311_Form1_PostA()
+  Form2_PostB.gs   → createPF3311_Form2_PostB()
+  Form3_PostC.gs   → createPF3311_Form3_PostC()
+  RunAll.gs        → createAllPF3311Forms() (pegar los 4 Form*.gs + RunAll en un proyecto)
+  Common.gs        → opcional si querés un solo bloque de helpers compartido
+
+UN FORMULARIO (recomendado para empezar)
+----------------------------------------
+1. script.google.com → Proyecto nuevo
+2. Pegá TODO el contenido de Form0_Perfil.gs en Code.gs
+3. Ejecutá createPF3311_Form0_Perfil
+4. Autorizá permisos
+5. Ver → Registros → copiá la URL "Responder"
+
+LOS 4 EN UN SOLO PROYECTO
+-------------------------
+1. Creá 4 archivos .gs (Form0…Form3) + RunAll.gs
+2. Ejecutá createAllPF3311Forms
+3. No hace falta Common.gs (cada Form ya trae sus helpers)
+
+NOTAS
+-----
+- Cada ejecución crea un formulario nuevo en Google Drive.
+- Si el error dice "X is not defined", reemplazá Code.gs con el .gs completo del repo.

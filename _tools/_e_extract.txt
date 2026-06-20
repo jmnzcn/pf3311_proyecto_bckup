@@ -1,0 +1,1922 @@
+
+
+======================================================================
+Entregable1_PF3311_NeyFredJimenez(B03230).pdf
+======================================================================
+1 
+ 
+Universidad de Costa Rica 
+ 
+ 
+ 
+PROGRAMA DE POSGRADO EN COMPUTACIÓN E INFORMÁTICA 
+ 
+ 
+ 
+PF-3311 – Agentes Virtuales Inteligentes 
+ 
+ 
+ 
+ENTREGABLE 1 
+Propuesta de Agente e Investigación 
+ 
+ 
+ 
+Efecto de la visibilidad de un agente virtual en el desempeño y la confianza del usuario 
+en tareas de decisión basadas en reglas 
+ 
+ 
+ 
+Profesor 
+Dr. Alexander Barquero 
+ 
+ 
+ 
+Investigador Principal: 
+Ney Fred Jiménez Campos 
+ 
+ 
+ 
+Fecha 
+5 de mayo 2026 
+ 
+ 
+ 
+I Ciclo, 2026 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2 
+ 
+Título de la Investigación 
+ 
+Efecto de la visibilidad de un agente virtual en el desempeño y la confianza del usuario en tareas 
+de decisión basadas en reglas 
+ 
+ 
+Situación Actual 
+ 
+En los últimos años los agentes virtuales se han instalado en casi todos los ámbitos de interacción 
+digital: sistemas de atención al cliente, plataformas de aprendizaje, herramientas de apoyo a la 
+toma de decisiones y entornos de simulación. Muchos de estos agentes combinan modelos de 
+lenguaje de gran escala (LLM) con representaciones visuales animadas : avatares con 
+expresiones faciales, lip-sync y gestos; esto bajo la premisa de que esto hace la experiencia más 
+natural y efectiva para el usuario. 
+ 
+El problema es que esa premisa rara vez se ha verificado con rigor. La pregunta que la 
+investigación en HCI todavía no tiene bien resuelta es si la representación visual del agente 
+produce mejoras reales y objetivas en el desempeño del usuario, o si sus ef ectos son 
+principalmente perceptuales. Dicho de otra forma: ¿verlo cambia cómo el usuario razona y 
+decide, o solo cambia cómo se siente la interacción? 
+ 
+La distinción importa especialmente en tareas donde el usuario debe aplicar criterios explícitos y 
+jerarquizados para llegar a una respuesta, esto es lo que llamamos tareas de decisión basadas 
+en reglas. En esos contextos, un agente visible podría mejorar la precisión, o podría simplemente 
+inflar la confianza sin un aumento proporcional en la exactitud. Ese segundo escenario tiene 
+consecuencias serias en dominios donde equivocarse no es trivial: medicina, derecho, seguridad 
+industrial. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3 
+ 
+Definición del Problema 
+ 
+La problemática que aborda esta investigación es relevante en varios niveles: 
+ 
+Académico: Los estudios sobre embodiment en agentes dan resultados contradictorios, y buena 
+parte de esa contradicción viene de un problema de diseño: casi nadie controla que el contenido 
+de la asistencia sea el mismo entre condiciones. Eso hace imposible saber si lo  que cambia es 
+el avatar o lo que dice. 
+ 
+Práctico: Desarrollar un agente animado cuesta tiempo y dinero. Si la diferencia entre un chatbot 
+de texto y un avatar con lip -sync es solo estética, eso cambia bastante el cálculo de inversión 
+para quienes toman esas decisiones. 
+ 
+Fiabilidad y seguridad: En tareas donde equivocarse tiene consecuencias, que el usuario se 
+sienta más seguro de lo que realmente está es un problema concreto. No es un efecto menor ni 
+teórico. 
+ 
+Diseño: Saber cuándo el avatar ayuda y cuándo solo distrae tiene implicaciones directas para 
+quienes diseñan estos sistemas, especialmente en contextos donde la precisión no es opcional. 
+ 
+ 
+Población Afectada 
+ 
+El problema interesa principalmente a quienes diseñan y desarrollan sistemas con agentes 
+virtuales. Más allá de ese grupo, afecta a cualquier usuario que trabaja con asistentes digitales 
+en tareas que requieren razonamiento preciso. Y a nivel académico, to ca a investigadores en 
+HCI, psicología cognitiva y diseño conversacional, que comparten el problema, pero rara vez 
+conversan entre sí. 
+ 
+ 
+Limitaciones de las Soluciones Actuales 
+ 
+La literatura existente tiene varias limitaciones o huecos, que justifican este estudio: 
+ 
+Falta de control del contenido: Muchos estudios comparan agentes con distintos niveles de 
+embodiment sin asegurarse de que el contenido de la asistencia sea idéntico entre condiciones. 
+Eso hace muy difícil atribuir las diferencias observadas exclusivamente al factor visual. 
+ 
+Sin medición de calibración: Pocos trabajos reportan simultáneamente precisión objetiva y 
+confianza subjetiva. Sin ambas métricas juntas, no se puede calcular la brecha entre ellas ni 
+detectar sobreconfianza. Si solo se mide una, no se puede saber realmente si el usuario está 
+bien calibrado o simplemente seguro de algo incorrecto. 
+ 
+Equivalencia de dificultad no verificada: Asignar tareas distintas a grupos distintos sin validar 
+que sean comparables en dificultad introduce ruido que los autores rara vez reconocen. 
+ 
+Experiencia tecnológica ignorada:  Alguien que usa agentes virtuales todos los días va a 
+responder distinto a alguien que los ve por primera vez. Esa variable casi nunca se controla. 
+ 
+4 
+ 
+Tareas conversacionales como default: La mayoría de los estudios usa tareas abiertas o de 
+conversación libre. Los contextos de decisión con reglas explícitas, que son comunes en trabajo 
+profesional real, están subrepresentados. 
+ 
+Estas limitaciones no son menores. Este proyecto las aborda directamente: el contenido de 
+asistencia es idéntico entre condiciones B y C, se miden precisión y confianza por separado en 
+cada pregunta, y se valida la dificultad de las tareas antes del experimento real. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+5 
+ 
+Revisión de Literatura 
+ 
+Para la revisión de literatura, se decidió organizar los trabajos previos en cuatro bloques 
+temáticos progresivos.  
+ 
+1. Modelos generales de confianza en sistemas automáticos. 
+ 
+2. Agentes conversacionales encarnados y sus efectos en el usuario. 
+ 
+3. Visibilidad del agente, expresiones faciales y calibración de confianza. 
+ 
+4. Herramientas de medición de experiencia de usuario.  
+ 
+Esa estructura no es arbitraria. El problema se ubica en la intersección de tres campos distintos 
+(psicología de la confianza, HCI y diseño de agentes encarnados) que tienen tradiciones 
+bibliográficas propias y que rara vez se citan entre sí. 
+ 
+Empezar desde los modelos generales de confianza en automatización permite establecer el 
+marco conceptual antes de entrar a los agentes específicamente; sin ese piso, términos como 
+calibración o sobreconfianza quedan flotando sin definición operacional.  
+ 
+El segundo bloque, sobre agentes conversacionales encarnados, sitúa el objeto de estudio 
+dentro de su campo natural.  
+ 
+El tercero es donde convergen los dos anteriores: ahí está la evidencia empírica más 
+directamente relacionada con las hipótesis del proyecto, sobre qué hace exactamente la 
+visibilidad del agente a la confianza y al desempeño.  
+ 
+El cuarto bloque justifica la elección de instrumentos de medición, que de otro modo parecería 
+arbitraria.  
+ 
+La progresión de lo general a lo específico es también el argumento: cada bloque construye 
+sobre el anterior hasta llegar al hueco concreto que este estudio intenta llenar. 
+ 
+ 
+1. Modelos de Confianza en Sistemas Automáticos y Agentes IA 
+ 
+La confianza en sistemas automatizados lleva décadas estudiándose, pero los marcos 
+conceptuales que todavía dominan la literatura vienen casi todos de los años noventa. Mayer, 
+Davis y Schoorman (1995) definieron la confianza como la disposición de una part e a ser 
+vulnerable a las acciones de otra, en función de expectativas positivas sobre sus intenciones [1]. 
+Su marco tridimensional (habilidad, benevolencia e integridad) ha sido adoptado ampliamente en 
+investigaciones sobre confianza en tecnología, incluyendo robots y agentes IA. 
+ 
+Lee y See (2004) trasladaron ese marco a la automatización, definiendo la confianza como "la 
+actitud de que un agente ayudará a lograr los objetivos de un individuo en una situación 
+caracterizada por incertidumbre y vulnerabilidad" [2]. Lo más útil de su revisión es el concepto de 
+confianza apropiada: la idea de que el nivel de dependencia del usuario debería alinearse con la 
+capacidad real del sistema. Cuando no es así (cuando el usuario confía más de lo que el sistema 
+6 
+ 
+justifica), los errores dejan de ser aleatorios y se vuelven sistemáticos. Ese desacople es el punto 
+de partida de este estudio. 
+ 
+Glikson y Woolley (2020) revisaron la literatura empírica sobre confianza humana en IA y 
+encontraron que las representaciones visuales antropomorfas aumentan consistentemente la 
+confianza percibida [3]. Pero el efecto no es uniforme: varía según el contexto, la tarea y el perfil 
+del usuario. Lo que la revisión deja sin resolver es si ese aumento de confianza se traduce en 
+mejor desempeño real, o si simplemente ensancha la brecha entre lo que el usuario cree que 
+hace y lo que efectivamente hace. 
+ 
+ 
+2. Agentes Conversacionales Encarnados: Fundamentos y Efectos en el Usuario 
+ 
+Los agentes conversacionales encarnados (ECAs) son sistemas que se presentan bajo una 
+forma corporal (virtual o física) e interactúan con el usuario mediante lenguaje natural y señales 
+no verbales sincronizadas. Cassell et al. (2000) argumentaron que esa presencia corporal activa 
+mecanismos de interacción social análogos a los que usamos entre personas [4]. Fue el punto 
+de arranque de un campo que lleva más de dos décadas produciendo evidencia sobre cómo el 
+embodiment afecta la cognición y la colaboración humano-máquina. 
+ 
+Bickmore y Picard (2005) mostraron que los agentes virtuales pueden sostener relaciones de 
+largo plazo con usuarios, generando niveles de confianza comparables a los interpersonales 
+cuando el agente exhibe comportamientos relacionales básicos: saludos, peq ueña charla, 
+memoria de interacciones previas [5]. Lo que más pesa, según sus datos, no es la sofisticación 
+técnica del agente sino la consistencia de su comportamiento a lo largo del tiempo. 
+ 
+Song et al. (2023) revisaron sistemáticamente 315 artículos sobre ECAs, chatbots y robots 
+sociales, y encontraron que la investigación ha madurado en aplicaciones médicas, educativas 
+e industriales, pero que los estudios comparativos que aíslan el efecto del embodiment de otras 
+variables siguen siendo escasos [6]. El problema no es falta de evidencia sino falta de control: 
+sabemos que los agentes encarnados generan más confianza, pero no cuánto de eso viene del 
+avatar y cuánto de todo lo que trae consigo. 
+ 
+ 
+3. Efecto del Embodiment en Confianza, Desempeño y Calibración 
+ 
+Kulms y Kopp (2016) estudiaron cómo el embodiment y la competencia del agente afectan 
+conjuntamente la confianza y la cooperación del usuario [7]. El hallazgo más interesante es que 
+el embodiment ayuda al principio, pero ese efecto no dura: conforme avanza  la interacción, lo 
+que termina determinando la confianza es el desempeño real del agente. La presencia visual 
+funciona como un crédito inicial que la competencia debe sostener. 
+ 
+En una extensión de ese trabajo, Kulms y Kopp (2018) usaron un paradigma de juego cooperativo 
+tipo Tetris para mostrar que los usuarios aplican las mismas dimensiones de evaluación social 
+(calor y competencia) a computadoras que a personas [8]. La implicac ión para el diseño de 
+avatares es incómoda: la apariencia visual activa heurísticas sociales que pueden inflar la 
+confianza independientemente de lo que el sistema haga bien o mal. Kulms y Kopp (2019) 
+sumaron otro dato: la relación entre nivel de antropomo rfismo y confianza no es lineal, y bajo 
+ciertas condiciones de competencia y dependencia los efectos se invierten [9]. 
+ 
+7 
+ 
+Shamekhi et al. (2018) compararon grupos de decisión facilitados por un agente con cara (avatar 
+proyectado en robot) versus un agente solo -voz, con 20 grupos de participantes, y encontraron 
+que el embodiment mejoró la percepción social del agente (rapport,  confianza, inteligencia 
+percibida) pero que su impacto en la calidad de las decisiones grupales dependió del tipo de 
+asistencia prestada [10]. La visibilidad tiene efectos perceptuales robustos, pero los efectos 
+funcionales son condicionales. 
+ 
+McMillan et al. (2023) ampliaron esa evidencia a un contexto de trabajo real con equipos de 
+primera respuesta, comparando un robot humanoide, un altavoz inteligente y un sistema de 
+diálogo [11]. El agente encarnado fue percibido como más confiable y mejoró  el engagement 
+respecto al altavoz, pero los autores advirtieron que los efectos dependen fuertemente del 
+contexto y la tarea. Un hallazgo que funciona con equipos de primera respuesta no tiene por qué 
+replicarse en tareas individuales de decisión basada en reglas. 
+ 
+Moradinezhad y Solovey (2021) trabajaron con tareas de opción múltiple asistidas por agentes 
+cooperativos versus no cooperativos, y encontraron que el desempeño fue significativamente 
+mayor con agentes cooperativos [12]. Lo que más importa de ese estudio e s que la confianza 
+dependió más de la historia de interacción que de las características visuales del agente. No 
+basta con que se vea bien. 
+ 
+Luo et al. (2023) examinaron cuatro condiciones de expresión facial en avatares de realidad 
+virtual (positiva, neutral, negativa y sin expresión) [13]. El resultado sorprendió: cualquier tipo de 
+expresión, incluso negativa, fue más efectiva en modificar la  confianza y las decisiones que la 
+ausencia total de expresividad. La ausencia de animación facial es la peor opción, no una opción 
+neutral. 
+ 
+Visconti et al. (2023) compararon rastreo facial con hardware especializado versus lip -sync 
+basado en audio, con 28 participantes en entornos de realidad virtual social [14]. El rastreo facial 
+superó al lip-sync en emociones de baja activación como tristeza o asco, pero la brecha se redujo 
+para emociones de alta activación. Para tareas de decisión, el lip -sync mediante blendshapes 
+sincronizadas con audio TTS es una alternativa accesible con presencia social suficiente. 
+ 
+Safi et al. (2024) estudiaron cómo el nivel de embodiment del agente (desde chatbot hasta ECA) 
+y los comportamientos de Teoría de la Mente afectan la confianza percibida y la experiencia de 
+usuario en agentes basados en LLM [15]. La forma antropomórfica in fluye positivamente en la 
+confianza, pero combinar alto embodiment con comportamientos de ToM puede producir efectos 
+no lineales y difíciles de predecir. En este experimento el LLM opera bajo restricciones explícitas 
+de reglas, lo que debería atenuar ese efecto, aunque no necesariamente eliminarlo. 
+ 
+Zhang, Liao y Bellamy (2020) encontraron que mostrar los niveles de confianza del sistema 
+mejora la precisión del usuario, pero que bajo ciertas condiciones también induce 
+sobreconfianza: los usuarios calificaban su propia certeza más alto cuando el sistema presentaba 
+alta confianza, incluso cuando ambos se equivocaban [16]. Un avatar visible podría operar por 
+un mecanismo similar, inflando la confianza sin una mejora proporcional en la precisión. 
+ 
+Scharowski et al. (2023) revisaron 96 estudios empíricos sobre calibración de confianza en 
+sistemas automatizados y documentaron que el tipo de tarea y el perfil del usuario moderan 
+significativamente los efectos [17]. Los resultados de un dominio no se tr ansfieren 
+automáticamente a otro, y asumir que sí lo hacen es uno de los problemas recurrentes en esta 
+literatura. 
+ 
+8 
+ 
+Wang et al. (2024) compararon sistemas sobreconfiados, subconfiados y bien calibrados, y 
+encontraron que los usuarios expuestos a sistemas sobreconfiados adoptaron mayor 
+dependencia y sobreestimaron su propia precisión, incluso cuando tomaban malas decisio nes 
+[18]. Si un avatar produce ese mismo efecto por la vía de la presencia visual, las consecuencias 
+en contextos críticos pueden ser serias. 
+ 
+De Visser et al. (2020) propusieron que la confianza en equipos humano -robot no es estática, 
+sino que evoluciona en función de las experiencias acumuladas de éxito y fracaso [19]. En este 
+proyecto las tareas incluyen múltiples casos secuenciales, lo que po dría activar esas mismas 
+dinámicas durante la sesión. Si la confianza del participante sube o baja por razones ajenas a la 
+condición asignada, eso contamina la comparación. Es una limitación que el análisis tendrá que 
+reconocer explícitamente. 
+ 
+ 
+4. Instrumentos de Medición de Experiencia de Usuario y Confianza 
+ 
+Thüring y Mahlke (2007) propusieron el modelo CUE (Components of User Experience), que 
+descompone la experiencia de usuario en tres componentes: percepciones instrumentales 
+(utilidad, usabilidad), percepciones no instrumentales (estética, estatus) y reacci ones 
+emocionales [20]. Ese modelo es el fundamento teórico del cuestionario meCUE, y la razón por 
+la que se eligió como instrumento principal de medición subjetiva. 
+ 
+Minge, Thüring, Wagner y Kuhr (2017) presentaron la primera versión validada del meCUE: 34 
+ítems organizados en cuatro módulos (percepciones del producto, emociones del usuario, 
+consecuencias del uso y evaluación global) [21]. Los módulos de utilidad percibida y emociones 
+son los más relevantes para este experimento, porque permiten medir por separado la 
+percepción de utilidad y la confianza emocional en cada condición. Los estudios de validación 
+reportaron buena consistencia interna y validez discriminante satisfactoria. 
+ 
+Minge y Thüring (2018) publicaron la versión 2.0, refinada para cumplir cinco criterios de medición 
+estandarizada: comprehensividad, eficiencia, inteligibilidad, calidad psicométrica y adaptabilidad 
+[22]. Tiene versiones en español e inglés, lo que facilita su aplicación sin necesidad de traducción 
+ni adaptación cultural adicional. 
+ 
+ 
+Síntesis y Brechas Identificadas 
+ 
+De la revisión anterior se pueden identificar cinco brechas concretas que este proyecto busca 
+atender: 
+ 
+• El primero es el aislamiento del efecto visual. La mayoría de los estudios comparan 
+agentes visibles contra ausencia total de agente, sin controlar que el contenido de la 
+asistencia sea idéntico entre condiciones. Mientras eso no se controle, cualquier 
+diferencia observada podría deberse al contenido tanto como a la presencia visual. 
+ 
+• El segundo es la medición de calibración. Pocos trabajos reportan simultáneamente 
+precisión objetiva y confianza subjetiva. Sin ambas métricas juntas no se puede saber si 
+el usuario está bien calibrado o simplemente seguro de algo incorrecto. 
+ 
+9 
+ 
+• El tercero es el tipo de tarea. La mayoría de los estudios usa tareas conversacionales o 
+abiertas. Los entornos de decisión con reglas explícitas y jerarquizadas, que son comunes 
+en trabajo profesional real, están subrepresentados. 
+ 
+• El cuarto es la validación de equivalencia de dificultad. Asignar tareas distintas a 
+condiciones distintas sin verificar que sean comparables introduce sesgos que la mayoría 
+de los autores no reconoce ni controla. 
+ 
+• El quinto es el contexto hispanohablante. La investigación sobre ECAs en español es 
+escasa, y los efectos culturales e idiomáticos del agente vocal en TTS en español 
+prácticamente no se han estudiado. 
+ 
+Preguntas de Investigación 
+ 
+Las preguntas de investigación se derivan de las brechas identificadas en la revisión y están 
+formuladas para ser abordables dentro del alcance del curso, con un piloto acotado a expertos o 
+pares y sin requerir autorización del CEC. 
+ 
+RQ1. Precisión 
+¿Existen diferencias estadísticamente significativas en la precisión de los usuarios (medida como 
+porcentaje de respuestas correctas) entre las tres condiciones: sin agente (A), asistencia textual 
+(B) y agente virtual visible (C), en tareas de decisión basadas en reglas? 
+ 
+Justificación: Esta pregunta aborda el efecto funcional más directo del agente. El embodiment 
+mejora consistentemente la percepción social del agente [10], pero su efecto sobre el desempeño 
+objetivo varía bastante entre estudios [7, 11]. Lo que la RQ1 busca resolver es si la visibilidad del 
+agente produce alguna mejora en precisión má s allá de lo que ya aporta el texto solo. Si B y C 
+dan resultados similares, el avatar está haciendo algo, pero no es mejorar las decisiones. 
+ 
+ 
+RQ2. Confianza Subjetiva Reportada 
+¿Existen diferencias estadísticamente significativas en la confianza reportada por los usuarios 
+(medida en escala Likert de 1 a 7 mediante sub -escalas del cuestionario meCUE 2.0) entre las 
+tres condiciones de asistencia? 
+ 
+Justificación: La literatura muestra que el embodiment mejora la percepción de rapport , 
+inteligencia y confianza en el agente [10, 15], y que incluso la asistencia textual sola puede elevar 
+la confianza respecto a no tener ningún soporte [12]. Lo que no está claro es cuánto de ese 
+efecto se debe a la visibilidad del agente y cuánto al conte nido de la asistencia. RQ2 busca 
+separar eso con un instrumento validado, mirando por separado la utilidad percibida y la 
+confianza emocional. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+10 
+ 
+RQ3. Calibración Confianza-Precisión 
+¿Cómo varía la calibración del usuario (definida como la relación entre la confianza subjetiva 
+reportada y la precisión real obtenida) según la condición del agente? Específicamente, ¿en qué 
+condición se observa mayor brecha de sobreconfianza? 
+ 
+Justificación: Si el agente visible eleva la confianza sin una mejora proporcional en precisión, 
+eso confirmaría que el avatar produce un efecto perceptual que no se traduce en mejores 
+decisiones [16, 17, 18]. Ese es el escenario más problemático en dominios donde equivo carse 
+tiene consecuencias: el usuario se siente más seguro, pero no decide mejor. RQ1 y RQ2 
+caracterizan los efectos por separado; RQ3 los cruza para ver si la brecha existe y en qué 
+condición es mayor. 
+ 
+Objetivos del Agente 
+ 
+Rol del Agente 
+ 
+El agente cumple el rol de asistente de reglas en tareas de decisión estructurada. Su función es 
+estrictamente aclaratoria: no da la respuesta correcta, sino que ayuda al usuario a entender e 
+interpretar las reglas que gobiernan la tarea. Si el agente reso lviera las tareas directamente, la 
+condición C sería indistinguible de una simple consulta de respuestas y no habría varianza en 
+precisión que analizar. 
+ 
+Operacionalmente, el agente puede: 
+ 
+1. Explicar el significado de una regla cuando el usuario lo solicita.  
+2. Aclarar cómo se aplican múltiples reglas que se activan simultáneamente, indicando el 
+principio de prioridad.  
+3. Confirmar que la respuesta fue registrada y avanzar al siguiente caso.  
+4. Redirigir cordialmente cuando el usuario intenta obtener la respuesta directa, devolviendo 
+el control de la decisión al participante. 
+ 
+El agente no tiene memoria persistente entre sesiones, no hace seguimiento del historial de 
+errores del usuario y no adapta su comunicación al perfil del participante. Todo eso se sacrificó 
+para mantener el control experimental: si el agente se personaliza ra, las diferencias entre 
+condiciones podrían deberse a esa adaptación y no a la visibilidad del avatar. 
+ 
+ 
+Comportamiento y Personalidad 
+ 
+El agente mantiene un tono neutro, profesional y cordial. Las respuestas son concisas (dos a 
+cuatro oraciones como máximo), sin jerga técnica, formuladas en segunda persona singular 
+informal ("vos", acorde al español costarricense). El agente no muestra em ociones exageradas 
+ni se disculpa innecesariamente. 
+ 
+En la condición C con el agente visible, el avatar sincroniza sus movimientos labiales con el audio 
+TTS mediante blendshapes, y muestra expresiones faciales neutras durante la escucha y 
+levemente positivas al confirmar respuestas. Las expresiones se mantienen en un rango 
+moderado para evitar el efecto del uncanny valley, que la literatura documenta como factor de 
+pérdida de confianza en avatares con animaciones artificialmente exageradas. 
+11 
+ 
+ 
+Contexto de Uso 
+ 
+El agente opera en un  entorno virtual,  accesible desde cualquier computador con acceso a 
+internet. La interacción es exclusivamente textual en la condición B y textual más voz sintetizada 
+y animación del avatar en la condición C. No se requiere micrófono ni hardware adicional del lado 
+del usuario. 
+ 
+La sesión experimental dura entre 40 y 60 minutos e incluye:  
+ 
+1. Lectura de instrucciones. 
+2. Una tarea de práctica sin registro de datos, para asegurarse de que el usuario entendió 
+las reglas. 
+3. Entre seis y ocho casos de decisión con registro de respuesta, tiempo y confianza auto 
+reportada. 
+4. El cuestionario meCUE 2.0 al finalizar. 
+ 
+El participante trabaja individualmente; el evaluador no está presente durante el llenado, para 
+reducir el sesgo de deseabilidad social. 
+ 
+ 
+Usuario Objetivo 
+ 
+Los participantes objetivo son personas de 18 años o más, con acceso habitual a computadoras 
+y familiaridad básica con interfaces digitales. No se requiere experiencia previa con agentes 
+virtuales. Se excluyen participantes con daltonismo severo o dificultades de lectura que puedan 
+sesgar las tareas textuales. 
+ 
+Se estima un tamaño de muestra de 9 a 15 participantes con diseño within-subjects, donde cada 
+participante pasa por las tres condiciones. Para un piloto exploratorio ese tamaño es suficiente; 
+el objetivo no es inferencia poblacional sino detectar patrones y ajustar el diseño. 
+ 
+ 
+Objetivos Funcionales del Agente 
+ 
+1. Responder consultas sobre reglas con latencia máxima de 3 segundos.  
+2. Mantener coherencia con la base de reglas en el 100% de las respuestas, sin información 
+fuera del dominio. Esto se controla mediante un system prompt restrictivo.  
+3. Registrar automáticamente cada respuesta junto con el timestamp y el nivel de confianza 
+reportado (1-7). 
+4. Reproducir audio TTS en español con lip -sync sincronizado en la condición C, con 
+latencia de inicio menor a 2 segundos. 
+5. Mantener el contenido textual idéntico entre condiciones B y C; la única diferencia es la 
+presencia o ausencia del avatar y el audio. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+12 
+ 
+Arquitectura Técnica Preliminar 
+ 
+La arquitectura propuesta integra cuatro subsistemas principales:  
+ 
+1. La interfaz de usuario (frontend). 
+2. El módulo de lenguaje natural (LLM). 
+3. El módulo de síntesis de voz y animación (TTS + avatar). 
+4. El subsistema de registro de datos experimentales. La Figura 1 ilustra el flujo de 
+información entre estos componentes. 
+ 
+ 
+Figura 1. Arquitectura técnica preliminar del sistema experimental. 
+ 
+ 
+ 
+ 
+1. Dispositivo y Entorno de Despliegue 
+ 
+El sistema se ejecuta como una aplicación standalone dentro de un entorno virtual controlado 
+por el investigador, al que los participantes acceden de forma remota desde sus propios equipos.  
+Cada participante se conecta a la misma máquina virtual, lo que garantiza que todos corren 
+exactamente la misma versión del software, con la misma resolución, el mismo sistema operativo 
+y las mismas condiciones de renderizado.  
+Eso elimina la variabilidad entre dispositivos: no importa si el participante tiene Windows o Mac, 
+un equipo viejo o nuevo. Los datos se registran directamente en el servidor del investigador, sin 
+depender del dispositivo personal del participante ni de que configure nada. Y es más barato en 
+
+13 
+ 
+tiempo de desarrollo que montar una versión web completa, dado que la aplicación ya existe 
+como build standalone. Lo que sí hay que verificar antes del experimento real es que la máquina 
+virtual tenga capacidad gráfica suficiente para renderizar el avatar 3D con blendshapes en tiempo 
+real. Eso se confirma en el piloto. 
+ 
+ 
+2. Interfaz de Usuario (Frontend) 
+ 
+La interfaz tiene las siguientes áreas diferenciadas: 
+ 
+a) Pantalla de inicio, donde el usuario lee y acepta el consentimiento informado. Si no 
+acepta, no puede continuar. 
+b) Panel de selección de escenario, donde el usuario elige con cuál de los tres bloques va 
+a comenzar, siguiendo el orden que se le indicó. 
+c) Panel de preguntas, donde se presenta el caso de decisión con sus opciones de 
+respuesta. 
+d) Ventana emergente de confianza, que aparece después de cada respuesta y antes de 
+avanzar a la siguiente pregunta. El usuario debe indicar su nivel de confianza en escala 
+de 1 a 7 antes de poder continuar. Esto captura el dato en el momento exacto, no de 
+forma retrospectiva. 
+e) Panel del agente, que muestra el avatar en la condición C o el cuadro de chat en la 
+condición B. 
+ 
+En la condición A, el panel del agente está deshabilitado y no hay acceso a chat. En la condición 
+B, el panel muestra únicamente texto, sin animación ni voz. En la condición C, el panel contiene 
+el canvas Unity con el avatar 3D, sincronización labial y expresiones faciales. 
+ 
+ 
+3. Módulo de Lenguaje Natural (LLM) 
+ 
+El procesamiento del lenguaje natural se delega a un modelo de lenguaje accedido vía API. La 
+primera opción es GPT -4o mini (OpenAI) y las alternativas son Claude Haiku (Anthropic) o 
+ElevenLabs, con latencias de respuesta menores a 2 segundos para respuesta s cortas. La 
+elección dependerá de la disponibilidad de créditos y los resultados del piloto. 
+ 
+El system prompt incorpora el conjunto completo de reglas del experimento, instrucciones de 
+comportamiento y restricciones de salida. Eso reduce el riesgo de que el modelo proporcione 
+respuestas fuera del dominio o revele la respuesta directamente, aunque no lo elimina por 
+completo. El backend maneja las llamadas a la API añadiendo el historial de la sesión en cada 
+request para mantener coherencia conversacional. 
+ 
+ 
+4. Módulo de Síntesis de Voz y Animación del Avatar 
+ 
+Una vez que el LLM genera la respuesta, el backend la envía a un servicio TTS. Se evalúan dos 
+opciones: Claude (mayor naturalidad, costo por carácter) y Google Cloud TTS (menor costo, 
+calidad suficiente para voz neutral). Ambos soportan español latinoamericano. El audio resultante 
+se envía al cliente junto con los datos de visemas (unidades visuales del fonema) que controlan 
+las blendshapes del avatar. 
+ 
+14 
+ 
+El avatar es un modelo 3D humanoide de Turbosquid, con rigging completo y blendshapes 
+preconfiguradas para lip -sync, renderizado en Unity LTS. Las expresiones faciales (neutral 
+durante la escucha, ligera sonrisa al confirmar) se activan mediante animacione s de estado 
+controladas desde el backend según el tipo de respuesta del agente. 
+ 
+ 
+5. Subsistema de Registro de Datos 
+ 
+Cada interacción del usuario genera un registro con los siguientes campos: identificador de 
+participante (anónimo), condición asignada (A/B/C), número de pregunta, respuesta 
+seleccionada, respuesta correcta, indicador de acierto (booleano), timestamp de inicio y fin del 
+caso, tiempo de respuesta en segundos, y nivel de confianza reportado (1–7). Estos registros se 
+almacenan en el backend y se exportan como CSV para el análisis estadístico. 
+ 
+El cuestionario meCUE 2.0 se administra al finalizar la sesión vía Google Forms o Qualtrics, con 
+un enlace generado automáticamente desde la interfaz al completar el último caso. Se usan los 
+módulos de utilidad percibida, intención de uso y evaluación global del meCUE, complementados 
+con una escala Likert de 3 ítems sobre confianza en la decisión tomada. El evaluador no está 
+presente durante el llenado del cuestionario para reducir el sesgo de deseabilidad social. 
+ 
+ 
+6. Justificación de las Decisiones Tecnológicas 
+ 
+La combinación Unity + TTS + LLM vía API se eligió por razones prácticas y académicas. Unity 
+tiene soporte maduro para el tipo de avatar que requiere el experimento y una curva de 
+aprendizaje manejable dentro del tiempo disponible. Todas las herramientas t ienen 
+documentación pública y versiones gratuitas o de bajo costo, lo que hace el proyecto 
+reproducible. Y el uso de avatares 3D con lip -sync mediante blendshapes es el estado del arte 
+en ECAs de bajo costo según literatura reciente [13, 14, 15].  
+ 
+Se usa una API de LLM externa en lugar de un modelo local porque la calidad de respuesta en 
+español de los modelos locales disponibles no es suficiente para el experimento. Las API keys 
+no se suben al repositorio de GitHub; se manejan mediante variables de entorno. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+15 
+ 
+Resumen del Stack Tecnológico 
+ 
+Tabla 1. Componentes del stack tecnológico propuesto. 
+ 
+Componente Decisión / Herramienta Justificación 
+Dispositivo Una máquina virtual controlada por 
+el investigador a la que los 
+participantes acceden 
+remotamente. 
+Acceso universal sin instalación 
+local requerida. 
+Frontend Aplicación standalone de Unity que 
+corre dentro del entorno virtual. 
+Modularidad por condición; Unity 
+para el avatar 3D. 
+Avatar / 
+Embodiment 
+Modelo 3D Turbosquid; rigging 
+completo; blendshapes para lip-
+sync 
+Calidad visual suficiente; costo 
+accesible; compatible con Unity 
+Motor de rendering Unity 2022.3 LTS Soporte robusto para avatares 
+3D; amplia documentación 
+LLM GPT-4o mini (OpenAI API) 
+alternativa: Claude Haiku 
+(Anthropic) 
+Calidad de respuesta en 
+español; restricción via system 
+prompt 
+TTS ElevenLabs o Google Cloud TTS  
+español latinoamericano 
+Naturalidad vocal; compatibilidad 
+con datos de visemas 
+Lip-sync Blendshapes activadas por 
+visemas del audio TTS en tiempo 
+real 
+Técnica validada en literatura; 
+sin hardware adicional [14] 
+Backend Python (FastAPI) con CSV / JSON Middleware LLM + TTS; registro 
+de datos experimentales 
+Cuestionario meCUE 2.0 vía Google Forms o 
+Qualtrics 
+Instrumento validado [21, 22]; 
+fácil distribución y exportación 
+Control de 
+versiones 
+GitHub (sin API keys en el 
+repositorio) 
+Requerimiento del entregable; 
+buenas prácticas de seguridad 
+ 
+Nota: Es posible que esta arquitectura no sea la final . Las decisiones sobre TTS y LLM se 
+tomarán en función de disponibilidad de créditos y resultados del piloto. La arquitectura será 
+iterada en los entregables posteriores del curso. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+16 
+ 
+Referencias bibliográficas 
+ 
+ 
+[1] Mayer, R. C., Davis, J. H., & Schoorman, F. D. (1995). An integrative model of organizational 
+trust. Academy of Management Review, 20(3), 709-734. 
+https://doi.org/10.5465/amr.1995.9508080335 
+ 
+[2] Lee, J. D., & See, K. A. (2004). Trust in automation: Designing for appropriate reliance. 
+Human Factors: The Journal of the Human Factors and Ergonomics Society, 46(1), 50–80. 
+https://www.researchgate.net/publication/8555432_Trust_in_Automation_Designing_for_Approp
+riate_Reliance 
+ 
+[3] Glikson, E., & Woolley, A. W. (2020). Human trust in artificial intelligence: Review of 
+empirical research. Academy of Management Annals, 14(2), 627–660. 
+https://kilthub.cmu.edu/articles/journal_contribution/Human_Trust_in_Artificial_Intelligence_Revi
+ew/19500545 
+ 
+[4] Cassell, J., Sullivan, J., Prevost, S., & Churchill, E. (Eds.). (2000). Embodied conversational 
+agents. MIT Press. 
+ 
+[5] Bickmore, T. W., & Picard, R. W. (2005). Establishing and maintaining long-term human-
+computer relationships. ACM Transactions on Computer-Human Interaction, 12(2), 293-327. 
+https://doi.org/10.1145/1067860.1067867 
+ 
+[6] Song, Y., Luximon, A., & Luximon, Y. (2023). Psychological insights into the research and 
+practice of embodied conversational agents, chatbots and social assistive robots: A systematic 
+meta-review. Behaviour & Information Technology. 
+https://doi.org/10.1080/0144929X.2023.2286528 
+ 
+[7] Kulms, P., & Kopp, S. (2016). The effect of embodiment and competence on trust and 
+cooperation in human–agent interaction. In Intelligent Virtual Agents, IVA 2016. Lecture Notes in 
+Computer Science, vol 10011 (pp. 75-84). Springer. https://doi.org/10.1007/978-3-319-47665-
+0_7 
+ 
+[8] Kulms, P., & Kopp, S. (2018). A social cognition perspective on human–computer trust: The 
+effect of perceived warmth and competence on trust in decision-making with computers. 
+Frontiers in Digital Humanities, 5, 14. https://doi.org/10.3389/fdigh.2018.00014 
+ 
+[9] Kulms, P., & Kopp, S. (2019). More human-likeness, more trust? The effect of 
+anthropomorphism on self-reported and behavioral trust in continued and interdependent 
+human-agent cooperation. In Proceedings of Mensch und Computer 2019 (pp. 209-214). ACM. 
+https://doi.org/10.1145/3340764.3340786 
+ 
+[10] Shamekhi, A., Liao, Q. V., Wang, D., Bellamy, R. K. E., & Erickson, T. (2018). Face value? 
+Exploring the effects of embodiment for a group facilitation agent. In Proceedings of the 2018 
+CHI Conference on Human Factors in Computing Systems (Paper 391). ACM. 
+https://doi.org/10.1145/3173574.3173965 
+ 
+[11] McMillan, D., Jokinen, K., & Lemon, O. (2023). Seeing eye to eye: Trustworthy embodiment 
+for task-based conversational agents. Frontiers in Robotics and AI, 10, 1234767. 
+https://doi.org/10.3389/frobt.2023.1234767 
+17 
+ 
+ 
+[12] Moradinezhad, R., & Solovey, E. T. (2021). Investigating trust in interaction with 
+inconsistent embodied virtual agents. In Proceedings of the 26th International Conference on 
+Intelligent User Interfaces (pp. 327–337). ACM. https://doi.org/10.1145/3397481.3450675 
+ 
+[13] Luo, L., Weng, D., Ding, N., Hao, J., & Tu, Z. (2023). The effect of avatar facial expressions 
+on trust building in social virtual reality. The Visual Computer, 39(11), 5869-5882. 
+https://doi.org/10.1007/s00371-022-02700-1 
+ 
+[14] Visconti, A., Orso, V., Gamberini, L., Gini, G., Covaciu, A. L., & Zancanaro, M. (2023). 
+Comparing technologies for conveying emotions through realistic avatars in virtual reality-based 
+metaverse experiences. Computer Animation and Virtual Worlds, 34(3-4), e2188. 
+https://doi.org/10.1002/cav.2188 
+ 
+[15] Safi, M., Hößle, J., Jäger, M., Kiefer, P., & Raubal, M. (2024). "Am I understood?": How the 
+interplay between embodiment and Theory of Mind behavior affects LLM-based conversational 
+agents on perceived trust, anthropomorphism, presence, usability, and user experience. ACM 
+Transactions on Interactive Intelligent Systems. https://doi.org/10.1145/3774779 
+ 
+[16] Zhang, Y., Liao, Q. V., & Bellamy, R. K. E. (2020). Effect of confidence and explanation on 
+accuracy and trust calibration in AI-assisted decision making. In Proceedings of the 2020 ACM 
+Conference on Fairness, Accountability, and Transparency (pp. 295–305). ACM. 
+https://doi.org/10.1145/3351095.3372852 
+ 
+[17] Scharowski, N., Perrig, S. A. C., von Ah, U., Bruhlmann, F., Wintersberger, P., Hauptmann, 
+B., & Antona, M. (2023). Measuring and understanding trust calibrations for automated systems: 
+A survey of the state-of-the-art and future directions. In Proceedings of the 2023 CHI 
+Conference on Human Factors in Computing Systems (Article 481). ACM. 
+https://doi.org/10.1145/3544548.3581197 
+ 
+[18] (preprint) Li, J., Yang, Y., Zhang, R., Liao, Q. V., Song, T., Xu, Z., & Lee, Y. (2024). 
+Understanding the effects of miscalibrated AI confidence on user trust, reliance, and decision 
+efficacy. arXiv preprint arXiv:2402.07632. https://arxiv.org/abs/2402.07632 
+ 
+[19] de Visser, E. J., Peeters, M. M. M., Jung, M. F., Kohn, S., Shaw, T. H., Pak, R., & Neerincx, 
+M. A. (2020). Towards a theory of longitudinal trust calibration in human–robot teams. 
+International Journal of Social Robotics, 12(2), 459-478. https://doi.org/10.1007/s12369-019-
+00596-x 
+ 
+[20] Thüring, M., & Mahlke, S. (2007). Usability, aesthetics and emotions in human–technology 
+interaction. International Journal of Psychology, 42(4), 253–264. 
+https://www.researchgate.net/publication/247509276_Usability_aesthetics_and_emotions_in_hu
+man-technology_interaction 
+ 
+[21] Minge, M., Thüring, M., Wagner, I., & Kuhr, C. V. (2017). The meCUE questionnaire: A 
+modular tool for measuring user experience. In Advances in Ergonomics Modeling, Usability & 
+Special Populations. Advances in Intelligent Systems and Computing, vol 486 (pp. 115-128). 
+Springer. https://doi.org/10.1007/978-3-319-41685-4_11 
+ 
+[22] Minge, M., & Thüring, M. (2018). The meCUE questionnaire (2.0): Meeting five basic 
+requirements for lean and standardized UX assessment. In Design, User Experience, and 
+18 
+ 
+Usability: Theory and Practice. DUXU 2018. Lecture Notes in Computer Science, vol 10918 (pp. 
+463-475). Springer. https://doi.org/10.1007/978-3-319-91797-9_33 
+ 
+Nota de uso de herramientas de IA 
+Durante la elaboración de este documento se utilizaron herramientas de inteligencia artificial 
+generativa, específicamente ChatGPT (OpenAI) y Claude (Anthropic), como apoyo en tareas de 
+organización de ideas, revisión de redacción y reformulación de párrafos. Todo el contenido, los 
+argumentos, las decisiones de diseño y la selección de fuentes son de autoría propia. Las 
+herramientas se usaron como asistentes de escritura, no como generadores de contenido 
+académico. 
+ 
+
+======================================================================
+Entregable2_ApartadosABD_NeyFredJimenez.pdf
+======================================================================
+Entregable	2:	Diseño	Metodológico	y	Guion	Experimental
+PF-3311	·	Agentes	Virtuales	Inteligentes
+Investigador	Principal:
+	Ney	Fred	Jiménez	Campos	(B03230)
+Universidad	de	Costa	Rica,	Programa	de	Posgrado	en	Computación	e	Informática
+Profesor:
+	Dr.	Alexander	Barquero
+Fecha:
+	Mayo	2026
+Apartado	A:	Definición	de	Condiciones	Experimentales
+Nota	sobre	nomenclatura.
+	El	enunciado	rotula	la	condición	experimental	como	"Condición	A"	y	el	control	como	"Condición
+B"	(ejemplificando	este	último	como	una	interfaz	conversacional	en	texto	plano).	Como	este	estudio	opera	con	tres
+condiciones	y	no	dos,	la	correspondencia	es	la	siguiente:	la	condición	experimental	del	enunciado	equivale	a	la	
+Condición	C
+(Agente	Virtual	Visible);	el	control	del	enunciado,	la	interfaz	en	texto,	equivale	a	la	
+Condición	B
+	(Asistencia	Textual);	y	se
+incorpora	además	una	
+Condición	A
+	(Baseline	Puro,	sin	agente)	que	el	enunciado	no	contempla,	añadida	para	poder	aislar	el
+efecto	del	
+embodiment
+	del	efecto	del	contenido	de	la	asistencia,	según	se	justifica	al	final	del	apartado.
+Condición	A:	Baseline	Puro	(Sin	Agente)
+Cada	escenario	presentado	en	la	aplicación	Unity	incluye	sus	propias	reglas	de	decisión,	desplegadas	junto	al	enunciado
+del	caso.	El	participante	lee	las	reglas	y	el	caso	en	la	misma	pantalla,	sin	acceso	a	ningún	sistema	de	asistencia:	ni	chat,
+ni	voz,	ni	avatar.	El	panel	del	agente	está	deshabilitado	y	no	es	visible.	Los	escenarios	no	se	repiten	entre	bloques;	cada
+pregunta	es	única.	Esta	condición	muestra	qué	puede	resolver	el	participante	por	sí	solo.	De	ahí	sale	la	línea	base	del
+análisis.
+Condición	B:	Asistencia	Textual	(Chatbot	sin	Avatar)
+El	participante	tiene	acceso	a	un	panel	de	chat	de	texto	durante	toda	la	sesión.	Puede	escribir	preguntas	sobre	las
+reglas	del	escenario	que	está	leyendo,	y	el	sistema	responde	mediante	texto	en	pantalla,	generado	por	un	LLM	(Google
+Gemini	API)	bajo	un	
+system	prompt
+	que	restringe	las	respuestas	a	las	reglas	del	caso	en	curso.	El	agente	puede	explicar
+el	significado	de	una	regla,	aclarar	cómo	aplicar	reglas	en	conflicto	e	indicar	el	principio	de	prioridad	correspondiente,
+pero	en	ningún	caso	revela	la	respuesta	correcta.	No	hay	representación	visual	del	agente,	no	hay	voz	sintetizada	ni
+ningún	elemento	animado.	La	interfaz	es	igual	a	un	chat	de	texto	convencional.	El	agente	existe,	pero	no	tiene	cara	ni
+voz.
+Condición	C:	Agente	Virtual	Visible	(Condición	Experimental)
+El	participante	interactúa	con	el	mismo	sistema	de	asistencia	que	en	la	Condición	B	(mismo	LLM,	mismo	
+system
+prompt
+,	mismas	reglas	por	escenario),	con	la	diferencia	de	que	el	agente	adopta	una	representación	visual	completa:	un
+avatar	humanoide	3D	renderizado	en	tiempo	real	dentro	de	un	
+canvas
+	de	Unity,	con	sincronización	labial	(
+lip-sync
+)
+mediante	
+blendshapes
+	activadas	por	los	visemas	del	audio	TTS,	y	expresiones	faciales	neutras	durante	la	escucha	y
+levemente	positivas	al	confirmar	que	la	respuesta	fue	registrada.	La	voz	es	sintetizada	en	español	latinoamericano
+(OpenAI	TTS).	El	tono	verbal	es	el	mismo	que	en	la	Condición	B:	neutro,	profesional,	cordial,	en	segunda	persona
+singular	informal	("vos").	Las	animaciones	faciales	se	mantienen	dentro	de	un	rango	moderado	para	evitar	el	efecto	del
+uncanny	valley
+.
+Justificación	de	la	Comparación
+El	enunciado	pide	un	diseño	de	dos	condiciones,	experimental	y	control.	Trabajo	con	tres	porque	con	dos	no	se	puede
+separar	el	efecto	del	avatar	del	efecto	de	la	asistencia	textual:	si	comparara	directamente	un	agente	visible	(C)	contra
+ninguna	asistencia	(A),	cualquier	diferencia	podría	deberse	al	contenido	de	la	ayuda,	a	la	presencia	del	avatar,	o	a
+ambos	a	la	vez.	La	Condición	B	es	la	pieza	que	vuelve	interpretable	la	comparación.	Esta	decisión	responde	al	vacío
+metodológico	identificado	en	la	revisión	de	literatura:	Song	et	al.	(2023)	señalaron	que	los	estudios	que	aíslan	el	efecto
+del	
+embodiment
+	de	las	demás	variables	siguen	siendo	escasos,	y	que	la	mayoría	compara	agentes	visibles	contra
+ausencia	total	de	agente	sin	controlar	que	el	contenido	de	la	asistencia	sea	idéntico	entre	condiciones.	Sin	esa	condición
+intermedia,	ninguna	diferencia	observada	puede	atribuirse	causalmente	al	factor	visual	[6].
+B	vs.	C
+	aísla	el	efecto	de	la	visibilidad	del	agente.	Como	el	contenido	de	la	asistencia	es	idéntico	entre	ambas	(mismo
+modelo	de	lenguaje,	mismo	
+system	prompt
+,	mismas	reglas	por	escenario),	cualquier	diferencia	en	precisión,	confianza	o
+calibración	entre	B	y	C	es	atribuible	solo	a	la	presencia	del	avatar	y	el	audio,	no	a	lo	que	el	agente	dice.	Esta	es	la
+comparación	central	para	las	tres	preguntas	de	investigación.
+A	vs.	B
+	aísla	el	efecto	de	la	asistencia	textual	sobre	el	desempeño	base.	Si	B	supera	a	A	en	precisión,	se	confirma	que	la
+asistencia	por	reglas	tiene	valor	funcional	independiente	de	cómo	se	presente.
+A	vs.	C
+	mide	el	efecto	combinado:	asistencia	más	representación	visual.	Sin	la	comparación	con	B,	esta	diferencia	sería
+ininterpretable.
+El	diseño	
+within-subjects
+	(cada	participante	pasa	por	las	tres	condiciones	en	orden	contrabalanceado)	maximiza	la
+potencia	estadística	con	la	muestra	reducida	disponible	(9	a	15	personas)	y	controla	las	diferencias	individuales	en	la
+capacidad	de	razonamiento	basado	en	reglas,	específicas	de	cada	escenario.
+Apartado	B:	Matriz	de	Consistencia	Metodológica
+Pregunta	de
+Investigación	(RQ)
+Variable	/	Constructo
+Instrumento	Validado
+Tarea	Asociada	en	el	Guion
+RQ1	(Precisión).
+¿Existen	diferencias
+estadísticamente
+significativas	en	la
+precisión	de	los
+usuarios	(porcentaje	de
+respuestas	correctas)
+entre	las	condiciones	A
+(sin	agente),	B	(texto)	y
+C	(agente	visible)?
+Precisión	objetiva	por
+ítem:	variable	binaria
+(correcto	/	incorrecto)	y
+agregada	como
+porcentaje	por
+condición.
+Registro	automático	del
+sistema:	cada	respuesta
+seleccionada	se	compara	contra
+la	respuesta	correcta
+almacenada	en	el	backend	y	se
+guarda	en	el	CSV	experimental
+junto	con	
+timestamp
+	e	ID	del
+participante.	No	requiere
+cuestionario	externo.
+El	participante	lee	el	escenario	en	pantalla,
+que	incluye	las	reglas	propias	del	caso	junto
+al	enunciado.	Decide	libremente	si	consultar
+o	no	al	agente	(según	la	condición)	y
+selecciona	una	de	las	cuatro	opciones
+disponibles.	Ningún	escenario	se	repite
+entre	bloques.	Al	confirmar	la	selección,	el
+sistema	registra	el	acierto	antes	de	mostrar
+la	escala	de	confianza.	El	participante	no
+recibe	retroalimentación	sobre	si	acertó	o
+erró;	la	sesión	avanza	directamente	a	la
+escala	de	confianza	y	luego	al	siguiente
+caso.	El	flujo	es	idéntico	en	las	tres
+condiciones	para	que	el	conocimiento	del
+acierto	no	afecte	las	respuestas	siguientes.
+RQ2	(Confianza
+Subjetiva).	¿Existen
+diferencias
+estadísticamente
+significativas	en	la
+confianza	reportada	por
+los	usuarios	entre	las
+tres	condiciones?
+Percepción	del	sistema
+(utilidad	percibida,
+emociones,	intención	de
+uso,	evaluación	global)	y
+confianza	específica	en
+las	decisiones	tomadas,
+como	constructos
+subjetivos	de	la
+experiencia	de	usuario.
+meCUE	2.0	(Minge	&	Thüring,
+2018):	módulos	de	percepciones
+instrumentales,	emociones,
+intención	de	uso	y	evaluación
+global,	con	versión	en	español
+disponible	[22].	meCUE	mide
+experiencia	de	usuario,	no
+confianza	en	sentido	estricto,
+por	lo	que	sus	módulos	operan
+como	medida	del	juicio	global
+del	sistema.	La	confianza
+específica	en	las	decisiones	se
+captura	con	tres	ítems	Likert
+adicionales	(1–7)	y	con	la	escala
+de	confianza	inline	ítem	a	ítem;
+estos	ítems	complementarios	no
+están	validados	de	forma
+independiente,	lo	que	se
+reconoce	como	limitación	de
+constructo.	Esto	precisa	la
+formulación	del	Entregable	1,
+donde	la	confianza	de	RQ2	se
+asociaba	al	meCUE:	aquí	el
+meCUE	se	conserva	para	la
+experiencia	de	usuario	y	la
+medición	de	la	confianza
+específica	se	asigna	a	los	ítems
+Likert	dedicados.
+Al	completar	el	último	caso	de	cada	bloque,
+el	participante	recibe	el	enlace	al
+cuestionario	meCUE	2.0	directamente	desde
+la	interfaz,	antes	de	que	el	investigador
+regrese	a	la	sala.	El	cuestionario	se
+administra	tres	veces	en	total	(una	por
+condición)	para	capturar	la	percepción	de
+cada	versión	del	sistema	por	separado,	no
+como	evaluación	global	al	final.	El
+participante	lo	llena	solo,	sin	el	investigador
+presente,	para	que	las	respuestas	reflejen	su
+percepción	real.
+RQ3	(Calibración
+Confianza-Precisión).
+¿Cómo	varía	la
+calibración	del	usuario
+(relación	entre
+confianza	subjetiva	y
+precisión	real)	según	la
+condición?	¿En	qué
+condición	se	observa
+mayor	brecha	de
+sobreconfianza?
+Calibración	por	ítem,
+definida	sobre	escalas
+comparables:	la
+confianza	(1–7)	se
+normaliza	al	rango	[0,	1]
+mediante	
+(confianza	−
+1)	/	6
+	y	se	le	resta	el
+acierto	del	mismo	ítem
+(0	=	incorrecto,	1	=
+correcto).	El	índice
+resultante	vive	en	[−1,
+Escala	Likert	de	confianza
+inline	(1–7)	capturada	ítem	a
+ítem	mediante	ventana
+emergente	obligatoria	post-
+respuesta,	antes	de	avanzar	al
+siguiente	caso.	Se	cruza	con	el
+indicador	de	corrección	del
+mismo	ítem	en	el	CSV.	La
+calibración	no	puede	calcularse
+solo	con	el	meCUE	(que	es
+global);	requiere	la	medición
+Apenas	el	participante	confirma	su
+respuesta,	antes	de	saber	si	acertó,	aparece
+una	ventana	emergente:	"¿Qué	tan	seguro/a
+estás	de	tu	respuesta?".	El	participante
+indica	su	nivel	de	confianza	(1	=	nada
+seguro/a,	7	=	completamente	seguro/a)	y	no
+puede	avanzar	sin	responder.	El	mecanismo
+captura	el	dato	en	el	momento	exacto	de	la
+decisión,	no	de	forma	retrospectiva,	lo	que
+es	crítico	para	calcular	la	calibración	por
+ítem:	la	diferencia	entre	la	confianza
++1]:	un	valor	positivo
+indica	sobreconfianza
+(alta	confianza,
+respuesta	incorrecta)	y
+uno	negativo,
+subconfianza.
+por	ítem.
+normalizada	y	el	booleano	de	acierto	del
+mismo	ítem	es	la	unidad	de	análisis	de	RQ3.
+Análisis	estadístico	previsto
+El	análisis	compara	tres	mediciones	repetidas	dentro	del	mismo	participante	(diseño	
+within-subjects
+).	Para	detectar
+diferencias	globales	entre	condiciones	se	usa	la	prueba	de	Friedman	(χ²),	y	como	post-hoc,	la	prueba	de	Wilcoxon	con
+corrección	de	Bonferroni	sobre	las	tres	comparaciones	por	par	(A	vs.	B,	B	vs.	C,	A	vs.	C).	Se	opta	por	estadística	no
+paramétrica	dado	el	tamaño	de	muestra	reducido	(9	a	15	participantes).	Esto	aplica	a	RQ1	(precisión	media	por
+condición)	y	a	RQ2	(puntajes	meCUE	y	confianza	por	condición).	Para	RQ3	se	calcula,	por	participante	y	condición,	el
+promedio	del	índice	de	calibración	por	ítem,	es	decir	
+(confianza	−	1)/6	−	acierto
+,	y	se	compara	entre	condiciones	con
+el	mismo	procedimiento	Friedman	+	Wilcoxon;	las	curvas	de	calibración	ítem	a	ítem	complementan	el	índice	global.
+Sobre	la	potencia	y	el	balance	del	diseño,	conviene	ser	claro:	con	una	n	de	entre	9	y	15	las	pruebas	rara	vez	alcanzarán
+significancia,	así	que	el	estudio	es	exploratorio	y	prioriza	los	tamaños	de	efecto	y	los	patrones	descriptivos	por	encima
+del	umbral	p	<	.05.	El	contrabalanceo	de	orden,	por	su	parte,	queda	completo	y	balanceado	solo	con	un	múltiplo	de	6
+(idealmente	12	participantes);	con	9	es	parcial.
+Apartado	 C.
+	 El	 protocolo	 oficial	 del	 investigador	 se	 entrega	 como	 archivo	 HTML	 adjunto
+(
+Protocolo_Investigador_PF3311_NeyFredJimenez.html
+),	que	cubre	la	identificación	formal	del	estudio,	el	consentimiento
+informado	y	la	aceptación	obligatoria,	la	carga	de	condición	por	asignación	aleatoria,	las	instrucciones	neutrales	anti-
+priming
+,	los	cuestionarios	post-interacción	y	el	plan	de	anonimización	y	resguardo	de	los	
+logs
+.
+Apartado	D:	Justificación	Teórica	en	HCI
+Las	decisiones	de	diseño	del	agente	en	la	Condición	C	no	son	arbitrarias.	Cada	una	responde	a	un	problema
+documentado	en	la	literatura	de	HCI	y	tiene	un	respaldo	empírico	que	puedo	señalar	con	precisión.
+Soporte	no	verbal	del	
+embodiment
+	del	avatar	(Justine	Cassell)
+Cassell	et	al.	(2000)	argumentaron	que	los	agentes	conversacionales	encarnados	activan	mecanismos	de	interacción
+social	análogos	a	los	que	usamos	entre	humanos.	La	premisa	central	es	que	la	presencia	de	un	cuerpo,	aunque	sea
+virtual,	no	es	decorativa:	es	el	canal	que	hace	posibles	las	señales	no	verbales	que	estructuran	la	conversación	y
+modulan	la	interpretación	del	mensaje	[4].	Cuando	un	hablante	sincroniza	sus	movimientos	labiales	con	el	discurso,
+asiente	al	procesar	una	pregunta	o	muestra	una	expresión	coherente	con	lo	que	acaba	de	decir,	el	interlocutor	humano
+usa	esas	señales	para	calibrar	la	atención,	la	intención	y	la	confiabilidad	del	agente.
+En	este	diseño	ese	principio	se	aplica	de	forma	acotada	y	consciente.	La	sincronización	labial	mediante	
+blendshapes
+activadas	por	los	visemas	del	audio	TTS	es	la	traducción	técnica	más	directa	de	lo	que	Cassell	llama	
+continuers
+	no
+verbales:	señales	de	que	el	agente	produce	un	discurso	coherente	y	sincronizado	con	su	representación	corporal.	Las
+expresiones	neutras	durante	la	escucha	y	levemente	positivas	al	confirmar	respuestas	replican	lo	que,	en	la	interacción
+humana,	señala	comprensión	activa	y	respuesta	apropiada	al	contexto.	Mantuve	las	expresiones	en	un	rango	moderado
+porque	la	literatura	posterior	a	Cassell,	en	particular	Luo	et	al.	(2023),	muestra	que	cualquier	expresividad	supera	a	la
+ausencia	de	animación,	pero	que	la	exageración	dispara	el	
+uncanny	valley
+	y	erosiona	la	confianza	[13].	El	objetivo	no	es
+un	agente	muy	expresivo.	Es	uno	suficientemente	expresivo.
+Diseño	del	soporte	relacional	y	lazos	afectivos	(Timothy	Bickmore)
+Bickmore	y	Picard	(2005)	demostraron	que	los	agentes	virtuales	pueden	construir	confianza	relacional	cuando	exhiben
+comportamientos	consistentes	a	lo	largo	del	tiempo:	saludos,	reconocimiento	del	historial	de	interacción	y	pequeña
+charla	apropiada	al	contexto.	Lo	más	relevante	para	este	diseño	es	que	la	consistencia	del	comportamiento	pesa	más
+que	la	sofisticación	técnica	del	agente	[5].	Un	avatar	simple	que	se	comporta	de	manera	predecible	y	cordial	genera
+más	confianza	que	uno	técnicamente	elaborado	pero	errático.
+Aquí	esa	lección	se	aplicó	con	un	límite	claro:	sacrifiqué	la	memoria	persistente	para	no	contaminar	el	control
+experimental.	Si	el	agente	adaptara	su	comportamiento	al	historial	de	errores	del	participante,	las	diferencias	entre
+condiciones	podrían	atribuirse	a	esa	adaptación	y	no	a	la	visibilidad	del	avatar.	Lo	que	sí	se	preserva	del	marco	de
+Bickmore	es	la	consistencia:	el	tono	neutro,	profesional	y	cordial	en	segunda	persona	singular	informal	("vos",	acorde	al
+español	costarricense)	se	mantiene	igual	en	todas	las	interacciones	de	la	Condición	C.	El	agente	no	se	disculpa	de	más,
+no	muestra	emociones	exageradas	y	redirige	con	cordialidad	cuando	el	participante	intenta	sacarle	la	respuesta	directa.
+Esa	consistencia	es	la	forma	en	que	el	principio	relacional	de	Bickmore	cabe	dentro	de	las	restricciones	del	diseño.
+Efecto	Proteus	y	variaciones	de	comportamiento	inducidas	por	el	avatar	(Nick	Yee	y	Jeremy
+Bailenson)
+Yee	y	Bailenson	(2007)	describieron	el	Efecto	Proteus	como	el	fenómeno	por	el	cual	los	usuarios	modifican	su	propio
+comportamiento	en	función	de	la	apariencia	del	avatar	con	el	que	interactúan	o	que	los	representa.	En	su	formulación
+original,	el	efecto	opera	sobre	el	usuario	que	encarna	el	avatar	[23].	Aplicado	al	diseño	de	un	ECA,	donde	el	usuario
+interactúa	con	el	avatar	pero	no	lo	encarna,	el	mecanismo	relevante	es	análogo:	la	apariencia	y	el	comportamiento	del
+agente	visible	activan	heurísticas	sociales	que	pueden	cambiar	cómo	razona	el	usuario,	cuánta	confianza	atribuye	al
+sistema	y	cuánto	peso	le	da	a	las	sugerencias.	No	encarna	el	avatar,	pero	igual	reacciona	ante	él.
+En	este	experimento	el	Efecto	Proteus	tiene	una	implicación	concreta	que	la	RQ3	busca	medir	de	frente:	si	el	avatar	con
+expresiones	levemente	positivas	al	confirmar	respuestas	induce	más	confianza	en	el	participante	con	independencia	de
+si	acertó,	eso	es	exactamente	el	mecanismo	que	Zhang	et	al.	(2020)	y	Li	et	al.	(2024)	documentaron	en	sistemas	con	alta
+confianza	declarada.	El	participante	se	siente	más	seguro	no	porque	haya	decidido	mejor,	sino	porque	el	agente	visible
+disparó	una	heurística	social	de	validación	[16,	18].	Ese	resultado	(más	confianza	sin	más	precisión,	es	decir,
+sobreconfianza	inducida	por	el	
+embodiment
+)	es	el	peor	caso	desde	la	perspectiva	de	Yee	y	Bailenson,	y	es	justo	lo	que
+este	diseño	está	armado	para	detectar	si	ocurre.
+Síntesis:	cómo	encajan	los	tres	marcos
+No	veo	estos	tres	marcos	como	pilares	separados,	sino	como	una	sola	línea	de	razonamiento	que	sostiene	el	diseño	de	la
+Condición	C.	El	punto	de	partida	es	Cassell:	sin	un	cuerpo,	aunque	sea	virtual,	no	hay	señales	no	verbales,	y	sin	esas
+señales	agregar	
+lip-sync
+	o	expresiones	faciales	sería	pura	decoración.	Bickmore	me	sirve	para	lo	siguiente,	que	es	más
+práctico:	lo	que	construye	confianza	no	es	qué	tan	elaborado	se	ve	el	avatar,	sino	qué	tan	predecible	es	su
+comportamiento;	por	eso	preferí	sacrificar	la	memoria	persistente	antes	que	arriesgar	la	consistencia	del	tono	entre
+interacciones.	Y	Yee	y	Bailenson	son	la	advertencia	que	no	quería	perder	de	vista:	ese	mismo	mecanismo	social	que
+vuelve	útil	al	avatar	puede	dispararse	en	falso	e	inflar	la	confianza	del	participante	aunque	sus	decisiones	no	mejoren.
+Lo	interesante	es	que,	juntos,	los	tres	marcos	no	predicen	un	único	resultado	sino	varios,	y	el	experimento	está	armado
+para	distinguirlos.	Si	el	avatar	sube	a	la	vez	la	precisión	y	la	confianza,	gana	la	lectura	optimista	de	Cassell	y	Bickmore.
+Si	sube	la	confianza	pero	la	precisión	se	queda	donde	estaba,	aparece	el	riesgo	que	advirtieron	Yee	y	Bailenson:	la
+sobreconfianza	inducida	por	el	
+embodiment
+,	el	peor	escenario	para	cualquier	dominio	donde	equivocarse	cuesta	caro.	Y
+si	no	se	mueve	ninguna	de	las	dos	variables,	el	resultado	nulo	igual	aporta:	ayuda	a	delimitar	cuándo	el	
+embodiment
+vale	la	pena.	La	RQ3	es	la	que	cierra	el	argumento,	porque	sin	medir	precisión	y	confianza	juntas,	ítem	por	ítem,	no
+habría	forma	de	saber	en	cuál	de	esos	tres	escenarios	cayó	el	estudio.
+Referencias	Bibliográficas
+La	numeración	es	continua	con	la	del	Entregable	1	(Revisión	de	Literatura),	que	contiene	la	lista	completa	de	fuentes	[1]–[22].	La
+referencia	[23]	(Yee	&	Bailenson)	se	incorpora	en	este	entregable	como	soporte	del	Apartado	D.
+[4]	Cassell,	J.,	Sullivan,	J.,	Prevost,	S.,	&	Churchill,	E.	(Eds.).	(2000).	
+Embodied	conversational	agents
+.	MIT	Press.
+[5]	Bickmore,	T.	W.,	&	Picard,	R.	W.	(2005).	Establishing	and	maintaining	long-term	human-computer	relationships.	
+ACM	Transactions	on
+Computer-Human	Interaction,	12
+(2),	293–327.	https://doi.org/10.1145/1067860.1067867
+[6]	Song,	Y.,	Luximon,	A.,	&	Luximon,	Y.	(2023).	Psychological	insights	into	the	research	and	practice	of	embodied	conversational	agents,
+chatbots	 and	 social	 assistive	 robots:	 A	 systematic	 meta-review.	
+Behaviour	 &	 Information	 Technology.
+https://doi.org/10.1080/0144929X.2023.2286528
+[13]	Luo,	L.,	Weng,	D.,	Ding,	N.,	Hao,	J.,	&	Tu,	Z.	(2023).	The	effect	of	avatar	facial	expressions	on	trust	building	in	social	virtual	reality.	
+The
+Visual	Computer,	39
+(11),	5869–5882.	https://doi.org/10.1007/s00371-022-02700-1
+[16]	Zhang,	Y.,	Liao,	Q.	V.,	&	Bellamy,	R.	K.	E.	(2020).	Effect	of	confidence	and	explanation	on	accuracy	and	trust	calibration	in	AI-assisted
+decision	making.	En	
+Proceedings	of	the	2020	ACM	Conference	on	Fairness,	Accountability,	and	Transparency
+	(pp.	295–305).	ACM.
+https://doi.org/10.1145/3351095.3372852
+[18]	Li,	J.,	Yang,	Y.,	Zhang,	R.,	Liao,	Q.	V.,	Song,	T.,	Xu,	Z.,	&	Lee,	Y.	(2024).	Understanding	the	effects	of	miscalibrated	AI	confidence	on
+user	trust,	reliance,	and	decision	efficacy.	
+arXiv	preprint
+	arXiv:2402.07632.	https://arxiv.org/abs/2402.07632
+[22]	Minge,	M.,	&	Thüring,	M.	(2018).	The	meCUE	questionnaire	(2.0):	Meeting	five	basic	requirements	for	lean	and	standardized	UX
+assessment.	En	
+Design,	User	Experience,	and	Usability:	Theory	and	Practice.	DUXU	2018.	Lecture	Notes	in	Computer	Science,	vol
+10918
+	(pp.	463–475).	Springer.	https://doi.org/10.1007/978-3-319-91797-9_33
+[23]	Yee,	N.,	&	Bailenson,	J.	(2007).	The	Proteus	effect:	The	effect	of	transformed	self-representation	on	behavior.	
+Human	Communication
+Research,	33
+(3),	271–290.	https://doi.org/10.1111/j.1468-2958.2007.00299.x
+Nota	de	uso	de	herramientas	de	IA.	Durante	la	elaboración	de	este	documento	se	utilizaron	herramientas	de	inteligencia	artificial
+generativa,	específicamente	ChatGPT	(OpenAI)	y	Claude	(Anthropic),	como	apoyo	en	tareas	de	organización	de	ideas,	revisión	de	redacción
+y	reformulación	de	párrafos.	Todo	el	contenido,	los	argumentos,	las	decisiones	de	diseño	y	la	selección	de	fuentes	son	de	autoría	propia.	Las
+herramientas	se	usaron	como	asistentes	de	escritura,	no	como	generadores	de	contenido	académico.
+
+======================================================================
+Entregable2_PF3311_NeyFredJimenez(B03230).pdf
+======================================================================
+1 
+ 
+ 
+ 
+Universidad de Costa Rica 
+ 
+Programa de Posgrado en Computación e Informática 
+ 
+PF-3311 — Agentes Virtuales Inteligentes 
+ 
+__________________________________________ 
+ 
+ENTREGABLE 2 
+Avance de Agente e Investigación 
+ 
+Efecto de la visibilidad de un agente virtual en el desempeño y la confianza del usuario en 
+tareas de decisión basadas en reglas 
+ 
+ 
+Profesor: Dr. Alexander Barquero 
+Investigador principal: Ney Fred Jiménez Campos (B03230) 
+Fecha: 1 de junio de 2026 
+Ciclo: I Ciclo, 2026 
+Repositorio GitHub: Pendiente: URL en Mediación Virtual 
+Video de demostración: Esc. 1 (A): https://youtu.be/ItcvsdxPfp8 | Esc. 2 (B): 
+https://youtu.be/RY5pY_DVwDk | Esc. 3 (C): 
+https://youtu.be/hLPTS9akSlg 
+  
+2 
+Resumen 
+Este entregable documenta el avance del Entregable 1 hacia una prueba de concepto (PoC) en Unity y 
+el diseño del piloto. La aplicación integra interfaz del experimento, LLM (Gemini), voz con avatar 3D 
+(Azure) y registro en CSV. El participante usa un build standalone en una máquina virtual Windows; no 
+instala software en su PC. 
+Las tres condiciones (sin agente, agente solo texto, agente con avatar) están implementadas. El agente 
+aclara reglas pero no entrega la respuesta correcta (system prompt restrictivo). 
+El piloto será within-subjects (N = 10–12) con adultos mayores de 18 años. No se exige ser estudiante 
+de la UCR ni pertenecer a una profesión concreta. Es un piloto exploratorio alineado a RQ1–RQ3 y al 
+enunciado del curso (sin usuarios clínicos que requieran CEC). La revisión del protocolo por expertos 
+(docente o pares del curso) es independiente de la muestra de participantes. 
+ 
+Tabla de contenidos 
+ 
+Actualizar campos en Word: clic derecho → Actualizar campo. 
+  
+3 
+1. Resumen de cambios desde el Entregable 1 
+2. Estado actual del agente 
+3. Diseño metodológico del estudio 
+4. Métricas 
+5. Instrumentos de recolección de datos 
+6. Protocolos de interacción 
+7. Limitaciones y riesgos 
+8. Referencias 
+ 
+a) Resumen de cambios desde el Entregable 1 
+Retroalimentación recibida 
+En el repositorio no hay retroalimentación escrita del profesor tras el Entregable 1. Los cambios 
+respondieron a la propuesta original, al enunciado del Entregable 2 y a pruebas del prototipo (ID de 
+sesión, CSV, chat oculto en A, salida segura, documentación). 
+Cambios respecto al Entregable 1 
+Aspecto Entregable 1 Entregable 2 (actual) Motivo 
+Problema y RQs RQ1 precisión; RQ2 
+confianza; RQ3 
+calibración 
+Igual en lo esencial El piloto sigue 
+respondiendo las mismas 
+preguntas 
+Condiciones A/B/C Sin agente / texto / 
+avatar 
+Tres botones INICIAR Mismo LLM en B y C; 
+cambia solo lo visual 
+LLM GPT-4o mini (alt. Claude 
+Haiku) 
+Gemini 2.5 Flash Créditos disponibles, 
+buen español, latencia ≤ 
+3 s en pruebas 
+Backend FastAPI Orquestación en Unity Menos piezas; un solo 
+.exe 
+TTS + lip-sync ElevenLabs / Google 
+Cloud TTS 
+Azure Speech + visemas Visemas nativos para los 
+blend shapes del avatar 
+Avatar Modelo Turbosquid 
+genérico 
+TTBoyB (1toonteen/) Asset con rig y 
+animaciones ya 
+integrado 
+4 
+Unity 2022.3 LTS 6000.3.11f1 Versión del entorno de 
+desarrollo 
+Despliegue VM remota VM Windows con build 
+1920×1080 
+El participante entra por 
+RDP; el CSV queda en el 
+servidor 
+Ítems 6–8 casos 6 por condición (18 total) Misma lógica de reglas 
+en los tres bloques 
+Confianza Escala 1–7 por pregunta 7 estrellas en pantalla Captura inmediata, no 
+retrospectiva 
+meCUE 2.0 Google Forms al final Preparado (surveyUrl) Falta crear el formulario 
+antes del piloto 
+Datos CSV en backend CSV en CSV data/ Una sola fuente para 
+análisis 
+Seguridad Variables de entorno .gitignore; claves 
+solo en build/Release, no 
+en GitHub 
+Requisito del curso 
+ 
+Elementos del E1 no incorporados 
+Elemento E1 Decisión E2 Justificación 
+Backend FastAPI No implementado La PoC demuestra que los 
+componentes se comunican; Unity 
+llama las APIs directamente. Un 
+backend se reconsiderará si hace 
+falta centralizar logs 
+VM remota PoC en VM del investigador Build en la VM; participantes por 
+escritorio remoto 
+Tarea de práctica sin registro Pendiente Instrucciones en 
+GUIA_PARTICIPANTE.md 
+Registro de turnos de chat en CSV Pendiente Fuera del alcance de la PoC; las 
+incidencias las reportará el 
+participante 
+5 
+GPT-4o mini Sustituido por Gemini Ya estaba previsto en E1 según 
+créditos; no altera el diseño 
+ 
+Lo que se mantiene del Entregable 1 
+• Diseño within-subjects: cada participante pasa por A, B y C. 
+• System prompt restrictivo. 
+• Misma asistencia del LLM en B (texto) y C (texto + voz + avatar). 
+• Precisión objetiva y confianza subjetiva en paralelo. 
+• meCUE 2.0 al cierre. 
+• Tono del agente: neutro, profesional, conciso; español costarricense (vos). 
+ 
+b) Estado actual del agente 
+Descripción del prototipo 
+Se trata de una aplicación standalone Windows (Unity 6000.3.11f1, URP, 1920×1080). Flujo: 
+1. Consentimiento informado. 
+2. Selección de condición (A, B o C). 
+3. Seis preguntas con REGLAS + SITUACIÓN y opciones A–D. 
+4. Confianza del 1 al 7 después de cada respuesta. 
+5. Chat con el agente en B y C (opcional entre preguntas). 
+6. Pantalla final: Otro Escenario (mismo ID de sesión), Encuesta o Finalizar. 
+Cada respuesta se guarda en CSV data/ExperimentData_{UserID}.csv. 
+Integración de componentes 
+En el build standalone se comprobó este flujo entre módulos: 
+Participante escribe en chat (B o C) 
+        | 
+        v 
+ExperimentLogic.AskForHelp() 
+        |  incluye el escenario en el system prompt 
+        v 
+API Gemini 2.5 Flash  ->  respuesta en el panel de chat 
+        | 
+        v (solo condición C) 
+AgentSpeechController.Speak() 
+        | 
+        v 
+AzureLipSync.SpeakText()  ->  audio TTS + visemas -> blend shapes TTBoyB 
+6 
+        | 
+        v 
+Participante elige A-D, confianza, entregar 
+        | 
+        v 
+DataLogger.SaveAnswer()  ->  CSV data/ (UTF-8 con BOM) 
+ 
+De la arquitectura E1 a lo implementado 
+Subsistema E1 Componente E2 Estado 
+Frontend / UI ExperimentLogic, 
+QuestionManager, UI en 
+SampleScene 
+Implementado 
+LLM Gemini API desde 
+ExperimentLogic 
+Implementado 
+TTS + avatar AzureLipSync, 
+AgentSpeechController, 
+AvatarDisplayController, 
+TTBoyB 
+Implementado (solo C) 
+Registro de datos DataLogger -> CSV data/ Implementado 
+Backend FastAPI (no aplica) Reemplazado por orquestación en 
+Unity 
+ 
+7 
+Arquitectura técnica 
+ 
+Figura 1. Arquitectura técnica de la PoC. 
+
+8 
+ 
+Figura 2. Flujo del participante (consentimiento, condición, 6 ítems, confianza, CSV, pantalla final).  
+Comportamiento del agente 
+El system prompt en ExperimentLogic.BuildSystemPreamble() instruye al modelo para que: 
+• Actúe como profesor empático en un chat. 
+
+9 
+• No entregue nunca la respuesta final ni la opción correcta, aunque se lo pidan. 
+• Guíe con preguntas y pistas cortas (máximo 2–3 oraciones). 
+• Omita saludos si el estudiante no saludó primero. 
+• Utilice el texto del escenario actual como contexto en cada turno. 
+En condición C, el texto del chat pasa a Azure TTS; el avatar anima labios con visemas. 
+La síntesis de voz y el mapeo de visemas siguen la documentación del [Azure Cognitive Services Speech 
+SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk). El avatar 3D TTBoyB proviene 
+del asset 1toonteen/ (Assets/1toonteen/). 
+Capturas de pantalla (Figuras 3–8) 
+Capturas del build standalone (1920×1080). 
+ 
+Figura 3. Consentimiento informado. 
+
+10 
+ 
+Figura 4. Selección de condición (INICIAR A, B o C). 
+ 
+Figura 5a. Condición A: pregunta con REGLAS, SITUACIÓN y opciones. 
+
+11 
+ 
+Figura 5b. Panel de confianza (estrellas 1–7 y entregar). 
+ 
+Figura 6. Condición B: chat Gemini sin avatar. 
+
+12 
+ 
+Figura 7. Condición C: chat, avatar TTBoyB y voz Azure. 
+ 
+Figura 8. Pantalla final al terminar un bloque de 6 preguntas. 
+Funcionalidades implementadas y pendientes 
+Funcionalidad Estado Notas 
+
+13 
+Consentimiento obligatorio Implementado ExperimentLogic 
+Condiciones A / B / C Implementado Índices 0, 1, 2 
+6 preguntas x 3 bloques (18 ítems) Implementado QuestionManager.scenarios 
+Confianza 1–7 por ítem Implementado Panel de estrellas 
+Chat Gemini (B/C); oculto en A Implementado Prompt restrictivo 
+Avatar 3D + TTS + lip-sync (C) Implementado Azure + TTBoyB 
+CSV primario para análisis Implementado DataLogger 
+ID de sesión único (ID-
+yyyyMMddHHmmss-RRRR) 
+Implementado Persiste con Otro Escenario 
+Salida segura con borrado 
+condicional 
+Implementado SafeExit 
+Aviso si falla guardado CSV Implementado No avanza hasta guardar 
+Force Single Instance Implementado Project Settings 
+README + 
+GUIA_PARTICIPANTE.md 
+Implementado Acceso vía máquina virtual 
+Build Windows listo para evaluar Implementado Build/Windows/ (~141 MB); ver 
+LEEME_PROFESOR.txt 
+Encuesta meCUE (surveyUrl) Pendiente Crear formulario antes del piloto 
+Tarea de práctica sin registro Pendiente Instrucciones orales en el piloto 
+Log de turnos de chat en CSV Pendiente Fuera del alcance de la PoC 
+Validación formal de dificultad de 
+ítems 
+Pendiente Revisión en el piloto 
+Contrabalanceo automático de 
+orden 
+Manual Orden indicado por correo 
+ 
+14 
+Reproducibilidad 
+Opción 1 (recomendada para el evaluador): descomprimir Build/Windows/ y ejecutar 
+ExperimentPrototypeB03230.exe. Incluye claves API para condiciones B y C. Instrucciones en 
+Build/Windows/LEEME_PROFESOR.txt. 
+Opción 2 (código fuente): ver README.md. Pasos básicos: 
+1. Unity Hub 6000.3.11f1, escena SampleScene.unity. 
+2. Configurar apiKey (Gemini) y subscriptionKey/region (Azure) en el Inspector. 
+3. Build: File > Build Profiles, o _tools\build_windows.bat con el Editor cerrado. 
+4. Datos en {carpeta del .exe}/CSV data/. 
+Participantes en la VM: [GUIA_PARTICIPANTE.md](../GUIA_PARTICIPANTE.md). 
+El repositorio GitHub lleva el código y docs/ con este informe en PDF. El zip del build puede 
+adjuntarse como Release (no incluir claves en el repo). 
+c) Diseño metodológico del estudio 
+Preguntas de investigación 
+RQ1 (Precisión): ¿Existen diferencias en el porcentaje de aciertos entre A (sin agente), B (texto) y C 
+(avatar visible)? 
+RQ2 (Confianza): ¿Existen diferencias en la confianza reportada entre las tres condiciones? 
+RQ3 (Calibración): ¿Cómo varía la relación entre confianza y precisión según la condición? ¿Dónde 
+aparece mayor sobreconfianza? 
+Tipo de estudio 
+Piloto exploratorio, diseño within-subjects. Complementa una evaluación del protocolo por 2–3 
+expertos (revisión de ítems, instrucciones y comportamiento del agente). 
+Aspecto Definición 
+Piloto con participantes N = 10–12 adultos ≥ 18 años; completan A, B y C. Sin 
+requisito de UCR ni de profesión específica 
+Evaluación con expertos 2–3 revisores (docente o pares del curso) evalúan 
+protocolo, ítems y agente (rúbrica Likert). No 
+sustituye a los participantes del piloto 
+No es Mago de Oz El agente es el LLM real 
+15 
+No es estudio clínico Escenarios ficticios; sin CEC ni generalización a 
+pacientes 
+ 
+Justificación del diseño 
+1. Las tres condiciones se comparan dentro del mismo participante (within-subjects). 
+2. El curso permite piloto sin usuarios clínicos que requieran CEC. 
+3. Objetivos: (a) viabilidad técnica, (b) revisar ítems e instrucciones, (c) datos preliminares de precisión, 
+confianza y calibración, (d) comentarios cualitativos en entrevista breve. 
+Participantes 
+Criterio Definición 
+Quiénes Personas mayores de 18 años 
+Cuántos N = 10–12 (E1 planteaba 9–15; acotado por tiempo 
+del curso) 
+Inclusión ≥ 18 años; uso habitual de PC; comprensión de 
+español; consentimiento informado 
+Exclusión Menores de 18 años; daltonismo severo no 
+corregido; dificultades de lectura que impidan la 
+tarea; exposición previa a los mismos ítems 
+ 
+Reclutamiento 
+1. Convocatoria abierta (conocidos, redes personales, compañeros del curso PF-3311). No se limita a la 
+UCR ni a un perfil profesional. 
+2. Aclaración previa: escenarios ficticios, no casos clínicos reales. 
+3. Sesiones de 60–75 min en la VM; internet estable para B y C. 
+4. ID anónimo; el investigador recoge el CSV al finalizar. 
+Diseño experimental 
+Factor Niveles 
+Condición A: sin agente; B: texto; C: avatar + voz 
+16 
+Orden Contrabalanceado (6 secuencias; ver protocolos) 
+Ítems 6 casos por condición; misma lógica de reglas 
+ 
+Variables independientes: condición (A/B/C) y orden de presentación.   
+Variables dependientes: precisión, confianza por ítem, calibración, tiempo de respuesta, subescalas 
+meCUE, uso del chat. 
+Confianza en dos niveles (RQ2) 
+• Por ítem: escala 1–7 inmediatamente después de cada respuesta. Será la medida principal para 
+comparar condiciones en el mismo ítem. 
+• Global: meCUE 2.0 al cierre (utilidad, emociones, evaluación general del sistema). 
+Procedimiento de sesión 
+Fase Duración Actividad 
+1. Bienvenida 3 min El investigador explicará propósito 
+y duración 
+2. Consentimiento 2 min El participante aceptará en la 
+aplicación 
+3. Instrucciones 5 min Reglas del experimento; 
+demostración breve del chat (sin 
+registrar) 
+4. Condición 1 15–18 min 6 preguntas + confianza; chat si 
+B/C 
+5. Pausa 3 min Descanso 
+6. Condición 2 15–18 min Igual 
+7. Pausa 3 min  
+8. Condición 3 15–18 min Igual 
+9. meCUE 2.0 10 min Formulario en línea 
+10. Entrevista breve 5–10 min Guión semiestructurado (opcional) 
+ 
+17 
+Duración total estimada: 60–75 minutos. 
+Criterios de éxito del piloto 
+Criterio Meta del piloto 
+Completitud ≥ 80 % completa las 3 condiciones 
+Latencia Gemini Respuesta visible en ≤ 5 s en ≥ 90 % de turnos (red 
+estable) 
+TTS en C Audio audible en ≥ 85 % de respuestas del agente 
+Integridad CSV ≥ 95 % de ítems con fila válida 
+Violaciones del prompt ≤ 2 casos de respuesta directa por cada 10 
+participantes 
+ 
+Consideraciones éticas 
+• Los datos se anonimizarán (ID aleatorio). 
+• Se obtendrá consentimiento antes de registrar respuestas. 
+• El retiro será voluntario mediante Salida segura; los datos parciales se manejarán según README. 
+• Los escenarios serán ficticios; no se usarán datos clínicos reales. 
+Análisis planificado 
+RQ Método 
+RQ1 % aciertos por condición; ANOVA repetida o 
+Friedman + pos hoc 
+RQ2 Confianza media por condición; meCUE: utilidad y 
+emociones 
+RQ3 Brecha = confianza normalizada ((C−1)/6) menos 
+precisión por bloque; comparación entre A, B y C 
+ 
+ 
+18 
+d) Métricas 
+Métrica Definición operacional Fuente Momento RQ 
+Precisión AnswerLetter == 
+CorrectAnswerLetter 
+CSV Por pregunta RQ1 
+Confianza por 
+ítem 
+Escala 1–7 (estrellas) CSV Tras cada 
+respuesta 
+RQ2, RQ3 
+Calibración 
+(brecha) 
+Confianza normalizada 
+menos precisión en el 
+bloque 
+Derivada del CSV Pos hoc RQ3 
+Tiempo de 
+respuesta 
+TimeSpent(Seconds) CSV Por pregunta Complementaria 
+Carga cognitiva 2 ítems tipo NASA-TLX 
+(esfuerzo mental, presión 
+temporal) 
+Entrevista Fin de sesión Complementaria 
+Uso del chat Número de mensajes por 
+condición 
+Observación o 
+registro manual 
+Durante B/C Complementaria 
+Utilidad percibida Subescala meCUE 2.0 Google Forms Fin de sesión RQ2 
+Emociones / 
+evaluación global 
+Subescalas meCUE 2.0 Google Forms Fin de sesión RQ2 
+Latencia del 
+agente 
+Segundos hasta 
+respuesta visible 
+Cronómetro / 
+observación 
+Durante B/C Viabilidad 
+Usabilidad (SUS 
+abreviado) 
+3 ítems tipo SUS Entrevista Fin de sesión Complementaria 
+Incidencias 
+técnicas 
+Fallos de red, CSV o TTS Player.log, 
+reporte del 
+participante 
+Toda la sesión Viabilidad 
+ 
+Hipótesis exploratorias (piloto) 
+• H1 (RQ1): precisión C ≈ B > A. 
+• H2 (RQ2): confianza C > B > A. 
+• H3 (RQ3): mayor brecha confianza-precisión en C. 
+19 
+ 
+e) Instrumentos de recolección de datos 
+1. Registro automático CSV 
+Dimensión Detalle 
+Literatura Registro objetivo en HCI; confianza en 
+automatización (Lee & See, 2004) 
+Qué mide Respuesta, corrección, confianza, tiempo, condición, 
+timestamp 
+Administración Automática al pulsar entregar 
+Momento Continuo en las tres condiciones 
+Campos UserID, ScenarioNumber, AnswerLetter, 
+CorrectAnswerLetter, Confidence, 
+TimeSpent(Seconds), Timestamp 
+ 
+2. Escala de confianza inmediata (1–7) 
+Dimensión Detalle 
+Literatura Confianza en línea en tareas de decisión; calibración 
+metacognitiva 
+Qué mide Certeza en la respuesta recién elegida 
+Administración Panel de 7 estrellas; obligatorio para continuar 
+Momento Tras elegir A–D y pulsar SIGUIENTE 
+RQ RQ2 (primaria), RQ3 
+ 
+3. Cuestionario meCUE 2.0 
+Dimensión Detalle 
+20 
+Literatura Minge & Thüring (2018); validación meCUE [21, 22] 
+Qué mide Percepción del producto, emociones, evaluación 
+global 
+Módulos Utilidad percibida; emociones; evaluación global 
+Administración Google Forms o Qualtrics; botón Realizar Encuesta o 
+QR 
+Momento Tras las tres condiciones 
+RQ RQ2 (secundaria) 
+ 
+4. Entrevista semiestructurada (5–10 min) 
+Dimensión Detalle 
+Literatura Evaluación con expertos; usabilidad (Nielsen, 1994) 
+Qué mide Claridad de reglas, utilidad del avatar, fricción 
+técnica, violaciones del prompt 
+Administración Guión por escrito; notas del participante 
+Momento Tras meCUE 
+ 
+Guión (extracto): 
+1. ¿Comprendió las reglas de priorización sin el agente? 
+2. En C, ¿el avatar ayudó, distrajo o no cambió nada? 
+3. ¿El agente intentó dar la respuesta directa alguna vez? 
+4. ¿Qué condición prefirió para decidir y por qué? 
+5. Del 1 al 7, ¿qué tan exigente fue mentalmente la tarea? ¿Sintió presión de tiempo? 
+6. ¿Hubo problemas técnicos? ¿Cuáles? 
+5. Rúbrica de evaluación con expertos 
+Dimensión Detalle 
+21 
+Qué mide Claridad del protocolo, calidad de ítems, 
+comportamiento del agente, reproducibilidad 
+Administración 2–3 expertos, Likert 1–5 tras observar al menos una 
+sesión o demo 
+Momento Paralelo al piloto 
+ 
+Ítems: (1) ítems comprensibles; (2) condiciones distinguibles; (3) agente no entrega respuesta directa; 
+(4) latencia aceptable; (5) README suficiente para reproducir. 
+6. Reporte de incidencias 
+Se aplicará un cuestionario breve o correo al cierre para problemas de red, guardado o TTS. 
+Complementa Player.log si hace falta. 
+7. Logs del sistema 
+Player.log de Unity en 
+%LOCALAPPDATA%\LocalLow\DefaultCompany\ExperimentPrototypeB03230\ servirá para 
+diagnosticar errores de API o guardado. 
+ 
+f) Protocolos de interacción 
+Protocolo 0: sesión completa 
+Elemento Descripción 
+Contexto VM Windows del investigador. El participante se 
+conectará por RDP y ejecutará el .exe allí (sin 
+instalar nada en su PC). 
+Tareas Entrar a la VM, consentimiento, tres bloques de 6 
+preguntas (orden indicado), meCUE, avisar al 
+investigador. 
+Resultado CSV con 18 filas en CSV data/ de la VM; meCUE 
+completado. 
+Duración 60–75 minutos 
+ 
+22 
+Instrucciones al participante (GUIA_PARTICIPANTE.md): 
+Vas a leer escenarios con reglas y elegir la mejor opción entre A, B, C y D. Después de cada 
+respuesta indicá qué tan seguro estás del 1 al 7. En algunos bloques podés escribir a un 
+asistente para aclarar reglas, pero no te va a decir la respuesta correcta. Los casos son 
+ficticios. Podés retirarte cuando querás desde el menú de salida. 
+ 
+Escenario 1: Condición A (sin asistencia) 
+Elemento Descripción 
+Contexto Línea base sin agente. 
+Tareas INICIAR: SIN ASISTENCIA. Por cada pregunta: leer 
+REGLAS + SITUACIÓN, elegir A–D, SIGUIENTE, 
+estrellas 1–7, entregar. Al terminar: Otro Escenario 
+(no Finalizar). 
+Agente Ninguno; chat oculto. 
+Resultado 6 filas CSV (ScenarioNumber=1). 
+Duración 12–15 min 
+Video de demostración https://youtu.be/ItcvsdxPfp8 
+ 
+Nota: Se enviarán credenciales de la VM, orden de condiciones y enlace a GUIA_PARTICIPANTE.md 
+antes de la sesión. Se recogerá el CSV de la VM después de cada participante. 
+ 
+Escenario 2: Condición B (agente de texto) 
+Elemento Descripción 
+Contexto Mismas tareas que A, con chat Gemini. 
+Tareas INICIAR: AGENTE DE TEXTO. Completar 6 preguntas. 
+Enviar al menos un mensaje al chat por bloque. 
+Verificar que no revele A/B/C/D. Otro Escenario. 
+Resultado 6 filas CSV (ScenarioNumber=2); respuestas cortas, 
+tono profesional. 
+23 
+Duración 15–18 min 
+Video de demostración https://youtu.be/RY5pY_DVwDk 
+ 
+ 
+Condición B: chat sin avatar. 
+Ejemplo válido 
+Rol Mensaje 
+Participante "Si aplican prioridad 1 y 2, ¿cuál manda?" 
+Agente "Cuando dos reglas aplican, la de número menor 
+tiene precedencia. Revisá la lista del enunciado y 
+compará con los síntomas del caso." 
+ 
+Ejemplo inválido (anotar incidencia) 
+Rol Mensaje 
+Participante "¿Es la B?" 
+Agente "Sí, marcá la B." (violación del prompt) 
+ 
+
+24 
+ 
+Escenario 3: Condición C (agente virtual + voz) 
+Elemento Descripción 
+Contexto Misma asistencia que B; avatar TTBoyB con voz y lip-
+sync. 
+Tareas INICIAR: AGENTE VIRTUAL. Completar 6 preguntas. 
+Enviar al menos un mensaje al chat; observar texto, 
+voz y labios. Al terminar: Realizar Encuesta (si hay 
+URL) y Finalizar. 
+Resultado 6 filas CSV (ScenarioNumber=3); avatar visible y 
+audible. 
+Duración 15–18 min 
+Video de demostración https://youtu.be/hLPTS9akSlg 
+ 
+ 
+Condición C: avatar TTBoyB, chat y voz. 
+El participante ejecuta C en la VM y verifica avatar y voz en pantalla. 
+ 
+
+25 
+Contrabalanceo del orden (N = 10–12) 
+Participante Orden 
+P1 A, B, C 
+P2 A, C, B 
+P3 B, A, C 
+P4 B, C, A 
+P5 C, A, B 
+P6 C, B, A 
+P7 A, B, C 
+P8 A, C, B 
+P9 B, A, C 
+P10 B, C, A 
+P11 C, A, B 
+P12 C, B, A 
+ 
+La asignación es aleatoria al agendar. Pausa de 3 min entre bloques. El investigador indica por correo 
+qué botón INICIAR usar en cada fase. 
+ 
+g) Limitaciones y riesgos 
+Limitación / riesgo Mitigación 
+Muestra pequeña; adultos ≥ 18, no clínicos Piloto exploratorio; no se generaliza a pacientes 
+Sin registro de chat en CSV Reporte del participante; mejora planificada después 
+del piloto 
+APIs externas (Gemini, Azure) Reintentos automáticos; A funciona offline; avisos en 
+26 
+UI 
+Hardware distinto entre participantes Todos usarán la misma VM y el mismo build 
+Latencia de red Internet estable en la VM; latencia registrada en 
+encuesta breve 
+Violación del prompt System prompt restrictivo; conteo de incidencias 
+meCUE sin URL aún Se configurará antes del piloto 
+Orden manual de condiciones Tabla de contrabalanceo; GUIA_PARTICIPANTE.md 
+ 
+ 
+Referencias 
+Las referencias [1]–[22] del Entregable 1 se mantienen. Adicionales: 
+• Minge, M., & Thüring, M. (2018). meCUE 2.0. Proceedings of Mensch und Computer 2018. 
+• Nielsen, J. (1994). Usability Engineering. Morgan Kaufmann. 
+• Hart, S. G., & Staveland, L. E. (1988). NASA-TLX. Advances in Psychology, 52, 139–183. 
+• Brooke, J. (1996). SUS. Usability Evaluation in Industry. 
+• Google. (2025). Gemini API. https://ai.google.dev/ 
+• Microsoft. (2025). Azure AI Speech. https://learn.microsoft.com/azure/ai-services/speech-service/ 
+• Asset avatar TTBoyB: paquete 1toonteen en Assets/1toonteen/ (ver licencia del asset en la 
+tienda de origen). 
+ 
+Universidad de Costa Rica, Programa de Posgrado en Computación e Informática, PF -3311, I Ciclo 2026. 

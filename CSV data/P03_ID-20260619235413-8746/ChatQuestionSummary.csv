@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,TotalExchanges,TotalTurns,AvgHelpScore,AvgTaskEngagementScore,AnswerRequestCount,OffTopicCount,ModelLeakCount,OnTopicSeconds,OffTopicSeconds,SubstantiveQuestionCount,ChatUsedInQuestion,DominantUtilityLevel,EffectiveHelpLevel,Flags,Timestamp
+P03,ID-20260619235413-8746,—,0,Sesión,0,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_data|[SIN DATOS] La sesión no incluyó escenarios con agente (condiciones B/C); no hay resúmenes de chat.,2026-06-19 23:54:18
