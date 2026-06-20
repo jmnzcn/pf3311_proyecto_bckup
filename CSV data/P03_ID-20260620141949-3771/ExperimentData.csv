@@ -1,0 +1,7 @@
+﻿ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,User_answer_Letter,User_answer,CorrectAnswerLetter,CorrectAnswer,Confidence,TimeSpent(Seconds),Timestamp
+P03,ID-20260620141949-3771,3,Condición C — Agente Virtual,1,A,Sí — Membresía Activa,D,No — Lista de Espera,6,2.87,2026-06-20 14:19:56
+P03,ID-20260620141949-3771,3,Condición C — Agente Virtual,2,B,Reemplazo — 24 Meses,B,Reemplazo — 24 Meses,4,5.84,2026-06-20 14:20:02
+P03,ID-20260620141949-3771,3,Condición C — Agente Virtual,3,C,Denegado — Fuera de Horario,C,Denegado — Fuera de Horario,6,3.27,2026-06-20 14:20:05
+P03,ID-20260620141949-3771,3,Condición C — Agente Virtual,4,D,Sin Cambios,A,Descuento + Recargo,5,2.23,2026-06-20 14:20:07
+P03,ID-20260620141949-3771,3,Condición C — Agente Virtual,5,D,Crédito — Gold Mensual,C,Sin Reembolso — Abierto,6,2.15,2026-06-20 14:20:10
+P03,ID-20260620141949-3771,3,Condición C — Agente Virtual,6,D,Sí — Con RRHH,D,Sí — Con RRHH,5,2.25,2026-06-20 14:20:12

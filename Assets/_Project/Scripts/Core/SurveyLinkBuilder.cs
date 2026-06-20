@@ -10,17 +10,31 @@ public static class SurveyLinkBuilder
         if (string.IsNullOrWhiteSpace(baseUrl))
             return "";
 
-        string url = baseUrl.Trim();
-        if (url.Contains("/preview", StringComparison.OrdinalIgnoreCase))
-            url = url.Replace("/preview", "/viewform", StringComparison.OrdinalIgnoreCase);
-
+        string url = NormalizeFormBaseUrl(baseUrl);
         if (string.IsNullOrWhiteSpace(entryId) || string.IsNullOrWhiteSpace(participantCode))
             return url;
 
         string fieldKey = entryId.StartsWith("entry.", StringComparison.OrdinalIgnoreCase)
             ? entryId.Trim()
             : "entry." + entryId.Trim();
-        string query = "usp=pp_url&" + fieldKey + "=" + Uri.EscapeDataString(participantCode.Trim());
-        return url.Contains("?") ? url + "&" + query : url + "?" + query;
+        string encodedCode = Uri.EscapeDataString(participantCode.Trim());
+        return url + "?usp=pp_url&" + fieldKey + "=" + encodedCode;
+    }
+
+    /// <summary>Strips sharing/prefill query params so prefill is always applied cleanly.</summary>
+    public static string NormalizeFormBaseUrl(string url)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+            return "";
+
+        string normalized = url.Trim();
+        if (normalized.Contains("/preview", StringComparison.OrdinalIgnoreCase))
+            normalized = normalized.Replace("/preview", "/viewform", StringComparison.OrdinalIgnoreCase);
+
+        int queryIndex = normalized.IndexOf('?', StringComparison.Ordinal);
+        if (queryIndex >= 0)
+            normalized = normalized[..queryIndex];
+
+        return normalized;
     }
 }

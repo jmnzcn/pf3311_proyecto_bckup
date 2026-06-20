@@ -14,7 +14,7 @@
       "scenarioNumber": 1,
       "condition": "A",
       "surveyUrl": "https://docs.google.com/forms/d/1eXYTw-5RbUbLtk1trghoP2XejZCsHZs6Fyk8uuhUeak/viewform",
-      "surveyCodeEntryId": "entry.807050638",
+      "surveyCodeEntryId": "entry.1305913349",
       "forms_script": "Form1_PostA.gs",
       "export_to": "Forms data/PostBloqueA.csv",
       "content": "RAW-TLX post bloque A"
@@ -23,7 +23,7 @@
       "scenarioNumber": 2,
       "condition": "B",
       "surveyUrl": "https://docs.google.com/forms/d/1MLqIh__LvA7Da5-uJt6izsD-pAyALmO9Je7GlrZpTEg/viewform",
-      "surveyCodeEntryId": "entry.117828474",
+      "surveyCodeEntryId": "entry.434502712",
       "forms_script": "Form2_PostB.gs",
       "export_to": "Forms data/PostBloqueB.csv",
       "content": "meCUE + RAW-TLX post bloque B"
@@ -31,8 +31,8 @@
     {
       "scenarioNumber": 3,
       "condition": "C",
-      "surveyUrl": "https://docs.google.com/forms/d/1mQhV7SZF4X0DRYw-pOhG62GHJxHK6d0jNTCn8pV_ceQ/viewform",
-      "surveyCodeEntryId": "entry.529233443",
+      "surveyUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfIVI1RNATtR3KE0fSmj91lGhI1SvHhyyWWGOIXj_vB-2Z1eg/viewform",
+      "surveyCodeEntryId": "entry.175273376",
       "forms_script": "Form3_PostC.gs",
       "export_to": "Forms data/PostBloqueC.csv",
       "content": "meCUE + RAW-TLX post bloque C"

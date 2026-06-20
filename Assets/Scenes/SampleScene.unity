@@ -1625,7 +1625,7 @@ MonoBehaviour:
   scenarios:
   - scenarioName: "Condici\xF3n A \u2014 Sin Asistencia"
     surveyUrl: https://docs.google.com/forms/d/1eXYTw-5RbUbLtk1trghoP2XejZCsHZs6Fyk8uuhUeak/viewform
-    surveyCodeEntryId: entry.807050638
+    surveyCodeEntryId: entry.1305913349
     questions:
     - situation: "REGLAS\r\n\u2022 Dolor en el pecho O dificultad para respirar \u2192
         Prioridad 1 (Inmediata), sin excepci\xF3n.\r\n\u2022 65 a\xF1os o m\xE1s
@@ -1710,7 +1710,7 @@ MonoBehaviour:
       correctOption: C
   - scenarioName: "Condici\xF3n B \u2014 Agente de Texto"
     surveyUrl: https://docs.google.com/forms/d/1MLqIh__LvA7Da5-uJt6izsD-pAyALmO9Je7GlrZpTEg/viewform
-    surveyCodeEntryId: entry.117828474
+    surveyCodeEntryId: entry.434502712
     questions:
     - situation: "REGLAS\r\n\u2022 M\xE1s de 3 ausencias injustificadas \u2192 Reprobado
         autom\xE1tico, sin importar la nota.\r\n\u2022 Nota \u2265 70 en examen final
@@ -1794,8 +1794,8 @@ MonoBehaviour:
       optD: "Nivel 3 \u2014 P\xE9rdida de Datos"
       correctOption: D
   - scenarioName: "Condici\xF3n C \u2014 Agente Virtual"
-    surveyUrl: https://docs.google.com/forms/d/1mQhV7SZF4X0DRYw-pOhG62GHJxHK6d0jNTCn8pV_ceQ/viewform
-    surveyCodeEntryId: entry.529233443
+    surveyUrl: https://docs.google.com/forms/d/e/1FAIpQLSfIVI1RNATtR3KE0fSmj91lGhI1SvHhyyWWGOIXj_vB-2Z1eg/viewform
+    surveyCodeEntryId: entry.175273376
     questions:
     - situation: "REGLAS\r\n\u2022 Libro en categor\xEDa \"referencia exclusiva\"
         O fuera de pr\xE9stamo en el sistema \u2192 No disponible para pr\xE9stamo,

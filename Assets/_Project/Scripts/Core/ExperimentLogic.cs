@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using MyProject;
 using TMPro;
 using UnityEngine;
@@ -259,6 +260,38 @@ public class ExperimentLogic : MonoBehaviour
         return "Unknown";
     }
 
+    /// <summary>Participant code for Google Forms prefill; empty when not available (never sends "Unknown").</summary>
+    public string GetParticipantCodeForSurveyPrefill()
+    {
+        if (string.IsNullOrEmpty(participantCode))
+            CommitParticipantCodeFromInput();
+
+        if (TryNormalizeParticipantCode(participantCode, out string committed))
+            return committed;
+
+        if (TryGetParticipantCodeFromInput(out string fromInput)
+            && TryNormalizeParticipantCode(fromInput, out string fromField))
+            return fromField;
+
+        string fromUi = TryParseParticipantCodeFromUserIdLabel();
+        if (!string.IsNullOrEmpty(fromUi))
+            return fromUi;
+
+        return "";
+    }
+
+    string TryParseParticipantCodeFromUserIdLabel()
+    {
+        if (userIdText == null || string.IsNullOrWhiteSpace(userIdText.text))
+            return "";
+
+        var match = Regex.Match(userIdText.text, @"\bP\d{2,}\b", RegexOptions.IgnoreCase);
+        if (!match.Success)
+            return "";
+
+        return TryNormalizeParticipantCode(match.Value, out string normalized) ? normalized : "";
+    }
+
     public bool HasParticipantProfileSurvey =>
         !string.IsNullOrWhiteSpace(profileSurveyUrl);
 
@@ -378,7 +411,7 @@ public class ExperimentLogic : MonoBehaviour
             return;
 
         sessionProfileSurveyAwaitingVerification = true;
-        OpenExternalSurveyUrl(url);
+        OpenExternalSurveyUrl(url, GetParticipantCodeForSurveyPrefill());
         NotifyProfileSurveyOpened();
         BeginProfileSurveyVerification();
     }
@@ -808,30 +841,86 @@ public class ExperimentLogic : MonoBehaviour
         return SurveyLinkBuilder.BuildPrefilledUrl(
             profileSurveyUrl,
             profileSurveyCodeEntryId,
-            GetParticipantCode());
+            GetParticipantCodeForSurveyPrefill());
     }
 
-    public void OpenExternalSurveyUrl(string url)
+    public void OpenExternalSurveyUrl(string url, string participantCodeForClipboard = null)
     {
         if (string.IsNullOrWhiteSpace(url))
             return;
 
-#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+        // Full prefilled URL on clipboard: paste in the browser bar if auto-open drops query params.
+        TryCopyParticipantCodeToClipboard(url);
+
+        if (IsWindowsRuntime() && TryOpenUrlInPrivateBrowser(url))
+        {
+            UnityEngine.Debug.Log("Survey opened in private browser: " + url);
+            return;
+        }
+
+        UnityEngine.Debug.Log("Survey opened via Application.OpenURL: " + url);
+        Application.OpenURL(url);
+    }
+
+    static bool IsWindowsRuntime() =>
+        Application.platform == RuntimePlatform.WindowsEditor
+        || Application.platform == RuntimePlatform.WindowsPlayer;
+
+    static void TryCopyParticipantCodeToClipboard(string participantCode)
+    {
+        if (string.IsNullOrWhiteSpace(participantCode))
+            return;
+
         try
         {
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-            {
-                FileName = url,
-                UseShellExecute = true,
-            });
-            return;
+            GUIUtility.systemCopyBuffer = participantCode.Trim();
         }
         catch (Exception ex)
         {
-            Debug.LogWarning("Process.Start failed for post-block survey; falling back to OpenURL: " + ex.Message);
+            UnityEngine.Debug.LogWarning("Could not copy participant code to clipboard: " + ex.Message);
         }
-#endif
-        Application.OpenURL(url);
+    }
+
+    /// <summary>
+    /// Private/incognito avoids Google Forms draft popups that override URL prefill when signed in.
+    /// </summary>
+    static bool TryOpenUrlInPrivateBrowser(string url)
+    {
+        string[] browserPaths =
+        {
+            @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+            @"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+            @"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+        };
+
+        string[] privateFlags = { "--inprivate", "--incognito", "--inprivate", "--incognito" };
+
+        for (int i = 0; i < browserPaths.Length; i++)
+        {
+            string path = browserPaths[i];
+            if (!File.Exists(path))
+                continue;
+
+            try
+            {
+                var startInfo = new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = path,
+                    UseShellExecute = false,
+                };
+                startInfo.ArgumentList.Add(privateFlags[i]);
+                startInfo.ArgumentList.Add(url);
+                System.Diagnostics.Process.Start(startInfo);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                UnityEngine.Debug.LogWarning("Private browser launch failed for " + path + ": " + ex.Message);
+            }
+        }
+
+        return false;
     }
 
     public void RefreshDisplayAfterExternalApp()

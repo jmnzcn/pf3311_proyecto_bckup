@@ -1,0 +1,13 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,TotalExchanges,TotalTurns,AvgHelpScore,AvgTaskEngagementScore,AnswerRequestCount,OffTopicCount,ModelLeakCount,OnTopicSeconds,OffTopicSeconds,SubstantiveQuestionCount,ChatUsedInQuestion,DominantUtilityLevel,EffectiveHelpLevel,Flags,Timestamp
+P03,ID-20260620144449-3557,C,3,Condición C — Agente Virtual,1,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 14:57:30
+P03,ID-20260620144449-3557,C,3,Condición C — Agente Virtual,2,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 14:57:33
+P03,ID-20260620144449-3557,C,3,Condición C — Agente Virtual,3,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 14:57:36
+P03,ID-20260620144449-3557,C,3,Condición C — Agente Virtual,4,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 14:57:38
+P03,ID-20260620144449-3557,C,3,Condición C — Agente Virtual,5,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 14:57:40
+P03,ID-20260620144449-3557,C,3,Condición C — Agente Virtual,6,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 14:57:43
+P03,ID-20260620144449-3557,B,2,Condición B — Agente de Texto,1,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 14:59:55
+P03,ID-20260620144449-3557,B,2,Condición B — Agente de Texto,2,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 14:59:57
+P03,ID-20260620144449-3557,B,2,Condición B — Agente de Texto,3,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 15:00:00
+P03,ID-20260620144449-3557,B,2,Condición B — Agente de Texto,4,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 15:00:01
+P03,ID-20260620144449-3557,B,2,Condición B — Agente de Texto,5,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 15:00:04
+P03,ID-20260620144449-3557,B,2,Condición B — Agente de Texto,6,0,0,0.0,0.0,0,0,0,0.00,0.00,0,0,None,None,no_chat_used,2026-06-20 15:00:06

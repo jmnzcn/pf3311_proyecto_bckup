@@ -201,23 +201,45 @@ public class QuestionManager : MonoBehaviour
                 return entryId.Trim();
         }
 
-        return string.IsNullOrWhiteSpace(surveyCodeEntryId) ? "" : surveyCodeEntryId.Trim();
+        if (!string.IsNullOrWhiteSpace(surveyCodeEntryId))
+            return surveyCodeEntryId.Trim();
+
+        return ResolveSurveyCodeEntryIdFromUrl(GetScenarioSurveyUrl(scenarioIndex));
+    }
+
+    /// <summary>Fallback when scene entry ids are missing (e.g. older builds).</summary>
+    static string ResolveSurveyCodeEntryIdFromUrl(string url)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+            return "";
+
+        string normalized = url.Trim();
+        if (normalized.Contains("1eXYTw-5RbUbLtk1trghoP2XejZCsHZs6Fyk8uuhUeak", StringComparison.OrdinalIgnoreCase))
+            return "entry.1305913349";
+        if (normalized.Contains("1MLqIh__LvA7Da5-uJt6izsD-pAyALmO9Je7GlrZpTEg", StringComparison.OrdinalIgnoreCase))
+            return "entry.434502712";
+        if (normalized.Contains("1mQhV7SZF4X0DRYw-pOhG62GHJxHK6d0jNTCn8pV_ceQ", StringComparison.OrdinalIgnoreCase)
+            || normalized.Contains("1FAIpQLSfIVI1RNATtR3KE0fSmj91lGhI1SvHhyyWWGOIXj_vB-2Z1eg", StringComparison.OrdinalIgnoreCase))
+            return "entry.175273376";
+
+        return "";
     }
 
     int ResolveSurveyScenarioIndex()
     {
-        if (activeScenarioIndex >= 0)
-            return activeScenarioIndex;
-
+        // Prefer the first completed block still missing its survey (A→B→C), not whichever block was played last.
         if (experimentLogic != null)
         {
             string pending = experimentLogic.GetFirstPendingPostBlockSurveyCondition();
-            int idx = ConditionCodeToScenarioIndex(pending);
-            if (idx >= 0)
-                return idx;
+            int pendingIdx = ConditionCodeToScenarioIndex(pending);
+            if (pendingIdx >= 0)
+                return pendingIdx;
         }
 
-        return activeScenarioIndex;
+        if (activeScenarioIndex >= 0)
+            return activeScenarioIndex;
+
+        return -1;
     }
 
     public string ActiveScenarioName
@@ -421,14 +443,21 @@ public class QuestionManager : MonoBehaviour
 
     void OnSurveyButtonClicked()
     {
-        if (postBlockSurveyAwaitingVerification && !postBlockSurveySubmitted)
-        {
-            if (experimentLogic != null && !experimentLogic.HasFormResponseVerification)
-                ConfirmPostBlockSurveySubmissionManually();
+        if (IsPostBlockSurveyCompletedForActiveCondition())
             return;
-        }
 
         OpenSurvey();
+    }
+
+    bool IsPostBlockSurveyCompletedForActiveCondition()
+    {
+        if (postBlockSurveySubmitted)
+            return true;
+
+        string conditionCode = GetSurveyVerificationConditionCode();
+        return experimentLogic != null
+               && !string.IsNullOrEmpty(conditionCode)
+               && experimentLogic.IsPostBlockSurveySubmitted(conditionCode);
     }
 
     string GetActiveScenarioSurveyCodeEntryId() =>
@@ -458,11 +487,45 @@ public class QuestionManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(url))
             return "";
 
-        string participantCode = experimentLogic != null ? experimentLogic.GetParticipantCode() : "";
-        return SurveyLinkBuilder.BuildPrefilledUrl(
-            url,
-            GetActiveScenarioSurveyCodeEntryId(),
-            participantCode);
+        string entryId = GetActiveScenarioSurveyCodeEntryId();
+        if (string.IsNullOrWhiteSpace(entryId))
+            entryId = ResolveSurveyCodeEntryIdFromUrl(url);
+
+        string conditionCode = GetSurveyVerificationConditionCode();
+        if (string.IsNullOrWhiteSpace(entryId) && conditionCode == "C")
+            entryId = "entry.175273376";
+
+        string participantCode = ResolveParticipantCodeForSurveyPrefill();
+
+        string prefilledUrl = SurveyLinkBuilder.BuildPrefilledUrl(url, entryId, participantCode);
+        if (string.IsNullOrWhiteSpace(entryId) || string.IsNullOrWhiteSpace(participantCode))
+        {
+            Debug.LogWarning(
+                "Post-block survey opened without full prefill. condition="
+                + conditionCode
+                + " entryId=" + (string.IsNullOrWhiteSpace(entryId) ? "(missing)" : entryId)
+                + " participant="
+                + (string.IsNullOrWhiteSpace(participantCode) ? "(missing)" : participantCode)
+                + " baseUrl=" + SurveyLinkBuilder.NormalizeFormBaseUrl(url));
+        }
+
+        return prefilledUrl;
+    }
+
+    string ResolveParticipantCodeForSurveyPrefill()
+    {
+        if (experimentLogic == null)
+            return "";
+
+        string code = experimentLogic.GetParticipantCodeForSurveyPrefill();
+        if (!string.IsNullOrWhiteSpace(code))
+            return code;
+
+        string fallback = experimentLogic.GetParticipantCode();
+        if (ExperimentLogic.TryNormalizeParticipantCode(fallback, out string normalized))
+            return normalized;
+
+        return "";
     }
 
     public bool CanLeaveBlockCompletionScreen()
@@ -488,7 +551,7 @@ public class QuestionManager : MonoBehaviour
         return experimentLogic.AreAllRequiredPostBlockSurveysSubmitted();
     }
 
-    void RefreshSurveyButtonLabel(bool manualConfirmMode, bool completed, bool awaitingVerification)
+    void RefreshSurveyButtonLabel(bool completed)
     {
         if (surveyButtonTitle == null && surveyButton != null)
             surveyButtonTitle = surveyButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -496,26 +559,14 @@ public class QuestionManager : MonoBehaviour
         if (surveyButtonTitle == null)
             return;
 
-        surveyButtonTitle.text = manualConfirmMode
-            ? SurveyButtonConfirmTitle
-            : completed
-                ? "ENCUESTA COMPLETADA"
-                : SurveyButtonDefaultTitle;
+        surveyButtonTitle.text = completed ? "ENCUESTA COMPLETADA" : SurveyButtonDefaultTitle;
     }
 
     void RefreshFinalOptionsPanelState()
     {
         bool requiresSurvey = RequiresPostBlockSurvey();
         bool allBlocksDone = experimentLogic != null && experimentLogic.AreAllConditionsCompleted;
-        string conditionCode = GetSurveyVerificationConditionCode();
-        bool completedForCondition = postBlockSurveySubmitted
-                                     || (experimentLogic != null
-                                         && !string.IsNullOrEmpty(conditionCode)
-                                         && experimentLogic.IsPostBlockSurveySubmitted(conditionCode));
-        bool manualConfirmMode = postBlockSurveyAwaitingVerification
-                                 && !completedForCondition
-                                 && experimentLogic != null
-                                 && !experimentLogic.HasFormResponseVerification;
+        bool completedForCondition = IsPostBlockSurveyCompletedForActiveCondition();
 
         if (surveyButton != null)
         {
@@ -524,10 +575,8 @@ public class QuestionManager : MonoBehaviour
                                         && experimentLogic != null
                                         && !experimentLogic.AreAllRequiredPostBlockSurveysSubmitted());
             surveyButton.gameObject.SetActive(showSurveyAction);
-            surveyButton.interactable = showSurveyAction
-                                          && !completedForCondition
-                                          && (!postBlockSurveyAwaitingVerification || manualConfirmMode);
-            RefreshSurveyButtonLabel(manualConfirmMode, completedForCondition, postBlockSurveyAwaitingVerification);
+            surveyButton.interactable = showSurveyAction && !completedForCondition;
+            RefreshSurveyButtonLabel(completedForCondition);
         }
 
         if (anotherScenarioButton != null)
@@ -594,13 +643,16 @@ public class QuestionManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(url))
             return;
 
+        string participantCode = ResolveParticipantCodeForSurveyPrefill();
+        Debug.Log("Post-block survey URL: " + url);
+
         postBlockSurveyAwaitingVerification = true;
         postBlockSurveySubmitted = false;
         RefreshFinalOptionsPanelState();
         AppendPostBlockSurveyStatusToCompletionText();
 
         if (experimentLogic != null)
-            experimentLogic.OpenExternalSurveyUrl(url);
+            experimentLogic.OpenExternalSurveyUrl(url, participantCode);
         else
             Application.OpenURL(url);
 
@@ -685,17 +737,30 @@ public class QuestionManager : MonoBehaviour
                                      || (experimentLogic != null
                                          && !string.IsNullOrEmpty(conditionCode)
                                          && experimentLogic.IsPostBlockSurveySubmitted(conditionCode));
+        string participantCode = ResolveParticipantCodeForSurveyPrefill();
+        string codeHint = string.IsNullOrWhiteSpace(participantCode)
+            ? ""
+            : "\n<size=26><color=#6EEDC8>Tu código: "
+              + participantCode
+              + ". La URL con el código ya quedó en el portapapeles: pegala en la barra del navegador si el campo sale vacío.</color></size>";
         string surveyStatus = completedForCondition
             ? "\n<size=26><color=#6EEDC8>Encuesta recibida correctamente.</color></size>"
             : postBlockSurveyAwaitingVerification
                 ? experimentLogic != null && experimentLogic.HasFormResponseVerification
                     ? "\n<size=26><color=#9EBFC2>Completá y enviá la encuesta en el navegador. La app verificará el envío al volver.</color></size>"
-                    : "\n<size=26><color=#9EBFC2>Completá y enviá la encuesta. Luego pulsá «Confirmar envío» en Realizar Encuesta.</color></size>"
+                      + "\n<size=22><color=#9EBFC2>Podés volver a pulsar «Realizar Encuesta» si no abrió bien.</color></size>"
+                      + codeHint
+                      + "\n<size=22><color=#9EBFC2>Si Google pregunta por un borrador guardado, elegí «Continuar» (no «Usar borrador anterior»).</color></size>"
+                    : "\n<size=26><color=#9EBFC2>Completá y enviá la encuesta. Podés pulsar «Realizar Encuesta» de nuevo si hace falta.</color></size>"
+                      + "\n<size=22><color=#9EBFC2>Cuando hayas enviado, pulsá «Otro Escenario» para continuar.</color></size>"
+                      + codeHint
+                      + "\n<size=22><color=#9EBFC2>Si Google pregunta por un borrador guardado, elegí «Continuar» (no «Usar borrador anterior»).</color></size>"
                 : allBlocksDone && experimentLogic != null && !experimentLogic.AreAllRequiredPostBlockSurveysSubmitted()
                     ? "\n<size=26><color=#9EBFC2>Falta la encuesta del bloque "
                       + experimentLogic.GetFirstPendingPostBlockSurveyCondition()
                       + ". Pulsá «Realizar Encuesta».</color></size>"
-                    : "\n<size=26><color=#9EBFC2>Pulsá «Realizar Encuesta», completala y enviala en el navegador.</color></size>";
+                    : "\n<size=26><color=#9EBFC2>Pulsá «Realizar Encuesta», completala y enviala en el navegador.</color></size>"
+                      + codeHint;
 
         questionTextDisplay.text =
             "\u00a1Listo! Ya completaste este escenario.\n" +
@@ -718,7 +783,19 @@ public class QuestionManager : MonoBehaviour
             return;
 
         if (!CanLeaveBlockCompletionScreen())
-            return;
+        {
+            if (postBlockSurveyAwaitingVerification
+                && !postBlockSurveySubmitted
+                && experimentLogic != null
+                && !experimentLogic.HasFormResponseVerification)
+            {
+                MarkPostBlockSurveySubmitted();
+            }
+            else
+            {
+                return;
+            }
+        }
 
         if (experimentLogic != null)
             experimentLogic.ResetToScenarioSelection();

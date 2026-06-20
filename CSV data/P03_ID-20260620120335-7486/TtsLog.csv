@@ -1,0 +1,2 @@
+﻿ParticipantCode,SessionID,ConditionCode,ScenarioNumber,ScenarioName,QuestionNumber,ExchangeIndex,TtsSuccess,FailureReason,Timestamp
+P03,ID-20260620120335-7486,C,0,Sesión,0,0,,[SIN DATOS] No hubo chat ni intentos de síntesis de voz Azure en la condición C.,2026-06-20 12:06:20

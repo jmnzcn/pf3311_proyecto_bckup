@@ -1,0 +1,13 @@
+﻿ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,User_answer_Letter,User_answer,CorrectAnswerLetter,CorrectAnswer,Confidence,TimeSpent(Seconds),Timestamp
+P03,ID-20260620144449-3557,3,Condición C — Agente Virtual,1,B,Sí — Posgrado Amplía Límite,D,No — Lista de Espera,7,2.68,2026-06-20 14:57:30
+P03,ID-20260620144449-3557,3,Condición C — Agente Virtual,2,D,Reemplazo — Plan Total,B,Reemplazo — 24 Meses,7,2.38,2026-06-20 14:57:33
+P03,ID-20260620144449-3557,3,Condición C — Agente Virtual,3,D,Permitido — Zona N2,C,Denegado — Fuera de Horario,7,3.49,2026-06-20 14:57:36
+P03,ID-20260620144449-3557,3,Condición C — Agente Virtual,4,D,Sin Cambios,A,Descuento + Recargo,7,1.95,2026-06-20 14:57:38
+P03,ID-20260620144449-3557,3,Condición C — Agente Virtual,5,D,Crédito — Gold Mensual,C,Sin Reembolso — Abierto,7,2.16,2026-06-20 14:57:40
+P03,ID-20260620144449-3557,3,Condición C — Agente Virtual,6,D,Sí — Con RRHH,D,Sí — Con RRHH,7,2.25,2026-06-20 14:57:42
+P03,ID-20260620144449-3557,2,Condición B — Agente de Texto,1,D,Revisión — Ausencias,A,Aprobado,5,2.50,2026-06-20 14:59:55
+P03,ID-20260620144449-3557,2,Condición B — Agente de Texto,2,D,Acelerado — 2 (Combinado),C,Acelerado — 3 Revisores,5,2.08,2026-06-20 14:59:57
+P03,ID-20260620144449-3557,2,Condición B — Agente de Texto,3,D,Rechazado — Proveedor en Prueba,A,Requiere Supervisor — Prueba Baja Umbral,6,2.11,2026-06-20 14:59:59
+P03,ID-20260620144449-3557,2,Condición B — Agente de Texto,4,D,Sí — Autorización Válida,D,Sí — Autorización Válida,5,1.96,2026-06-20 15:00:01
+P03,ID-20260620144449-3557,2,Condición B — Agente de Texto,5,B,Express + Seguro,B,Express + Seguro,6,2.12,2026-06-20 15:00:04
+P03,ID-20260620144449-3557,2,Condición B — Agente de Texto,6,D,Nivel 3 — Pérdida de Datos,D,Nivel 3 — Pérdida de Datos,5,2.51,2026-06-20 15:00:06

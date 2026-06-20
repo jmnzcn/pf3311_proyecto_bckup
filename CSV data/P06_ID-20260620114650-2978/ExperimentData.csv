@@ -1,0 +1,7 @@
+﻿ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,User_answer_Letter,User_answer,CorrectAnswerLetter,CorrectAnswer,Confidence,TimeSpent(Seconds),Timestamp
+P06,ID-20260620114650-2978,3,Condición C — Agente Virtual,1,C,Sí — Posgrado Cancela Multa,D,No — Lista de Espera,6,6.78,2026-06-20 11:47:03
+P06,ID-20260620114650-2978,3,Condición C — Agente Virtual,2,B,Reemplazo — 24 Meses,B,Reemplazo — 24 Meses,5,2.98,2026-06-20 11:47:06
+P06,ID-20260620114650-2978,3,Condición C — Agente Virtual,3,B,Denegado — Sin Patrocinio,C,Denegado — Fuera de Horario,4,4.68,2026-06-20 11:47:11
+P06,ID-20260620114650-2978,3,Condición C — Agente Virtual,4,A,Descuento + Recargo,A,Descuento + Recargo,5,3.30,2026-06-20 11:47:14
+P06,ID-20260620114650-2978,3,Condición C — Agente Virtual,5,B,Reembolso Completo,C,Sin Reembolso — Abierto,4,4.45,2026-06-20 11:47:19
+P06,ID-20260620114650-2978,3,Condición C — Agente Virtual,6,B,No — Requiere RRHH,D,Sí — Con RRHH,4,4.25,2026-06-20 11:47:23

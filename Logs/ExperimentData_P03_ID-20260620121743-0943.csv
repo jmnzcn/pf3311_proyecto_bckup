@@ -1,0 +1,7 @@
+﻿ParticipantCode,SessionID,ScenarioNumber,ScenarioName,QuestionNumber,ActionType,ActionDetail,CorrectAnswer,TimeSpent(s),Timestamp
+P03,ID-20260620121743-0943,3,Condición C — Agente Virtual,1,S3_Quest_1,Sí — Posgrado Amplía Límite | Confianza: 3,No — Lista de Espera,2.87,2026-06-20 12:17:47
+P03,ID-20260620121743-0943,3,Condición C — Agente Virtual,2,S3_Quest_2,Reemplazo — Plan Total | Confianza: 4,Reemplazo — 24 Meses,2.39,2026-06-20 12:17:50
+P03,ID-20260620121743-0943,3,Condición C — Agente Virtual,3,S3_Quest_3,Permitido — Credencial | Confianza: 4,Denegado — Fuera de Horario,2.19,2026-06-20 12:17:52
+P03,ID-20260620121743-0943,3,Condición C — Agente Virtual,4,S3_Quest_4,Sin Cambios | Confianza: 4,Descuento + Recargo,2.23,2026-06-20 12:17:54
+P03,ID-20260620121743-0943,3,Condición C — Agente Virtual,5,S3_Quest_5,Reembolso Completo | Confianza: 3,Sin Reembolso — Abierto,3.04,2026-06-20 12:17:57
+P03,ID-20260620121743-0943,3,Condición C — Agente Virtual,6,S3_Quest_6,Sí — Escasez Total | Confianza: 3,Sí — Con RRHH,2.21,2026-06-20 12:17:59

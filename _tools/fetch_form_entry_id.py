@@ -5,47 +5,63 @@ from __future__ import annotations
 
 import re
 import sys
+import urllib.parse
 import urllib.request
 
-FORM_ID = "1XjG9GBr71tyhfF2sFWn7RcKfHkBAjCnufZJKZXoP6zA"
-VIEW_URL = f"https://docs.google.com/forms/d/{FORM_ID}/viewform"
+
+def extract_form_id(url_or_id: str) -> tuple[str, bool]:
+    raw = url_or_id.strip()
+    if raw.startswith("http"):
+        path = urllib.parse.urlparse(raw).path
+        parts = [p for p in path.split("/") if p]
+        for i, part in enumerate(parts):
+            if part == "e" and i + 1 < len(parts):
+                return parts[i + 1], True
+            if part == "d" and i + 1 < len(parts):
+                return parts[i + 1], False
+        raise ValueError(f"Could not parse form id from URL: {url_or_id}")
+    return raw, False
 
 
-def main() -> int:
-    html = urllib.request.urlopen(VIEW_URL, timeout=30).read().decode("utf-8", "replace")
+def build_view_url(form_id: str, published: bool) -> str:
+    if published:
+        return f"https://docs.google.com/forms/d/e/{form_id}/viewform"
+    return f"https://docs.google.com/forms/d/{form_id}/viewform"
 
-    # Text question internal id appears as [[1810287026,null,...]] before choice entry.* ids.
+
+def resolve_entry_id(form_id: str, published: bool) -> str:
+    view_url = build_view_url(form_id, published)
+    html = urllib.request.urlopen(view_url, timeout=30).read().decode("utf-8", "replace")
+
     text_match = re.search(
-        r"C[oó]digo de participante.{0,400}?\[\[(\d+),null",
+        r"C[oó]digo de participante.{0,500}?\[\[(\d+),null",
         html,
         re.IGNORECASE | re.DOTALL,
     )
-    if text_match:
-        candidate = text_match.group(1)
-        test_url = (
-            f"https://docs.google.com/forms/d/{FORM_ID}/viewform"
-            f"?usp=pp_url&entry.{candidate}=P01"
-        )
-        body = urllib.request.urlopen(test_url, timeout=30).read(80000).decode("utf-8", "replace")
-        if "P01" in body:
-            print(f"entry.{candidate}")
-            return 0
+    if not text_match:
+        raise RuntimeError(f"Could not find participant text field in form {form_id}")
 
-    # Fallback: first entry.* before age question (642758300 is known age field in this form).
-    for entry_id in re.findall(r"entry\.(\d+)", html):
-        if entry_id == "642758300":
-            break
-        test_url = (
-            f"https://docs.google.com/forms/d/{FORM_ID}/viewform"
-            f"?usp=pp_url&entry.{entry_id}=P01"
-        )
-        body = urllib.request.urlopen(test_url, timeout=30).read(80000).decode("utf-8", "replace")
-        if "P01" in body and "642758300" not in test_url:
-            print(f"entry.{entry_id}")
-            return 0
+    entry_id = text_match.group(1)
+    test_url = f"{view_url}?usp=pp_url&entry.{entry_id}=P01"
+    body = urllib.request.urlopen(test_url, timeout=30).read().decode("utf-8", "replace")
+    if f"{entry_id},[&quot;P01&quot;]" not in body:
+        raise RuntimeError(f"entry.{entry_id} did not prefill participant field for form {form_id}")
 
-    print("ERROR: could not resolve entry id", file=sys.stderr)
-    return 1
+    return f"entry.{entry_id}"
+
+
+def main() -> int:
+    if len(sys.argv) < 2:
+        print("Usage: fetch_form_entry_id.py <form_url_or_id>", file=sys.stderr)
+        return 2
+
+    try:
+        form_id, published = extract_form_id(sys.argv[1])
+        print(resolve_entry_id(form_id, published))
+        return 0
+    except Exception as exc:  # noqa: BLE001 - CLI tool
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":
