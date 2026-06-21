@@ -1,0 +1,48 @@
+{
+  "description": "Backup incremental encuestas: Google Forms (nube) → carpeta Drive producción.",
+  "mode": "drive_only",
+  "google_drive_backup_folder_id": "1RLLESYhJbJkBOnNdV6uZTaehl-t-W-Cp",
+  "google_drive_backup_folder_url": "https://drive.google.com/drive/folders/1RLLESYhJbJkBOnNdV6uZTaehl-t-W-Cp",
+  "google_drive_live_data_folder_id": "1T1K1zRq9L2PHaSYkhDDBPY5b1BHKKp1Y",
+  "google_drive_live_data_folder_url": "https://drive.google.com/drive/folders/1T1K1zRq9L2PHaSYkhDDBPY5b1BHKKp1Y",
+  "apps_script_action": "backupFormsProduccion",
+  "apps_script_deploy_info": "_tools/google_drive/deploy_info.json",
+  "run_from_pc": "powershell -ExecutionPolicy Bypass -File _tools/backup_forms_produccion_drive.ps1",
+  "delete_from_pc": "powershell -ExecutionPolicy Bypass -File _tools/delete_forms_responses_drive.ps1 -Participants P01",
+  "delete_docs": "_tools/google_drive/COMO_ELIMINAR_FORMS_DRIVE.txt",
+  "run_in_apps_script": "BACKUP_FORMS_PRODUCCION_A_DRIVE",
+  "docs": "_tools/google_drive/COMO_BACKUP_FORMS_DRIVE.txt",
+  "local_exports_dir": "Forms data",
+  "local_backup_dir": "Forms data/_produccion",
+  "note_local_optional": "Los scripts en Forms data/ son solo para análisis offline opcional. El backup oficial es Drive.",
+  "forms": [
+    {
+      "key": "profile",
+      "title": "PF-3311 — Perfil del participante",
+      "form_id": "1XjG9GBr71tyhfF2sFWn7RcKfHkBAjCnufZJKZXoP6zA",
+      "responses_url": "https://docs.google.com/forms/d/1XjG9GBr71tyhfF2sFWn7RcKfHkBAjCnufZJKZXoP6zA/edit#responses",
+      "backup_filename": "Form0_Perfil.csv"
+    },
+    {
+      "key": "A",
+      "title": "PF-3311 — Post bloque A",
+      "form_id": "1eXYTw-5RbUbLtk1trghoP2XejZCsHZs6Fyk8uuhUeak",
+      "responses_url": "https://docs.google.com/forms/d/1eXYTw-5RbUbLtk1trghoP2XejZCsHZs6Fyk8uuhUeak/edit#responses",
+      "backup_filename": "PostBloqueA.csv"
+    },
+    {
+      "key": "B",
+      "title": "PF-3311 — Post bloque B",
+      "form_id": "1MLqIh__LvA7Da5-uJt6izsD-pAyALmO9Je7GlrZpTEg",
+      "responses_url": "https://docs.google.com/forms/d/1MLqIh__LvA7Da5-uJt6izsD-pAyALmO9Je7GlrZpTEg/edit#responses",
+      "backup_filename": "PostBloqueB.csv"
+    },
+    {
+      "key": "C",
+      "title": "PF-3311 — Post bloque C",
+      "form_id": "1mQhV7SZF4X0DRYw-pOhG62GHJxHK6d0jNTCn8pV_ceQ",
+      "responses_url": "https://docs.google.com/forms/d/1mQhV7SZF4X0DRYw-pOhG62GHJxHK6d0jNTCn8pV_ceQ/edit#responses",
+      "backup_filename": "PostBloqueC.csv"
+    }
+  ]
+}

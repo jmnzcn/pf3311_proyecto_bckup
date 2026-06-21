@@ -1,0 +1,34 @@
+PF-3311 — Eliminar respuestas de participantes (solo Google Forms)
+==================================================================
+
+DESTRUCTIVO en Forms: borra respuestas en los 4 formularios en vivo.
+El backup en Drive queda INTACTO (no se modifica).
+
+Formularios afectados:
+  - Perfil:     1XjG9GBr71tyhfF2sFWn7RcKfHkBAjCnufZJKZXoP6zA
+  - Post A:     1eXYTw-5RbUbLtk1trghoP2XejZCsHZs6Fyk8uuhUeak
+  - Post B:     1MLqIh__LvA7Da5-uJt6izsD-pAyALmO9Je7GlrZpTEg
+  - Post C:     1mQhV7SZF4X0DRYw-pOhG62GHJxHK6d0jNTCn8pV_ceQ
+
+USO DESDE PC
+------------
+Un participante:
+
+  powershell -ExecutionPolicy Bypass -File _tools\delete_forms_responses_drive.ps1 -Participants P01
+
+Varios (separados por coma):
+
+  powershell -ExecutionPolicy Bypass -File _tools\delete_forms_responses_drive.ps1 -Participants "P01,P02"
+
+EDITOR APPS SCRIPT
+------------------
+  DELETE_FORM_RESPONSES_BY_PARTICIPANTS('P01')
+  DELETE_FORM_RESPONSES_BY_PARTICIPANTS('P01,P02')
+
+URL MANUAL (requiere confirm=1)
+-------------------------------
+  .../exec?secret=TU_SECRETO&action=deleteFormResponses&participants=P01,P02&confirm=1
+
+DESPLIEGUE
+----------
+Tras cambios en FormsDelete.gs: clasp push + redeploy (misma URL que backup).

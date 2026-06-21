@@ -1611,7 +1611,7 @@ MonoBehaviour:
   finalOptionsPanel: {fileID: 1855528722}
   surveyButton: {fileID: 1876326581}
   anotherScenarioButton: {fileID: 1083023785}
-  finalizeSessionButton: {fileID: 866899602}
+  finalizeSessionButton: {fileID: 1432477900}
   surveyUrl: 
   surveyCodeEntryId: 
   exitPopupPanel: {fileID: 2003379495}

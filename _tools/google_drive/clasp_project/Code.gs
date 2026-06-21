@@ -14,7 +14,7 @@
  */
 var DRIVE_PARENT_FOLDER_ID = '1T1K1zRq9L2PHaSYkhDDBPY5b1BHKKp1Y';
 var CSV_ROOT_FOLDER_NAME = 'CSVs';
-var UPLOAD_SECRET = '784c915b3a664e08a32ce9a8572937f2';
+var UPLOAD_SECRET = '__UPLOAD_SECRET__';
 var UPLOAD_SECRET_UNSET = '__UPLOAD_SECRET__';
 
 /** Una sola vez: en el editor, elegí esta función en el menú desplegable y pulsá Ejecutar ▶. */
@@ -131,6 +131,14 @@ function doGet(e) {
 
     if (params.secret !== UPLOAD_SECRET) {
       return jsonResponse({ ok: false, error: 'Unauthorized.' });
+    }
+
+    if (String(params.action || '') === 'backupFormsProduccion') {
+      return handleBackupFormsProduccionGet_();
+    }
+
+    if (String(params.action || '') === 'deleteFormResponses') {
+      return handleDeleteFormResponsesGet_(params);
     }
 
     var formKey = String(params.form || '').trim();

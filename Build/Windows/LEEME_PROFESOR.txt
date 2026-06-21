@@ -9,8 +9,9 @@ Requisitos
 Ejecución
 ---------
 1. Descomprimir toda la carpeta (no mover solo el .exe).
-2. Ejecutar ExperimentPrototypeB03230.exe (un solo clic).
-3. Consentimiento → elegir INICIAR (A, B o C) → 6 preguntas por bloque.
+2. Verificar que exista _config/LocalSecrets.json junto al .exe (incluido en el zip de entrega).
+3. Ejecutar ExperimentPrototypeB03230.exe (un solo clic).
+4. Consentimiento → elegir INICIAR (A, B o C) → 6 preguntas por bloque.
 
 Condiciones
 -----------
@@ -18,9 +19,12 @@ Condiciones
 - B: agente de texto (Gemini)
 - C: agente virtual + voz (Gemini + Azure TTS)
 
-Este build incluye las credenciales de API necesarias para B y C
-(Gemini en GameManager, Azure Speech en el avatar).
-Generado: junio 2026. No redistribuir el zip públicamente (cuotas y seguridad).
+Credenciales
+------------
+Las API keys (Gemini, Azure Speech, Drive upload) están en _config/LocalSecrets.json,
+NO en el código fuente del repo. Este zip de entrega las incluye para que B y C funcionen.
+
+Generado: junio 2026. Compartir solo con evaluadores/participantes autorizados.
 
 Datos
 -----

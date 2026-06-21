@@ -1,5 +1,6 @@
 # Local API secrets (never commit)
 _config/LocalSecrets.json
+_tools/google_drive/upload_secret.txt
 
 # Unity generated
 [Ll]ibrary/

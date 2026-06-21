@@ -1,0 +1,49 @@
+PF-3311 — Backup de encuestas SOLO en Google Drive (Forms → carpeta producción)
+================================================================================
+
+IMPORTANTE
+----------
+Las respuestas viven en GOOGLE FORMS (nube). Este backup NO usa archivos locales.
+
+  Fuente:  respuestas en vivo de los 4 Forms (FormApp)
+  Destino: https://drive.google.com/drive/folders/1RLLESYhJbJkBOnNdV6uZTaehl-t-W-Cp
+
+Regla: solo AGREGA filas nuevas al CSV de backup (código P##).
+       El backup SIEMPRE gana: si P01 ya está en backup, se ignora P01 de Forms.
+       Nunca se sobrescribe ni reemplaza filas existentes.
+       Si backup tiene P01,P02 y Forms tiene P01–P04 → backup queda P01–P04 (P01 intacto).
+
+Archivos en la carpeta de backup (uno por formulario):
+  Form0_Perfil.csv
+  PostBloqueA.csv
+  PostBloqueB.csv
+  PostBloqueC.csv
+
+PASO 1 — Subir el script a Apps Script (una vez, o tras cambios)
+---------------------------------------------------------------
+1. Abrí tu proyecto Apps Script del CSV upload (script.google.com).
+2. Archivo → Nuevo → Script → pegá el contenido de:
+     _tools/google_drive/forms_produccion_backup.gs
+   (o copiá FormsBackup.gs desde clasp_project si usás clasp push)
+3. En Code.gs, doGet debe aceptar action=backupFormsProduccion (ya está en clasp_project/Code.gs).
+4. Implementar → Administrar implementaciones → Nueva versión → Implementar.
+
+PASO 2 — Ejecutar el backup
+---------------------------
+Opción A — Desde tu PC (recomendado):
+
+  powershell -ExecutionPolicy Bypass -File _tools\backup_forms_produccion_drive.ps1
+
+Opción B — En el editor Apps Script:
+  Elegí la función BACKUP_FORMS_PRODUCCION_A_DRIVE → Ejecutar ▶
+
+Opción C — URL manual (mismo secreto que csvDriveUploadSecret):
+
+  https://script.google.com/macros/s/.../exec?secret=TU_SECRETO&action=backupFormsProduccion
+
+CUÁNDO CORRERLO
+---------------
+Después de que participantes reales envíen encuestas (P03, P04, …), aunque sigas probando.
+
+Los scripts locales (_tools/backup_forms_produccion.ps1) son opcionales para análisis
+offline; el backup OFICIAL de producción es esta carpeta de Drive.

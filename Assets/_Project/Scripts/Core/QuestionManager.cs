@@ -595,7 +595,11 @@ public class QuestionManager : MonoBehaviour
         }
 
         if (finalizeSessionButton != null)
-            finalizeSessionButton.interactable = IsFarewellScreenVisible() || CanFinalizeSession();
+        {
+            bool showFinalize = allBlocksDone;
+            finalizeSessionButton.gameObject.SetActive(showFinalize);
+            finalizeSessionButton.interactable = showFinalize && CanFinalizeSession();
+        }
 
         if (IsBlockCompletionScreenVisible)
             HideQuestionFlowControlsForCompletion();
@@ -624,8 +628,11 @@ public class QuestionManager : MonoBehaviour
             BringPanelAboveBlockingOverlays(farewellPanel.transform);
         }
 
-        if (finalizeSessionButton != null)
-            finalizeSessionButton.interactable = true;
+        Button farewellFinalize = farewellPanel != null
+            ? farewellPanel.GetComponentInChildren<Button>(true)
+            : null;
+        if (farewellFinalize != null)
+            farewellFinalize.interactable = true;
     }
 
     static void BringPanelAboveBlockingOverlays(Transform panel)
