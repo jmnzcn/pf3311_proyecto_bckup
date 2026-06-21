@@ -1,4 +1,4 @@
-%YAML 1.1
+﻿%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
 OcclusionCullingSettings:
@@ -423,7 +423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &73872383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5673,8 +5673,8 @@ MonoBehaviour:
   profileSurveyUrl: https://docs.google.com/forms/d/1XjG9GBr71tyhfF2sFWn7RcKfHkBAjCnufZJKZXoP6zA/viewform
   profileSurveyCodeEntryId: entry.1810287026
   csvDriveUploadUrl: https://script.google.com/macros/s/AKfycbyA-DVdtaTdWgRXqjgrusL2m5cVJW7x3kZiJGRIZLEt6qCdsIcqAoc1NJyQkkcg-Iuw/exec
-  csvDriveUploadSecret: 784c915b3a664e08a32ce9a8572937f2
-  apiKey: AIzaSyBPJahkR7DYyMyApgH4URiU0OQ9FiiUgt8
+  csvDriveUploadSecret: YOUR_DRIVE_UPLOAD_SECRET_HERE
+  apiKey: YOUR_GEMINI_API_KEY_HERE
   endpoint: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=
 --- !u!114 &617762684
 MonoBehaviour:
@@ -14891,7 +14891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4d56e5b8188c64892ed780e7dd6e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AzureLipSync
-  subscriptionKey: 2gb0NjOW6wlFNiPcKgtiUyvdRea5krxmlNxgJ4pgTtudppMw8UBQJQQJ99CEACYeBjFXJ3w3AAAYACOGMO4c
+  subscriptionKey: YOUR_API_KEY_HERE
   region: eastus
   meshRenderer: {fileID: 2109619579}
   characterAnimator: {fileID: 1714685661}

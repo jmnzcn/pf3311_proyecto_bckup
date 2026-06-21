@@ -51,6 +51,11 @@ public class ExperimentLogic : MonoBehaviour
         "ConfidencePopup",
         "FinalMenuPanel",
     };
+    static readonly string[] MainGameChatUiChildNames =
+    {
+        "ChatInput",
+        "HintText",
+    };
 
     Transform savedBookshelfBgParent;
     int savedBookshelfBgSiblingIndex = -1;
@@ -696,14 +701,32 @@ public class ExperimentLogic : MonoBehaviour
 
         foreach (Transform child in mainGameUI.transform)
         {
-            if (ShouldKeepMainGameOverlayHidden(child.name))
+            if (ShouldKeepMainGameOverlayHidden(child.name) || IsMainGameChatUiChild(child.name))
                 continue;
 
             child.gameObject.SetActive(true);
         }
 
         if (questionManager != null)
+        {
             questionManager.HideQuestionFlowOverlays();
+            questionManager.RefreshChatAssistanceVisibility();
+            EnsureInteractiveControlsDrawOrder();
+        }
+    }
+
+    static bool IsMainGameChatUiChild(string childName)
+    {
+        if (string.IsNullOrEmpty(childName))
+            return false;
+
+        foreach (string chatUiName in MainGameChatUiChildNames)
+        {
+            if (childName == chatUiName)
+                return true;
+        }
+
+        return false;
     }
 
     static bool ShouldKeepMainGameOverlayHidden(string childName)
@@ -955,6 +978,22 @@ public class ExperimentLogic : MonoBehaviour
         ApplyStandaloneDisplayProfile();
     }
 
+    /// <summary>
+    /// Loads API keys from _config/LocalSecrets.json (gitignored). Inspector values are fallback only.
+    /// </summary>
+    void TryLoadLocalSecrets()
+    {
+        LocalSecretsLoader.Payload secrets = LocalSecretsLoader.Load();
+        if (secrets == null)
+            return;
+
+        if (!LocalSecretsLoader.IsPlaceholder(secrets.geminiApiKey))
+            apiKey = secrets.geminiApiKey.Trim();
+
+        if (!LocalSecretsLoader.IsPlaceholder(secrets.csvDriveUploadSecret))
+            csvDriveUploadSecret = secrets.csvDriveUploadSecret.Trim();
+    }
+
     static void DestroyProfileSurveyOverlayIfPresent()
     {
         var overlay = GameObject.Find("ProfileSurveyOverlayCanvas");
@@ -964,6 +1003,7 @@ public class ExperimentLogic : MonoBehaviour
 
     void Start()
     {
+        TryLoadLocalSecrets();
         DestroyProfileSurveyOverlayIfPresent();
         Application.wantsToQuit += HandleWantsToQuit;
 
@@ -1029,6 +1069,9 @@ public class ExperimentLogic : MonoBehaviour
 
         if (chatScrollRect.horizontalScrollbar != null)
             chatScrollRect.horizontalScrollbar.gameObject.SetActive(false);
+
+        if (chatScrollRect.TryGetComponent(out Image chatPanelImage))
+            chatPanelImage.raycastTarget = false;
 
         if (chatScrollRect.viewport != null)
         {
@@ -1577,6 +1620,9 @@ public class ExperimentLogic : MonoBehaviour
         if (questionManager != null && questionManager.IsChatAssistanceEnabled)
             EnsureChatInputUi();
 
+        if (questionManager != null)
+            questionManager.RefreshChatAssistanceVisibility();
+
         var avatarDisplay = UnityEngine.Object.FindFirstObjectByType<AvatarDisplayController>();
         if (avatarDisplay != null)
             StartCoroutine(RefreshAvatarDisplayNextFrame(avatarDisplay));
@@ -1776,6 +1822,17 @@ public class ExperimentLogic : MonoBehaviour
                         RecordChatApiFailure(userMessage, "rate_limit", code, "http_429");
                         RevertPendingStudentMessage();
                         AppendChatNotice("El agente recibió demasiadas consultas seguidas. Espera unos segundos e inténtalo de nuevo.");
+                        yield break;
+                    }
+
+                    if (code == 403)
+                    {
+                        Debug.LogError("Gemini API 403 Forbidden. Revisá apiKey en ExperimentLogic y que la API Generative Language esté habilitada.");
+                        RecordChatApiFailure(userMessage, "forbidden", code, "http_403");
+                        RevertPendingStudentMessage();
+                        AppendChatNotice(
+                            "El agente no está autorizado (API key inválida, vencida o sin permiso). " +
+                            "En Unity: ExperimentLogic → Api Key. En Google AI Studio: clave activa y API Gemini habilitada.");
                         yield break;
                     }
 
@@ -2215,7 +2272,33 @@ public class ExperimentLogic : MonoBehaviour
                     chatBackground.raycastTarget = false;
 
                 ConfigureChatScrollUi();
-                EnsureChatPanelDrawOrder();
+                EnsureInteractiveControlsDrawOrder();
+            }
+        }
+
+        if (ChatInput != null)
+            ChatInput.gameObject.SetActive(visible);
+
+        if (SendChatButton != null)
+            SendChatButton.gameObject.SetActive(visible);
+
+        if (questionManager != null)
+        {
+            bool onCompletionScreen = questionManager.IsBlockCompletionScreenVisible
+                                      || questionManager.IsQuestionFlowComplete;
+
+            if (onCompletionScreen)
+            {
+                questionManager.HideQuestionFlowControlsForCompletion();
+            }
+            else if (visible)
+            {
+                Transform buttonGroup = SendChatButton != null ? SendChatButton.transform.parent : null;
+                if (buttonGroup != null && buttonGroup.name == "ButtonGroup")
+                    buttonGroup.gameObject.SetActive(true);
+
+                if (questionManager.nextButton != null)
+                    questionManager.nextButton.gameObject.SetActive(true);
             }
         }
 
@@ -2254,17 +2337,33 @@ public class ExperimentLogic : MonoBehaviour
         chatSessionLogger.ResetQuestionMetrics();
     }
 
-    void EnsureChatPanelDrawOrder()
+    public void RefreshGameplayControlsDrawOrder()
     {
-        if (chatScrollRect == null || questionManager == null || questionManager.optionButtonGroup == null)
+        EnsureInteractiveControlsDrawOrder();
+    }
+
+    void EnsureInteractiveControlsDrawOrder()
+    {
+        if (mainGameUI == null || questionManager == null)
             return;
 
-        Transform chatTransform = chatScrollRect.transform;
-        Transform optionsRoot = questionManager.optionButtonGroup.transform.parent;
-        if (optionsRoot == null || chatTransform.parent != optionsRoot.parent)
+        if (questionManager.IsConfidencePanelOpen)
             return;
 
-        chatTransform.SetSiblingIndex(optionsRoot.GetSiblingIndex() + 1);
+        Transform panelRoot = mainGameUI.transform;
+
+        Transform optionsRoot = questionManager.optionButtonGroup != null
+            ? questionManager.optionButtonGroup.transform.parent
+            : null;
+        if (optionsRoot != null && optionsRoot.parent == panelRoot)
+            optionsRoot.SetAsLastSibling();
+
+        if (SendChatButton != null)
+        {
+            Transform chatActionsRoot = SendChatButton.transform.parent;
+            if (chatActionsRoot != null && chatActionsRoot.parent == panelRoot)
+                chatActionsRoot.SetAsLastSibling();
+        }
     }
 
     void RefreshChatDisplay(string text, Color? color = null)

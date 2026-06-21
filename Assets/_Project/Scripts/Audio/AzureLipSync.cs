@@ -52,6 +52,24 @@ public class AzureLipSync : MonoBehaviour
     private struct VisemeData { public float time; public int visemeId; }
     private List<VisemeData> visemeList = new List<VisemeData>();
 
+    void Awake()
+    {
+        TryLoadLocalSecrets();
+    }
+
+    void TryLoadLocalSecrets()
+    {
+        LocalSecretsLoader.Payload secrets = LocalSecretsLoader.Load();
+        if (secrets == null)
+            return;
+
+        if (!LocalSecretsLoader.IsPlaceholder(secrets.azureSpeechKey))
+            subscriptionKey = secrets.azureSpeechKey.Trim();
+
+        if (!LocalSecretsLoader.IsPlaceholder(secrets.azureSpeechRegion))
+            region = secrets.azureSpeechRegion.Trim();
+    }
+
     void Start()
     {
         if (voiceAudioSource == null) voiceAudioSource = GetComponent<AudioSource>();

@@ -128,8 +128,11 @@ public class QuestionManager : MonoBehaviour
     private bool postBlockSurveySubmitted;
     private bool postBlockSurveyAwaitingVerification;
     private TextMeshProUGUI surveyButtonTitle;
+    private float? surveyButtonDefaultFontSize;
     const string SurveyButtonDefaultTitle = "Realizar Encuesta";
+    const string SurveyButtonCompletedTitle = "Encuesta\ncompletada";
     const string SurveyButtonConfirmTitle = "CONFIRMAR ENVÍO";
+    const float SurveyButtonCompletedFontSize = 22f;
     public bool IsPracticeMode => isPracticeMode;
 
     public int ActiveScenarioNumber => isPracticeMode ? 0 : (activeScenarioIndex >= 0 ? activeScenarioIndex + 1 : 0);
@@ -559,7 +562,13 @@ public class QuestionManager : MonoBehaviour
         if (surveyButtonTitle == null)
             return;
 
-        surveyButtonTitle.text = completed ? "ENCUESTA COMPLETADA" : SurveyButtonDefaultTitle;
+        if (!surveyButtonDefaultFontSize.HasValue)
+            surveyButtonDefaultFontSize = surveyButtonTitle.fontSize;
+
+        surveyButtonTitle.text = completed ? SurveyButtonCompletedTitle : SurveyButtonDefaultTitle;
+        surveyButtonTitle.fontSize = completed
+            ? SurveyButtonCompletedFontSize
+            : surveyButtonDefaultFontSize.Value;
     }
 
     void RefreshFinalOptionsPanelState()
@@ -587,6 +596,9 @@ public class QuestionManager : MonoBehaviour
 
         if (finalizeSessionButton != null)
             finalizeSessionButton.interactable = IsFarewellScreenVisible() || CanFinalizeSession();
+
+        if (IsBlockCompletionScreenVisible)
+            HideQuestionFlowControlsForCompletion();
     }
 
     bool IsFarewellScreenVisible() =>
@@ -818,6 +830,13 @@ public class QuestionManager : MonoBehaviour
         if (experimentLogic == null || !experimentLogic.AreAllConditionsCompleted)
             return;
 
+        if (finalOptionsPanel != null)
+        {
+            finalOptionsPanel.SetActive(true);
+            var rt = finalOptionsPanel.GetComponent<RectTransform>();
+            if (rt != null) rt.anchoredPosition = Vector2.zero;
+        }
+
         if (mainGameUiForCompleteScreen != null && experimentLogic != null)
             experimentLogic.SetMainGamePresentation(true);
         else if (mainGameUiForCompleteScreen != null)
@@ -852,9 +871,7 @@ public class QuestionManager : MonoBehaviour
         postBlockSurveyAwaitingVerification = false;
 
         if (questionCounterText != null) questionCounterText.gameObject.SetActive(false);
-        if (askForHelpButton != null) askForHelpButton.gameObject.SetActive(false);
-        if (inputField != null) inputField.gameObject.SetActive(false);
-        if (nextButton != null) nextButton.gameObject.SetActive(false);
+        HideQuestionFlowControlsForCompletion();
         if (optionButtonGroup != null) optionButtonGroup.SetActive(false);
         if (progressFill != null) progressFill.gameObject.SetActive(false);
         if (progressBar_Bg != null) progressBar_Bg.gameObject.SetActive(false);
@@ -992,6 +1009,7 @@ public class QuestionManager : MonoBehaviour
         if (activeQuestions.Count > 0)
             DisplayQuestion(activeQuestions[0]);
 
+        RefreshChatAssistanceVisibility();
         UpdateProgressBar();
     }
 
@@ -1028,6 +1046,7 @@ public class QuestionManager : MonoBehaviour
         if (activeQuestions.Count > 0)
             DisplayQuestion(activeQuestions[0]);
 
+        RefreshChatAssistanceVisibility();
         UpdateProgressBar();
     }
 
@@ -1037,22 +1056,24 @@ public class QuestionManager : MonoBehaviour
         practiceAgentProfileIndex = -1;
     }
 
+    public void RefreshChatAssistanceVisibility()
+    {
+        if (isPracticeMode)
+            ApplyChatAssistanceVisibility(practiceAgentProfileIndex);
+        else
+            ApplyChatAssistanceVisibility(activeScenarioIndex);
+    }
+
     void ApplyChatAssistanceVisibility(int scenarioIndex)
     {
         bool showChat = scenarioIndex >= 1;
 
-        if (askForHelpButton != null)
-            askForHelpButton.gameObject.SetActive(showChat);
-
-        if (inputField != null)
+        if (experimentLogic != null)
         {
-            inputField.gameObject.SetActive(showChat);
-            if (!showChat)
-                inputField.text = string.Empty;
+            experimentLogic.SetChatPanelVisible(showChat, flushChatSummaryOnHide: showChat);
         }
 
-        if (experimentLogic != null)
-            experimentLogic.SetChatPanelVisible(showChat, flushChatSummaryOnHide: showChat);
+        ShowQuestionFlowNavigationControls(showChat);
     }
 
     public ExperimentQuestion GetCurrentQuestion()
@@ -1111,13 +1132,19 @@ public class QuestionManager : MonoBehaviour
         if (string.IsNullOrEmpty(temporaryChoice)) return;
         if (experimentLogic != null && experimentLogic.IsGeminiInFlight) return;
 
-        if (confidencePanel != null)
-        {
-            confidencePanel.SetActive(true);
-            ResetStars();
-            SetOptionButtonsInteractable(false);
-            if (nextButton != null) nextButton.interactable = false;
-        }
+        ShowConfidencePanel();
+    }
+
+    void ShowConfidencePanel()
+    {
+        if (confidencePanel == null)
+            return;
+
+        confidencePanel.SetActive(true);
+        confidencePanel.transform.SetAsLastSibling();
+        ResetStars();
+        SetOptionButtonsInteractable(false);
+        if (nextButton != null) nextButton.interactable = false;
     }
 
     public void OnStarClicked(int rating)
@@ -1151,14 +1178,15 @@ public class QuestionManager : MonoBehaviour
             {
                 if (confidencePanel != null) confidencePanel.SetActive(false);
 
-                temporaryChoice = "";
-                temporaryChoiceLetter = "";
-                if (nextButton != null) nextButton.interactable = false;
-                UpdateBtnVisuals("");
-                SetOptionButtonsInteractable(true);
+            temporaryChoice = "";
+            temporaryChoiceLetter = "";
+            if (nextButton != null) nextButton.interactable = false;
+            UpdateBtnVisuals("");
+            SetOptionButtonsInteractable(true);
 
-                ShowNextQuestion();
-                return;
+            experimentLogic?.RefreshGameplayControlsDrawOrder();
+            ShowNextQuestion();
+            return;
             }
 
             var question = GetCurrentQuestion();
@@ -1207,6 +1235,7 @@ public class QuestionManager : MonoBehaviour
             UpdateBtnVisuals("");
             SetOptionButtonsInteractable(true);
 
+            experimentLogic?.RefreshGameplayControlsDrawOrder();
             ShowNextQuestion();
         }
         finally
@@ -1347,6 +1376,7 @@ public class QuestionManager : MonoBehaviour
         }
 
         ConfigureQuestionScrollContentLayout();
+        experimentLogic?.RefreshGameplayControlsDrawOrder();
     }
 
     private void FinishExperiment()
@@ -1361,9 +1391,14 @@ public class QuestionManager : MonoBehaviour
 
         // Hide interactive controls once all questions are complete.
         if (questionCounterText != null) questionCounterText.gameObject.SetActive(false);
-        if (askForHelpButton != null) askForHelpButton.gameObject.SetActive(false);
-        if (inputField != null) inputField.gameObject.SetActive(false);
-        if (nextButton != null) nextButton.gameObject.SetActive(false);
+        HideQuestionFlowControlsForCompletion();
+
+        if (finalOptionsPanel != null)
+        {
+            finalOptionsPanel.SetActive(true);
+            var rt = finalOptionsPanel.GetComponent<RectTransform>();
+            if (rt != null) rt.anchoredPosition = Vector2.zero;
+        }
 
         if (experimentLogic != null)
         {
@@ -1381,13 +1416,6 @@ public class QuestionManager : MonoBehaviour
         {
             myScrollRect.verticalScrollbar.gameObject.SetActive(false);
             myScrollRect.enabled = false;
-        }
-
-        if (finalOptionsPanel != null)
-        {
-            finalOptionsPanel.SetActive(true);
-            var rt = finalOptionsPanel.GetComponent<RectTransform>();
-            if (rt != null) rt.anchoredPosition = Vector2.zero;
         }
 
         RefreshFinalOptionsPanelState();
@@ -1482,8 +1510,45 @@ public class QuestionManager : MonoBehaviour
         ResetStars();
     }
 
-    bool IsConfidencePanelOpen =>
+    public bool IsConfidencePanelOpen =>
         confidencePanel != null && confidencePanel.activeInHierarchy;
+
+    public bool IsBlockCompletionScreenVisible =>
+        finalOptionsPanel != null && finalOptionsPanel.activeInHierarchy;
+
+    public bool IsQuestionFlowComplete => isCurrentScenarioComplete;
+
+    public void HideQuestionFlowControlsForCompletion()
+    {
+        if (nextButton != null)
+            nextButton.gameObject.SetActive(false);
+
+        if (askForHelpButton != null)
+            askForHelpButton.gameObject.SetActive(false);
+
+        if (inputField != null)
+            inputField.gameObject.SetActive(false);
+
+        Transform buttonGroup = askForHelpButton != null ? askForHelpButton.transform.parent : null;
+        if (buttonGroup != null && buttonGroup.name == "ButtonGroup")
+            buttonGroup.gameObject.SetActive(false);
+    }
+
+    void ShowQuestionFlowNavigationControls(bool showChatAssist)
+    {
+        if (IsBlockCompletionScreenVisible || isCurrentScenarioComplete)
+            return;
+
+        Transform buttonGroup = askForHelpButton != null ? askForHelpButton.transform.parent : null;
+        if (buttonGroup != null && buttonGroup.name == "ButtonGroup")
+            buttonGroup.gameObject.SetActive(true);
+
+        if (nextButton != null)
+            nextButton.gameObject.SetActive(true);
+
+        if (askForHelpButton != null)
+            askForHelpButton.gameObject.SetActive(showChatAssist);
+    }
 
     void SetOptionButtonsInteractable(bool interactable)
     {
