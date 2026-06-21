@@ -21,7 +21,7 @@ public class ScenarioSelectionController : MonoBehaviour
     static readonly Color LetterBadgeText = new(0.2f, 0.92f, 0.92f, 1f);
     const string CompletedStatusText = "COMPLETADO";
     const string ProfileSurveyPendingSubtitle =
-        "Abre en el navegador · tu código P## ya va completado · ~2 min";
+        "Obligatorio antes del 1.er bloque · código P## prellenado · ~2 min";
     const string ProfileSurveyAwaitingSubtitle =
         "Completá y enviá el formulario en el navegador";
     const string ProfileSurveyConfirmSubtitle =
@@ -267,18 +267,13 @@ public class ScenarioSelectionController : MonoBehaviour
         }
 
         return baseHint
-               + "\n<size=20><color=#9EBFC2>Opcional: pulsá «Perfil del participante» para abrir el formulario en el navegador (~2 min). "
+               + "\n<size=20><color=#FFD166>Antes del primer bloque: completá «Perfil del participante» (~2 min). "
                + "Tu código P## ya va completado; volvé aquí al terminar.</color></size>";
     }
 
     public void NotifyProfileSurveyOpened()
     {
-        if (experimentLogic == null)
-            experimentLogic = FindFirstObjectByType<ExperimentLogic>();
-
-        EnsureProfileSurveyButton();
-        RefreshProfileSurveyButtonState();
-        RefreshConditionOrderHint();
+        RefreshAllButtonStates();
     }
 
     public void RefreshProfileSurveyButtonState()
@@ -379,7 +374,9 @@ public class ScenarioSelectionController : MonoBehaviour
                 continue;
 
             bool completed = experimentLogic.IsConditionCompleted(pair.Key);
-            bool allowedNow = !completed && pair.Key == nextAllowed;
+            bool allowedNow = !completed
+                              && pair.Key == nextAllowed
+                              && experimentLogic.CanStartScenarioBlocks;
             ui.Button.interactable = allowedNow;
             ui.Title.text = ui.OriginalTitle;
 

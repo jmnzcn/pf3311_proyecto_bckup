@@ -133,6 +133,12 @@ public class QuestionManager : MonoBehaviour
     const string SurveyButtonCompletedTitle = "Encuesta\ncompletada";
     const string SurveyButtonConfirmTitle = "CONFIRMAR ENVÍO";
     const float SurveyButtonCompletedFontSize = 22f;
+    const string ReturnAfterSurveyMoreBlocksHint =
+        "\n<size=22><color=#9EBFC2>Después de pulsar «Enviar» en la encuesta, volvé a esta ventana y pulsá «Otro Escenario» para continuar con los demás bloques.</color></size>";
+    const string ReturnAfterSurveyFinalizeHint =
+        "\n<size=22><color=#9EBFC2>Después de pulsar «Enviar» en la encuesta, volvé a esta ventana. Cuando la app confirme el envío, pulsá «Finalizar».</color></size>";
+    const string GoogleFormDraftHint =
+        "\n<size=22><color=#9EBFC2>Si Google pregunta por un borrador guardado, elegí «Continuar» (no «Usar borrador anterior»).</color></size>";
     public bool IsPracticeMode => isPracticeMode;
 
     public int ActiveScenarioNumber => isPracticeMode ? 0 : (activeScenarioIndex >= 0 ? activeScenarioIndex + 1 : 0);
@@ -745,6 +751,9 @@ public class QuestionManager : MonoBehaviour
         AppendPostBlockSurveyStatusToCompletionText();
     }
 
+    static string BuildReturnAfterSurveyHint(bool allBlocksDone) =>
+        allBlocksDone ? ReturnAfterSurveyFinalizeHint : ReturnAfterSurveyMoreBlocksHint;
+
     void AppendPostBlockSurveyStatusToCompletionText()
     {
         if (questionTextDisplay == null || !RequiresPostBlockSurvey())
@@ -762,6 +771,7 @@ public class QuestionManager : MonoBehaviour
             : "\n<size=26><color=#6EEDC8>Tu código: "
               + participantCode
               + ". La URL con el código ya quedó en el portapapeles: pegala en la barra del navegador si el campo sale vacío.</color></size>";
+        string returnHint = BuildReturnAfterSurveyHint(allBlocksDone);
         string surveyStatus = completedForCondition
             ? "\n<size=26><color=#6EEDC8>Encuesta recibida correctamente.</color></size>"
             : postBlockSurveyAwaitingVerification
@@ -769,17 +779,21 @@ public class QuestionManager : MonoBehaviour
                     ? "\n<size=26><color=#9EBFC2>Completá y enviá la encuesta en el navegador. La app verificará el envío al volver.</color></size>"
                       + "\n<size=22><color=#9EBFC2>Podés volver a pulsar «Realizar Encuesta» si no abrió bien.</color></size>"
                       + codeHint
-                      + "\n<size=22><color=#9EBFC2>Si Google pregunta por un borrador guardado, elegí «Continuar» (no «Usar borrador anterior»).</color></size>"
+                      + GoogleFormDraftHint
+                      + returnHint
                     : "\n<size=26><color=#9EBFC2>Completá y enviá la encuesta. Podés pulsar «Realizar Encuesta» de nuevo si hace falta.</color></size>"
-                      + "\n<size=22><color=#9EBFC2>Cuando hayas enviado, pulsá «Otro Escenario» para continuar.</color></size>"
+                      + returnHint
                       + codeHint
-                      + "\n<size=22><color=#9EBFC2>Si Google pregunta por un borrador guardado, elegí «Continuar» (no «Usar borrador anterior»).</color></size>"
+                      + GoogleFormDraftHint
                 : allBlocksDone && experimentLogic != null && !experimentLogic.AreAllRequiredPostBlockSurveysSubmitted()
                     ? "\n<size=26><color=#9EBFC2>Falta la encuesta del bloque "
                       + experimentLogic.GetFirstPendingPostBlockSurveyCondition()
-                      + ". Pulsá «Realizar Encuesta».</color></size>"
+                      + ". Pulsá «Realizar Encuesta», completala y enviala en el navegador.</color></size>"
+                      + codeHint
+                      + returnHint
                     : "\n<size=26><color=#9EBFC2>Pulsá «Realizar Encuesta», completala y enviala en el navegador.</color></size>"
-                      + codeHint;
+                      + codeHint
+                      + returnHint;
 
         questionTextDisplay.text =
             "\u00a1Listo! Ya completaste este escenario.\n" +
@@ -791,7 +805,7 @@ public class QuestionManager : MonoBehaviour
                       ? "\n<size=26><color=#9EBFC2>Puls\u00e1 \u00abFinalizar\u00bb para cerrar la sesi\u00f3n.</color></size>"
                       : "")
                 : completedForCondition
-                    ? "\n<size=26><color=#9EBFC2>Pod\u00e9s continuar con \u00abOtro Escenario\u00bb.</color></size>"
+                    ? "\n<size=26><color=#9EBFC2>Volvé a esta ventana y pulsá «Otro Escenario» para continuar con el siguiente bloque.</color></size>"
                     : "");
         questionTextDisplay.alignment = TextAlignmentOptions.Center;
     }
@@ -868,7 +882,8 @@ public class QuestionManager : MonoBehaviour
                     "Muchas gracias por participar. Nos ayudas un mont\u00f3n.\n\n" +
                     "<size=26><color=#9EBFC2>Falta la encuesta del bloque "
                     + pendingCondition
-                    + ". Puls\u00e1 \u00abRealizar Encuesta\u00bb, completala y enviala en el navegador.</color></size>";
+                    + ". Puls\u00e1 \u00abRealizar Encuesta\u00bb, completala y enviala en el navegador.</color></size>"
+                    + ReturnAfterSurveyFinalizeHint;
             }
 
             questionTextDisplay.alignment = TextAlignmentOptions.Center;

@@ -306,6 +306,10 @@ public class ExperimentLogic : MonoBehaviour
 
     public bool IsProfileSurveyAwaitingVerification => sessionProfileSurveyAwaitingVerification;
 
+    /// <summary>Profile form must be submitted before the first A/B/C block; practice stays optional.</summary>
+    public bool CanStartScenarioBlocks =>
+        !HasParticipantProfileSurvey || sessionProfileSurveySubmitted;
+
     public bool IsPostBlockSurveySubmitted(string conditionCode) =>
         conditionCode switch
         {
@@ -1498,6 +1502,9 @@ public class ExperimentLogic : MonoBehaviour
 
     public bool IsScenarioAllowedNow(int scenarioIndex)
     {
+        if (!CanStartScenarioBlocks)
+            return false;
+
         if (IsConditionCompleted(scenarioIndex))
             return false;
 
@@ -1566,6 +1573,9 @@ public class ExperimentLogic : MonoBehaviour
     public void OnScenarioSelected(int scenarioIndex)
     {
         if (!IsConsentComplete() || !PrepareSessionForDataCapture())
+            return;
+
+        if (!CanStartScenarioBlocks)
             return;
 
         if (!IsScenarioAllowedNow(scenarioIndex))
